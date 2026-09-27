@@ -1,0 +1,89 @@
+% slidestyle.sty -- Light unit slides. Far viewing distance (one-to-one
+% lesson shown on a TV): sizes follow the spec 5.4 "far" column. All text
+% goes through the size macros below; slides.tex never sets a size.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{slidestyle}[2026/09/27 Light unit slides]
+
+\RequirePackage{type1cm}
+\RequirePackage{fix-cm}
+\RequirePackage{amssymb}
+\RequirePackage{mathspec}
+\setsansfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmainfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmathsfont(Digits,Latin)[Path=fonts/, Extension=.otf,
+  UprightFont=*-regular, ItalicFont=*-italic]{texgyreheros}
+\setmathrm[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic]{texgyreheros}
+% Chinese appears only in \note{} (tutor notes, language parameter)
+\RequirePackage{xeCJK}
+\setCJKmainfont[Path=fonts/]{wqy-microhei.ttc}
+\setCJKsansfont[Path=fonts/]{wqy-microhei.ttc}
+\usefonttheme{professionalfonts}
+
+\geometry{paperwidth=170mm,paperheight=95.625mm}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\RequirePackage{shared}
+\RequirePackage{xr}
+\RequirePackage{array,booktabs}
+
+% ------------------------------------------------------------- sizes
+\newcommand\sTitle{\fontsize{21}{25}\selectfont}
+\newcommand\sEmph{\fontsize{19}{23}\selectfont}
+\newcommand\sQ{\fontsize{15}{18.6}\selectfont}
+\newcommand\sSub{\fontsize{14}{17.4}\selectfont}
+\newcommand\sSum{\fontsize{15}{19.5}\selectfont}
+\newcommand\sFoot{\fontsize{8}{9.6}\selectfont}
+\newcommand\sNote{\fontsize{8.6}{11.2}\selectfont}
+\renewcommand\figfont{\sQ}
+
+\setbeamerfont{normal text}{size=\sQ}
+\setbeamerfont{itemize/enumerate body}{size=\sQ}
+\setbeamerfont{itemize/enumerate subbody}{size=\sQ}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\sQ}
+\setbeamerfont{frametitle}{size=\sTitle, series=\bfseries}
+\setbeamerfont{title}{size=\sTitle, series=\bfseries}
+\setbeamerfont{subtitle}{size=\sQ}
+\AtBeginDocument{\sQ}
+
+% ------------------------------------------------------------ colours
+\setbeamercolor{normal text}{fg=black, bg=white}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{frametitle}{fg=accent, bg=}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\raisebox{1pt}{\rule{4pt}{4pt}}}
+\setbeamertemplate{enumerate items}[default]
+
+% ---------------------------------- title: bold text over a thin rule
+\setbeamertemplate{frametitle}{%
+  \vspace*{2mm}\vbox{\hsize\textwidth\hbox{\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\strut\insertframetitle}
+  \kern0.8mm{\color{rule}\hrule height 0.8pt}}\vspace{1mm}}
+
+% ------------------------------------ footer: cross-reference + signature
+\gdef\thefref{}
+\newcommand\fref[1]{\gdef\thefref{#1}}
+\setbeamertemplate{footline}{%
+  \hbox to\paperwidth{\hspace{5mm}\sFoot\color{sig}\thefref\hfill
+    Dr. Ryan Lei \textperiodcentered{} Auckland\hspace{4mm}\insertframenumber\hspace{5mm}}%
+  \vspace{2.2mm}\gdef\thefref{}}
+
+% ------------------------------------------------------- formula box
+% fixed-width \hbox with \hfil: an overlong formula reports Overfull \hbox
+\newcommand\fbx[1]{\par\smallskip\hbox to\textwidth{\hfil\sEmph$\displaystyle #1$\hfil}\par\smallskip}
+% emphasis line
+\newcommand\emphline[1]{\par{\sEmph\bfseries #1}\par}
+% two columns with fixed split
+\newcommand\twocol[4]{\par\noindent\begin{minipage}[t]{#1\textwidth}\vspace{0pt}\raggedright#2\end{minipage}\hfill
+  \begin{minipage}[t]{#3\textwidth}\vspace{0pt}\raggedright#4\end{minipage}\par}
+% numbered question line
+\newcommand\qline[1]{\par\smallskip\noindent\hangindent=7mm\hangafter=1\makebox[7mm][l]{\bfseries #1}}
+
+% ------------------------------------------------------------ notes
+\setbeamertemplate{note page}{%
+  \vspace*{2mm}\noindent\begin{minipage}[t]{\textwidth}\sNote\raggedright
+  \setlength\parskip{1.5pt}\insertnote\end{minipage}}
+
+\endinput

@@ -1,0 +1,745 @@
+\documentclass[aspectratio=169,11pt,xcolor=table]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout}
+\ifdefined\notesmode
+  \setbeameroption{show only notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+\title{Light: Unit Review}
+\subtitle{Year 9 Science \textperiodcentered{} end-of-year exam}
+
+\begin{document}
+
+% ================================================================ opening
+\begin{frame}
+\relax
+\vspace*{4mm}
+{\usebeamerfont{title}\usebeamercolor[fg]{frametitle}Light: Unit Review}\par
+\vspace{1mm}{\color{rule}\rule{\textwidth}{0.8pt}}\par\vspace{2mm}
+Year 9 Science \textperiodcentered{} end-of-year exam\par\vspace{4mm}
+\begin{enumerate}
+\item Seeing light: sources, materials, shadows
+\item Colour: mixing light, objects, filters
+\item Reflection: plane mirrors
+\item Refraction and dispersion
+\item The eye and lenses
+\end{enumerate}
+\note{%
+Teaching line, not a question slide.\par
+本课 105 分钟，全单元复习，面向年底考试（A、M、E 评分）。\par
+时间分配：Do Now 0:00–0:07；一个核心思想 0:07–0:10；Block 1 0:10–0:22；Block 2 0:22–0:43（含 In-class A）；Block 3 0:43–1:05（含 In-class B）；Block 4 1:05–1:24（含 In-class C）；Block 5 1:24–1:41（含 In-class D）；收尾 1:41–1:45。\par
+发三份纸：Handout、In-class work、Homework（下课收回）。\par
+Beyond Year 9 两页（折射率和透镜成像）只讲不考；时间不够就直接跳过。}
+\end{frame}
+
+\begin{frame}{Do Now}
+\relax
+\qline{1} Is the Moon a light source or a light reflector?
+\qline{2} Is baking paper transparent, translucent or opaque?
+\qline{3} What colour does a green leaf look in red light?
+\qline{4} A ray hits a plane mirror with an angle of incidence of 35\textdegree. What is the angle of reflection?
+\qline{5} Light passes from air into glass at an angle. Does it bend towards or away from the normal?
+\note{%
+Q1 light reflector\par
+Q2 translucent\par
+Q3 black\par
+Q4 35\textdegree\par
+Q5 towards the normal\par
+Short solution:\par
+Q1 月亮不发光，只反射太阳光\par
+Q2 光能透过但被散射，后面的物体看起来模糊\par
+Q3 绿叶只反射绿光；红光里没有绿光，全部被吸收，没有光进入眼睛\par
+Q4 反射定律 $i = r$\par
+Q5 进入光速更慢的介质，偏向法线（Slower Towards Normal）\par
+Watch for:\par
+Q3 学生常答“红色”或“棕色”\par
+Q4 如果答 55\textdegree，说明把角度从镜面量起（L1）\par
+Diagnostic:\par
+Q1 答“光源”：来源和反射体没分清，Block 1 多花 2 分钟\par
+Q3 答错：物体颜色的规则不清楚，Block 2 重点讲“反射自己的颜色、吸收其它颜色”\par
+Q5 答“away”：折射方向记反了，Block 4 先讲速度再讲方向}
+\end{frame}
+
+\begin{frame}{The one idea}
+\relax
+\fref{Handout p.\pageref{H-sec:see}}
+\twocol{0.48}{\centering\FigHowWeSee[9mm]}{0.48}{%
+Light travels in \textbf{straight lines}.\par\medskip
+When it meets something it is:
+\begin{itemize}
+\item reflected
+\item absorbed
+\item transmitted
+\item refracted
+\end{itemize}}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:07–0:10。\par
+核心句：光沿直线传播；碰到东西后，只有四种结果：反射、吸收、透射、折射。\par
+本单元每道题都在问两件事：光发生了什么？光接下来去哪儿？先画光线，再解释。\par
+让学生用这张图说一遍“我们为什么能看见这本书”：光源发光，光沿直线到书，书反射一部分，反射光进入眼睛。\par
+强调：光要“进入眼睛”，不是眼睛“发出”光线。}
+\end{frame}
+
+% ============================================================ block 1
+\begin{frame}{Sources and reflectors}
+\relax
+\fref{Handout p.\pageref{H-sec:see}}
+\twocol{0.47}{%
+\textbf{Light source}: emits its own light\par\medskip
+Sun, candle flame, glow-worm, phone screen}{0.47}{%
+\textbf{Light reflector}: only reflects light\par\medskip
+Moon, planet, mirror, this page}
+\vspace{8mm}
+We see an object when light from it \textbf{enters our eyes}.
+\note{%
+Teaching line, not a question slide.\par
+时间 0:10–0:12。\par
+问学生：萤火虫（glow-worm）、手机屏幕、自行车反光片分别是哪一类？反光片是 reflector，它只是反射车灯的光。\par
+补一句：白天月亮看起来更暗，是因为天空本身很亮，不是因为月亮会发光。}
+\end{frame}
+
+\begin{frame}{Transparent, translucent, opaque}
+\relax
+\fref{Handout p.\pageref{H-sec:materials}}
+\begin{center}\FigMaterials[9.4mm]\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:12–0:14。\par
+transparent：光几乎全部直线透过，看得清（窗玻璃、清水）。\par
+translucent：光能透过但被散射，看起来模糊（烘焙纸、磨砂玻璃、牛奶瓶）。\par
+opaque：光不能透过，被吸收或反射（木头、墙、纸板）。\par
+快问：隐形眼镜？（transparent）毛衣？（opaque）}
+\end{frame}
+
+\begin{frame}{Three properties of light}
+\relax
+\fref{Handout p.\pageref{H-sec:props}}
+\begin{enumerate}
+\item Travels in \textbf{straight lines}
+\item Travels very fast: $300\,000\ \mathrm{km/s}$
+\item Travels through a \textbf{vacuum} (sound cannot)
+\end{enumerate}
+\vspace{4mm}
+Evidence for straight lines: sharp shadows, a laser beam in smoke, a candle seen only through a straight tube.
+\note{%
+Teaching line, not a question slide.\par
+时间 0:14–0:16。\par
+三个性质要能直接背出来，常考“State two properties of light”。\par
+真空：太阳和地球之间没有空气，但阳光能到达地球；声音需要粒子，所以不能在真空中传播。\par
+光在玻璃中约 200 000 km/s，在钻石中约 125 000 km/s，变慢了但仍然很快。这个速度变化就是后面折射的原因。}
+\end{frame}
+
+\begin{frame}{Shadows}
+\relax
+\fref{Handout p.\pageref{H-sec:shadows}}
+\begin{center}\FigShadow[5.7mm]{0}\hspace{4mm}\FigShadow[5.7mm]{1}\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:16–0:19。\par
+影子：不透明物体挡住了光。因为光沿直线传播，影子的形状和物体相似。\par
+umbra：所有光都被挡住，全黑、边缘清晰。penumbra：只挡住一部分光，较浅、边缘模糊，只有光源比较大时才出现。\par
+画法：用尺子，从光源边缘经过物体边缘画直线到屏幕，加箭头（L7）。\par
+让学生指出：右图中屏幕上哪一段能看到光源的一部分？（penumbra 那段）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:props}}
+\qline{1} Light from the Sun takes about 500 seconds to reach the Earth. Calculate the distance from the Sun to the Earth in km.
+\qline{2} A ball is held between a small lamp and a wall. The ball is moved closer to the wall. What happens to the size of its shadow? Explain.
+\qline{3} In a storm you see the lightning before you hear the thunder. Explain why.
+\note{%
+Q1 $150\,000\,000\ \mathrm{km}$\par
+Q2 the shadow gets smaller\par
+Q3 light travels much faster than sound\par
+Short solution:\par
+Q1 距离 = 速度 × 时间 $= 300\,000 \times 500 = 150\,000\,000\ \mathrm{km}$\par
+Q2 光沿直线传播；球离墙越近，从灯发出、经过球边缘的光线到达墙之前散开得越少，所以影子变小（也更接近球的实际大小）\par
+Q3 两者同时发生；光速 $300\,000\ \mathrm{km/s}$，声速约 $0.34\ \mathrm{km/s}$，光先到达\par
+Watch for:\par
+Q1 用 $\dfrac{500}{300\,000}$ 是把公式用反了；数字太小要警觉\par
+Q2 只写“变小”不解释得不到 M；要提到“直线传播”\par
+Q3 “光先发生”是错的：两者同时发生}
+\end{frame}
+
+% ============================================================ block 2
+\begin{frame}{Primary colours of light}
+\relax
+\fref{Handout p.\pageref{H-sec:colour}}
+White light = red, orange, yellow, green, blue, indigo, violet\par
+\vspace{2mm}
+\begin{center}\FigRGB[7.6mm]\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:22–0:26。\par
+白光是七种颜色的混合，记忆口诀 Richard Of York Gave Battle In Vain。\par
+眼睛里有三种视锥细胞，分别对红、绿、蓝敏感，所以光的三原色是红、绿、蓝。\par
+两种原色混合得到二次色：红加绿是黄，红加蓝是品红（magenta），绿加蓝是青（cyan）；三种等量混合是白。\par
+重要陷阱（L3）：红、黄、蓝是颜料三原色，不是光的三原色；红光加绿光是黄色，不是棕色。\par
+可以让学生用手机放大镜看屏幕像素：只有红、绿、蓝三种小点。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:colour}}
+\vspace{6mm}
+\emphline{Predict}
+\vspace{4mm}
+A red apple is lit with blue light in a dark room.\par\medskip
+What colour does the apple look?
+\note{%
+Q1 black\par
+Short solution:\par
+Q1 红苹果只反射红光；蓝光里没有红光，蓝光被吸收，没有光进入眼睛\par
+Watch for:\par
+Q1 先让学生猜，再翻到下一页用图解释；常见错误答案是“紫色”（把颜料混合的想法带进来）}
+\end{frame}
+
+\begin{frame}{Coloured objects}
+\relax
+\fref{Handout p.\pageref{H-sec:colour}}
+\begin{center}\FigObject[9.6mm]\end{center}
+\vspace{1mm}
+An object \textbf{reflects} its own colour and \textbf{absorbs} the rest.
+\note{%
+Teaching line, not a question slide.\par
+时间 0:26–0:30。\par
+规则：物体反射自己的颜色，吸收其它所有颜色。白色物体反射所有颜色，黑色物体吸收所有颜色。\par
+如果照射的光里没有物体自己的颜色，就没有光被反射，物体看起来是黑色。\par
+Write it in this order（红苹果在蓝光下为什么是黑色）：1 苹果只反射红光，吸收其它颜色；2 蓝光里没有红光；3 蓝光被吸收，没有光反射进入眼睛；4 所以看起来是黑色。\par
+这四步就是 M 到 E 的完整因果链。\par
+追问：黄色的香蕉在红光下是什么颜色？（红色：黄色物体反射红光和绿光）}
+\end{frame}
+
+\begin{frame}{Filters}
+\relax
+\fref{Handout p.\pageref{H-sec:colour}}
+\begin{center}\FigFilter[10.5mm]\end{center}
+\vspace{2mm}
+A filter \textbf{transmits} its own colour and \textbf{absorbs} the rest.
+\note{%
+Teaching line, not a question slide.\par
+时间 0:30–0:32。\par
+滤光片只让自己颜色的光通过（transmit），吸收其它颜色。\par
+红色滤光片不是给白光“加上红色”，而是把其它颜色都吸收掉（L4）。\par
+红色滤光片后面再放绿色滤光片：只有红光到达绿色滤光片，红光被吸收，没有光出来。\par
+联系手册上的 physics sign 活动：戴红蓝眼镜看字，字母颜色会“消失”。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:colour}}
+\qline{1} Red and green spotlights overlap on a white wall. What colour is the overlap? A blue spotlight is then added to the overlap. What colour is it now?
+\qline{2} A white shirt with blue stripes is lit with red light. Describe what you see.
+\qline{3} White light passes through a blue filter and then a red filter. What comes out? Explain.
+\note{%
+Q1 yellow; then white\par
+Q2 red shirt with black stripes\par
+Q3 no light\par
+Short solution:\par
+Q1 红加绿是黄；再加蓝，三原色都有，是白色\par
+Q2 白色部分反射照到它的红光，看起来是红色；蓝色条纹只反射蓝光，红光被吸收，看起来是黑色\par
+Q3 蓝色滤光片只让蓝光通过；红色滤光片吸收蓝光，所以没有光出来\par
+Watch for:\par
+Q1 答“棕色”是把颜料混合的想法带进来（L3）\par
+Q2 常见错误：说衬衫“还是白色”；物体颜色取决于照射的光\par
+Q3 答“紫色”：以为滤光片会混合颜色（L4）}
+\end{frame}
+
+\begin{frame}{Workbook \textperiodcentered{} In-class Part A}
+\relax
+\fref{In-class work p.1}
+\vspace{6mm}
+\emphline{Part A: Shadows and colour}
+\vspace{3mm}
+Work on the in-class sheet.\par\medskip
+About 7 minutes. Use a ruler for every ray.
+\note{%
+A1 straight rays from the lamp to the top and bottom edges of the ball, continued to the screen; region between them behind the ball shaded and labelled umbra\par
+A2 green; blue; black; green; black\par
+A3 magenta; cyan\par
+Short solution:\par
+A1 小光源只有 umbra，没有 penumbra\par
+A2 按“反射自己的颜色”逐行判断：黄色香蕉反射红光和绿光，所以在绿光下是绿色\par
+Watch for:\par
+A1 光线要画成切过球的上下边缘的直线，要有箭头（L7）\par
+A2 黑鞋在任何光下都是黑色\par
+完整答案见 inclass\_answers.pdf}
+\end{frame}
+
+% ============================================================ block 3
+\begin{frame}{The law of reflection}
+\relax
+\fref{Handout p.\pageref{H-sec:reflection}}
+\begin{center}\FigReflect[8.4mm]\end{center}
+\vspace{1mm}
+\emphline{angle of incidence = angle of reflection}
+Both are measured from the \textbf{normal}.
+\note{%
+Teaching line, not a question slide.\par
+时间 0:43–0:47。\par
+法线：在入射点垂直于镜面（90 度）的虚线。\par
+入射角 $i$：入射光线和法线的夹角；反射角 $r$：反射光线和法线的夹角。\par
+反射定律：$i = r$。\par
+最常见丢分（L1）：从镜面量角度。如果题目给的是光线和镜面的夹角，先用 $90^\circ$ 减去它。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:reflection}}
+\vspace{6mm}
+\emphline{Predict}
+\vspace{4mm}
+A ray of light hits a plane mirror at 15\textdegree{} to the mirror surface.\par\medskip
+What is the angle of reflection?
+\note{%
+Q1 75\textdegree\par
+Short solution:\par
+Q1 角度从法线量起：$i = 90^\circ - 15^\circ = 75^\circ$，所以 $r = 75^\circ$\par
+Watch for:\par
+Q1 答 15\textdegree{} 就是 L1：直接用了和镜面的夹角；让学生在图上画出法线再量}
+\end{frame}
+
+\begin{frame}{The image in a plane mirror}
+\relax
+\fref{Handout p.\pageref{H-sec:reflection}}
+\twocol{0.5}{\centering\FigPlaneImage[8mm]}{0.46}{%
+\begin{itemize}
+\item same size
+\item same distance behind
+\item upright
+\item laterally inverted
+\item virtual
+\end{itemize}}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:47–0:52。\par
+平面镜成像五个特点：大小相同；像在镜后，和物体到镜面距离相同；正立；左右相反（laterally inverted）；虚像。\par
+定位像的简便方法：先量物体到镜面的距离，在镜后同样距离处画像；再从物体画两条光线到镜面，反射光线往回延长（虚线）交于像。\par
+L2：像在镜子“后面”，不是在镜面上。人离镜子 2 m，离自己的像 4 m。\par
+L7：镜子后面的线必须是虚线，真实光线要有箭头。}
+\end{frame}
+
+\begin{frame}{Real or virtual?}
+\relax
+\fref{Handout p.\pageref{H-sec:reflection}}
+\begin{tabular}{@{}p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}@{}}
+& \textbf{Real image} & \textbf{Virtual image}\\
+\midrule
+Light rays & actually meet & only appear to come from it\\[2mm]
+On a screen? & yes & no\\[2mm]
+Example & projector, retina & plane mirror\\
+\end{tabular}
+\vspace{5mm}
+\begin{center}\FigLatInv\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:52–0:54。\par
+实像：光线真的会聚在那里，能在屏幕上成像（投影仪、眼睛的视网膜）。\par
+虚像：光线只是看起来从那里来，不能在屏幕上成像（平面镜、放大镜）。\par
+为什么救护车车头的字是反的：前车司机从后视镜里看，镜子左右相反，就正过来了。\par
+可以请学生举起右手：镜子里的像举的是哪只手？}
+\end{frame}
+
+\begin{frame}{Periscope}
+\relax
+\fref{Handout p.\pageref{H-sec:reflection}}
+\twocol{0.4}{\centering\FigPeriscope[7.4mm]{1}}{0.56}{%
+\vspace{6mm}
+Two \textbf{parallel} mirrors at \textbf{45\textdegree}\par\medskip
+Light turns through 90\textdegree{} at each mirror\par\medskip
+See over or around obstacles}
+\note{%
+Teaching line, not a question slide.\par
+时间 0:54–0:56。\par
+光以 45\textdegree{} 入射角射到上面的镜子，$i = r = 45^\circ$，所以光转了 90\textdegree，沿管子向下；在下面的镜子再转 90\textdegree，进入眼睛。\par
+用途：潜艇、在人群后面看表演、看墙外。\par
+拓展（E 级）：经过两次反射，像是正立的，而且不是左右相反的。\par
+其它用途：万花筒（多面镜子多次反射）、牙医的镜子、后视镜。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:reflection}}
+\qline{1} A student stands 1.5\,m in front of a plane mirror. How far is the student from their image?
+\qline{2} Why is AMBULANCE written back-to-front on the front of an ambulance?
+\qline{3} Can the image in a plane mirror be formed on a screen? Explain.
+\note{%
+Q1 3.0 m\par
+Q2 so drivers in front read it the right way round in their mirrors\par
+Q3 no: it is a virtual image\par
+Short solution:\par
+Q1 像在镜后 1.5 m，学生在镜前 1.5 m，合计 $1.5 + 1.5 = 3.0\ \mathrm{m}$\par
+Q2 平面镜的像左右相反（laterally inverted），反写的字在镜中变成正的\par
+Q3 反射光线并没有真正在镜后会聚，只是看起来从那里来，所以是虚像，不能成在屏幕上\par
+Watch for:\par
+Q1 答 1.5 m 是 L2\par
+Q3 只答 “no” 不解释，拿不到 M}
+\end{frame}
+
+\begin{frame}{Workbook \textperiodcentered{} In-class Part B}
+\relax
+\fref{In-class work p.2}
+\vspace{6mm}
+\emphline{Part B: Reflection}
+\vspace{3mm}
+Work on the in-class sheet.\par\medskip
+About 7 minutes. Ruler and protractor.
+\note{%
+B1 normal drawn at 90\textdegree; $i = 60^\circ$, $r = 60^\circ$\par
+B2 A$'$B$'$C$'$ the same distance behind the mirror; two reflected rays reach the eye, extended back as dotted lines to A$'$\par
+B3 two parallel mirrors at 45\textdegree; ray turns 90\textdegree{} at each\par
+Short solution:\par
+B1 $i = 90^\circ - 30^\circ = 60^\circ$\par
+B2 每个点沿垂直于镜面的方向，在镜后等距处找到像点；再从像 A$'$ 向眼睛连直线，与镜面的交点就是反射点\par
+Watch for:\par
+B1 L1\par
+B2 像的三角形要画成虚线，镜后的延长线是虚线（L7）\par
+完整答案见 inclass\_answers.pdf}
+\end{frame}
+
+% ============================================================ block 4
+\begin{frame}{Refraction: why light bends}
+\relax
+\fref{Handout p.\pageref{H-sec:refraction}}
+\begin{center}\FigRefractRules[8.2mm]\end{center}
+\vspace{1mm}
+Light \textbf{changes speed}. \textbf{S}lower $\to$ \textbf{T}owards the \textbf{N}ormal.
+\note{%
+Teaching line, not a question slide.\par
+时间 1:05–1:09。\par
+折射：光从一种介质进入另一种介质时方向改变，原因是速度改变（L6：答案里一定要有 speed）。\par
+进入更慢（光密）的介质，比如空气到玻璃或水：偏向法线。\par
+进入更快的介质，比如玻璃到空气：偏离法线。\par
+沿法线入射：速度变了但不弯折。\par
+手册里的口诀：Strawberries Taste Nice，Slower Towards Normal。\par
+类比：一辆车斜着从柏油路开进沙地，先进沙地的那个轮子先变慢，车就转向。}
+\end{frame}
+
+\begin{frame}{Glass blocks}
+\relax
+\fref{Handout p.\pageref{H-sec:refraction}}
+\twocol{0.62}{\centering\FigBlock[7.6mm]{0}}{0.34}{%
+\vspace{4mm}
+In: towards the normal\par\medskip
+Out: away from the normal\par\medskip
+Leaves \textbf{parallel}, shifted sideways}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:09–1:11。\par
+进入玻璃块偏向法线；出来时偏离法线；出射光线和入射光线平行，只是向旁边平移了一段。\par
+画图要求：两个面上都画法线（虚线）；光线有箭头；用尺子。\par
+提问：为什么出射光线和入射光线平行？两个面平行，进去和出来的弯折刚好抵消。}
+\end{frame}
+
+\begin{frame}{Semicircular block}
+\relax
+\fref{Handout p.\pageref{H-sec:refraction}}
+\begin{center}\FigSemi[8.4mm]\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:11–1:12。\par
+对准半圆块的圆心射入：光在平面处折射；在圆弧面上光线沿半径，也就是沿法线，所以不弯折。\par
+这是手册里做实验时用半圆块的原因：只在一个面上看折射，量角度更方便。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:refraction}}
+\vspace{6mm}
+\emphline{Predict}
+\vspace{4mm}
+A spear fisher sees a fish under the water.\par\medskip
+Should they aim at the fish, above it, or below it?
+\note{%
+Q1 below where the fish appears\par
+Short solution:\par
+Q1 鱼的光从水进入空气时偏离法线；眼睛沿直线往回看，看到的像比真实的鱼更高、更靠近水面；真实的鱼在看到的位置下方\par
+Watch for:\par
+Q1 先让学生猜，再翻到下一页用图解释}
+\end{frame}
+
+\begin{frame}{Things under water look closer}
+\relax
+\fref{Handout p.\pageref{H-sec:refraction}}
+\twocol{0.5}{\centering\FigFish[8.2mm]}{0.46}{%
+\begin{enumerate}
+\item water $\to$ air: speeds up
+\item bends away from the normal
+\item brain traces rays back in straight lines
+\item image is higher: virtual
+\end{enumerate}}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:12–1:15。\par
+Write it in this order：1 鱼的光从水射入空气；2 速度变快，偏离法线；3 大脑认为光沿直线传播，把光线沿直线往回延长（虚线）；4 光线好像来自更高的一点：看到的是更靠近水面的虚像。\par
+所以泳池看起来比实际浅；吸管在水面处看起来是弯的；叉鱼要往看到的位置下方叉。\par
+这四步是 E 级答案的骨架：光怎样走、为什么、我们看到什么。}
+\end{frame}
+
+\begin{frame}{Dispersion}
+\relax
+\fref{Handout p.\pageref{H-sec:dispersion}}
+\twocol{0.64}{\centering\FigPrism[7.2mm]}{0.34}{%
+\vspace{4mm}
+Each colour travels at a different speed\par\medskip
+Violet bends \textbf{most}\par\medskip
+Red bends \textbf{least}}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:15–1:17。\par
+色散：白光分成各种颜色。在棱镜里不同颜色的光速度不同，所以折射程度不同。紫光偏折最多，红光最少。\par
+彩虹：阳光在雨滴里折射并色散。\par
+图中颜色的散开是夸大的，为了看得清楚。}
+\end{frame}
+
+\begin{frame}{Beyond Year 9: refractive index}
+\relax
+\fref{Handout p.\pageref{H-sec:beyond}}
+\fbx{n = \dfrac{c}{v} = \dfrac{\text{speed in a vacuum}}{\text{speed in the material}}}
+water 1.33 \qquad glass 1.5 \qquad diamond 2.42
+\fbx{n_1 \sin\theta_1 = n_2 \sin\theta_2}
+Larger $n$: slower light, bends more towards the normal.
+\note{%
+Teaching line, not a question slide.\par
+时间 1:17–1:19，可跳过。不在 Year 9 考试范围内，作业里也没有。\par
+折射率 $n = \dfrac{c}{v}$：真空光速和介质中光速之比。玻璃 $n = \dfrac{300\,000}{200\,000} = 1.5$。\par
+斯涅尔定律 $n_1 \sin\theta_1 = n_2 \sin\theta_2$，角度从法线量起。进入 $n$ 更大的介质，$\sin\theta$ 变小，角度变小，就是“偏向法线”。\par
+口头问：钻石和玻璃，哪个让光弯得更多？（钻石，$n$ 更大）\par
+Year 9 可能还没学 sin，只讲定性即可。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:refraction}}
+\qline{1} A ray of light enters a glass block along the normal. What happens to it?
+\qline{2} A coin lies in an empty cup, just hidden by the rim. When water is poured in, the coin comes into view. Explain why.
+\qline{3} Which colour is refracted most by a prism, and which least?
+\note{%
+Q1 it slows down but does not bend\par
+Q2 light from the coin is refracted away from the normal at the water surface, over the rim into the eye\par
+Q3 violet most; red least\par
+Short solution:\par
+Q1 沿法线入射，速度改变但方向不变\par
+Q2 光从水进入空气速度变快、偏离法线，光线向下弯折，越过杯沿进入眼睛；大脑沿直线往回看，看到硬币的像比实际位置高\par
+Q3 不同颜色在玻璃中速度不同\par
+Watch for:\par
+Q1 学生常说“没有折射”，更准确的说法是速度变了但不弯折\par
+Q2 E 级要同时有“速度变快”“偏离法线”“沿直线往回看”三个环节（L6）}
+\end{frame}
+
+\begin{frame}{Workbook \textperiodcentered{} In-class Part C}
+\relax
+\fref{In-class work p.3}
+\vspace{6mm}
+\emphline{Part C: Refraction}
+\vspace{3mm}
+Work on the in-class sheet.\par\medskip
+About 6 minutes.
+\note{%
+C1 normal at both faces; towards the normal inside; leaves parallel to the incident ray\par
+C2 ray from fish to surface, bends away from the normal to the eye; dotted back-extension; image above the fish\par
+C3 P is red\par
+Short solution:\par
+C1 入射角 35\textdegree，玻璃内约 22\textdegree，出射仍是 35\textdegree\par
+C3 红光偏折最少，所以是偏离原方向最少的那条 P\par
+Watch for:\par
+C2 光线方向是从鱼到眼睛，箭头不能画反\par
+完整答案见 inclass\_answers.pdf}
+\end{frame}
+
+% ============================================================ block 5
+\begin{frame}{The eye}
+\relax
+\fref{Handout p.\pageref{H-sec:eye}}
+\begin{center}\FigEye[9.6mm]{1}\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:24–1:27。\par
+cornea：透明的保护层，光折射最多的地方。\par
+iris：有颜色的肌肉，控制瞳孔大小。pupil：让光进入的孔。\par
+lens：凸透镜，微调焦距，肌肉可以让它变厚或变薄。\par
+retina：感光细胞，把光变成电信号。optic nerve：把信号送到大脑。\par
+blind spot：视神经离开眼睛的地方，没有感光细胞，所以成不了像。\par
+让学生不看图说出每部分的功能，再遮住标签指认。}
+\end{frame}
+
+\begin{frame}{Pupil, image, blind spot}
+\relax
+\fref{Handout p.\pageref{H-sec:eye}}
+\begin{itemize}
+\item Dim light: the \textbf{iris} makes the pupil \textbf{bigger}
+\item Bright light: the pupil gets \textbf{smaller}
+\item Image on the retina: \textbf{real} and upside down
+\item Blind spot: no light-sensitive cells
+\end{itemize}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:27–1:29。\par
+L8：是虹膜（iris）的肌肉改变瞳孔（pupil）大小，瞳孔自己不会变。\par
+暗处瞳孔变大，让更多光进入；亮处瞳孔变小，保护视网膜。\par
+视网膜上的像是实像、倒立的，大脑把它转正。\par
+Write it in this order（眼睛如何成像）：光经角膜和瞳孔进入；角膜和凸透镜把光折射、会聚；在视网膜上形成实像；视网膜把信号经视神经送到大脑。}
+\end{frame}
+
+\begin{frame}{Convex lens: focal point}
+\relax
+\fref{Handout p.\pageref{H-sec:lens}}
+\begin{center}\FigConvex[7.8mm]{0}\hspace{6mm}\FigConvex[7.8mm]{1}\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:29–1:31。\par
+凸透镜使平行光线会聚（converge）到焦点 F。焦距：透镜中心到 F 的距离。\par
+透镜越厚（越弯），光偏折越多，焦点越靠近透镜，焦距越短。\par
+经过透镜中心的光线不偏折。\par
+放大镜在阳光下点燃纸：太阳光是平行光，会聚在焦点，把纸放在焦点上，能量集中在一个小点上。}
+\end{frame}
+
+\begin{frame}{Short sight}
+\relax
+\fref{Handout p.\pageref{H-sec:eye}}
+\begin{center}\FigDefect[8mm]{0}\hspace{8mm}\FigDefect[8mm]{1}\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:31–1:33。\par
+近视（short-sightedness，myopia）：看近处清楚，看远处模糊。\par
+原因：眼睛会聚光太快（晶状体太强或眼球太长），焦点落在视网膜前面。\par
+矫正：凹透镜（concave，diverging），先让光线稍微散开，焦点就后移到视网膜上。}
+\end{frame}
+
+\begin{frame}{Long sight}
+\relax
+\fref{Handout p.\pageref{H-sec:eye}}
+\begin{center}\FigDefect[8mm]{2}\hspace{8mm}\FigDefect[8mm]{3}\end{center}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:33–1:34。\par
+远视（long-sightedness，hypermetropia）：看远处清楚，看近处模糊。\par
+原因：眼睛会聚光太慢，焦点落在视网膜后面。\par
+矫正：凸透镜（convex，converging），先帮眼睛会聚一些。\par
+记法：近视用凹，远视用凸。}
+\end{frame}
+
+\begin{frame}{Beyond Year 9: images from lenses}
+\relax
+\fref{Handout p.\pageref{H-sec:beyond}}
+\begin{center}\FigLensRays[9.4mm]\end{center}
+Object beyond 2F: image real, inverted, smaller
+\note{%
+Teaching line, not a question slide.\par
+时间 1:34–1:35，可跳过。不在考试范围内，作业里也没有。\par
+凸透镜三条特殊光线：平行于主轴的光线折射后经过 F；经过透镜中心的光线不偏折；经过 F 的光线折射后平行于主轴。三条线的交点就是像。\par
+成像规律（手册 Beyond Year 9 表格）：物体在 2F 以外，像在 F 和 2F 之间，倒立、缩小、实像（眼睛、相机）；在 2F，等大；在 F 和 2F 之间，放大（投影仪）；在 F 上不成像；在 F 以内，正立、放大、虚像（放大镜）。}
+\end{frame}
+
+\begin{frame}{Beyond Year 9: magnifier and concave lens}
+\relax
+\fref{Handout p.\pageref{H-sec:beyond}}
+\twocol{0.6}{\centering\FigMagnifier[6.4mm]\par\medskip Inside F: virtual, upright, bigger}{0.36}{\centering\FigConcave[6.4mm]\par\medskip Concave: virtual, upright, smaller}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:35–1:36，可跳过。\par
+放大镜：物体在焦点以内，折射后的光线发散，大脑沿直线往回延长（虚线），得到正立、放大的虚像，和物体在同一侧。\par
+凹透镜：平行光线发散，好像来自前面的焦点 F；成像总是正立、缩小、虚像。这就是近视眼镜。}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\fref{Handout p.\pageref{H-sec:eye}}
+\qline{1} What happens to the size of your pupil when you walk into a dark room? Which part of the eye causes this?
+\qline{2} A student can read a book clearly, but the whiteboard looks blurred. Name the condition and the type of lens that corrects it.
+\qline{3} A thin and a thick convex lens are made of the same glass. Which one has the shorter focal length?
+\note{%
+Q1 the pupil gets bigger; the iris\par
+Q2 short-sightedness (myopia); a concave lens\par
+Q3 the thick lens\par
+Short solution:\par
+Q1 虹膜的肌肉让瞳孔变大，让更多光进入\par
+Q2 看近清楚、看远模糊是近视；焦点在视网膜前，用凹透镜发散光线\par
+Q3 越厚越弯，光偏折越多，焦点越近\par
+Watch for:\par
+Q1 L8：说“瞳孔自己变大”不够\par
+Q2 近视、远视和凹、凸透镜常被配反}
+\end{frame}
+
+\begin{frame}{Workbook \textperiodcentered{} In-class Part D}
+\relax
+\fref{In-class work p.4}
+\vspace{6mm}
+\emphline{Part D: The eye and lenses}
+\vspace{3mm}
+Work on the in-class sheet.\par\medskip
+About 5 minutes.
+\note{%
+D1 A cornea, B iris, C pupil, D lens, E retina, F optic nerve, G blind spot\par
+D2 three rays converge at F; focal length from the lens centre to F\par
+D3 there are no light-sensitive cells where the optic nerve leaves the eye\par
+Short solution:\par
+D2 中间那条光线不偏折\par
+Watch for:\par
+D1 iris 和 pupil 容易写反（L8）\par
+完整答案见 inclass\_answers.pdf}
+\end{frame}
+
+% ================================================================ close
+\begin{frame}{Ways to lose marks}
+\relax
+\fref{Handout p.\pageref{H-sec:lose}}
+\begin{enumerate}
+\item[L1] \LMtitle{1}
+\item[L2] \LMtitle{2}
+\item[L3] \LMtitle{3}
+\item[L5] \LMtitle{5}
+\item[L6] \LMtitle{6}
+\item[L7] \LMtitle{7}
+\end{enumerate}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:41–1:43。\par
+L1 角度从法线量，不是从镜面量。\par
+L2 像在镜后同样距离处。\par
+L3 红光加绿光是黄色，光的三原色是红绿蓝。\par
+L5 进入更慢的介质偏向法线。\par
+L6 折射的原因一定要写“速度改变”，否则到不了 M。\par
+L7 光线要有箭头，虚像和延长线用虚线，要用尺子。\par
+L4、L8 见 Handout 最后一页。让学生自己说出每条在今天哪道题出现过。}
+\end{frame}
+
+\begin{frame}{Summary}
+\relax
+\fref{Handout p.\pageref{H-sec:ame}}
+{\sSum
+\begin{itemize}
+\item Straight lines: reflected, absorbed, transmitted, refracted
+\item Objects reflect their colour; filters transmit theirs
+\item Mirror: $i = r$ from the normal; image virtual, behind
+\item Slower medium: towards the normal
+\end{itemize}}
+\note{%
+Teaching line, not a question slide.\par
+时间 1:43–1:44。\par
+让学生用自己的话把四句总结各说一遍。\par
+提醒 A、M、E 解释题的链条：光发生了什么，为什么（速度、吸收、反射、定律），结果我们看到了什么。Handout 第 11 节有同一题三个等级的范例。}
+\end{frame}
+
+\begin{frame}{Homework}
+\relax
+\fref{Homework sheet}
+\vspace{4mm}
+\emphline{Light: Unit Review Homework}
+\vspace{3mm}
+About 45 minutes\par\medskip
+Section A: Achieved \qquad Section B: Merit and Excellence\par\medskip
+Use a ruler for every ray. Explain answers in full sentences.
+\note{%
+Teaching line, not a question slide.\par
+时间 1:44–1:45。\par
+作业约 45 分钟：A 部分 8 题（Achieved），B 部分 6 题（Merit、Excellence）。\par
+作业不包括折射率计算和透镜成像性质，这些超出了年底考试要求。\par
+答案见 hw1\_answers.pdf（只有答案，不附原题）。\par
+下课前收回所有纸质材料，拍下白板。}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,687 @@
+% shared.sty -- Light unit: colours, terms, lost-mark list, figures.
+% Used by handout, slides, in-class sheet, homework and answer files.
+% Every figure is a macro here, so all documents draw the same figure
+% from one source (spec 7.1). Coordinates come from geom.tex, written by
+% tools/geom.py; nothing is placed by eye (spec 3.4).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{shared}[2026/09/27 Light unit shared macros]
+
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings,calc,patterns,positioning}
+\input{geom.tex}
+
+% ------------------------------------------------------------ colours
+\definecolor{ansred}{RGB}{200,16,46}
+\definecolor{accent}{RGB}{0,84,110}
+\definecolor{rule}{gray}{0.45}
+\definecolor{boxfill}{gray}{0.95}      % boxes: at most about 10 % grey
+\definecolor{sig}{gray}{0.55}
+% light tints only: nothing that prints is a solid dark fill (spec 3.3)
+\colorlet{glass}{black!7}
+\colorlet{water}{cyan!12}
+\colorlet{umbrafill}{black!32}
+\colorlet{penfill}{black!11}
+
+% -------------------------------------------------------------- terms
+% One macro per term, used everywhere, TikZ nodes included (spec 7.4).
+\newcommand\tNormal{normal}
+\newcommand\tIncident{incident ray}
+\newcommand\tReflected{reflected ray}
+\newcommand\tRefracted{refracted ray}
+\newcommand\tAoI{angle of incidence}
+\newcommand\tAoR{angle of reflection}
+\newcommand\tUmbra{umbra}
+\newcommand\tPenumbra{penumbra}
+\newcommand\tTransparent{transparent}
+\newcommand\tTranslucent{translucent}
+\newcommand\tOpaque{opaque}
+\newcommand\tLatInv{laterally inverted}
+\newcommand\tVirtual{virtual}
+\newcommand\tReal{real}
+\newcommand\tFocal{focal point}
+\newcommand\tFocalLength{focal length}
+\newcommand\tCornea{cornea}
+\newcommand\tIris{iris}
+\newcommand\tPupil{pupil}
+\newcommand\tLens{lens}
+\newcommand\tRetina{retina}
+\newcommand\tOpticNerve{optic nerve}
+\newcommand\tBlindSpot{blind spot}
+\newcommand\tMyopia{short-sightedness (myopia)}
+\newcommand\tHyper{long-sightedness (hypermetropia)}
+\newcommand\tDispersion{dispersion}
+\newcommand\tConverge{converge}
+\newcommand\tDiverge{diverge}
+
+% ---------------------------------------------------- lost-mark list
+% Numbered once here; the handout prints all of them, the slides the
+% most common ones (spec 7.2). Source: the notes booklet plus teaching
+% observation -- no examiner report is cited.
+\newcommand\LMtitle[1]{\ifcase#1\or
+  Angles measured from the mirror\or
+  ``The image is on the mirror''\or
+  Mixing light like paint\or
+  ``The filter adds colour''\or
+  Refraction direction reversed\or
+  ``Light bends because it hits the glass''\or
+  Missing arrows and dotted lines\or
+  Pupil and iris swapped\fi}
+\newcommand\LMtext[1]{\ifcase#1\or
+  The \tAoI{} and \tAoR{} are measured from the \textbf{\tNormal}, not from the mirror surface. A ray at 30\textdegree{} to the mirror has $i = 60^\circ$.\or
+  A plane-mirror image is \textbf{behind} the mirror, the \textbf{same distance} behind as the object is in front. A person 2~m from a mirror is 4~m from their image.\or
+  Red + green \emph{light} = \textbf{yellow}, not brown. Primary colours of light are \textbf{red, green, blue}; red, yellow, blue are paint (pigment) primaries.\or
+  A filter only \textbf{transmits} its own colour and \textbf{absorbs} the rest. It never turns white light red by ``adding red''.\or
+  Into a slower (more optically dense) medium the ray bends \textbf{towards} the normal; out into a faster one it bends \textbf{away}. Along the normal: no bending.\or
+  Refraction happens because light \textbf{changes speed} at the boundary. An answer without ``speed'' does not reach Merit.\or
+  Rays need \textbf{arrows}; virtual rays (behind a mirror, back-extensions) are \textbf{dotted}. Drawn freehand or without a ruler loses the mark.\or
+  The \textbf{iris} (coloured muscle) changes the size of the \textbf{pupil} (the hole). ``The pupil gets bigger by itself'' is not enough.\fi}
+
+% ------------------------------------------------------------ figures
+\providecommand\figfont{\small}
+\newlength\fu \setlength\fu{5mm}
+\newif\ifFigAns \FigAnsfalse          % answer layer (red) on/off
+
+\tikzset{
+  fig/.style={line width=0.8pt, >={Stealth[length=2.4mm,width=1.8mm]},
+    every node/.style={font=\figfont, inner sep=1.5pt}},
+  ray/.style={line width=1pt, postaction={decorate},
+    decoration={markings, mark=at position #1 with {\arrow{Stealth[length=2.6mm,width=2mm]}}}},
+  ray/.default=0.55,
+  vray/.style={line width=0.9pt, dash pattern=on 3pt off 2pt},
+  nrm/.style={line width=0.7pt, dash pattern=on 5pt off 3pt},
+  ans/.style={draw=ansred, text=ansred},
+  lead/.style={line width=0.5pt},
+}
+
+% plane mirror from #1 to #2; hatching on the right of the direction
+\newcommand\Mirror[2]{%
+  \draw[line width=1.6pt] #1 -- #2;
+  \path #1 -- #2 [postaction={decorate}, decoration={markings,
+    mark=between positions 0.03 and 0.97 step 2.6mm with
+      {\draw[line width=0.5pt] (0,0) -- (-1.5mm,-2mm);}}];}
+
+% small eye symbol at #1 looking in direction #2 (degrees)
+\newcommand\EyeSym[2]{%
+  \begin{scope}[shift={#1}, rotate=#2]
+    \draw[line width=0.8pt] (0.35,0) .. controls (0.05,0.32) and (-0.25,0.2) .. (-0.35,0)
+      .. controls (-0.25,-0.2) and (0.05,-0.32) .. (0.35,0);
+    \fill (0.12,0) circle (0.1);
+  \end{scope}}
+
+% small light source (bulb with short rays) at #1, radius #2
+\newcommand\Bulb[2]{%
+  \draw[line width=0.8pt, fill=yellow!25] #1 circle (#2);
+  \foreach \a in {0,45,...,315}
+    \draw[line width=0.6pt] ($#1+(\a:#2*1.35)$) -- ($#1+(\a:#2*1.9)$);}
+
+% ---- 1  how we see: source -> object -> eye
+\newcommand\FigHowWeSee[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \Bulb{(0,3)}{0.45}
+  \node[above=6pt] at (0,3.5) {light source};
+  \draw[line width=0.8pt, fill=black!8] (5,-0.2) rectangle (6.6,0.6);
+  \node[below] at (5.8,-0.2) {object};
+  \draw[ray] (0.6,2.7) -- (5.3,0.6);
+  \draw[ray] (5.6,0.6) -- (1.0,-0.1);
+  \EyeSym{(0.55,-0.2)}{180}
+  \node[below=4pt] at (0.55,-0.4) {eye};
+\end{tikzpicture}}
+
+% ---- 2  transparent / translucent / opaque
+\newcommand\FigMaterials[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \foreach \ox/\kind in {0/0,5.6/1,11.2/2}{
+    \begin{scope}[shift={(\ox,0)}]
+      \ifcase\kind
+        \draw[fill=glass] (2,0) rectangle (2.45,2.6);
+        \foreach \y in {0.5,1.3,2.1} \draw[ray=0.3] (0,\y) -- (4.4,\y);
+        \node at (2.2,-0.6) {\tTransparent};
+      \or
+        \draw[fill=black!4, pattern=dots, pattern color=black!45] (2,0) rectangle (2.45,2.6);
+        \foreach \y in {0.5,1.3,2.1} \draw[ray=0.6] (0,\y) -- (2,\y);
+        \foreach \y/\a in {0.5/-28,0.7/12,1.3/-8,1.4/30,2.1/-20,2.2/18}
+          \draw[ray=0.8] (2.45,\y) -- ++(\a:1.6);
+        \node at (2.2,-0.6) {\tTranslucent};
+      \or
+        \draw[fill=black!30] (2,0) rectangle (2.45,2.6);
+        \foreach \y in {0.5,1.3,2.1} \draw[ray=0.6] (0,\y) -- (2,\y);
+        \node at (2.2,-0.6) {\tOpaque};
+      \fi
+    \end{scope}}
+\end{tikzpicture}}
+
+% ---- 3  shadows: #2 = 0 point source, 1 large source; answer layer
+%          (\ifFigAns) draws only the source/object/screen in black and
+%          the rays + shadow in red.
+\newcommand\FigShadow[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \pgfmathsetmacro\H{\gShObjH}\pgfmathsetmacro\X{\gShObjX}\pgfmathsetmacro\S{\gShScrX}
+  \ifnum#2=0
+    \fill[umbrafill] (\X+0.1,\H) -- (\S,\gShPtEdge) -- (\S,-\gShPtEdge) -- (\X+0.1,-\H) -- cycle;
+    \draw[ray=0.3] (0,0) -- (\S,\gShPtEdge);
+    \draw[ray=0.3] (0,0) -- (\S,-\gShPtEdge);
+    \Bulb{(0,0)}{0.16}
+    \node[above=8pt] at (0,0.3) {small source};
+    \draw[line width=3pt] (\S+0.12,-\gShPtEdge) -- (\S+0.12,\gShPtEdge);
+    \node[right=6pt, align=left] at (\S+0.2,0) {\tUmbra\\only};
+  \else
+    \fill[penfill] (\X+0.1,\H) -- (\S,\gShPen) -- (\S,\gShUmbra) -- cycle;
+    \fill[penfill] (\X+0.1,-\H) -- (\S,-\gShPen) -- (\S,-\gShUmbra) -- cycle;
+    \fill[umbrafill] (\X+0.1,\H) -- (\S,\gShUmbra) -- (\S,-\gShUmbra) -- (\X+0.1,-\H) -- cycle;
+    \draw[ray=0.25] (0,\gShSrcA) -- (\S,\gShUmbra);
+    \draw[ray=0.25] (0,-\gShSrcA) -- (\S,\gShPen);
+    \draw[ray=0.25] (0,-\gShSrcA) -- (\S,-\gShUmbra);
+    \draw[ray=0.25] (0,\gShSrcA) -- (\S,-\gShPen);
+    \draw[line width=0.8pt, fill=yellow!25, rounded corners=1pt] (-0.15,-\gShSrcA) rectangle (0.15,\gShSrcA);
+    \node[above=6pt] at (0,\gShSrcA) {large source};
+    \draw[line width=3pt] (\S+0.12,-\gShUmbra) -- (\S+0.12,\gShUmbra);
+    \draw[line width=1.2pt] (\S+0.12,\gShUmbra) -- (\S+0.12,\gShPen);
+    \draw[line width=1.2pt] (\S+0.12,-\gShUmbra) -- (\S+0.12,-\gShPen);
+    \node[right=6pt] at (\S+0.2,0) {\tUmbra};
+    \node[right=6pt] at (\S+0.2,1.6) {\tPenumbra};
+    \node[right=6pt] at (\S+0.2,-1.6) {\tPenumbra};
+  \fi
+  \draw[line width=0.8pt, fill=black!30] (\X,-\H) rectangle (\X+0.2,\H);
+  \node[below=3pt] at (\X+0.1,-2.7) {object};
+  \draw[line width=1.2pt] (\S,-2.7) -- (\S,2.7);
+  \node[above=3pt] at (\S,2.7) {screen};
+\end{tikzpicture}}
+
+% ---- 4  primary colours of light: letters in the regions, key beside
+\newcommand\FigRGB[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \def\r{2.0}
+  \coordinate (R) at (150:1.3); \coordinate (G) at (30:1.3); \coordinate (B) at (270:1.3);
+  \fill[red!38] (R) circle (\r);  \fill[green!40] (G) circle (\r);  \fill[blue!32] (B) circle (\r);
+  \begin{scope}\clip (R) circle (\r); \fill[yellow!55] (G) circle (\r); \fill[magenta!30] (B) circle (\r); \end{scope}
+  \begin{scope}\clip (G) circle (\r); \fill[cyan!35] (B) circle (\r); \end{scope}
+  \begin{scope}\clip (R) circle (\r); \clip (G) circle (\r); \fill[white] (B) circle (\r); \end{scope}
+  \foreach \c in {R,G,B} \draw[line width=0.8pt] (\c) circle (\r);
+  \node at (150:2.2) {\textbf{R}}; \node at (30:2.2) {\textbf{G}}; \node at (270:2.2) {\textbf{B}};
+  \node at (90:1.5) {\textbf{Y}}; \node at (210:1.5) {\textbf{M}}; \node at (330:1.5) {\textbf{C}};
+  \node at (0,0) {\textbf{W}};
+  \node[right, align=left] at (3.9,0.2) {\textbf{R} red, \textbf{G} green, \textbf{B} blue\\[2pt]
+    \textbf{Y} yellow = R + G\\ \textbf{M} magenta = R + B\\ \textbf{C} cyan = G + B\\
+    \textbf{W} white = R + G + B};
+\end{tikzpicture}}
+
+% ---- 5  coloured objects: red object in white light / in blue light
+\newcommand\FigObject[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \foreach \ox/\mode in {0/0,7.2/1}{
+  \begin{scope}[shift={(\ox,0)}]
+    \draw[line width=0.8pt, fill=red!35] (0,-0.25) rectangle (5.4,0);
+    \ifnum\mode=0
+      \draw[ray, blue!80!black] (0.2,2.4) -- (1.2,0);  \node[above] at (0.2,2.4) {B};
+      \draw[ray, green!50!black] (1.2,2.4) -- (2.2,0); \node[above] at (1.2,2.4) {G};
+      \draw[ray, red!80!black] (2.2,2.4) -- (3.2,0);   \node[above] at (2.2,2.4) {R};
+      \draw[ray, red!80!black] (3.2,0) -- (4.2,2.4);   \node[above] at (4.2,2.4) {R};
+      \node[below=2pt, align=center] at (2.7,-0.3) {white light:\\looks red};
+    \else
+      \draw[ray, blue!80!black] (1.2,2.4) -- (2.2,0);  \node[above] at (1.2,2.4) {B};
+      \node[above right] at (2.3,0.05) {absorbed};
+      \node[below=2pt, align=center] at (2.7,-0.3) {blue light:\\looks black};
+    \fi
+  \end{scope}}
+\end{tikzpicture}}
+
+% ---- 6  filters
+\newcommand\FigFilter[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  % red filter
+  \draw[ray=0.5] (0,1.2) -- (2.6,1.2);
+  \node[above] at (1.2,1.25) {white};
+  \draw[fill=red!35] (2.6,0.3) rectangle (2.9,2.1);
+  \node[below] at (2.75,0.3) {red filter};
+  \draw[ray=0.5, red!80!black] (2.9,1.2) -- (5.2,1.2);
+  \node[above] at (4.1,1.25) {red};
+  % red then green
+  \begin{scope}[shift={(7.2,0)}]
+    \draw[ray=0.5] (0,1.2) -- (2.0,1.2);
+    \node[above] at (0.9,1.25) {white};
+    \draw[fill=red!35] (2.0,0.3) rectangle (2.3,2.1);
+    \draw[ray=0.5, red!80!black] (2.3,1.2) -- (3.8,1.2);
+    \node[above] at (3.05,1.25) {red};
+    \draw[fill=green!40] (3.8,0.3) rectangle (4.1,2.1);
+    \node[below, align=center] at (3.05,0.3) {red, then green};
+    \node[right] at (4.2,1.2) {none};
+  \end{scope}
+\end{tikzpicture}}
+
+% ---- 7  prism dispersion (spread exaggerated so the fan is visible)
+\newcommand\FigPrism[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[line width=0.9pt, fill=glass] (0,0) -- (\gPrApexx,\gPrApexy) -- (\gPrS,0) -- cycle;
+  \draw[ray=0.5, line width=1.4pt] (\gPrStartx,\gPrStarty) -- (\gPrInx,\gPrIny);
+  \node[above left] at (\gPrStartx,\gPrStarty) {white light};
+  \foreach \k/\c in {a/red,b/orange,c/yellow!80!black,d/green!60!black,e/blue,f/blue!60!red,g/violet}{
+    \draw[\c, line width=0.9pt] (\gPrInx,\gPrIny) -- (\csname gPrOut\k x\endcsname,\csname gPrOut\k y\endcsname)
+      -- (\csname gPrEnd\k x\endcsname,\csname gPrEnd\k y\endcsname);}
+  \node[right] at (\gPrEndax,\gPrEnday) {red};
+  \node[right] at (\gPrEndgx,\gPrEndgy) {violet};
+\end{tikzpicture}}
+
+% ---- 8  law of reflection
+\newcommand\FigReflect[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \Mirror{(-4,0)}{(4,0)}
+  \draw[nrm] (0,0) -- (0,3.6);
+  \node[above] at (0,3.6) {\tNormal};
+  \draw[ray] (\gRefPx,\gRefPy) -- (0,0);
+  \draw[ray] (0,0) -- (\gRefQx,\gRefQy);
+  \draw[line width=0.6pt] (0,1.3) arc (90:90+\gRefI:1.3);
+  \draw[line width=0.6pt] (0,1.55) arc (90:90-\gRefI:1.55);
+  \node at ($(90+\gRefI/2:1.85)$) {$i$};
+  \node at ($(90-\gRefI/2:2.1)$) {$r$};
+  \node[left] at (\gRefPx,\gRefPy) {\tIncident};
+  \node[right] at (\gRefQx,\gRefQy) {\tReflected};
+  \node[below=4pt] at (-3,0) {mirror};
+\end{tikzpicture}}
+
+% ---- 9  image in a plane mirror
+\newcommand\FigPlaneImage[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \Mirror{(0,-3.0)}{(0,2.2)}
+  \draw[line width=1.4pt, -{Stealth[length=3mm]}] (-\gPmOX,\gPmOB) -- (-\gPmOX,\gPmOT);
+  \draw[line width=1.2pt, dash pattern=on 4pt off 2pt, -{Stealth[length=3mm]}] (\gPmOX,\gPmOB) -- (\gPmOX,\gPmOT);
+  \node[left] at (-\gPmOX,\gPmOB+0.2) {object};
+  \node[right] at (\gPmOX,\gPmOB+0.2) {image};
+  \foreach \k in {A,B}{
+    \draw[ray] (-\gPmOX,\gPmOT) -- (\csname gPmP\k x\endcsname,\csname gPmP\k y\endcsname);
+    \draw[ray] (\csname gPmP\k x\endcsname,\csname gPmP\k y\endcsname) -- (\csname gPmE\k x\endcsname,\csname gPmE\k y\endcsname);
+    \draw[vray] (\csname gPmP\k x\endcsname,\csname gPmP\k y\endcsname) -- (\gPmOX,\gPmOT);}
+  \draw[<->, line width=0.6pt] (-\gPmOX,-3.3) -- node[below] {$d$} (0,-3.3);
+  \draw[<->, line width=0.6pt] (0,-3.3) -- node[below] {$d$} (\gPmOX,-3.3);
+\end{tikzpicture}}
+
+% ---- 10  lateral inversion
+\newcommand\FigLatInv{%
+\begin{tikzpicture}[fig]
+  \node[draw, line width=0.8pt, inner sep=5pt] (a) {\textbf{AMBULANCE}};
+  \node[draw, line width=0.8pt, inner sep=5pt, right=16mm of a] (b) {\reflectbox{\textbf{AMBULANCE}}};
+  \node[above] at (a.north) {on the van};
+  \node[above] at (b.north) {in a mirror};
+\end{tikzpicture}}
+
+% ---- 11  periscope (#2 = 1 draws mirrors and ray; 0 = empty tube)
+\newcommand\FigPeriscope[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[line width=1.2pt] (0,0) -- (0,5.0);
+  \draw[line width=1.2pt] (1.2,1.0) -- (1.2,6.0);
+  \draw[line width=1.2pt] (0.1,6.0) -- (1.2,6.0);
+  \draw[line width=1.2pt] (0,0) -- (1.1,0);
+  \draw[line width=0.8pt, -{Stealth[length=3mm]}] (-2.0,5.0) -- (-2.0,6.0);
+  \node[above] at (-2.0,6.0) {object};
+  \EyeSym{(2.4,0.5)}{0}
+  \ifFigAns\def\PC{ansred}\else\def\PC{black}\fi
+  \ifnum#2=1
+    \draw[line width=1.8pt, \PC] (\gPsTopAx,\gPsTopAy) -- (\gPsTopBx,\gPsTopBy);
+    \draw[line width=1.8pt, \PC] (\gPsBotAx,\gPsBotAy) -- (\gPsBotBx,\gPsBotBy);
+    \draw[ray, \PC] (-1.8,5.5) -- (\gPsHitTopx,\gPsHitTopy);
+    \draw[ray, \PC] (\gPsHitTopx,\gPsHitTopy) -- (\gPsHitBotx,\gPsHitBoty);
+    \draw[ray, \PC] (\gPsHitBotx,\gPsHitBoty) -- (2.0,0.5);
+    \node[right, \PC] at (1.3,5.5) {45\textdegree{} mirror};
+    \node[left, \PC] at (-0.1,0.5) {45\textdegree{} mirror};
+  \fi
+\end{tikzpicture}}
+
+% ---- 12  refraction: into glass / out of glass / along the normal
+\newcommand\FigRefractRules[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \foreach \ox/\mode in {0/0,6.4/1,12.8/2}{
+  \begin{scope}[shift={(\ox,0)}]
+    \fill[glass] (-2.5,-2.6) rectangle (2.5,0);
+    \draw[line width=0.8pt] (-2.5,0) -- (2.5,0);
+    \draw[nrm] (0,-2.6) -- (0,2.6);
+    \node[right] at (-2.5,0.4) {air};  \node[right] at (-2.5,-0.45) {glass};
+    \ifcase\mode
+      \draw[ray] (\gRrInx,\gRrIny) -- (0,0);
+      \draw[ray] (0,0) -- (\gRrOutx,\gRrOuty);
+      \node[below=4pt] at (0,-2.6) {towards normal};
+    \or
+      \draw[ray] (-\gRrOutx,-\gRrOuty) -- (0,0);
+      \draw[ray] (0,0) -- (-\gRrInx,\gRrIny);
+      \node[below=4pt] at (0,-2.6) {away from normal};
+    \or
+      \draw[ray] (0.02,2.4) -- (0.02,0);
+      \draw[ray] (0.02,0) -- (0.02,-2.4);
+      \node[below=4pt] at (0,-2.6) {no bending};
+    \fi
+  \end{scope}}
+\end{tikzpicture}}
+
+% ---- 13  rectangular block (#2 = 0 handout version, 1 in-class task)
+\newcommand\FigBlock[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \fill[glass] (-2.2,-\gBkH) rectangle (3.4,0);
+  \draw[line width=0.9pt] (-2.2,-\gBkH) rectangle (3.4,0);
+  \node[below left] at (3.4,0) {glass};
+  \ifnum#2=0
+    \draw[nrm] (0,-1.2) -- (0,1.6);
+    \draw[nrm] (\gBkExitx,-\gBkH-1.4) -- (\gBkExitx,-\gBkH+1.2);
+    \draw[ray] (\gBkInx,\gBkIny) -- (0,0);
+    \draw[ray] (0,0) -- (\gBkExitx,\gBkExity);
+    \draw[ray] (\gBkExitx,\gBkExity) -- (\gBkOutx,\gBkOuty);
+    \draw[vray] (0,0) -- (\gBkStraightx,\gBkStraighty);
+    \node[right, align=left] at (\gBkOutx,\gBkOuty+0.4) {parallel to\\incident ray};
+  \else
+    \draw[ray] (\gBkbInx,\gBkbIny) -- (0,0);
+    \ifFigAns
+      \begin{scope}[ansred]
+      \draw[nrm, ansred] (0,-1.2) -- (0,1.6);
+      \draw[nrm, ansred] (\gBkbExitx,-\gBkH-1.4) -- (\gBkbExitx,-\gBkH+1.2);
+      \draw[ray, ansred] (0,0) -- (\gBkbExitx,\gBkbExity);
+      \draw[ray, ansred] (\gBkbExitx,\gBkbExity) -- (\gBkbOutx,\gBkbOuty);
+      \end{scope}
+    \fi
+  \fi
+\end{tikzpicture}}
+
+% ---- 14  semicircular block: along a radius -> no bend at curved face
+\newcommand\FigSemi[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[line width=0.9pt, fill=glass] (-\gScR,0) -- (\gScR,0) arc (0:-180:\gScR) -- cycle;
+  \draw[nrm] (0,-\gScR-0.6) -- (0,1.9);
+  \draw[ray] (\gScInx,\gScIny) -- (0,0);
+  \draw[ray] (0,0) -- (\gScHitx,\gScHity);
+  \draw[ray] (\gScHitx,\gScHity) -- (\gScOutx,\gScOuty);
+  \node[right, align=left] at (\gScHitx+0.9,\gScHity+0.2) {along a radius:\\no bending here};
+  \node[left, align=right] at (-2.2,1.1) {bends at\\the flat face};
+\end{tikzpicture}}
+
+% ---- 15  apparent depth (fish)
+\newcommand\FigFish[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \fill[water] (-2.6,-3.2) rectangle (5.4,0);
+  \draw[line width=0.9pt] (-2.6,0) -- (5.4,0);
+  \node[left] at (5.4,0.45) {air};  \node[left] at (5.4,-0.5) {water};
+  \foreach \k in {A,B}{
+    \draw[ray] (\gFiFishx,\gFiFishy) -- (\csname gFiS\k x\endcsname,0);
+    \draw[ray] (\csname gFiS\k x\endcsname,0) -- (\csname gFiE\k x\endcsname,\csname gFiE\k y\endcsname);
+    \draw[vray] (\csname gFiS\k x\endcsname,0) -- (\gFiImgx,\gFiImgy);}
+  \draw[line width=0.8pt, fill=black!25] (\gFiFishx,\gFiFishy) ellipse [x radius={0.42}, y radius={0.18}];
+  \node[below=3pt] at (\gFiFishx,\gFiFishy-0.1) {real fish};
+  \draw[line width=0.8pt, dash pattern=on 2pt off 1.5pt] (\gFiImgx,\gFiImgy) ellipse [x radius={0.42}, y radius={0.18}];
+  \node[left=6pt] at (\gFiImgx-0.3,\gFiImgy) {image};
+  \EyeSym{(\gFiEBx+0.25,\gFiEBy+0.15)}{230}
+\end{tikzpicture}}
+
+% ---- 16  eye: #2 = 1 names, 0 letters A-G (label task)
+\newcommand\EyeBody{%
+  \draw[line width=1pt] (\gEyScA:\gEyR) arc (\gEyScA:360-\gEyScA:\gEyR);
+  \draw[line width=1pt] ($(\gEyCx,0)+(\gEyCoA:\gEyCr)$) arc (\gEyCoA:\gEyCoB:\gEyCr);
+  \draw[line width=1.8pt, black!55] (-128:\gEyRet) arc (-128:128:\gEyRet);
+  \draw[line width=0.8pt, fill=black!6] (\gEyLensX,0) ellipse [x radius={\gEyLensRx}, y radius={\gEyLensRy}];
+  \draw[line width=2.4pt] (\gEyIrisX,\gEyIrisIn) -- (\gEyIrisX,\gEyIrisOut);
+  \draw[line width=2.4pt] (\gEyIrisX,-\gEyIrisIn) -- (\gEyIrisX,-\gEyIrisOut);
+  \draw[line width=1pt] (\gEyNAx,\gEyNAy) -- (\gEyNAex,\gEyNAey);
+  \draw[line width=1pt] (\gEyNBx,\gEyNBy) -- (\gEyNBex,\gEyNBey);
+  \fill (\gEyBlindx,\gEyBlindy) circle (0.09);}
+\newcommand\FigEye[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \EyeBody
+  \draw[ray=0.3, line width=0.7pt] (-4.4,0.32) -- (\gEyLensX,0.32) -- (\gEyFoveax,0);
+  \draw[ray=0.3, line width=0.7pt] (-4.4,-0.32) -- (\gEyLensX,-0.32) -- (\gEyFoveax,0);
+  \ifnum#2=1
+    \def\Lc{\tCornea}\def\Li{\tIris}\def\Lp{\tPupil}\def\Ll{\tLens}
+    \def\Lr{\tRetina}\def\Lo{\tOpticNerve}\def\Lb{\tBlindSpot}
+  \else
+    \def\Lc{A}\def\Li{B}\def\Lp{C}\def\Ll{D}\def\Lr{E}\def\Lo{F}\def\Lb{G}
+  \fi
+  \node[left] (c) at (-3.9,1.9) {\Lc}; \draw[lead] (c.east) -- (\gEyCorneaPtx,\gEyCorneaPty);
+  \node[left] (i) at (-3.9,-1.9) {\Li}; \draw[lead] (i.east) -- (\gEyIrisX,-1.0);
+  \node[left] (p) at (-3.9,-0.9) {\Lp}; \draw[lead] (p.east) -- (\gEyIrisX,-0.05);
+  \node[above] (l) at (-0.4,2.55) {\Ll}; \draw[lead] (l.south) -- (\gEyLensX+0.1,\gEyLensRy-0.05);
+  \node[right] (r) at (2.6,2.0) {\Lr}; \draw[lead] (r.west) -- (\gEyRetinaPtx,\gEyRetinaPty);
+  \node[right] (o) at (3.6,-2.05) {\Lo}; \draw[lead] (o.north west) -- (\gEyNervePtx,\gEyNervePty);
+  \node[right] (b) at (2.6,-0.35) {\Lb}; \draw[lead] (b.west) -- (\gEyBlindx+0.08,\gEyBlindy+0.05);
+\end{tikzpicture}}
+
+% ---- 17  eye defects. #2: 0 myopia, 1 myopia corrected, 2 hyperopia,
+%          3 hyperopia corrected
+\newcommand\SmallEye{%
+  \draw[line width=0.9pt] (0,0) circle (\gEdR);
+  \draw[line width=0.8pt, fill=black!6] (\gEdL,0) ellipse [x radius={0.2}, y radius={0.62}];}
+\newcommand\FigDefect[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \SmallEye
+  \ifcase#2
+    \foreach \s/\t in {1/U,-1/D}{
+      \draw[ray=0.5, line width=0.8pt] (-4.2,\s*0.4) -- (\gEdL,\s*0.4);
+      \draw[line width=0.8pt] (\gEdL,\s*0.4) -- (\csname gMyHit\t x\endcsname,\csname gMyHit\t y\endcsname);}
+    \fill (\gMyF,0) circle (0.07);
+    \node[below=10pt, align=center] at (0,-\gEdR) {focus in front\\of the retina};
+  \or
+    \draw[line width=0.9pt, fill=black!6] (\gEdG-0.22,0.8) -- (\gEdG+0.22,0.8)
+      to[out=-115,in=115] (\gEdG+0.22,-0.8) -- (\gEdG-0.22,-0.8) to[out=65,in=-65] cycle;
+    \foreach \s in {1,-1}{
+      \draw[ray=0.5, line width=0.8pt] (-4.2,\s*0.4) -- (\gEdG,\s*0.4);
+      \draw[line width=0.8pt] (\gEdG,\s*0.4) -- (\gEdL,\s*\gMyYl) -- (\gEdR,0);}
+    \node[below=10pt, align=center] at (\gEdG,-0.8) {concave\\lens};
+    \node[below=10pt, align=center] at (0.4,-\gEdR) {focus on\\the retina};
+  \or
+    \foreach \s/\t in {1/U,-1/D}{
+      \draw[ray=0.5, line width=0.8pt] (-4.2,\s*0.4) -- (\gEdL,\s*0.4);
+      \draw[line width=0.8pt] (\gEdL,\s*0.4) -- (\csname gHyHit\t x\endcsname,\csname gHyHit\t y\endcsname);
+      \draw[vray, line width=0.7pt] (\csname gHyHit\t x\endcsname,\csname gHyHit\t y\endcsname) -- (\gEdL+\gHyFeye,0);}
+    \fill (\gEdL+\gHyFeye,0) circle (0.07);
+    \node[below=10pt, align=center] at (0.4,-\gEdR) {focus behind\\the retina};
+  \or
+    \draw[line width=0.9pt, fill=black!6] (\gEdG,0) ellipse [x radius={0.25}, y radius={0.8}];
+    \foreach \s in {1,-1}{
+      \draw[ray=0.5, line width=0.8pt] (-4.2,\s*0.4) -- (\gEdG,\s*0.4);
+      \draw[line width=0.8pt] (\gEdG,\s*0.4) -- (\gEdL,\s*\gHyYl) -- (\gEdR,0);}
+    \node[below=10pt, align=center] at (\gEdG,-0.8) {convex\\lens};
+    \node[below=10pt, align=center] at (0.4,-\gEdR) {focus on\\the retina};
+  \fi
+\end{tikzpicture}}
+
+% ---- 18  convex lens: thin (#2=0) or thick (#2=1); answer layer for task (#2=2)
+\newcommand\FigConvex[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \ifcase#2 \def\F{\gCvThinF}\def\T{0.22}\def\Nm{thin lens}\or
+            \def\F{\gCvThickF}\def\T{0.5}\def\Nm{thick lens}\or
+            \def\F{\gCvThinF}\def\T{0.22}\def\Nm{}\fi
+  \draw[nrm] (-3.4,0) -- (4.4,0);
+  \draw[line width=0.9pt, fill=black!6] (0,0) ellipse [x radius={\T}, y radius={1.5}];
+  \foreach \y in {1,0,-1}{ \draw[ray=0.5] (-3.4,\y) -- (0,\y); }
+  \ifnum#2<2
+    \foreach \y in {1,0,-1}{ \draw[line width=1pt] (0,\y) -- ($(0,\y)!1.3!(\F,0)$); }
+    \fill (\F,0) circle (0.08);
+    \node[below=3pt] at (\F,-0.05) {F};
+    \draw[<->, line width=0.6pt] (0,-1.9) -- node[below] {\tFocalLength} (\F,-1.9);
+    \node[above] at (0,1.5) {\Nm};
+  \else
+    \ifFigAns
+      \foreach \y in {1,0,-1}{ \draw[line width=1pt, ansred] (0,\y) -- ($(0,\y)!1.3!(\F,0)$); }
+      \fill[ansred] (\F,0) circle (0.08);
+      \node[below=3pt, ansred] at (\F,-0.05) {F};
+      \draw[<->, line width=0.6pt, ansred] (0,-1.9) -- node[below] {\tFocalLength} (\F,-1.9);
+    \fi
+  \fi
+\end{tikzpicture}}
+
+% ---- 19  extension: concave lens diverges
+\newcommand\FigConcave[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[nrm] (-3.8,0) -- (4.0,0);
+  \draw[line width=0.9pt, fill=black!6] (-0.42,1.5) -- (0.42,1.5) to[out=-100,in=100] (0.42,-1.5)
+    -- (-0.42,-1.5) to[out=80,in=-80] cycle;
+  \foreach \y in {1,-1}{
+    \draw[ray=0.5] (-3.4,\y) -- (0,\y);
+    \draw[line width=1pt] (0,\y) -- ($(-2.4,0)!1.9!(0,\y)$);
+    \draw[vray] (-2.4,0) -- (0,\y);}
+  \draw[ray=0.5] (-3.4,0) -- (4.0,0);
+  \fill (-2.4,0) circle (0.08);
+  \node[above left=1pt] at (-2.4,0) {F};
+\end{tikzpicture}}
+
+% ---- 20  extension: three rays, object outside 2F
+\newcommand\FigLensRays[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[line width=0.6pt] (-6.2,0) -- (5.4,0);
+  \draw[line width=0.9pt, fill=black!6] (0,0) ellipse [x radius={0.25}, y radius={2.0}];
+  \fill (\gLrF,0) circle (0.07); \node[above left=1pt] at (\gLrF,0) {F};
+  \foreach \x/\n in {-\gLrF/F,-2*\gLrF/2F}{
+    \fill (\x,0) circle (0.07); \node[below=2pt] at (\x,0) {\n};}
+  \fill (2*\gLrF,0) circle (0.07); \node[above=2pt] at (2*\gLrF,0) {2F};
+  \draw[line width=1.4pt, -{Stealth[length=3mm]}] (-\gLrU,0) -- (-\gLrU,\gLrH);
+  \node[above] at (-\gLrU,\gLrH) {object};
+  \draw[line width=1.4pt, -{Stealth[length=3mm]}] (\gLrV,0) -- (\gLrV,\gLrHi);
+  \node[below=8pt] at (\gLrV,\gLrHi) {image};
+  % 1 parallel -> through F
+  \draw[ray=0.5] (-\gLrU,\gLrH) -- (0,\gLrH);
+  \draw[ray=0.5] (0,\gLrH) -- ($(0,\gLrH)!1.35!(\gLrV,\gLrHi)$);
+  % 2 through centre
+  \draw[ray=0.3] (-\gLrU,\gLrH) -- ($(-\gLrU,\gLrH)!1.2!(\gLrV,\gLrHi)$);
+  % 3 through F -> parallel
+  \coordinate (Y3) at (0,{\gLrH-\gLrH*\gLrU/(\gLrU-\gLrF)});
+  \draw[ray=0.5] (-\gLrU,\gLrH) -- (Y3);
+  \draw[ray=0.5] (Y3) -- (5.2,\gLrHi);
+\end{tikzpicture}}
+
+% ---- 21  extension: magnifying glass (object inside F -> virtual image)
+\newcommand\FigMagnifier[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[line width=0.6pt] (-6.8,0) -- (4.4,0);
+  \draw[line width=0.9pt, fill=black!6] (0,0) ellipse [x radius={0.25}, y radius={2.6}];
+  \fill (-\gMgF,0) circle (0.07); \node[above=2pt] at (-\gMgF,0) {F};
+  \fill (\gMgF,0) circle (0.07); \node[above=2pt] at (\gMgF,0) {F};
+  \draw[line width=1.4pt, -{Stealth[length=3mm]}] (-\gMgU,0) -- (-\gMgU,\gMgH);
+  \node[below] at (-\gMgU,0) {object};
+  \draw[line width=1.2pt, dash pattern=on 4pt off 2pt, -{Stealth[length=3mm]}] (\gMgV,0) -- (\gMgV,\gMgHi);
+  \node[below] at (\gMgV,0) {image};
+  \draw[ray=0.5] (-\gMgU,\gMgH) -- (0,\gMgH);
+  \draw[ray=0.6] (0,\gMgH) -- ($(0,\gMgH)!1.4!(\gMgF,0)$);
+  \draw[vray] (0,\gMgH) -- (\gMgV,\gMgHi);
+  \draw[ray=0.6] (-\gMgU,\gMgH) -- ($(-\gMgU,\gMgH)!2.9!(0,0)$);
+  \draw[vray] (-\gMgU,\gMgH) -- (\gMgV,\gMgHi);
+\end{tikzpicture}}
+
+% ----------------------------------------- in-class and homework tasks
+% Each task figure draws the question in black; with \FigAnstrue the
+% answer is added in red (used only by the answer files).
+
+% shadow task: small lamp, ball, screen
+\newcommand\TaskShadow[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \Bulb{(0,0)}{0.16}
+  \draw[line width=0.8pt, fill=black!25] (\gShObjX,0) circle (\gShObjH);
+  \draw[line width=1.2pt] (\gShScrX+1,-3) -- (\gShScrX+1,3);
+  \node[below] at (0,-0.4) {lamp};
+  \node[below] at (\gShObjX,-\gShObjH) {ball};
+  \node[below] at (\gShScrX+1,-3) {screen};
+  \ifFigAns
+    % tangent lines from the point source to the circle
+    \pgfmathsetmacro\ta{asin(\gShObjH/\gShObjX)}
+    \pgfmathsetmacro\ye{(\gShScrX+1)*tan(\ta)}
+    \fill[umbrafill] ({\gShObjX*cos(\ta)^2},{\gShObjX*cos(\ta)*sin(\ta)}) -- (\gShScrX+1,\ye)
+      -- (\gShScrX+1,-\ye) -- ({\gShObjX*cos(\ta)^2},{-\gShObjX*cos(\ta)*sin(\ta)}) -- cycle;
+    \draw[ray=0.2, ansred] (0,0) -- (\gShScrX+1,\ye);
+    \draw[ray=0.2, ansred] (0,0) -- (\gShScrX+1,-\ye);
+    \node[right, ansred] at (\gShScrX+1.1,0) {\tUmbra};
+    \draw[line width=0.8pt, fill=black!25] (\gShObjX,0) circle (\gShObjH);
+  \fi
+\end{tikzpicture}}
+
+% reflection task (#2 = in-class 30 deg, 1 = homework 20 deg)
+\newcommand\TaskReflect[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \Mirror{(-4,0)}{(4,0)}
+  \ifnum#2=0 \def\Ix{\gIcInx}\def\Iy{\gIcIny}\def\Ox{\gIcOutx}\def\Oy{\gIcOuty}\def\A{30}
+  \else \def\Ix{\gHwInx}\def\Iy{\gHwIny}\def\Ox{\gHwOutx}\def\Oy{\gHwOuty}\def\A{20}\fi
+  \draw[ray] (\Ix,\Iy) -- (0,0);
+  \draw[line width=0.6pt] (-1.4,0) arc (180:180-\A:1.4);
+  \node at ($(180-\A/2:1.95)$) {\A\textdegree};
+  \ifFigAns
+    \draw[nrm, ansred] (0,0) -- (0,3.4);
+    \node[above, ansred] at (0,3.4) {\tNormal};
+    \draw[ray, ansred] (0,0) -- (\Ox,\Oy);
+    \draw[line width=0.6pt, ansred] (0,1.0) arc (90:180-\A:1.0);
+    \draw[line width=0.6pt, ansred] (0,1.0) arc (90:\A:1.0);
+    \node[ansred] at ($(135-\A/2:1.35)+(-0.25,0.25)$) {$i$};
+    \node[ansred] at ($(45+\A/2:1.35)+(0.25,0.25)$) {$r$};
+  \fi
+\end{tikzpicture}}
+
+% plane mirror triangle task
+\newcommand\TaskTriangle[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \Mirror{(0,-3)}{(0,2.8)}
+  \draw[line width=1pt, fill=black!8] (\gTrAx,\gTrAy) -- (\gTrBx,\gTrBy) -- (\gTrCx,\gTrCy) -- cycle;
+  \node[above] at (\gTrAx,\gTrAy) {A}; \node[left] at (\gTrBx,\gTrBy) {B}; \node[below] at (\gTrCx,\gTrCy) {C};
+  \EyeSym{(\gTrEyex-0.2,\gTrEyey)}{180}
+  \node[below=6pt] at (\gTrEyex,\gTrEyey-0.2) {eye};
+  \ifFigAns
+    \draw[line width=1pt, ansred, dash pattern=on 4pt off 2pt] (\gTrAix,\gTrAiy) -- (\gTrBix,\gTrBiy) -- (\gTrCix,\gTrCiy) -- cycle;
+    \node[above, ansred] at (\gTrAix,\gTrAiy) {A$'$}; \node[right, ansred] at (\gTrBix,\gTrBiy) {B$'$};
+    \node[below, ansred] at (\gTrCix,\gTrCiy) {C$'$};
+    \foreach \k in {U,D}{
+      \draw[ray, ansred] (\gTrAx,\gTrAy) -- (\csname gTrP\k x\endcsname,\csname gTrP\k y\endcsname);
+      \draw[ray, ansred] (\csname gTrP\k x\endcsname,\csname gTrP\k y\endcsname) -- (\csname gTrE\k x\endcsname,\csname gTrE\k y\endcsname);
+      \draw[vray, ansred] (\csname gTrP\k x\endcsname,\csname gTrP\k y\endcsname) -- (\gTrAix,\gTrAiy);}
+  \fi
+\end{tikzpicture}}
+
+% fish / pool task: #2 = Sp (in-class spear fisher) or Po (homework pool)
+\newcommand\TaskFish[2][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \edef\Fx{\csname g#2Fishx\endcsname}\edef\Fy{\csname g#2Fishy\endcsname}
+  \edef\Ex{\csname g#2Eyex\endcsname}\edef\Ey{\csname g#2Eyey\endcsname}
+  \edef\Sx{\csname g#2Sx\endcsname}
+  \edef\Ix{\csname g#2Imgx\endcsname}\edef\Iy{\csname g#2Imgy\endcsname}
+  \fill[water] (-2.2,\Fy-0.6) rectangle (6.2,0);
+  \draw[line width=0.9pt] (-2.2,0) -- (6.2,0);
+  \node[left] at (6.2,0.45) {air}; \node[left] at (6.2,-0.5) {water};
+  \draw[line width=0.8pt, fill=black!25] (\Fx,\Fy) ellipse [x radius={0.42}, y radius={0.18}];
+  \EyeSym{(\Ex+0.2,\Ey+0.1)}{225}
+  \node[above=6pt] at (\Ex+0.2,\Ey+0.2) {eye};
+  \ifFigAns
+    \draw[ray, ansred] (\Fx,\Fy) -- (\Sx,0);
+    \draw[ray, ansred] (\Sx,0) -- (\Ex,\Ey);
+    \draw[vray, ansred] (\Sx,0) -- (\Ix,\Iy);
+    \draw[nrm, ansred] (\Sx,-1.2) -- (\Sx,1.4);
+    \draw[line width=0.8pt, ansred, dash pattern=on 2pt off 1.5pt] (\Ix,\Iy) ellipse [x radius={0.42}, y radius={0.18}];
+    \node[left=6pt, ansred] at (\Ix-0.3,\Iy+0.1) {image};
+  \fi
+\end{tikzpicture}}
+
+% prism labelling task
+\newcommand\TaskPrism[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \draw[line width=0.9pt, fill=glass] (0,0) -- (\gPrApexx,\gPrApexy) -- (\gPrS,0) -- cycle;
+  \draw[ray=0.5, line width=1.4pt] (\gPrStartx,\gPrStarty) -- (\gPrInx,\gPrIny);
+  \node[above left] at (\gPrStartx,\gPrStarty) {white light};
+  \foreach \k in {a,g}{
+    \draw[line width=0.9pt] (\gPrInx,\gPrIny) -- (\csname gPrOut\k x\endcsname,\csname gPrOut\k y\endcsname)
+      -- (\csname gPrEnd\k x\endcsname,\csname gPrEnd\k y\endcsname);}
+  \node[right] at (\gPrEndax,\gPrEnday) {P};
+  \node[right] at (\gPrEndgx,\gPrEndgy) {Q};
+\end{tikzpicture}}
+
+% homework shadow puppet: large lamp, puppet, screen (answer in red)
+\newcommand\TaskPuppet[1][\fu]{%
+\begin{tikzpicture}[fig, x=#1, y=#1]
+  \pgfmathsetmacro\H{\gShObjH}\pgfmathsetmacro\X{\gShObjX}\pgfmathsetmacro\S{\gShScrX}
+  \draw[line width=0.8pt, fill=yellow!25, rounded corners=1pt] (-0.15,-\gShSrcA) rectangle (0.15,\gShSrcA);
+  \node[above=4pt] at (0,\gShSrcA) {large lamp};
+  \draw[line width=0.8pt, fill=black!30] (\X,-\H) rectangle (\X+0.2,\H);
+  \node[below=3pt] at (\X+0.1,-2.7) {puppet};
+  \draw[line width=1.2pt] (\S,-2.7) -- (\S,2.7);
+  \node[below=3pt] at (\S,-2.7) {screen};
+  \ifFigAns
+    \fill[penfill] (\X+0.1,\H) -- (\S,\gShPen) -- (\S,\gShUmbra) -- cycle;
+    \fill[penfill] (\X+0.1,-\H) -- (\S,-\gShPen) -- (\S,-\gShUmbra) -- cycle;
+    \fill[umbrafill] (\X+0.1,\H) -- (\S,\gShUmbra) -- (\S,-\gShUmbra) -- (\X+0.1,-\H) -- cycle;
+    \draw[ray=0.25, ansred] (0,\gShSrcA) -- (\S,\gShUmbra);
+    \draw[ray=0.25, ansred] (0,-\gShSrcA) -- (\S,\gShPen);
+    \draw[ray=0.25, ansred] (0,-\gShSrcA) -- (\S,-\gShUmbra);
+    \draw[ray=0.25, ansred] (0,\gShSrcA) -- (\S,-\gShPen);
+    \node[right, ansred] at (\S+0.1,0) {\tUmbra};
+    \node[right, ansred] at (\S+0.1,1.6) {\tPenumbra};
+    \node[right, ansred] at (\S+0.1,-1.6) {\tPenumbra};
+  \fi
+\end{tikzpicture}}
+
+\endinput
