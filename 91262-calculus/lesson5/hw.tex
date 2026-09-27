@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+% 12 mm side margins: exam questions print at natural size (crops are at most 181 mm wide)
+\newgeometry{left=12mm,right=12mm,top=14mm,bottom=20mm,footskip=9mm}
+\begin{document}
+\sheethead{Lesson 5 \textperiodcentered\ Homework}{NCEA Level 2 \textperiodcentered\ AS 91262 \textperiodcentered\ Mixed revision and Excellence questions}{about 60 minutes}{}
+Show all working. Justify every maximum or minimum; give units and meaning for rates. [A] Achieved, [M] Merit, [E] Excellence.
+
+\Q Differentiate $y=(x+2)(x^{2}-3)$.\mk{A}
+\ALine{$y=x^{3}+2x^{2}-3x-6$}
+\ALineT{$\dydx=3x^{2}+4x-3$}
+
+\Q Find the \tturns of $y=x^{3}-6x^{2}+9$ and justify their nature.\mk{A}
+\ALineT{$\dydx=3x^{2}-12x=3x(x-4)=0$, so $x=0$ or $x=4$}
+\ALine{$y(0)=9$;\quad $y(4)=64-96+9=-23$}
+\ALineT{$\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=6x-12$:\ at $x=0$ it is $-12<0$, so $(0,\,9)$ is a maximum}
+\ALine{at $x=4$ it is $12>0$, so $(4,\,-23)$ is a minimum}
+
+\Q $f'(x)=6x-2$ and the curve passes through $(-1,\,8)$. Find $f(x)$.\mk{A}
+\ALine{$f(x)=3x^{2}-2x+c$;\ \ $3+2+c=8$, so $c=3$}
+\ALine{$f(x)=3x^{2}-2x+3$}
+
+\Q $f'(x)=4-x^{2}$. Without drawing, describe the \tturns of $f$: where they are, and which is a maximum.\mk{A}
+\ALine{$f'(x)=0$ when $x=2$ or $x=-2$}
+\ALine{At $x=-2$, $f'$ changes from $-$ to $+$: minimum}
+\ALine{At $x=2$, $f'$ changes from $+$ to $-$: maximum}
+
+\Q The \ttangent to $y=x^{2}+bx+c$ at the point $(1,\,3)$ has gradient $5$. Find $b$ and $c$.\mk{M}
+\ALineT{Gradient: $\dydx=2x+b$;\ at $x=1$:\ $2+b=5$, so $b=3$}
+\ALine{Point: $1+3+c=3$, so $c=-1$}
+
+\Q A particle has acceleration $a=4-2t\mpss$, starts at the origin, and has velocity $5\mps$ when $t=0$. Find its maximum velocity and its displacement at that moment.\mk{M}
+\ALine{$v=4t-t^{2}+5$ (using $v(0)=5$)}
+\ALine{Maximum velocity when $a=0$: $t=2$ s;\ \ $v(2)=8-4+5=9\mps$ (maximum: $a$ changes from $+$ to $-$)}
+\ALineT{$s=2t^{2}-\dfrac{1}{3}t^{3}+5t$ (from the origin);\ \ $s(2)=8-\dfrac{8}{3}+10=15.3$ m}
+
+\ppQ{[E]}
+\ppq{a21_1c3}
+
+\ppQ{[E]}
+\ppq{a22_3c}
+
+\clearpage
+{\sffamily\bfseries Question \theqn\ continued}\quad working space
+\medskip
+\ALine{$S'(b)=2\sqrt{3}(30-2b)(-2)+4\sqrt{3}\,b=\sqrt{3}(12b-120)$}
+\ALine{$S'(b)=0$ when $b=10$, so $a=30-2(10)=10$}
+\ALine{$S''(b)=12\sqrt{3}>0$, so the total surface area is a minimum}
+\ALine{$a=10$ cm and $b=10$ cm (minimum total surface area $300\sqrt{3}=519.6\ \mathrm{cm}^{2}$)}
+\ALines{14}
+
+\ppQ{Extension [E]}
+\ppq{a21_3d2}
+\end{document}

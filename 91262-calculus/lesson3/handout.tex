@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\input{lostmarks.tex}
+\newlength\figunit
+\def\showfp{}
+\begin{document}
+\handouthead{Lesson 3 \textperiodcentered\ Sketching Gradient Functions}{NCEA Level 2 Mathematics \textperiodcentered\ AS 91262 Apply calculus methods in solving problems \textperiodcentered\ Handout}
+
+\section{The one idea}\label{idea}
+\begin{keybox}
+The \kw{height} of the $f'$ graph is the \kw{steepness} of the $f$ graph.\\
+Where $f$ is flat (a \tturn), $f'$ is on the $x$-axis. Where $f$ goes up, $f'$ is above the axis; where $f$ goes down, $f'$ is below.
+\end{keybox}
+Always draw the new graph \kw{directly under} the given one, using the same $x$-scale, and line up the key $x$-values with a ruler.
+
+\section{Translating features}\label{table}
+\begin{tabular}{@{}p{0.44\linewidth}p{0.50\linewidth}@{}}
+\toprule
+on the graph of $f$ & on the graph of $f'$\\
+\midrule
+\tturn (maximum or minimum) & \kw{crosses or touches the $x$-axis} ($f'=0$)\\
+increasing (going up) & \kw{above} the $x$-axis ($f'>0$)\\
+decreasing (going down) & \kw{below} the $x$-axis ($f'<0$)\\
+steepest point (\tinflect) & \tturn of $f'$\\
+straight line with gradient $m$ & horizontal line at height $m$\\
+parabola & straight line\\
+cubic & parabola\\
+quartic & cubic\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+The power drops by one: that is why a parabola gives a line and a cubic gives a parabola.
+
+\section{Lines and parabolas}\label{parab}
+\begin{minipage}[t]{0.50\linewidth}
+A straight line has the same gradient everywhere, so $f'$ is a \kw{horizontal line}.
+E.g.\ $f(x)=2x+1$ gives $f'(x)=2$ for every $x$.
+
+\smallskip
+A parabola has one \tturn, so $f'$ is a \kw{straight line through that $x$-value}.
+For the parabola on the right (minimum at $x=1$): down then up, so $f'$ goes from below the axis to above it,
+crossing at $x=1$. Here $f(x)=x^{2}-2x-3$ and $f'(x)=2x-2$.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\vspace{0pt}
+\setlength\figunit{6.5mm}
+\input{../fig/L3_parab_f.tex}\\[2mm]
+\input{../fig/L3_parab_fp.tex}
+\end{minipage}
+
+\section{Cubics and quartics}\label{cubic}
+\begin{minipage}[t]{0.50\linewidth}
+\subsection{Write it in this order}
+\begin{enumerate}[leftmargin=7mm, itemsep=1pt]
+\item Mark the $x$-value of each \tturn of $f$ on the new axis: these are the \kw{zeros of $f'$}.
+\item In each interval: $f$ up $\to$ $f'$ above; $f$ down $\to$ $f'$ below.
+\item The steepest point of $f$ gives the \tturn of $f'$.
+\item Join smoothly. Check the type: cubic $\to$ parabola.
+\end{enumerate}
+
+\begin{example}{Worked example 1}
+$f(x)=x^{3}-3x$ has a maximum at $x=-1$ and a minimum at $x=1$.
+\begin{steps}
+\item Zeros of $f'$ at $x=-1$ and $x=1$.
+\item Up, down, up: $f'$ is above, below, above.
+\item Steepest downhill at $x=0$: lowest point of $f'$.
+\end{steps}
+So $f'$ is an up-parabola: $f'(x)=3x^{2}-3$.
+\end{example}
+A quartic with three \tturns gives a cubic $f'$ with three zeros.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\vspace{2mm}
+\setlength\figunit{7.2mm}
+\input{../fig/L3_cubic_f.tex}\\[2mm]
+\input{../fig/L3_cubic_fp.tex}
+\end{minipage}
+
+\section{From $f'$ back to $f$}\label{reverse}
+\begin{minipage}[t]{0.50\linewidth}
+\begin{tabular}{@{}p{0.52\linewidth}p{0.40\linewidth}@{}}
+\toprule
+$f'$ graph & $f$ graph\\
+\midrule
+crosses from $+$ to $-$ & maximum\\
+crosses from $-$ to $+$ & minimum\\
+above the axis & increasing\\
+below the axis & decreasing\\
+\tturn of $f'$ & steepest point\\
+\bottomrule
+\end{tabular}
+
+\medskip
+The $f'$ graph shows gradients only, so the \kw{height of $f$ is unknown}: sketch \emph{a possible} graph.
+Any vertical shift is correct.
+
+\begin{example}{Worked example 2}
+$f'$ (top right) crosses from $-$ to $+$ at $x=-1$ and from $+$ to $-$ at $x=3$.
+So $f$ has a \kw{minimum at $x=-1$} and a \kw{maximum at $x=3$}; it is a negative cubic.
+One possible $f$ is drawn under it.
+\end{example}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}\centering\vspace{0pt}
+\setlength\figunit{7.5mm}
+\input{../fig/L3_rev_fp.tex}\\[2mm]
+\input{../fig/L3_rev_f.tex}
+\end{minipage}
+
+\section{Versions that get no credit}\label{nocredit}
+\begin{tabular}{@{}p{0.40\linewidth}p{0.54\linewidth}@{}}
+\toprule
+sketch & why it fails\\
+\midrule
+$f'$ with the same humps as $f$ & \tturns of $f$ must become zeros of $f'$\\
+$f'$ of a parabola drawn curved & a parabola's gradient changes at a constant rate: a line\\
+$f$ drawn through the zeros of $f'$ & zeros of $f'$ are the \tturns of $f$\\
+key points not lined up & the marker checks the $x$-values against the given graph\\
+\bottomrule
+\end{tabular}
+
+\section{What each grade looks like here}\label{grades}
+\begin{tabular}{@{}p{0.14\linewidth}p{0.80\linewidth}@{}}
+\toprule
+Achieved & a correct sketch of $f'$ for a line or a parabola, zeros in the right places.\\
+Merit & a correct $f'$ for a cubic or quartic (zeros, signs and shape), or a correct $f$ from $f'$.\\
+Excellence & a full explanation linking the two graphs, e.g.\ why a sharp corner has no gradient, or why the maximum of $f'$ is not a maximum of $f$.\\
+\bottomrule
+\end{tabular}
+
+\section{Checking with the fx-9750GIII}\label{calc}
+\textsf{SET UP} (SHIFT MENU) $\to$ \textsf{Derivative: On}. In \textsf{GRAPH}, \textsf{TRACE} then shows the gradient $\dydx$ at each point.
+Trace along $f$: the sign of the gradient tells you which side of the axis $f'$ is on.
+
+\section{Ways to lose marks}\label{lose}
+From the material plus teaching observation.
+\begin{enumerate}[leftmargin=7mm, itemsep=2pt]
+\item[\textbf{\lmnum{tpcopy}}] \lmtxt{tpcopy}
+\item[\textbf{\lmnum{sign}}] \lmtxt{sign}
+\item[\textbf{\lmnum{degree}}] \lmtxt{degree}
+\item[\textbf{\lmnum{steep}}] \lmtxt{steep}
+\item[\textbf{\lmnum{roots}}] \lmtxt{roots}
+\item[\textbf{\lmnum{marks}}] \lmtxt{marks}
+\end{enumerate}
+\end{document}

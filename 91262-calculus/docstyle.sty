@@ -1,0 +1,145 @@
+% docstyle.sty -- printed A4 sheets: handouts, practice sheets, homework, answer versions
+% Rules: no solid dark fills (headings = bold text over a thin rule; boxes = outline + light fill),
+% answer switch, answer lines as \vbox to their pitch (overflow reports Overfull \vbox).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{docstyle}[2026/09/27 printed sheets]
+
+\RequirePackage[a4paper,left=18mm,right=18mm,top=16mm,bottom=20mm,footskip=9mm]{geometry}
+\RequirePackage{shared}
+\RequirePackage{graphicx}
+\RequirePackage{enumitem}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{multicol}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{lastpage}
+\RequirePackage{needspace}
+% mathspec last: tcolorbox re-requests amsmath, which mathspec rejects once loaded
+\RequirePackage{mathspec}
+\setmainfont{texgyrepagella}[Path=\fontdir,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Path=\fontdir,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmathsfont(Digits,Latin)[Path=\fontdir,Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic]{texgyrepagella}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt plus 1pt}
+\linespread{1.05}
+
+% ---------- answer switch ----------
+% (\ifansmode is defined in shared.sty)
+% \ans{...}: red, printed only in the answer version
+\newcommand\ans[1]{\ifansmode{\color{ansred}#1}\fi}
+% \ansblock{...}: a block of red working, answer version only
+\newcommand\ansblock[1]{\ifansmode\par{\color{ansred}#1}\par\fi}
+
+% ---------- page style ----------
+\newcommand\sheettitle{}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\scriptsize\color{sigcol}\signature}
+\fancyfoot[C]{\sffamily\scriptsize\color{sigcol}\sheettitle}
+\fancyfoot[R]{\sffamily\scriptsize\color{sigcol}\thepage\,/\,\pageref*{LastPage}}
+\fancypagestyle{plain}{\fancyhf{}%
+  \fancyfoot[L]{\sffamily\scriptsize\color{sigcol}\signature}%
+  \fancyfoot[C]{\sffamily\scriptsize\color{sigcol}\sheettitle}%
+  \fancyfoot[R]{\sffamily\scriptsize\color{sigcol}\thepage\,/\,\pageref*{LastPage}}}
+
+% ---------- headings: bold text over a thin rule, never a filled bar ----------
+\titleformat{\section}{\sffamily\bfseries\large}{\thesection}{0.6em}{}[{\vspace{-2pt}\titlerule[0.8pt]}]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+\titleformat{\subsection}{\sffamily\bfseries\normalsize}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{3pt}
+\renewcommand\thesection{\arabic{section}}
+
+% ---------- boxes: outline + light fill (<= 10% grey), no dark title bars ----------
+\tcbset{docbox/.style={enhanced, colback=boxfill, colframe=black, boxrule=0.6pt, arc=1.2mm,
+  left=2.5mm, right=2.5mm, top=1.5mm, bottom=1.5mm, before skip=5pt, after skip=5pt}}
+\newtcolorbox{keybox}{docbox, breakable}
+\newtcolorbox{plainbox}{enhanced, colback=white, colframe=black, boxrule=0.6pt, arc=1.2mm,
+  left=2.5mm, right=2.5mm, top=1.5mm, bottom=1.5mm, before skip=5pt, after skip=5pt, breakable}
+% worked example: outlined, heading in bold inside the box
+\newtcolorbox{example}[1]{enhanced, colback=white, colframe=black, boxrule=0.6pt, arc=1.2mm,
+  left=2.5mm, right=2.5mm, top=1.5mm, bottom=1.5mm, before skip=6pt, after skip=6pt,
+  before upper={\textsf{\textbf{#1}}\par\smallskip}}
+
+% keyword emphasis: bold, one method throughout
+\newcommand\kw[1]{\textbf{#1}}
+
+% ---------- sheet header ----------
+% \sheethead{title}{line under title}{time}{marks}
+\newcommand\sheethead[4]{%
+  \renewcommand\sheettitle{#1}%
+  {\sffamily\bfseries\LARGE\raggedright #1\par}\vspace{2pt}%
+  {\sffamily #2\hfill Time: #3\ifx\relax#4\relax\else\quad Total: #4 marks\fi\par}%
+  \vspace{2pt}\hrule height 0.8pt\vspace{4pt}%
+  % one line of identical height in both versions, so page breaks never move
+  \hbox to\linewidth{\sffamily\strut\ifansmode\bfseries\color{ansred}Answer version \textperiodcentered\ tutor's working, not an official mark scheme\hfil
+    \else Name: \rule[-1pt]{60mm}{0.4pt}\hfill Date: \rule[-1pt]{35mm}{0.4pt}\fi}\vspace{4pt}}
+% handout header (no name line, no time)
+\newcommand\handouthead[2]{%
+  \renewcommand\sheettitle{#1}%
+  {\sffamily\bfseries\LARGE\raggedright #1\par}\vspace{2pt}%
+  {\sffamily #2\par}\vspace{2pt}\hrule height 0.8pt\vspace{6pt}}
+
+% ---------- marks, flush right ----------
+\newcommand\mk[1]{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill\mbox{[#1]}{\parfillskip=0pt\par}}
+
+% ---------- answer lines ----------
+% one line = \vbox to its pitch; answer text baseline about 1.2 mm above the dotted rule.
+% An answer that is too tall reports Overfull \vbox instead of printing through the rule.
+\newcommand\dotrule{\hbox to\linewidth{\color{gray}\leaders\hbox to 1.8mm{\hss.\hss}\hfil}}
+\newcommand\ALineP[2]{\par\nointerlineskip\noindent
+  \vbox to #1{\vfil\hbox to\linewidth{\hspace{1.5mm}\ans{#2}\hfil}\nointerlineskip\kern0.9mm\dotrule}\par}
+\newcommand\ALine[1]{\ALineP{9mm}{#1}}
+\newcommand\ALineT[1]{\ALineP{18mm}{#1}}
+\newcount\alcount
+\newcommand\ALines[1]{\alcount=#1\relax\loop\ifnum\alcount>0 \ALine{}\advance\alcount by -1\repeat}
+
+% ---------- questions ----------
+\newcounter{qn}
+\newcommand\Q{\par\needspace{5\baselineskip}\medskip\refstepcounter{qn}\noindent{\sffamily\bfseries\theqn.}\quad}
+\newcommand\QX{\par\needspace{5\baselineskip}\medskip\refstepcounter{qn}\noindent{\sffamily\bfseries\theqn.}\quad{\sffamily\bfseries Extension}\quad}
+\newlist{parts}{enumerate}{1}
+\setlist[parts]{label=(\alph*), leftmargin=8mm, itemsep=2pt, topsep=2pt}
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{label=\textbf{Step \arabic*}, leftmargin=15mm, itemsep=1pt, topsep=2pt}
+
+% ---------- exam-question crops at natural size (300 dpi: 1 px = 0.24 pt) ----------
+% \ppq{id}: the crop; in the answer version fig/ppfull/<id>_ans.tex is drawn over it in red.
+% Inside <id>_ans.tex, coordinates are crop pixels (x right, y down):
+%   \ppline{k}{text}         text sits 1.2 mm above answer rule k (rule x, y read from the crop)
+%   \ppat{x}{y}{text}        free position (px), text baseline at y
+\newcommand\ppdir{../fig/ppfull/}
+\newcommand\ppq[1]{\par
+  \input{\ppdir#1.tex}% read in vertical mode: its line ends must not become spaces
+  \def\ppid{#1}%
+  \nointerlineskip\noindent
+  \begin{tikzpicture}[x=0.24pt, y=-0.24pt]
+    \node[anchor=north west, inner sep=0pt] at (0,0)
+      {\includegraphics[width=\csname pp@w@#1\endcsname\dimexpr 0.24pt\relax]{\ppdir#1.png}};
+    \ifansmode\input{\ppdir#1_ans.tex}\fi
+  \end{tikzpicture}\par}
+\newcommand\ppline[2]{\node[anchor=base west, inner sep=0pt, text=ansred, font=\normalsize]
+  at (\csname pp@x@\ppid @#1\endcsname + 25, \csname pp@r@\ppid @#1\endcsname - 14.2) {#2};}
+% \pplineT: for a line with a stacked fraction, baseline 2.4 mm above the rule so the denominator clears it
+\newcommand\pplineT[2]{\node[anchor=base west, inner sep=0pt, text=ansred, font=\normalsize]
+  at (\csname pp@x@\ppid @#1\endcsname + 25, \csname pp@r@\ppid @#1\endcsname - 28.3) {#2};}
+\newcommand\ppat[3]{\node[anchor=base west, inner sep=0pt, text=ansred, font=\normalsize] at (#1,#2) {#3};}
+% exam question heading on the practice sheet (our number; no source shown)
+% \ppQ{tag}: starts a new page.  \ppQQ{tag}{id}: short part, stays on this page when the whole
+% crop (height read from its .tex) plus heading fits, otherwise starts a new page.  Never split.
+\newlength\pph
+\newcommand\ppQQ[2]{\par\input{\ppdir#2.tex}%
+  \setlength\pph{\csname pp@h@#2\endcsname\dimexpr 0.24pt\relax}\addtolength\pph{12mm}%
+  \bigskip\needspace{\pph}\refstepcounter{qn}\noindent{\sffamily\bfseries Question \theqn}\ifx\relax#1\relax\else\quad{\sffamily #1}\fi\par\smallskip
+  \ppq{#2}}
+% \ppQside{tag}{id}: for a crop too tall to share its page with a heading line; the heading
+% sits in the free space to the right of the crop (crop width + 26 mm must fit the text width)
+\newcommand\ppQside[2]{\clearpage\input{\ppdir#2.tex}\refstepcounter{qn}\noindent
+  \begin{minipage}[t]{\dimexpr\csname pp@w@#2\endcsname\dimexpr0.24pt\relax\relax}\vspace{0pt}\ppq{#2}\end{minipage}\hfill
+  \begin{minipage}[t]{24mm}\vspace{0pt}\raggedright{\sffamily\bfseries Question \theqn}\par\smallskip{\sffamily\small #1}\end{minipage}\par}
+\newcommand\ppQ[1]{\clearpage\refstepcounter{qn}\noindent{\sffamily\bfseries Question \theqn}\ifx\relax#1\relax\else\quad{\sffamily #1}\fi\par\smallskip}
+
+\endinput

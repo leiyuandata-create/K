@@ -1,0 +1,260 @@
+\documentclass[aspectratio=169,11pt,t,xcolor=table]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout}
+\input{lostmarks.tex}
+\newlength\figunit
+\begin{document}
+
+% ------------------------------------------------------------------
+\begin{frame}{Lesson 5 \textperiodcentered\ Mixed Practice}\relax
+\vskip6mm
+{\sEmph\bfseries Learning intention\par}\vskip2mm
+Choose the right calculus method from the wording of a question, and write Merit and Excellence answers under time pressure.
+\vskip6mm
+{\sEmph\bfseries Success looks like\par}\vskip2mm
+\begin{itemize}
+\item I can name the method before I start writing.
+\item I can link two steps and justify a maximum in a sentence.
+\item I can build a formula from words and optimise it.
+\end{itemize}
+\note{Teaching line, not a question slide.\par
+Timing: Do Now 10 min, three rounds about 20 min each, timed practice sheet 30 min, wrap-up 5 min.\par
+The handout is the exam guide: point to it throughout.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Do Now}\relax
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\qn{1} Differentiate $y=(3x-1)(x+2)$.
+\vskip5mm
+\qn{2} Find the \tturn of $y=2x^{2}-12x+7$ and state its nature.
+\end{column}
+\begin{column}{0.48\textwidth}
+\qn{3} $f'(x)=8x-3$ and $f(1)=6$. Find $f(x)$.
+\vskip5mm
+\qn{4} $f'(x)$ changes from negative to positive at $x=-2$. What happens on the graph of $f$ at $x=-2$?
+\end{column}
+\end{columns}
+\sfoot{Lessons 1 to 4}
+\note{Q1 $\dfrac{dy}{dx}=6x+5$\par
+Q2 $(3,\,-11)$, minimum\par
+Q3 $f(x)=4x^{2}-3x+5$\par
+Q4 a minimum (a turning point)\par
+Short solution:\par
+Q1 expand: $3x^{2}+5x-2$\par
+Q2 $4x-12=0$; $y=18-36+7$; $y''=4>0$\par
+Q3 $4x^{2}-3x+c$; $4-3+c=6$\par
+Watch for:\par
+Q3 forgetting to find $c$\par
+Diagnostic:\par
+one question per lesson (1, 2, 4, 3): a wrong answer shows which lesson to revisit in round 1\par
+Q4 wrong: Lesson 3 needs a quick recap with the translation table}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{The one idea}\relax
+\vskip3mm
+{\centering\sEmph\bfseries read the words $\longrightarrow$ name the method $\longrightarrow$ write the calculus\par}
+\vskip3mm
+``Use calculus'' means the \tderiv or \tantider must be in your working.
+\vskip3mm
+A calculator answer alone shows no method.
+\sfoot{\hp{idea}}
+\note{Teaching line, not a question slide.\par
+The method chooser on handout page 1 is the reference for round 1.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Which method?}\relax
+Name the method for each. Do not solve.
+\vskip3mm
+\begin{enumerate}
+\item Find the gradient of the curve at $x=4$.
+\item Find the equation of the \ttangent at $x=-1$.
+\item Find the maximum height of the ball.
+\item The curve passes through $(2,\,5)$; find $f(x)$ given $f'(x)$.
+\item For what values of $x$ is $f$ decreasing?
+\item Given the acceleration, find how far the car travels.
+\end{enumerate}
+\sfoot{\hp{choose}}
+\note{1 differentiate, substitute $x=4$ into $f'(x)$\par
+2 point from $f$, gradient from $f'$, then $y-y_{1}=m(x-x_{1})$\par
+3 $h'=0$, solve for $t$, substitute into $h$, justify with $h''$\par
+4 anti-differentiate, $+c$, substitute $(2,\,5)$\par
+5 solve $f'(x)<0$: an interval\par
+6 anti-differentiate twice ($a\to v\to s$), a constant each time\par
+Short solution:\par
+say the method aloud; the student points to the matching row of the chooser\par
+Watch for:\par
+item 6 is distance, so check whether the car turns round}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} Find the gradient of $y=2x^{3}-5x+4$ at the point where $x=-2$.
+\vskip5mm
+\qn{2} $f'(x)=12x^{2}-6$ and $f(1)=3$. Find $f(x)$.
+\vskip5mm
+\qn{3} A particle has velocity $v=6t-t^{2}\mps$. Find its acceleration at $t=2$.
+\sfoot{\hp{choose}}
+\note{Q1 $19$\par
+Q2 $f(x)=4x^{3}-6x+5$\par
+Q3 $2\ \mathrm{m\,s^{-2}}$\par
+Short solution:\par
+Q1 $\dfrac{dy}{dx}=6x^{2}-5$; $6(4)-5$\par
+Q2 $4x^{3}-6x+c$; $4-6+c=3$\par
+Q3 $a=6-2t$\par
+Watch for:\par
+Q1 $6(-2)^{2}=24$, not $-24$\par
+Q3 differentiate $v$ once, not twice}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Merit: link two steps}\relax
+Two unknowns $\to$ two equations. A value given $\to$ solve for the time first.
+\vskip4mm
+\qn{4} The curve $y=ax^{3}+bx$ has a \tturn at $(1,\,-4)$. Find $a$ and $b$.
+\vskip3mm
+\hspace*{6mm}equation 1: the point is on the curve\\
+\hspace*{6mm}equation 2: the gradient there is $0$
+\sfoot{\hp{frames}}
+\note{Q4 $a=2$, $b=-6$\par
+Short solution:\par
+Q4 point: $a+b=-4$; turning point: $3a+b=0$; subtract: $2a=4$\par
+Watch for:\par
+using only “gradient $=0$” and guessing the second letter\par
+Merit marker: both conditions written as labelled equations}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} The curve $y=x^{2}+px+q$ has a \tturn at $(2,\,5)$. Find $p$ and $q$.
+\vskip4mm
+\qn{2} The number of visitors at a festival is $V=600t-25t^{2}$ after $t$ hours ($0\le t\le24$). Find the rate of change of visitors when $V=3200$.
+\vskip4mm
+\qn{3} Find the maximum value of $f(x)=3+12x-2x^{3}$ for $x\ge0$, and justify that it is a maximum.
+\sfoot{\hp{frames}}
+\note{Q1 $p=-4$, $q=9$\par
+Q2 $200$ and $-200$ visitors per hour\par
+Q3 $3+8\sqrt{2}\approx14.3$ at $x=\sqrt{2}$\par
+Short solution:\par
+Q1 gradient: $4+p=0$; point: $4+2p+q=5$\par
+Q2 $25t^{2}-600t+3200=0$, so $t=8$ or $16$; $V'=600-50t$\par
+Q3 $f'=12-6x^{2}=0$, $x=\sqrt{2}$; $f''=-12x<0$\par
+Watch for:\par
+Q2 two times give two rates: increasing at $t=8$, decreasing at $t=16$\par
+Q3 reject $x=-\sqrt{2}$ because $x\ge0$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Excellence: build the model}\relax
+{\sEmph\bfseries Write it in this order\par}\vskip1mm
+\begin{enumerate}
+\item Name the variables.
+\item Constraint $\to$ one variable.
+\item Differentiate, $=0$, solve; reject impossible values.
+\item Justify; answer in a sentence with units.
+\end{enumerate}
+\vskip2mm
+\qn{5} An open box has a square base of side $x$ cm and height $h$ cm. Its outside surface area is $108\ \mathrm{cm}^{2}$. Find the maximum volume.
+\sfoot{\hp{frames}}
+\note{Q5 $108\ \mathrm{cm}^{3}$ ($x=6$, $h=3$)\par
+Short solution:\par
+Q5 $x^{2}+4xh=108$, so $h=\dfrac{108-x^{2}}{4x}$\par
+Q5 $V=x^{2}h=27x-\dfrac{1}{4}x^{3}$; $V'=27-\dfrac{3}{4}x^{2}=0$, $x=6$\par
+Q5 $V''=-\dfrac{3}{2}x=-9<0$\par
+Watch for:\par
+an open box has one base, not two: $x^{2}+4xh$\par
+the answer is the volume, not $x$ (L3)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} A $48$ cm piece of wire is cut into two parts. Each part is bent into a square. Where should the wire be cut so that the total area of the two squares is a minimum? Justify that it is a minimum.
+\vskip5mm
+\qn{2} For $y=x^{3}-3a^{2}x$, where $a>0$ is a constant, show that the \tturns are at $x=\pm a$, and find the difference between the maximum and minimum $y$-values in terms of $a$.
+\sfoot{\hp{frames}}
+\note{Q1 cut it in the middle ($24$ cm each); minimum total area $72\ \mathrm{cm}^{2}$\par
+Q2 turning points at $x=\pm a$; difference $4a^{3}$\par
+Short solution:\par
+Q1 pieces $x$ and $48-x$: $A=\dfrac{x^{2}}{16}+\dfrac{(48-x)^{2}}{16}$; $A'=\dfrac{x}{8}-\dfrac{48-x}{8}=0$; $A''=\dfrac{1}{4}>0$\par
+Q2 $y'=3x^{2}-3a^{2}=0$; $y(-a)=2a^{3}$ (max), $y(a)=-2a^{3}$ (min)\par
+Watch for:\par
+Q1 the side of each square is a quarter of its piece\par
+Q2 Excellence: keep $a$ as a letter all the way; justify which is the maximum}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Ways to lose marks}\relax
+\begin{itemize}
+\item[\lmnum{nocalc}] Write the \tderiv before substituting.
+\item[\lmnum{wrongfn}] Rates from the \tderiv; values from the original.
+\item[\lmnum{incomplete}] A point needs $y$; answer the quantity asked.
+\item[\lmnum{nojust}] Justify every maximum and minimum.
+\item[\lmnum{context}] Meaning and units for every rate.
+\end{itemize}
+\sfoot{\hp{lose}}
+\note{Teaching line, not a question slide.\par
+Full list L1 to L6 in the handout; ask which one the student is most likely to make under time pressure.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Summary}\relax
+{\sSum
+\begin{enumerate}
+\item Name the method from the wording first.
+\item Merit: two conditions, two equations; value given, solve for $t$.
+\item Excellence: variables, constraint, one variable, optimise, justify.
+\item Every answer: working, sentence, units.
+\end{enumerate}}
+\sfoot{\hp{idea}}
+\note{Teaching line, not a question slide.\par
+Ask the student to say each line back before looking at the screen.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice sheet \textperiodcentered\ 30 minutes, timed}\relax
+Exam conditions: no notes, calculator allowed.
+\vskip3mm
+\begin{itemize}
+\item Question 1: four Achieved parts, about 12 minutes.
+\item Question 2: two Merit parts, about 10 minutes.
+\item Question 3: Excellence, about 8 minutes.
+\end{itemize}
+\vskip3mm
+Attempt every part; write the \tderiv first.
+\sfoot{Practice sheet}
+\note{Q1 (a) $4$; (b) $y=7x-17$; (c) $c=5$; (d) $0<x<4$\par
+Q2 (a) $t=0.5$ s and $t=2$ s; (b) $36$ m\par
+Q3 $k=192$\par
+Short solution:\par
+Q1 (a) $f'(x)=4x^{3}-6x+2$ at $x=-1$\par
+Q1 (b) point $(3,\,4)$, $m=4(3)-5=7$\par
+Q1 (d) $3x^{2}-12x=3x(x-4)<0$\par
+Q2 (a) $v=12t^{2}-30t+12=6(2t-1)(t-2)$\par
+Q2 (b) $v\ge0$ for $0\le t\le6$, so highest at $t=6$: $s=3t^{2}-\dfrac{1}{3}t^{3}$\par
+Q3 growing fastest when $P'$ is a maximum: $P''=2k-24t^{2}=0$ at $t=4$\par
+Watch for:\par
+Q2 (b) the maximum is at the end of the interval, where $v=0$\par
+Q3 check $P'''<0$ and $P'(4)>0$\par
+Full working: practice answer version (tutor's working, not an official mark scheme)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Homework}\relax
+{\sEmph\bfseries Homework sheet: 9 questions, about 60 minutes\par}
+\vskip4mm
+\begin{itemize}
+\item Questions 1 to 6: mixed Achieved and Merit revision.
+\item Questions 7 and 8: Excellence exam questions.
+\item Question 9: Extension, a general proof.
+\end{itemize}
+\vskip4mm
+Optional extra: redo any earlier practice sheet question you got wrong.
+\sfoot{Homework}
+\note{Teaching line, not a question slide.\par
+Answers: homework answer version (tutor's working, not an official mark scheme).\par
+Mark Questions 7 to 9 together with the student next lesson; they are the longest exam-style questions in the unit.}
+\end{frame}
+\end{document}

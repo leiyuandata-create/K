@@ -1,0 +1,12 @@
+% displacement -> velocity -> acceleration: differentiate to the right, anti-differentiate to the left
+\begin{tikzpicture}[x=\figunit, y=\figunit]
+  \foreach \x/\t/\n in {0/{\tdisp}/s, 4.6/{\tvel}/v, 9.2/{\tacc}/a}{
+    \draw[line width=0.8pt, fill=boxfill, rounded corners=2pt] (\x-1.65,-0.65) rectangle (\x+1.65,0.65);
+    \node at (\x,0.15) {$\n$};
+    \node at (\x,-0.3) {\t};}
+  \foreach \x in {0,4.6}{
+    \draw[-{Stealth[length=2mm]}, line width=0.8pt] (\x+1.75,0.35) -- (\x+2.85,0.35);
+    \draw[-{Stealth[length=2mm]}, line width=0.8pt] (\x+2.85,-0.35) -- (\x+1.75,-0.35);}
+  \node[above] at (4.6,0.75) {differentiate $\longrightarrow$};
+  \node[below] at (4.6,-0.75) {$\longleftarrow$ anti-differentiate, then find $c$};
+\end{tikzpicture}

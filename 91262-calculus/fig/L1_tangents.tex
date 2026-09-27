@@ -1,0 +1,20 @@
+% y = x^2 with tangents at x = -1, 1, 2.  Tangent at x = a: y = 2a x - a^2 (computed).
+% Caller sets \figunit.  Points A, B, C are at x = -1, 1, 2.
+\begin{tikzpicture}[x=\figunit, y=0.6\figunit, line cap=round]
+  \gridaxes{-3}{3}{-2}{6}{1}{2}{$y$}
+  \begin{scope}
+    \clip (-3,-2) rectangle (3,6);
+    \curve{-2.5}{2.5}{\x*\x}
+    \foreach \a/\pos in {-1/left, 1/right, 2/right}{
+      \draw[line width=0.8pt, dashed] ({\a-0.9},{2*\a*(\a-0.9)-\a*\a}) -- ({\a+0.9},{2*\a*(\a+0.9)-\a*\a});
+      \fill (\a,{\a*\a}) circle (2.2pt);
+    }
+  \end{scope}
+  \node[anchor=south west] at (2.5,{2.5*2.5-0.2}) {$y=x^{2}$};
+  % letters sit inside the parabola, above each tangent (checked):
+  % A: x in [-0.95,-0.6], y in [1.1,1.9]; curve there is below 0.9 and tangent y=-2x-1 below 0.9
+  % B: mirror of A;  C: x in [1.6,1.95], y in [4.1,4.9]; curve needs x > 2.02 at y = 4.1
+  \node[anchor=south west, inner sep=1pt] at (-0.95,1.1) {A};
+  \node[anchor=south east, inner sep=1pt] at (0.95,1.1) {B};
+  \node[anchor=south east, inner sep=1pt] at (1.95,4.1) {C};
+\end{tikzpicture}

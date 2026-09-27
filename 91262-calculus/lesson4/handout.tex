@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\input{lostmarks.tex}
+\newlength\figunit
+\begin{document}
+\handouthead{Lesson 4 \textperiodcentered\ Anti-differentiation, Rates of Change and Kinematics}{NCEA Level 2 Mathematics \textperiodcentered\ AS 91262 Apply calculus methods in solving problems \textperiodcentered\ Handout}
+
+\section{The one idea}\label{idea}
+\begin{keybox}
+\kw{Anti-differentiation undoes differentiation.} Raise the power by 1, divide by the new power, add $+c$.
+Then use a known point to find $c$.
+\end{keybox}
+A \tderiv is a \kw{rate of change}. In motion, velocity is the rate of change of displacement,
+and acceleration is the rate of change of velocity.
+
+\section{Anti-differentiating}\label{anti}
+\begin{keybox}
+\[x^{n}\ \longrightarrow\ \dfrac{x^{n+1}}{n+1}+c\qquad\qquad k\ \longrightarrow\ kx+c\]
+\end{keybox}
+\begin{tabular}{@{}llll@{}}
+\toprule
+$f'(x)$ term & raise the power & divide by the new power & result\\
+\midrule
+$6x^{2}$ & $6x^{3}$ & $\dfrac{6x^{3}}{3}$ & $2x^{3}$\\[2mm]
+$-4x$ & $-4x^{2}$ & $\dfrac{-4x^{2}}{2}$ & $-2x^{2}$\\[2mm]
+$5$ & $5x$ & $\dfrac{5x}{1}$ & $5x$\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\kw{Why $+c$?} Differentiating removes a constant, so the \tantider can have any constant.
+\kw{Check}: differentiate your answer; you must get back $f'(x)$.
+
+\begin{example}{Worked example 1}
+Find $f(x)$ if $f'(x)=6x^{2}-4x+5$.
+\begin{steps}
+\item Term by term (table above).
+\item $f(x)=\mathbf{2x^{3}-2x^{2}+5x+c}$.\quad Check: $6x^{2}-4x+5$.
+\end{steps}
+\end{example}
+
+\section{Finding $c$}\label{findc}
+\begin{example}{Worked example 2}
+$f'(x)=4x-3$ and the curve passes through $(2,\,7)$. Find $f(x)$.
+\begin{steps}
+\item $f(x)=2x^{2}-3x+c$
+\item Substitute the point: $7=2(2)^{2}-3(2)+c=2+c$, so $c=5$.
+\item $f(x)=\mathbf{2x^{2}-3x+5}$
+\end{steps}
+\end{example}
+
+\section{Rates of change}\label{rates}
+\subsection{Write it in this order}
+\begin{enumerate}[leftmargin=7mm, itemsep=1pt]
+\item Differentiate: the \tderiv is the rate.
+\item Substitute the given time (if the question gives a \emph{value of the quantity}, solve for the time first).
+\item Answer with units ``per \dots'' and the meaning: positive $=$ increasing, negative $=$ decreasing.
+\end{enumerate}
+
+\begin{example}{Worked example 3}
+The water in a tank is $V=2000+30t-0.5t^{2}$ litres after $t$ minutes. Find the rate of change at $t=10$ and at $t=40$.
+\begin{steps}
+\item $\dd{V}{t}=30-t$
+\item $t=10$: $20$, so the volume is \kw{increasing at $20$ litres per minute}.
+\item $t=40$: $-10$, so the volume is \kw{decreasing at $10$ litres per minute}.
+\end{steps}
+\end{example}
+
+\begin{example}{Worked example 4 \textperiodcentered\ given the rate, find the time}
+A population is $P=500+40t-t^{2}$ after $t$ years. When is it growing at $10$ per year?
+\begin{steps}
+\item $\dd{P}{t}=40-2t=10$
+\item $2t=30$, so $\mathbf{t=15}$ \textbf{years}.
+\end{steps}
+\end{example}
+
+\textbf{Sentence frame:} ``At $t=\dots$ the \dots\ is increasing/decreasing at a rate of \dots\ per \dots''
+
+\section{Kinematics: displacement, velocity, acceleration}\label{kin}
+\begin{center}
+\setlength\figunit{9mm}
+\input{../fig/L4_chain.tex}
+\end{center}
+
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+\toprule
+words in the question & maths\\
+\midrule
+at rest, stops, changes direction & $v=0$\\
+maximum height & $v=0$ (then find $s$)\\
+starts from the origin / the start line & $s=0$ when $t=0$\\
+starts from rest & $v=0$ when $t=0$\\
+initial velocity $u$ & $v=u$ when $t=0$\\
+constant acceleration $-9.8$ (falling) & $a=-9.8\mpss$\\
+\bottomrule
+\end{tabular}
+
+\begin{example}{Worked example 5 \textperiodcentered\ differentiate}
+A particle moves with $s=t^{3}-6t^{2}+9t$ metres. Find (a) $v$ at $t=2$, (b) when it is at rest, (c) $a$ at $t=3$.
+\begin{steps}
+\item $v=\dd{s}{t}=3t^{2}-12t+9$;\quad (a) $v(2)=12-24+9=\mathbf{-3\mps}$
+\item (b) $3(t-1)(t-3)=0$, so \textbf{at rest at $t=1$ s and $t=3$ s}.
+\item $a=\dd{v}{t}=6t-12$;\quad (c) $a(3)=\mathbf{6\mpss}$
+\end{steps}
+\end{example}
+
+\begin{example}{Worked example 6 \textperiodcentered\ anti-differentiate (Merit)}
+A ball is thrown up from $1.2$ m above the ground at $14\mps$. Its acceleration is $-9.8\mpss$. Find its maximum height.
+\begin{steps}
+\item $v=-9.8t+c$; $v(0)=14$, so $v=-9.8t+14$.
+\item $s=-4.9t^{2}+14t+c$; $s(0)=1.2$, so $s=-4.9t^{2}+14t+1.2$.
+\item Maximum height when $v=0$: $t=\dfrac{14}{9.8}=1.4286$ s.
+\item $s=-4.9(1.4286)^{2}+14(1.4286)+1.2=\mathbf{11.2}$ \textbf{m}.
+\end{steps}
+\end{example}
+
+\section{What each grade looks like here}\label{grades}
+\begin{tabular}{@{}p{0.14\linewidth}p{0.80\linewidth}@{}}
+\toprule
+Achieved & anti-differentiate and find $c$; find a rate at a given time; find $v$ or $a$ by differentiating.\\
+Merit & find the time from a given rate or value; go from $a$ to $v$ to $s$ with two constants; interpret the sign of a rate.\\
+Excellence & a multi-step motion problem (e.g.\ find the cliff height from the landing speed, then the maximum height), fully explained.\\
+\bottomrule
+\end{tabular}
+
+\section{Checking with the fx-9750GIII}\label{calc}
+In \textsf{RUN-MATRIX}, \textsf{OPTN} $\to$ \textsf{CALC} also has $\int\mathrm{d}x$:
+the definite integral of $v$ from $0$ to $3$ is the displacement over the first $3$ seconds.
+Use it to check $s(3)-s(0)$; the working must still show $s(t)$ with its constant.
+
+\section{Ways to lose marks}\label{lose}
+From the material plus teaching observation.
+\begin{enumerate}[leftmargin=7mm, itemsep=2pt]
+\item[\textbf{\lmnum{plusc}}] \lmtxt{plusc}
+\item[\textbf{\lmnum{newpower}}] \lmtxt{newpower}
+\item[\textbf{\lmnum{value}}] \lmtxt{value}
+\item[\textbf{\lmnum{meaning}}] \lmtxt{meaning}
+\item[\textbf{\lmnum{wrongzero}}] \lmtxt{wrongzero}
+\item[\textbf{\lmnum{distance}}] \lmtxt{distance}
+\end{enumerate}
+\end{document}

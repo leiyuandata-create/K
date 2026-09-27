@@ -1,0 +1,14 @@
+% 12 cm square sheet with an x by x square cut from each corner; dashed fold lines.
+% Drawn with x = 2.2 of 12 (scale only).  Caller sets \figunit (one unit = 1 cm of the sheet).
+\begin{tikzpicture}[x=0.25\figunit, y=0.25\figunit, line cap=round]
+  \def\c{2.2}
+  \draw[line width=1pt] (\c,0) -- (12-\c,0) -- (12-\c,\c) -- (12,\c) -- (12,12-\c) -- (12-\c,12-\c)
+     -- (12-\c,12) -- (\c,12) -- (\c,12-\c) -- (0,12-\c) -- (0,\c) -- (\c,\c) -- cycle;
+  \draw[dashed, line width=0.6pt] (\c,\c) rectangle (12-\c,12-\c);
+  \draw[gridcol, line width=0.5pt] (0,0) rectangle (\c,\c) (12-\c,0) rectangle (12,\c)
+     (0,12-\c) rectangle (\c,12) (12-\c,12-\c) rectangle (12,12);
+  \node[below, inner sep=2pt] at ({\c/2},0) {$x$};
+  \node[left, inner sep=2pt] at (0,{\c/2}) {$x$};
+  \draw[{Stealth[length=1.6mm]}-{Stealth[length=1.6mm]}, line width=0.5pt] (0,-2.6) -- (12,-2.6);
+  \node[below, inner sep=2pt] at (6,-2.6) {$12$ cm};
+\end{tikzpicture}

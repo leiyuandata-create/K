@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+% 12 mm side margins: exam questions print at natural size (crops are at most 181 mm wide)
+\newgeometry{left=12mm,right=12mm,top=14mm,bottom=20mm,footskip=9mm}
+\begin{document}
+\sheethead{Lesson 2 \textperiodcentered\ Practice sheet}{NCEA Level 2 \textperiodcentered\ AS 91262 \textperiodcentered\ Turning points and optimisation}{30 minutes}{}
+Show all working. Every maximum or minimum needs a reason; every answer in context needs units. [A] Achieved, [M] Merit, [E] Excellence.
+
+\Q Find the \tturns of $y=x^{3}-27x+10$ and justify their nature.\mk{A}
+\ALineT{$\dydx=3x^{2}-27=0$, so $x^{2}=9$, $x=3$ or $x=-3$}
+\ALine{$x=3$:\ $y=27-81+10=-44$;\quad $x=-3$:\ $y=-27+81+10=64$}
+\ALineT{$\dfrac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=6x$:\ at $x=3$ it is $18>0$, so $(3,\,-44)$ is a minimum}
+\ALine{at $x=-3$ it is $-18<0$, so $(-3,\,64)$ is a maximum}
+
+\Q A stone is thrown upwards. Its height is $h=1.5+14.7t-4.9t^{2}$ metres after $t$ seconds. Find its maximum height.\mk{A}
+\ALineT{$\dd{h}{t}=14.7-9.8t=0$, so $t=1.5$ s}
+\ALine{$h=1.5+14.7(1.5)-4.9(1.5)^{2}=1.5+22.05-11.025=12.525$}
+\ALine{$h''=-9.8<0$, so maximum.\ \ Maximum height $12.5$ m}
+
+\ppQQ{[A]}{a22_1c}
+
+\ppQQ{[A] \textperiodcentered\ Merit with the justification}{a22_2b}
+
+\ppQ{(i) [A] \textperiodcentered\ (ii) [M]}
+\ppq{a21_1c}
+
+\ppQ{[M] \textperiodcentered\ Excellence with a full justification}
+\ppq{a21_3d}
+
+\ppQ{Extension [E]}
+\ppq{a22_1e}
+\end{document}

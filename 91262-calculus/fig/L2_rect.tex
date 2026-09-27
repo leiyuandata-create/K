@@ -1,0 +1,12 @@
+% Rectangle under y = 12 - x^2, vertices (+-a, 0) and (+-a, 12 - a^2), drawn with a = 1.6.
+\begin{tikzpicture}[x=\figunit, y=0.25\figunit, line cap=round]
+  \draw[-{Stealth[length=2mm]}, line width=0.6pt] (-4.2,0) -- (4.4,0) node[right, inner sep=1pt] {$x$};
+  \draw[-{Stealth[length=2mm]}, line width=0.6pt] (0,-1) -- (0,14) node[above, inner sep=1pt] {$y$};
+  \begin{scope}\clip (-4.2,-1) rectangle (4.4,13.5);
+    \curve{-3.8}{3.8}{12-\x*\x}\end{scope}
+  \def\a{1.6}
+  \draw[line width=0.9pt, fill=boxfill] (-\a,0) rectangle (\a,{12-\a*\a});
+  \fill (\a,{12-\a*\a}) circle (2pt);
+  \node[right, inner sep=3pt] at (\a,{12-\a*\a}) {$(x,\ 12-x^{2})$};
+  \node[anchor=south west] at (2.9,{12-2.9*2.9}) {$y=12-x^{2}$};
+\end{tikzpicture}

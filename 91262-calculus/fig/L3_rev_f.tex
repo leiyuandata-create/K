@@ -1,0 +1,4 @@
+% a possible f(x) = -x^3/3 + x^2 + 3x: minimum (-1, -5/3), maximum (3, 9).  Curve only with \showfp.
+\sketch[xmin=-2,xmax=4,ymin=-4,ymax=10,unit=\figunit,yunit=0.35\figunit,xstep=\figxstep,ystep=\figystep,name={$f(x)$},
+  curve={-\x*\x*\x/3+\x*\x+3*\x},show=\ifdefined\showfp 1\else 0\fi,dmin=-2,dmax=4,
+  extra={\draw[dashed, line width=0.6pt] (-1,-4) -- (-1,10) (3,-4) -- (3,10);}]

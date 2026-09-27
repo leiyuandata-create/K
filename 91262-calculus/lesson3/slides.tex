@@ -1,0 +1,320 @@
+\documentclass[aspectratio=169,11pt,t,xcolor=table]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout}
+\input{lostmarks.tex}
+\newlength\figunit
+\def\figxstep{2}\def\figystep{4}% coarser tick labels on screen
+\begin{document}
+
+% ------------------------------------------------------------------
+\begin{frame}{Lesson 3 \textperiodcentered\ Sketching Gradient Functions}\relax
+\vskip6mm
+{\sEmph\bfseries Learning intention\par}\vskip2mm
+Sketch the graph of $f'(x)$ from the graph of $f(x)$, and sketch a possible $f(x)$ from the graph of $f'(x)$.
+\vskip6mm
+{\sEmph\bfseries Success looks like\par}\vskip2mm
+\begin{itemize}
+\item I put the zeros of $f'$ under the \tturns of $f$.
+\item I put $f'$ on the correct side of the axis in every interval.
+\item I can go backwards from $f'$ to a possible $f$.
+\end{itemize}
+\note{Teaching line, not a question slide.\par
+Materials: the practice sheet starts with a sketch page; grids 1 to 6 are for the three practice rounds.\par
+Timing: Do Now 10 min, three rounds about 20 min each, practice sheet 30 min, wrap-up 5 min.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Do Now}\relax
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\qn{1} Find the \tturn of $y=x^{2}-6x+1$ and state its nature.
+\vskip5mm
+\qn{2} For which $x$ is $f(x)=x^{3}-3x^{2}$ decreasing?
+\vskip5mm
+\qn{3} Is the gradient at A, B, C and D positive, negative or zero?
+\end{column}
+\begin{column}{0.46\textwidth}\centering
+\setlength\figunit{12mm}
+\input{../fig/L3_dn.tex}
+\end{column}
+\end{columns}
+\sfoot{Lesson 2 and prerequisites}
+\note{Q1 $(3,\,-8)$, minimum\par
+Q2 $0<x<2$\par
+Q3 A positive; B zero; C negative; D positive\par
+Short solution:\par
+Q1 $2x-6=0$; $y=9-18+1$; $y''=2>0$\par
+Q2 $f'(x)=3x^{2}-6x=3x(x-2)<0$ between the roots\par
+Q3 $f'(x)=3x^{2}-3$: $3.75$, $0$, $-2.25$, $5.67$\par
+Watch for:\par
+Q3 reading the sign of $y$ instead of the direction of the curve (A is below the axis but going up)\par
+Diagnostic:\par
+Q1 or Q2 wrong: Lesson 2 needs a recap before round 2\par
+Q3 wrong: the student confuses height and gradient, the exact confusion this lesson fixes; spend longer on the one idea}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{The one idea}\relax
+\fbx{\text{height of } f' \;=\; \text{steepness of } f}
+\vskip2mm
+\renewcommand{\arraystretch}{1.35}
+\centering
+\begin{tabular}{@{}p{62mm}p{62mm}@{}}
+\toprule
+graph of $f$ & graph of $f'$\\
+\midrule
+\tturn & \\
+going up & \\
+going down & \\
+steepest point & \\
+\bottomrule
+\end{tabular}
+\sfoot{\hp{table}}
+\note{Row 1 on the $x$-axis ($f'=0$)\par
+Row 2 above the $x$-axis\par
+Row 3 below the $x$-axis\par
+Row 4 turning point of $f'$\par
+Short solution:\par
+fill the table with the student before any graph; keep it on the whiteboard all lesson\par
+Watch for:\par
+L1: students expect the same hump in the same place; say “flat means zero”}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Lines and parabolas}\relax
+A straight line: $f'$ is a \kw{horizontal line}. A parabola: $f'$ is a \kw{straight line} through the $x$-value of its \tturn.
+\vskip2mm
+\qn{1} Sketch $f'(x)$ for this parabola, on the axes on the right.
+\vskip2mm
+\centering
+\setlength\figunit{7mm}
+\input{../fig/L3_parab_f.tex}\hspace{12mm}\input{../fig/L3_parab_fp.tex}
+\sfoot{\hp{parab}}
+\note{Q1 straight line crossing the $x$-axis at $x=1$, below the axis for $x<1$, above for $x>1$\par
+Short solution:\par
+Q1 here $f(x)=x^{2}-2x-3$, so $f'(x)=2x-2$: through $(1,\,0)$ and $(0,\,-2)$\par
+Watch for:\par
+L3: drawing $f'$ as a curve\par
+the dashed line at $x=1$ is the ruler line: the zero of $f'$ sits on it}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+Sketch $f'(x)$ on the sketch page, grids 1 and 2.
+\vskip2mm
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}\centering
+\qn{1}\\[1mm]
+\sketch[xmin=-3,xmax=3,ymin=-4,ymax=6,unit=8mm,yunit=4.5mm,xstep=2,ystep=2,name={$f(x)$},curve={-2*\x+3},dmin=-3,dmax=3]
+\end{column}
+\begin{column}{0.48\textwidth}\centering
+\qn{2}\\[1mm]
+\sketch[xmin=-1,xmax=5,ymin=-5,ymax=5,unit=8mm,yunit=4.3mm,xstep=2,ystep=2,name={$f(x)$},curve={-\x*\x+4*\x},dmin=-1,dmax=5]
+\end{column}
+\end{columns}
+\sfoot{Sketch page}
+\note{Q1 horizontal line at height $-2$\par
+Q2 straight line through $(2,\,0)$, above the axis for $x<2$, below for $x>2$\par
+Short solution:\par
+Q1 the line falls $2$ for every $1$ across: gradient $-2$ everywhere\par
+Q2 maximum at $x=2$; $f(x)=-x^{2}+4x$, so $f'(x)=-2x+4$, through $(0,\,4)$\par
+Watch for:\par
+Q1 drawing $f'$ as a sloping line\par
+Q2 slope direction: up then down means $f'$ goes from $+$ to $-$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Cubics and quartics}\relax
+{\sEmph\bfseries Write it in this order\par}\vskip2mm
+\begin{enumerate}
+\item \tturns of $f$ $\to$ zeros of $f'$ (use a ruler).
+\item $f$ going up $\to$ $f'$ above the axis; going down $\to$ below.
+\item Steepest point of $f$ $\to$ \tturn of $f'$.
+\item Join smoothly. Check the type: cubic $\to$ parabola, quartic $\to$ cubic.
+\end{enumerate}
+\sfoot{\hp{cubic}}
+\note{Teaching line, not a question slide.\par
+Model step 1 with a ruler on the whiteboard: vertical lines from each turning point down to the new axis.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Worked example \textperiodcentered\ cubic}\relax
+\qn{2} Sketch $f'(x)$ for $f(x)=x^{3}-3x$, on the axes on the right.
+\vskip2mm
+\centering
+\setlength\figunit{8.5mm}
+\input{../fig/L3_cubic_f.tex}\hspace{12mm}\input{../fig/L3_cubic_fp.tex}
+\sfoot{\hp{cubic}}
+\note{Q2 up-parabola with zeros at $x=-1$ and $x=1$, lowest point at $x=0$\par
+Short solution:\par
+Q2 up, down, up gives above, below, above; $f'(x)=3x^{2}-3$, minimum $-3$\par
+Watch for:\par
+L4: the lowest point of $f'$ must be under the steepest downhill part of $f$ ($x=0$)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+Sketch $f'(x)$ on the sketch page, grids 3 and 4.
+\vskip2mm
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}\centering
+\qn{1}\\[1mm]
+\sketch[xmin=-4,xmax=3,ymin=-16,ymax=24,unit=8mm,yunit=1.15mm,xstep=2,ystep=8,gy=4,name={$f(x)$},curve={\x*\x*\x+1.5*\x*\x-6*\x},dmin=-4,dmax=3]
+\end{column}
+\begin{column}{0.48\textwidth}\centering
+\qn{2}\\[1mm]
+\sketch[xmin=-3,xmax=3,ymin=-18,ymax=10,unit=8mm,yunit=1.6mm,xstep=2,ystep=8,gy=2,name={$f(x)$},curve={\x*\x*\x*\x-8*\x*\x},dmin=-3,dmax=3]
+\end{column}
+\end{columns}
+\sfoot{Sketch page}
+\note{Q1 up-parabola with zeros at $x=-2$ and $x=1$\par
+Q2 cubic with zeros at $x=-2$, $0$ and $2$: below, above, below, above\par
+Short solution:\par
+Q1 maximum at $x=-2$, minimum at $x=1$; $f'(x)=3x^{2}+3x-6=3(x+2)(x-1)$\par
+Q2 quartic with minimums at $x=\pm2$ and a maximum at $x=0$; $f'(x)=4x^{3}-16x$\par
+Watch for:\par
+Q1 lowest point of $f'$ at $x=-0.5$, halfway between the zeros\par
+Q2 Merit: a quartic gives a cubic with three zeros}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{From $f'$ back to $f$}\relax
+\renewcommand{\arraystretch}{1.35}
+\centering
+\begin{tabular}{@{}p{62mm}p{62mm}@{}}
+\toprule
+$f'$ graph & $f$ graph\\
+\midrule
+crosses from $+$ to $-$ & \\
+crosses from $-$ to $+$ & \\
+above the axis & \\
+below the axis & \\
+\bottomrule
+\end{tabular}
+\vskip4mm
+\raggedright
+$f'$ gives gradients only, so the height of $f$ is unknown: sketch \kw{a possible} $f$.
+\sfoot{\hp{reverse}}
+\note{Row 1 maximum\par
+Row 2 minimum\par
+Row 3 increasing\par
+Row 4 decreasing\par
+Short solution:\par
+read each row from the $f'$ graph left to right\par
+Watch for:\par
+L5: the zeros of $f'$ are turning points of $f$, not its $x$-intercepts}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Worked example \textperiodcentered\ backwards}\relax
+\qn{3} Sketch a possible $f(x)$ for this $f'(x)$, on the axes on the right.
+\vskip2mm
+\centering
+\setlength\figunit{8.5mm}
+\input{../fig/L3_rev_fp.tex}\hspace{12mm}\input{../fig/L3_rev_f.tex}
+\sfoot{\hp{reverse}}
+\note{Q3 minimum at $x=-1$, maximum at $x=3$, decreasing, increasing, decreasing\par
+Short solution:\par
+Q3 one possible $f(x)=-\dfrac{1}{3}x^{3}+x^{2}+3x$: minimum $(-1,\,-1.67)$, maximum $(3,\,9)$\par
+Watch for:\par
+L5: drawing $f$ through $x=-1$ and $x=3$ on the axis}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+Sketch a possible $f(x)$ on the sketch page, grids 5 and 6.
+\vskip2mm
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}\centering
+\qn{1}\\[1mm]
+\sketch[xmin=-3,xmax=3,ymin=-2,ymax=5,unit=8mm,yunit=5.5mm,xstep=2,ystep=2,name={$f'(x)$},curve={3},dmin=-3,dmax=3]
+\end{column}
+\begin{column}{0.48\textwidth}\centering
+\qn{2}\\[1mm]
+\sketch[xmin=-1,xmax=5,ymin=-5,ymax=6,unit=8mm,yunit=3.5mm,xstep=2,ystep=2,name={$f'(x)$},curve={\x*\x-4*\x},dmin=-1,dmax=5]
+\end{column}
+\end{columns}
+\sfoot{Sketch page}
+\note{Q1 any straight line with gradient $3$\par
+Q2 maximum at $x=0$, minimum at $x=4$\par
+Short solution:\par
+Q1 $f'$ is $3$ everywhere, so $f$ rises $3$ for every $1$ across, e.g. $f(x)=3x$\par
+Q2 $f'$ goes $+$ to $-$ at $0$ and $-$ to $+$ at $4$; one possible $f(x)=\dfrac{1}{3}x^{3}-2x^{2}+4$\par
+Watch for:\par
+Q1 drawing a horizontal line (copying $f'$)\par
+Q2 steepest downhill at $x=2$, under the lowest point of $f'$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Ways to lose marks}\relax
+\begin{itemize}
+\item[\lmnum{tpcopy}] \tturns of $f$ become \kw{zeros} of $f'$.
+\item[\lmnum{sign}] $f$ going down $\to$ $f'$ below the axis.
+\item[\lmnum{degree}] Parabola $\to$ line; cubic $\to$ parabola.
+\item[\lmnum{roots}] Zeros of $f'$ are \tturns of $f$.
+\item[\lmnum{marks}] Line up $x$-values with a ruler; label the graph.
+\end{itemize}
+\sfoot{\hp{lose}}
+\note{Teaching line, not a question slide.\par
+Full list L1 to L6 in the handout, with the versions that get no credit.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Summary}\relax
+{\sSum
+\begin{enumerate}
+\item Height of $f'$ = steepness of $f$.
+\item Turning points of $f$ $\leftrightarrow$ zeros of $f'$.
+\item Up: $f'$ above the axis. Down: $f'$ below.
+\item Backwards: $+$ to $-$ is a maximum; the height of $f$ is free.
+\end{enumerate}}
+\sfoot{\hp{idea}}
+\note{Teaching line, not a question slide.\par
+Ask the student to say each line back before looking at the screen.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice sheet \textperiodcentered\ 30 minutes}\relax
+Work alone on the practice sheet, from Question 1.
+\vskip3mm
+\begin{itemize}
+\item Questions 1 and 2: warm-up, about 6 minutes.
+\item Questions 3 to 7: exam questions, about 24 minutes.
+\item Use a ruler to line up every key $x$-value.
+\end{itemize}
+\sfoot{Practice sheet}
+\note{Q1 up-parabola, zeros at $x=-1$ and $x=3$\par
+Q2 parabola with a maximum at $x=2$\par
+Q3 cubic: zeros under the three turning points; negative, positive, negative, positive\par
+Q4 cubic shape: minimum under the left zero of $f'$, maximum under the right zero\par
+Q5 negative quartic shape: maximum at $x=-3$, minimum at $x=-1$, maximum at $x=3.5$\par
+Q6 (i) $f'=-1$, $g'=1$, $h'(x)=2x$\par
+Q7 (ii) $p'=-1$ for $x<0$ and $p'=1$ for $x>0$; (iii) no\par
+Short solution:\par
+Q1 $f'(x)=x^{2}-2x-3=(x+1)(x-3)$\par
+Q2 $f'$ is $+$ then $-$, crossing at $x=2$\par
+Q5 $f'$ crosses $+$ to $-$ at $-3$ and $3.5$, $-$ to $+$ at $-1$\par
+Q7 (iii) $p$ has a sharp corner at $x=0$; the gradient jumps from $-1$ to $1$, so it is not defined there, not zero\par
+Watch for:\par
+Q6 (i) straight lines give horizontal lines; $h'$ passes through the origin\par
+Q7 open circles at $x=0$ on $p'$\par
+Full working: practice answer version (tutor's working, not an official mark scheme)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Homework}\relax
+{\sEmph\bfseries Homework sheet: 14 questions, about 60 minutes\par}
+\vskip4mm
+\begin{itemize}
+\item Questions 1 to 11: Achieved and Merit sketches.
+\item Questions 12 and 13: Merit.
+\item Question 14: Extension (Excellence).
+\end{itemize}
+\vskip4mm
+Optional extra: StudyTime Guide, ``Sketching Gradient Functions'' from page 19.
+\sfoot{Homework}
+\note{Teaching line, not a question slide.\par
+Answers: homework answer version (tutor's working, not an official mark scheme).\par
+Next lesson Do Now checks one $f$ to $f'$ sketch in words.}
+\end{frame}
+\end{document}

@@ -1,0 +1,295 @@
+\documentclass[aspectratio=169,11pt,t,xcolor=table]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout}
+\input{lostmarks.tex}
+\newlength\figunit
+\begin{document}
+
+% ------------------------------------------------------------------
+\begin{frame}{Lesson 4 \textperiodcentered\ Anti-differentiation, Rates and Kinematics}\relax
+\vskip6mm
+{\sEmph\bfseries Learning intention\par}\vskip2mm
+Anti-differentiate and find $c$, interpret rates of change in context, and move between displacement, velocity and acceleration.
+\vskip6mm
+{\sEmph\bfseries Success looks like\par}\vskip2mm
+\begin{itemize}
+\item I can find $f(x)$ from $f'(x)$ and a point.
+\item I can find a rate of change and say what it means, with units.
+\item I can go from $s$ to $v$ to $a$, and back again.
+\end{itemize}
+\note{Teaching line, not a question slide.\par
+Timing: Do Now 10 min, three rounds about 20 min each, practice sheet 30 min, wrap-up 5 min.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Do Now}\relax
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\qn{1} The graph of $f$ has a maximum at $x=-1$ and a minimum at $x=4$. Where does the graph of $f'$ cross the $x$-axis?
+\vskip5mm
+\qn{2} $f'(x)$ is positive for $x<2$ and negative for $x>2$. Does $f$ have a maximum or a minimum at $x=2$?
+\end{column}
+\begin{column}{0.48\textwidth}
+\qn{3} Differentiate $s=5t^{2}-3t+8$.
+\vskip5mm
+\qn{4} Find $c$ if $12=2(3)^{2}-4+c$.
+\end{column}
+\end{columns}
+\sfoot{Lesson 3 and prerequisites}
+\note{Q1 $x=-1$ and $x=4$\par
+Q2 maximum\par
+Q3 $\dfrac{ds}{dt}=10t-3$\par
+Q4 $c=-2$\par
+Short solution:\par
+Q2 gradient $+$ then $-$: up then down\par
+Q4 $12=18-4+c$\par
+Watch for:\par
+Q3 the variable is $t$: same rule, different letter\par
+Diagnostic:\par
+Q1 or Q2 wrong: Lesson 3 link between turning points and zeros of $f'$ not secure; revisit before homework\par
+Q3 wrong: a letter other than $x$ throws the student; say “$t$ works exactly like $x$”\par
+Q4 wrong: finding $c$ will be slow today; model one more example in round 1}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{The one idea}\relax
+Anti-differentiation \kw{undoes} differentiation.
+\fbx{x^{n}\ \longrightarrow\ \dfrac{x^{n+1}}{n+1}+c}
+\vskip1mm
+Raise the power by 1, divide by the \kw{new} power, add $+c$.\\[1mm]
+Then use a known point to find $c$.
+\vskip4mm
+Check: differentiate your answer; you must get back $f'(x)$.
+\sfoot{\hp{anti}}
+\note{Teaching line, not a question slide.\par
+Ask: differentiate $2x+3$ and $2x+10$. Both give $2$, so going back we cannot know the constant: that is $c$.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Worked examples \textperiodcentered\ anti-differentiate}\relax
+\qn{1} Find $f(x)$ if $f'(x)=6x^{2}-4x+5$.
+\vskip6mm
+\qn{2} $f'(x)=4x-3$ and the curve passes through $(2,\,7)$. Find $f(x)$.
+\vskip2mm
+\hspace*{6mm}Step 1: anti-differentiate\qquad Step 2: substitute the point\qquad Step 3: $c$
+\sfoot{\hp{findc}}
+\note{Q1 $f(x)=2x^{3}-2x^{2}+5x+c$\par
+Q2 $f(x)=2x^{2}-3x+5$\par
+Short solution:\par
+Q1 $\dfrac{6x^{3}}{3}-\dfrac{4x^{2}}{2}+5x$\par
+Q2 $7=2(4)-6+c=2+c$, so $c=5$\par
+Watch for:\par
+L2: $6x^{2}\to\dfrac{6x^{3}}{2}$ (old power)\par
+L1: leaving $c$ in the final answer to Q2}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} Anti-differentiate $f'(x)=9x^{2}+2x-7$.
+\vskip5mm
+\qn{2} Anti-differentiate $f'(x)=x^{3}-6x$.
+\vskip5mm
+\qn{3} $f'(x)=6x-5$ and $f(1)=4$. Find $f(x)$.
+\sfoot{\hp{anti}}
+\note{Q1 $f(x)=3x^{3}+x^{2}-7x+c$\par
+Q2 $f(x)=\dfrac{1}{4}x^{4}-3x^{2}+c$\par
+Q3 $f(x)=3x^{2}-5x+6$\par
+Short solution:\par
+Q2 $\dfrac{x^{4}}{4}-\dfrac{6x^{2}}{2}$\par
+Q3 $f(x)=3x^{2}-5x+c$; $3-5+c=4$\par
+Watch for:\par
+Q1 the constant term: $-7\to-7x$\par
+Q3 “$f(1)=4$” is the point $(1,\,4)$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Rates of change}\relax
+{\sEmph\bfseries Write it in this order\par}\vskip1mm
+\begin{enumerate}
+\item Differentiate: the \tderiv is the rate.
+\item Substitute the time. (Given a \emph{value}? Solve for the time first.)
+\item Units ``per \dots''; positive $=$ increasing, negative $=$ decreasing.
+\end{enumerate}
+\vskip2mm
+\qn{3} The water in a tank is $V=2000+30t-0.5t^{2}$ litres after $t$ minutes. Find the rate of change at $t=10$ and at $t=40$, and say what each means.
+\sfoot{\hp{rates}}
+\note{Q3 $t=10$: increasing at $20$ litres per minute; $t=40$: decreasing at $10$ litres per minute\par
+Short solution:\par
+Q3 $\dfrac{dV}{dt}=30-t$\par
+Watch for:\par
+L3: substituting into $V$ gives the amount of water, not the rate\par
+L4: “$-10$” alone is not an interpretation}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Worked example \textperiodcentered\ find the time}\relax
+\qn{4} A population is $P=500+40t-t^{2}$ after $t$ years. When is it growing at $10$ per year?
+\vskip5mm
+Set the \tderiv equal to the rate, then solve.
+\vskip5mm
+{\sEmph Sentence frame\par}\vskip1mm
+At $t=\dots$ the \dots\ is increasing / decreasing at \dots\ per \dots
+\sfoot{\hp{rates}}
+\note{Q4 $t=15$ years\par
+Short solution:\par
+Q4 $\dfrac{dP}{dt}=40-2t=10$\par
+Watch for:\par
+setting $P=10$ instead of $\dfrac{dP}{dt}=10$ (L3)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} The temperature of a drink is $T=80-6t+0.1t^{2}$ degrees Celsius after $t$ minutes. Find the rate of change at $t=10$ and explain what it means.
+\vskip4mm
+\qn{2} The number of people in a queue is $N=15t-t^{2}+20$ after $t$ minutes. When is the number in the queue not changing?
+\vskip4mm
+\qn{3} The area of a weed patch is $A=t^{2}-4t+10$ square metres after $t$ weeks ($t\ge2$). Find the rate at which the area is growing when the area is $31$ square metres.
+\sfoot{\hp{rates}}
+\note{Q1 $-4$: cooling at $4$ degrees per minute\par
+Q2 $t=7.5$ minutes\par
+Q3 $10$ square metres per week\par
+Short solution:\par
+Q1 $\dfrac{dT}{dt}=-6+0.2t$; at $t=10$: $-4$\par
+Q2 $\dfrac{dN}{dt}=15-2t=0$\par
+Q3 $t^{2}-4t+10=31$, so $t^{2}-4t-21=0$, $t=7$; $\dfrac{dA}{dt}=2t-4=10$\par
+Watch for:\par
+Q3 Merit: solve for the time first; reject $t=-3$ ($t\ge2$)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Kinematics}\relax
+\centering
+\setlength\figunit{10mm}
+\input{../fig/L4_chain.tex}
+\vskip3mm
+\raggedright
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{105mm}p{45mm}@{}}
+\toprule
+words & maths\\
+\midrule
+at rest, changes direction, maximum height & \\
+starts from the origin & \\
+starts from rest & \\
+\bottomrule
+\end{tabular}
+\sfoot{\hp{kin}}
+\note{Row 1 $v=0$\par
+Row 2 $s=0$ when $t=0$\par
+Row 3 $v=0$ when $t=0$\par
+Short solution:\par
+right: differentiate ($s\to v\to a$); left: anti-differentiate and find each $c$\par
+Watch for:\par
+L5: maximum height is $v=0$, not $a=0$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Worked examples \textperiodcentered\ motion}\relax
+\qn{5} A particle moves with $s=t^{3}-6t^{2}+9t$ metres after $t$ seconds. Find its velocity at $t=2$, the times when it is at rest, and its acceleration at $t=3$.
+\vskip5mm
+\qn{6} A ball is thrown up from $1.2$ m above the ground at $14\mps$. Its acceleration is $-9.8\mpss$. Find its maximum height.
+\sfoot{\hp{kin}}
+\note{Q5 $v(2)=-3\ \mathrm{m\,s^{-1}}$; at rest at $t=1$ and $t=3$; $a(3)=6\ \mathrm{m\,s^{-2}}$\par
+Q6 $11.2$ m\par
+Short solution:\par
+Q5 $v=3t^{2}-12t+9=3(t-1)(t-3)$; $a=6t-12$\par
+Q6 $v=-9.8t+14$; $s=-4.9t^{2}+14t+1.2$; $v=0$ at $t=1.4286$\par
+Watch for:\par
+Q5 a negative velocity means moving backwards, not an error\par
+Q6 two constants: $v(0)=14$ and $s(0)=1.2$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} A particle moves with $s=2t^{3}-9t^{2}+12t$ metres after $t$ seconds. When is it at rest?
+\vskip4mm
+\qn{2} A cyclist starts from rest at the start line with acceleration $a=0.6t\mpss$. Find the cyclist's velocity and distance from the start line after $5$ seconds.
+\vskip4mm
+\qn{3} A stone is thrown straight up from the ground at $24.5\mps$ ($a=-9.8\mpss$). Find its maximum height and when it lands.
+\sfoot{\hp{kin}}
+\note{Q1 $t=1$ s and $t=2$ s\par
+Q2 $7.5\ \mathrm{m\,s^{-1}}$; $12.5$ m\par
+Q3 $30.6$ m; lands at $t=5$ s\par
+Short solution:\par
+Q1 $v=6t^{2}-18t+12=6(t-1)(t-2)$\par
+Q2 $v=0.3t^{2}$ (from rest), $s=0.1t^{3}$ (from the start line)\par
+Q3 $v=24.5-9.8t=0$ at $t=2.5$; $s=24.5t-4.9t^{2}$; $s=0$ at $t=5$\par
+Watch for:\par
+Q2 both constants are $0$ here; say why\par
+Q3 Merit: “when it lands” is $s=0$, the second root}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Ways to lose marks}\relax
+\begin{itemize}
+\item[\lmnum{plusc}] $+c$, then find it from the given point.
+\item[\lmnum{newpower}] Divide by the \kw{new} power.
+\item[\lmnum{value}] A rate is the \tderiv, not the value.
+\item[\lmnum{meaning}] Say increasing or decreasing, with units.
+\item[\lmnum{wrongzero}] Maximum height and at rest: $v=0$.
+\end{itemize}
+\sfoot{\hp{lose}}
+\note{Teaching line, not a question slide.\par
+Full list L1 to L6 in the handout; L6 (distance and displacement) is the homework extension.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Summary}\relax
+{\sSum
+\begin{enumerate}
+\item $x^{n}\to\dfrac{x^{n+1}}{n+1}+c$; a point gives $c$.
+\item Rate of change $=$ \tderiv; say what the sign means, with units.
+\item $s\to v\to a$: differentiate. $a\to v\to s$: anti-differentiate.
+\item At rest or maximum height: $v=0$.
+\end{enumerate}}
+\sfoot{\hp{idea}}
+\note{Teaching line, not a question slide.\par
+Ask the student to say each line back before looking at the screen.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice sheet \textperiodcentered\ 30 minutes}\relax
+Work alone on the practice sheet.
+\vskip3mm
+\begin{itemize}
+\item Questions 1 and 2: warm-up, about 6 minutes.
+\item Questions 3 to 8: exam questions, about 24 minutes.
+\item Every rate and every motion answer needs units.
+\end{itemize}
+\sfoot{Practice sheet}
+\note{Q1 $f(x)=4x^{3}-x^{2}+3x+4$\par
+Q2 $s(3)=20$ m; at rest at $t=4$ s\par
+Q3 $(2,\,23)$\par
+Q4 $f(x)=\dfrac{2}{3}x^{3}-3x^{2}+4x+1$\par
+Q5 $5.7$ m\par
+Q6 $-7\ \mathrm{m\,s^{-1}}$\par
+Q7 $26.2$ m above the water\par
+Q8 (i) $P'(6)=-528$; (ii) decreasing at $528$ people per hour\par
+Short solution:\par
+Q3 $f(x)=2x^{3}+2.5x^{2}-x+c$; $f(1)=2.5$ gives $c=-1$\par
+Q4 $f(3)=12-27+18+c=4$, so $c=1$\par
+Q5 $s=0.1t^{3}+t$ with $s(0)=0$\par
+Q7 lands at $t=2.6$; cliff $25.844$ m; top at $t=0.2857$\par
+Watch for:\par
+Q7 Excellence: needs the cliff height first; heights are above the water\par
+Q8 (ii) people are leaving: the crowd is shrinking\par
+Full working: practice answer version (tutor's working, not an official mark scheme)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Homework}\relax
+{\sEmph\bfseries Homework sheet: 14 questions, about 60 minutes\par}
+\vskip4mm
+\begin{itemize}
+\item Questions 1 to 11: Achieved practice.
+\item Questions 12 and 13: Merit.
+\item Question 14: Extension (Excellence).
+\end{itemize}
+\vskip4mm
+Optional extra: StudyTime Guide, ``Quick Questions'' on page 29.
+\sfoot{Homework}
+\note{Teaching line, not a question slide.\par
+Answers: homework answer version (tutor's working, not an official mark scheme).\par
+Next lesson is the mixed practice lesson; its Do Now covers all four lessons.}
+\end{frame}
+\end{document}

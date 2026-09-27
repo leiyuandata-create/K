@@ -1,0 +1,11 @@
+*.aux
+*.log
+*.out
+*.nav
+*.snm
+*.toc
+*.vrb
+slides_notes.pdf
+slides_join.tex
+slides_join.pdf
+__pycache__/

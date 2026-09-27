@@ -1,0 +1,4 @@
+% f'(x) = 3x^2 - 3: zeros at x = -1 and 1, minimum -3 at x = 0.  Curve only with \showfp.
+\sketch[xmin=-3,xmax=3,ymin=-4,ymax=8,unit=\figunit,yunit=0.45\figunit,xstep=\figxstep,ystep=\figystep,name={$f'(x)$},
+  curve={3*\x*\x-3},show=\ifdefined\showfp 1\else 0\fi,dmin=-2.2,dmax=2.2,
+  extra={\draw[dashed, line width=0.6pt] (-1,-4) -- (-1,8) (1,-4) -- (1,8);}]

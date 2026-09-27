@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\begin{document}
+\sheethead{Lesson 4 \textperiodcentered\ Homework}{NCEA Level 2 \textperiodcentered\ AS 91262 \textperiodcentered\ Anti-differentiation, rates and kinematics}{about 60 minutes}{}
+Show all working, including $+c$. Give units and meaning for every rate. [A] Achieved, [M] Merit, [E] Excellence.
+
+\Q Anti-differentiate.\mk{A}
+\begin{parts}
+\item $f'(x)=8x^{3}$
+\ALine{$f(x)=2x^{4}+c$}
+\item $f'(x)=3x^{2}-10x+1$
+\ALine{$f(x)=x^{3}-5x^{2}+x+c$}
+\item $\dydx=5-2x$
+\ALine{$y=5x-x^{2}+c$}
+\item $f'(x)=x^{2}+4x$
+\ALineT{$f(x)=\dfrac{1}{3}x^{3}+2x^{2}+c$}
+\end{parts}
+
+\Q $f'(x)=2x+3$ and $f(0)=-1$. Find $f(x)$.\mk{A}
+\ALine{$f(x)=x^{2}+3x+c$;\ \ $f(0)=c=-1$}
+\ALine{$f(x)=x^{2}+3x-1$}
+
+\Q $f'(x)=3x^{2}-4$ and the curve passes through $(2,\,5)$. Find $f(x)$.\mk{A}
+\ALine{$f(x)=x^{3}-4x+c$;\ \ $8-8+c=5$, so $c=5$}
+\ALine{$f(x)=x^{3}-4x+5$}
+
+\Q $\dydx=6x^{2}+2x$ and the curve passes through $(-1,\,3)$. Find $y$ in terms of $x$.\mk{A}
+\ALine{$y=2x^{3}+x^{2}+c$;\ \ $-2+1+c=3$, so $c=4$}
+\ALine{$y=2x^{3}+x^{2}+4$}
+
+\Q $f'(x)=4x-1$ and the curve passes through $(1,\,2)$. Find $f(3)$.\mk{A}
+\ALine{$f(x)=2x^{2}-x+c$;\ \ $2-1+c=2$, so $c=1$}
+\ALine{$f(3)=18-3+1=16$}
+
+\Q A company's revenue from selling $x$ items is $R=50x-0.2x^{2}$ dollars. Find the rate of change of $R$ when $x=100$, and explain what it means.\mk{A}
+\ALineT{$\dd{R}{x}=50-0.4x$;\ \ at $x=100$:\ $50-40=10$}
+\ALine{Revenue is increasing at \$10 per extra item sold.}
+
+\Q The temperature of an oven is $T=20+15t-0.25t^{2}$ degrees Celsius after $t$ minutes ($0\le t\le30$). Find the rate of change at $t=10$ and explain it.\mk{A}
+\ALineT{$\dd{T}{t}=15-0.5t$;\ \ at $t=10$:\ $10$}
+\ALine{The oven is heating up at $10$ degrees Celsius per minute.}
+
+\Q A particle moves with $s=t^{3}-9t^{2}+24t$ metres after $t$ seconds.\mk{A}
+\begin{parts}
+\item Find its velocity at $t=1$.
+\ALine{$v=3t^{2}-18t+24$;\ \ $v(1)=3-18+24=9\mps$}
+\item Find the times when it is at rest.
+\ALine{$3(t^{2}-6t+8)=3(t-2)(t-4)=0$, so $t=2$ s and $t=4$ s}
+\item Find its acceleration at $t=4$.
+\ALine{$a=6t-18$;\ \ $a(4)=6\mpss$}
+\end{parts}
+
+\Q A car has velocity $v=3t^{2}+2\mps$ and starts at the origin. How far has it travelled after $4$ seconds?\mk{A}
+\ALine{$s=t^{3}+2t+c$;\ \ $s(0)=0$, so $c=0$}
+\ALine{$s(4)=64+8=72$ m}
+
+\Q A particle starts from rest at the origin with acceleration $a=6-2t\mpss$. Find its velocity and displacement at $t=3$.\mk{A}
+\ALine{$v=6t-t^{2}$ (from rest, $c=0$);\ \ $v(3)=18-9=9\mps$}
+\ALineT{$s=3t^{2}-\dfrac{1}{3}t^{3}$ (from the origin);\ \ $s(3)=27-9=18$ m}
+
+\Q The height of a young tree is $H=0.5+0.8t-0.02t^{2}$ metres after $t$ years ($0\le t\le20$). When is it growing at $0.4$ m per year?\mk{A}
+\ALineT{$\dd{H}{t}=0.8-0.04t=0.4$}
+\ALine{$0.04t=0.4$, so $t=10$ years}
+
+\Q A ball is thrown vertically up from a $2$ m platform at $12.6\mps$ (acceleration $-9.8\mpss$). Find its maximum height above the ground.\mk{M}
+\ALine{$v=12.6-9.8t$;\ \ $s=2+12.6t-4.9t^{2}$}
+\ALineT{Maximum when $v=0$:\ \ $t=\dfrac{12.6}{9.8}=1.286$ s}
+\ALine{$s=2+12.6(1.286)-4.9(1.286)^{2}=10.1$ m above the ground}
+
+\Q A car brakes with velocity $v=20-4t\mps$ until it stops. How far does it travel while braking?\mk{M}
+\ALine{Stops when $v=0$:\ \ $t=5$ s}
+\ALine{$s=20t-2t^{2}$ (from where braking starts);\ \ $s(5)=100-50=50$ m}
+
+\QX A particle moves with $v=3t^{2}-12t+9\mps$ and starts at the origin. Find its displacement after $3$ seconds, and the total distance it travels in those $3$ seconds.\mk{E}
+\ALine{$s=t^{3}-6t^{2}+9t$;\ \ $s(3)=27-54+27=0$: displacement $0$ m}
+\ALine{At rest when $3(t-1)(t-3)=0$: it turns round at $t=1$}
+\ALine{$s(1)=1-6+9=4$: out $4$ m, then back $4$ m}
+\ALine{Total distance $=4+4=8$ m}
+
+\vfill
+{\small Optional extra: StudyTime Level 2 Calculus Guide, ``Quick Questions'' on page 29.\par}
+\end{document}

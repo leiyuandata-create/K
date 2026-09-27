@@ -1,0 +1,9 @@
+% y = x^3 - 3x with A (x=-1.5), B (x=-1), C (x=0.5), D (x=1.7); gradients 3.75, 0, -2.25, 5.67.
+\begin{tikzpicture}[x=\figunit, y=0.4\figunit, line cap=round]
+  \draw[-{Stealth[length=2mm]}, line width=0.6pt] (-2.4,0) -- (2.6,0) node[right, inner sep=1pt] {$x$};
+  \draw[-{Stealth[length=2mm]}, line width=0.6pt] (0,-3.5) -- (0,4) node[above, inner sep=1pt] {$y$};
+  \begin{scope}\clip (-2.4,-3.5) rectangle (2.6,3.8); \curve{-2.2}{2.2}{\x*\x*\x-3*\x}\end{scope}
+  \foreach \p/\n/\a in {-1.5/A/north west, -1/B/south, 0.5/C/south west, 1.7/D/north west}{
+    \fill (\p,{\p*\p*\p-3*\p}) circle (2.2pt);
+    \node[anchor=\a, inner sep=3pt] at (\p,{\p*\p*\p-3*\p}) {\n};}
+\end{tikzpicture}

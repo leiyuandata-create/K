@@ -1,0 +1,98 @@
+% slidestyle.sty -- Beamer slides, near viewing on a big TV (tutor-set floor: 12 pt)
+% Size table used in this unit (all through macros; raw size commands are banned in slides.tex):
+%   title 17 pt | emphasis 15 pt | question, body, sub-parts, summary, TikZ labels 13 pt | footer 8 pt
+%   formula box (fraction in an exponent) 18 pt.  Nothing below 12 pt except footer and notes.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{slidestyle}[2026/09/27 slides]
+
+\RequirePackage{geometry}
+\geometry{paperwidth=170mm,paperheight=95.625mm}
+% margins through beamer itself (a geometry margin override pushes the footline off the page)
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+\RequirePackage{shared}
+\usefonttheme{professionalfonts}
+\RequirePackage{mathspec}
+\setmainfont{texgyreheros}[Path=\fontdir,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Path=\fontdir,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmathsfont(Digits,Latin)[Path=\fontdir,Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic]{texgyreheros}
+\RequirePackage{graphicx}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{xr}
+
+% ---------- base size: 13 pt everywhere ----------
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{13}{16}%
+  \abovedisplayskip 5pt \belowdisplayskip 5pt \abovedisplayshortskip 2pt \belowdisplayshortskip 3pt}
+\makeatother
+\AtBeginDocument{\normalsize}
+
+% ---------- size macros (the only way text is sized on slides) ----------
+\newcommand\sTitle{\fontsize{17}{20}\selectfont}
+\newcommand\sEmph{\fontsize{15}{18}\selectfont}
+\newcommand\sQ{\fontsize{13}{16}\selectfont}
+\newcommand\sBody{\fontsize{13}{16}\selectfont}
+\newcommand\sSub{\fontsize{13}{16}\selectfont}
+\newcommand\sSum{\fontsize{13}{17}\selectfont}
+\newcommand\sFoot{\fontsize{8}{9.5}\selectfont}
+\newcommand\sNote{\fontsize{8.5}{10.2}\selectfont}
+\newcommand\sBig{\fontsize{18}{22}\selectfont}
+
+% ---------- look: no fills, no navigation ----------
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{alerted text}{fg=black}
+\setbeamercolor{frametitle}{fg=black,bg=}
+\setbeamerfont{itemize/enumerate body}{size=\sBody}
+\setbeamerfont{itemize/enumerate subbody}{size=\sBody}
+\setbeamerfont{enumerate item}{size=\sBody}
+\setbeamerfont{itemize item}{size=\sBody}
+\setbeamertemplate{itemize item}{\raise0.25ex\hbox{\vrule width 0.45em height 0.45em depth 0pt}}
+\setbeamertemplate{itemize subitem}{--}
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setlength{\leftmargini}{1.4em}
+
+% frame title: bold text over a thin rule
+\setbeamertemplate{frametitle}{%
+  \vskip2mm{\sTitle\bfseries\insertframetitle\par}\vskip0.8mm\hrule height 0.6pt\vskip1mm}
+
+% footer: cross-reference (left) | signature (centre) | page (right), 8 pt
+\gdef\slidefoot{}
+\newcommand\sfoot[1]{\gdef\slidefoot{#1}}
+\newcommand\hp[1]{Handout p.\,\pageref{H-#1}}
+\setbeamertemplate{footline}{%
+  \hbox to\paperwidth{\hskip5mm\sFoot
+    \hbox to 55mm{\slidefoot\hfil}\hfil
+    {\color{sigcol}\signature}\hfil
+    \hbox to 55mm{\hfil\insertframenumber}\hskip5mm}\vskip2.2mm
+  \gdef\slidefoot{}}
+
+% ---------- notes page (tutor only; exempt from the size table) ----------
+\setbeamertemplate{note page}{%
+  \vskip3mm\begin{minipage}[t]{\textwidth}\sNote\raggedright
+  \setlength{\parskip}{1.2pt}%
+  {\bfseries Slide \insertframenumber\ \textperiodcentered\ \insertframetitle\par}\vskip1mm
+  \insertnote\end{minipage}}
+
+\ifdefined\notesmode
+  \setbeameroption{show only notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+
+% ---------- formula box: fixed width, \hfil (overlong -> Overfull \hbox) ----------
+\newcommand\fbx[1]{\par\vskip2.5mm\nointerlineskip\hbox to\linewidth{\hfil\sBig$\displaystyle #1$\hfil}\vskip2.5mm\par}
+
+% ---------- question helpers ----------
+\newcommand\qn[1]{{\bfseries #1}\enspace}
+% (a) (b) sub-parts as a plain list
+\newenvironment{sparts}{\begin{list}{}{\setlength{\leftmargin}{2.0em}\setlength{\labelwidth}{1.6em}%
+  \setlength{\itemsep}{2pt}\setlength{\topsep}{2pt}\setlength{\parsep}{0pt}}\sSub}{\end{list}}
+\newcommand\pt[1]{\item[(#1)]}
+% bold marker for scoring words (at most two per slide)
+\newcommand\kw[1]{\textbf{#1}}
+% empty lesson divider helper
+\newcommand\divider[2]{{\sTitle\bfseries #1\par}\vskip3mm\hrule height0.6pt\vskip4mm{\sEmph #2\par}}
+
+\endinput

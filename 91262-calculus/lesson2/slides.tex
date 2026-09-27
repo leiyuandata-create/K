@@ -1,0 +1,332 @@
+\documentclass[aspectratio=169,11pt,t,xcolor=table]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout}
+\input{lostmarks.tex}
+\newlength\figunit
+\begin{document}
+
+% ------------------------------------------------------------------
+\begin{frame}{Lesson 2 \textperiodcentered\ Turning Points and Optimisation}\relax
+\vskip6mm
+{\sEmph\bfseries Learning intention\par}\vskip2mm
+Use $f'(x)=0$ to find \tturns, decide maximum or minimum, find where a function increases or decreases, and solve maximum and minimum problems.
+\vskip6mm
+{\sEmph\bfseries Success looks like\par}\vskip2mm
+\begin{itemize}
+\item I can find a \tturn and justify its nature.
+\item I can give an interval where $f$ is increasing or decreasing.
+\item I can set up and solve an optimisation problem, with units.
+\end{itemize}
+\note{Teaching line, not a question slide.\par
+Timing: Do Now 10 min, three rounds about 20 min each, practice sheet 30 min, wrap-up 5 min.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Do Now}\relax
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\qn{1} Differentiate $y=(x-3)(x+5)$.
+\vskip5mm
+\qn{2} Find the gradient of $f(x)=x^{3}-5x$ at the point where $x=2$.
+\end{column}
+\begin{column}{0.48\textwidth}
+\qn{3} Solve $3x^{2}-12=0$.
+\vskip5mm
+\qn{4} Solve $2x^{2}-x-6=0$.
+\end{column}
+\end{columns}
+\sfoot{Lesson 1 and prerequisites}
+\note{Q1 $\dfrac{dy}{dx}=2x+2$\par
+Q2 $7$\par
+Q3 $x=2$ or $x=-2$\par
+Q4 $x=2$ or $x=-1.5$\par
+Short solution:\par
+Q1 expand: $y=x^{2}+2x-15$\par
+Q2 $f'(x)=3x^{2}-5$; $f'(2)=12-5$\par
+Q3 $x^{2}=4$\par
+Q4 $(2x+3)(x-2)=0$\par
+Watch for:\par
+Q3 missing the negative root\par
+Q4 sign of the $-1.5$ root\par
+Diagnostic:\par
+Q1 or Q2 wrong: Lesson 1 not secure; re-teach the power rule before round 1\par
+Q3 wrong: expect missing turning points today (both roots of $f'(x)=0$)\par
+Q4 wrong: let the student use EQUA for $f'(x)=0$ today}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{The one idea}\relax
+\begin{columns}[c]
+\begin{column}{0.48\textwidth}
+At a \tturn the \ttangent is flat:
+\fbx{f'(x)=0}
+\vskip2mm
+Maximum: gradient $+$ then $-$.\\[1mm]
+Minimum: gradient $-$ then $+$.
+\end{column}
+\begin{column}{0.50\textwidth}\centering
+\setlength\figunit{12mm}
+\input{../fig/L2_turning.tex}
+\end{column}
+\end{columns}
+\sfoot{\hp{idea}}
+\note{Teaching line, not a question slide.\par
+Trace the curve with a finger: up, flat, down, flat, up.\par
+Ask: what is the gradient exactly at the top? Zero, because the tangent is horizontal.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Finding turning points}\relax
+{\sEmph\bfseries Write it in this order\par}\vskip1mm
+\begin{enumerate}
+\item Differentiate.
+\item Set $f'(x)=0$; solve for $x$.
+\item Find each $y$ from $f(x)$.
+\item Maximum or minimum? Say why.
+\end{enumerate}
+\vskip3mm
+\qn{1} Find the \tturns of $f(x)=x^{3}-6x^{2}+9x+1$ and state their nature.
+\sfoot{\hp{find}}
+\note{Q1 maximum $(1,\,5)$; minimum $(3,\,1)$\par
+Short solution:\par
+Q1 $f'(x)=3x^{2}-12x+9=3(x-1)(x-3)$; $x=1$ or $x=3$\par
+Q1 $f(1)=5$, $f(3)=1$\par
+Q1 $f''(x)=6x-12$: $f''(1)=-6<0$ max; $f''(3)=6>0$ min\par
+Watch for:\par
+stopping at $x=1$, $x=3$ (L1)\par
+$y$-values from $f'(x)$ give $0$, a sign of the wrong function}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Maximum or minimum?}\relax
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}p{50mm}p{55mm}p{45mm}@{}}
+\toprule
+test & what you see & conclusion\\
+\midrule
+gradient each side & $+\ \to\ 0\ \to\ -$ & \\
+ & $-\ \to\ 0\ \to\ +$ & \\
+second derivative & $f''(x)<0$ & \\
+ & $f''(x)>0$ & \\
+\bottomrule
+\end{tabular}
+\vskip4mm
+$f''(x)$: differentiate twice. Always \kw{write the reason} in a sentence.
+\sfoot{\hp{nature}}
+\note{Row 1 maximum\par
+Row 2 minimum\par
+Row 3 maximum, bends down\par
+Row 4 minimum, bends up\par
+Short solution:\par
+sentence frame: $f''(1)=-6<0$, so the turning point at $(1,\,5)$ is a maximum\par
+Watch for:\par
+L2: a bare “maximum” with no test is not a justification\par
+$f''=0$: the test fails; use the gradient either side instead}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} Find the \tturn of $y=x^{2}-8x+3$ and state whether it is a maximum or a minimum.
+\vskip5mm
+\qn{2} Find the \tturns of $f(x)=2x^{3}-3x^{2}-12x$ and justify their nature.
+\vskip5mm
+\qn{3} The curve $y=x^{3}+kx$ has a \tturn at $x=2$. Find $k$.
+\sfoot{\hp{find}}
+\note{Q1 $(4,\,-13)$, minimum\par
+Q2 maximum $(-1,\,7)$; minimum $(2,\,-20)$\par
+Q3 $k=-12$\par
+Short solution:\par
+Q1 $2x-8=0$; $y=16-32+3$; $y''=2>0$\par
+Q2 $6x^{2}-6x-12=6(x-2)(x+1)$; $f''(x)=12x-6$: $f''(-1)=-18$, $f''(2)=18$\par
+Q3 $3x^{2}+k=0$ at $x=2$: $12+k=0$\par
+Watch for:\par
+Q2 forgetting to divide out the $6$ is fine, but check both roots are found\par
+Q3 is a Merit step: a turning point means $f'=0$, not $f=0$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Increasing and decreasing}\relax
+\fbx{\text{increasing: } f'(x)>0 \qquad \text{decreasing: } f'(x)<0}
+\vskip2mm
+Find where $f'(x)=0$ first; test the intervals between.\\[1mm]
+An up-parabola $f'(x)$ is \kw{negative between its roots}.
+\vskip5mm
+\qn{2} For $f(x)=x^{3}-6x^{2}+9x+1$, find where $f$ is decreasing.
+\vskip4mm
+\qn{3} For which $x$ is $y=5+4x-x^{2}$ increasing?
+\sfoot{\hp{incdec}}
+\note{Q2 $1<x<3$\par
+Q3 $x<2$\par
+Short solution:\par
+Q2 $f'(x)=3(x-1)(x-3)$, up-parabola, negative between $1$ and $3$\par
+Q3 $\dfrac{dy}{dx}=4-2x>0$\par
+Watch for:\par
+L3: an answer like “$x=1$ and $x=3$” is the turning points, not an interval\par
+Q3 dividing by a negative flips the inequality if the student writes $-2x>-4$}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\qn{1} For which values of $x$ is $f(x)=x^{2}-10x+1$ decreasing?
+\vskip5mm
+\qn{2} For which values of $x$ is $f(x)=x^{3}-12x+4$ decreasing?
+\vskip5mm
+\qn{3} Show that $f(x)=x^{3}+3x+1$ is increasing for all values of $x$.
+\sfoot{\hp{incdec}}
+\note{Q1 $x<5$\par
+Q2 $-2<x<2$\par
+Q3 $f'(x)=3x^{2}+3>0$ for all $x$\par
+Short solution:\par
+Q1 $f'(x)=2x-10<0$\par
+Q2 $f'(x)=3x^{2}-12=3(x-2)(x+2)<0$ between the roots\par
+Q3 $x^{2}\ge0$, so $3x^{2}+3\ge3>0$\par
+Watch for:\par
+Q2 writing $x<2$ only; the up-parabola is negative on a bounded interval\par
+Q3 Merit: the reason ($x^{2}\ge0$) must be stated}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Optimisation}\relax
+{\sEmph\bfseries Write it in this order\par}\vskip1mm
+\begin{enumerate}
+\item Formula in \kw{one variable}.
+\item Differentiate; set $=0$; solve.
+\item Justify maximum or minimum.
+\item Answer the question asked, with units.
+\end{enumerate}
+\vskip3mm
+\qn{4} A ball's height is $h=2+19.6t-4.9t^{2}$ metres after $t$ seconds. Find the maximum height.
+\sfoot{\hp{opt}}
+\note{Q4 $21.6$ m\par
+Short solution:\par
+Q4 $\dfrac{dh}{dt}=19.6-9.8t=0$, $t=2$\par
+Q4 $h=2+39.2-19.6$; $\dfrac{d^{2}h}{dt^{2}}=-9.8<0$\par
+Watch for:\par
+L5: answering $t=2$ s instead of the height\par
+L6: the unit (m)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Worked example \textperiodcentered\ build the formula}\relax
+\begin{columns}[T]
+\begin{column}{0.56\textwidth}
+\qn{5} A farmer has $60$ m of fence to make a rectangular pen against a wall, fencing three sides. Find the maximum area.
+\vskip3mm
+Step 1: area in terms of $x$ only.
+\end{column}
+\begin{column}{0.42\textwidth}\centering\vskip2mm
+\setlength\figunit{11mm}
+\input{../fig/L2_pen.tex}
+\end{column}
+\end{columns}
+\sfoot{\hp{opt}}
+\note{Q5 $450\ \mathrm{m}^{2}$ (pen $15$ m by $30$ m)\par
+Short solution:\par
+Q5 $A=x(60-2x)=60x-2x^{2}$\par
+Q5 $\dfrac{dA}{dx}=60-4x=0$, $x=15$; $\dfrac{d^{2}A}{dx^{2}}=-4<0$\par
+Watch for:\par
+L4: writing $A=xy$ and differentiating with two letters\par
+using $2x+2y=60$ (four sides) when the wall is one side}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice}\relax
+\begin{columns}[T]
+\begin{column}{0.58\textwidth}
+\qn{1} The profit, in dollars, from selling $x$ items is $P=120x-2x^{2}-500$. How many items give the maximum profit, and what is that profit?
+\vskip5mm
+\qn{2} An open box is made from a $12$ cm by $12$ cm sheet by cutting a square of side $x$ cm from each corner and folding up the sides. Find the value of $x$ that gives the maximum volume, and the maximum volume.
+\end{column}
+\begin{column}{0.38\textwidth}\centering\vskip18mm
+\setlength\figunit{12mm}
+\input{../fig/L2_box.tex}
+\end{column}
+\end{columns}
+\sfoot{\hp{opt}}
+\note{Q1 $30$ items; profit 1300 dollars\par
+Q2 $x=2$ cm; volume $128\ \mathrm{cm}^{3}$\par
+Short solution:\par
+Q1 $P'=120-4x=0$; $P=3600-1800-500$; $P''=-4<0$\par
+Q2 $V=x(12-2x)^{2}=4x^{3}-48x^{2}+144x$\par
+Q2 $V'=12x^{2}-96x+144=12(x-2)(x-6)$; $x=6$ gives no box\par
+Q2 $V''=24x-96=-48<0$ at $x=2$\par
+Watch for:\par
+Q2 Excellence: the model must be built and the impossible root rejected with a reason}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Ways to lose marks}\relax
+\begin{itemize}
+\item[\lmnum{noy}] A \tturn needs its $y$-value too.
+\item[\lmnum{nojust}] ``Maximum'' needs a test and a sentence.
+\item[\lmnum{interval}] Increasing or decreasing is an interval.
+\item[\lmnum{twovars}] One variable before you differentiate.
+\item[\lmnum{wrongq}] Answer the quantity asked, with units.
+\end{itemize}
+\sfoot{\hp{lose}}
+\note{Teaching line, not a question slide.\par
+Full list L1 to L6 in the handout; L6 (units and context) applies to every answer.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Summary}\relax
+{\sSum
+\begin{enumerate}
+\item Turning point: $f'(x)=0$; then $y$ from $f(x)$.
+\item Nature: $f''<0$ maximum, $f''>0$ minimum.
+\item Increasing $f'>0$; decreasing $f'<0$: an interval.
+\item Optimise: one variable, differentiate, $=0$, justify, answer.
+\end{enumerate}}
+\sfoot{\hp{idea}}
+\note{Teaching line, not a question slide.\par
+Ask the student to say each line back before looking at the screen.}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Practice sheet \textperiodcentered\ 30 minutes}\relax
+Work alone on the practice sheet.
+\vskip3mm
+\begin{itemize}
+\item Questions 1 and 2: warm-up, about 6 minutes.
+\item Questions 3 to 6: exam questions, about 20 minutes.
+\item Question 7: Extension, if time allows.
+\end{itemize}
+\vskip3mm
+Every maximum needs a reason; every answer needs units.
+\sfoot{Practice sheet}
+\note{Q1 maximum $(-3,\,64)$; minimum $(3,\,-44)$\par
+Q2 $12.5$ m (at $t=1.5$ s)\par
+Q3 $-4<x<2.5$\par
+Q4 $26.8$ m\par
+Q5 (i) $352$ and $-352$ viewers per month; (ii) $6336$ viewers\par
+Q6 wall height $3$\par
+Q7 (i) $169.8\ \mathrm{cm}^{2}$; (ii) $A''=-6\pi<0$\par
+Short solution:\par
+Q3 $f'(x)=2x^{2}+3x-20=(2x-5)(x+4)$, negative between the roots\par
+Q4 $h'=22.5-9.8t=0$, $t=2.296$; $h''=-9.8<0$\par
+Q5 (i) $t^{2}-48t+320=0$, $t=8$ or $40$; $V'=-22t+528$; (ii) $t=24$\par
+Q6 $A=2x(9-x^{2})+x\cdot x^{2}=18x-x^{3}$; $x^{2}=6$; wall $9-6$\par
+Q7 $L=40-\pi r$; $A=2rL-\pi r^{2}=80r-3\pi r^{2}$; $r=\dfrac{40}{3\pi}$\par
+Watch for:\par
+Q5 (i) two times give two rates, one positive, one negative\par
+Q6 the triangle's height is $x^{2}$, not $9$\par
+Full working: practice answer version (tutor's working, not an official mark scheme)}
+\end{frame}
+
+% ------------------------------------------------------------------
+\begin{frame}{Homework}\relax
+{\sEmph\bfseries Homework sheet: 14 questions, about 60 minutes\par}
+\vskip4mm
+\begin{itemize}
+\item Questions 1 to 11: Achieved practice.
+\item Questions 12 and 13: Merit.
+\item Question 14: Extension (Excellence).
+\end{itemize}
+\vskip4mm
+Optional extra: StudyTime Guide, ``Calculating Turning Points'' from page 16.
+\sfoot{Homework}
+\note{Teaching line, not a question slide.\par
+Answers: homework answer version (tutor's working, not an official mark scheme).\par
+Next lesson Do Now checks a turning point and a decreasing interval.}
+\end{frame}
+\end{document}

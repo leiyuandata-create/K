@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\input{lostmarks.tex}
+\newlength\figunit
+\begin{document}
+\handouthead{Lesson 5 \textperiodcentered\ Mixed Practice: Exam Guide}{NCEA Level 2 Mathematics \textperiodcentered\ AS 91262 Apply calculus methods in solving problems \textperiodcentered\ Handout}
+
+\section{The one idea}\label{idea}
+\begin{keybox}
+Every question is one of a few types. \kw{Read the wording, name the method, then write the calculus.}
+The words ``use calculus'' mean the \tderiv or \tantider must appear in your working.
+\end{keybox}
+
+\section{Choosing the method}\label{choose}
+\begin{tabular}{@{}p{0.40\linewidth}p{0.55\linewidth}@{}}
+\toprule
+the question says & method\\
+\midrule
+gradient at $x=\dots$ & differentiate, substitute $x$ into $f'(x)$\\
+point where the gradient is \dots & solve $f'(x)=m$; $y$ from $f(x)$\\
+equation of the \ttangent & point from $f$, gradient from $f'$, $y-y_{1}=m(x-x_{1})$\\
+\tturn, maximum, minimum & $f'(x)=0$; $y$ from $f$; justify with $f''$\\
+increasing or decreasing & $f'(x)>0$ or $f'(x)<0$, an interval\\
+largest / smallest (words) & build a formula in one variable, then optimise\\
+sketch the \tgradfn & zeros under \tturns; sign from up or down\\
+find $f(x)$ given $f'(x)$ and a point & anti-differentiate, $+c$, use the point\\
+rate of change & \tderiv at the time; meaning and units\\
+velocity, acceleration from $s$ & differentiate once, twice\\
+displacement from $v$ or $a$ & anti-differentiate, one constant each time\\
+maximum height, at rest & $v=0$\\
+\bottomrule
+\end{tabular}
+
+\section{All the rules}\label{rules}
+\begin{tabular}{@{}p{0.47\linewidth}p{0.47\linewidth}@{}}
+\toprule
+differentiate & anti-differentiate\\
+\midrule
+$\ddx\bigl(ax^{n}\bigr)=anx^{n-1}$ & $ax^{n}\ \to\ \dfrac{a\,x^{n+1}}{n+1}+c$\\[2mm]
+constant $\to0$;\quad $kx\to k$ & $k\ \to\ kx+c$\\[1mm]
+expand brackets first & find $c$ from a point or a starting value\\[1mm]
+$f''(x)$: differentiate twice & $s\ \xleftarrow{\ \ }\ v\ \xleftarrow{\ \ }\ a$\\
+$s\ \to\ v\ \to\ a$ & \\
+\bottomrule
+\end{tabular}
+
+\section{Answer frames for Merit and Excellence}\label{frames}
+\begin{plainbox}
+\textbf{Justify a maximum.}\enspace ``$\dfrac{\mathrm{d}^{2}A}{\mathrm{d}x^{2}}=-4<0$, so the area is a maximum when $x=15$.''
+
+\smallskip
+\textbf{Interpret a rate.}\enspace ``At $t=6$ the number of spectators is decreasing at $528$ people per hour.''
+
+\smallskip
+\textbf{Two unknowns.}\enspace ``On the curve: \dots\ (equation 1). Gradient: \dots\ (equation 2). Solving: \dots''
+\end{plainbox}
+
+\subsection{Building a model (Excellence)}
+\begin{enumerate}[leftmargin=7mm, itemsep=1pt]
+\item Name the variables: ``Let $x$ be \dots, $h$ be \dots''
+\item Write the constraint as an equation and rearrange for one variable.
+\item Write the quantity to optimise in one variable.
+\item Differentiate, set $=0$, solve; reject impossible values with a reason.
+\item Justify maximum or minimum, then answer the question in a sentence with units.
+\end{enumerate}
+
+\begin{example}{Worked example \textperiodcentered\ open box (Excellence)}
+An open box has a square base of side $x$ cm and height $h$ cm. Its outside surface area is $108\ \mathrm{cm}^{2}$. Find the maximum volume.
+\begin{steps}
+\item Surface: $x^{2}+4xh=108$, so $h=\dfrac{108-x^{2}}{4x}$.
+\item Volume: $V=x^{2}h=\dfrac{x(108-x^{2})}{4}=27x-\dfrac{1}{4}x^{3}$.
+\item $\dd{V}{x}=27-\dfrac{3}{4}x^{2}=0$, so $x^{2}=36$, $x=6$ (lengths are positive).
+\item $\dfrac{\mathrm{d}^{2}V}{\mathrm{d}x^{2}}=-\dfrac{3}{2}x=-9<0$, so maximum. Then $h=\dfrac{108-36}{24}=3$.
+\item \textbf{Maximum volume $6\times6\times3=108\ \mathrm{cm}^{3}$.}
+\end{steps}
+\end{example}
+
+\section{What each grade looks like}\label{grades}
+From the standard's criteria: Achievement is \emph{apply calculus methods in solving problems};
+Merit adds \emph{relational thinking}; Excellence adds \emph{extended abstract thinking}.
+
+\smallskip
+\begin{tabular}{@{}p{0.14\linewidth}p{0.80\linewidth}@{}}
+\toprule
+Achieved & one correct method with working: a gradient, a \ttangent, a \tturn, $f(x)$ with $c$, a rate.\\
+Merit & linked steps: unknown constants, justified max or min, an interval, a rate found from a value, $a\to v\to s$.\\
+Excellence & a model built from words, optimised and justified; or a general result with letters; with clear communication.\\
+\bottomrule
+\end{tabular}
+
+\section{Exam habits}\label{habits}
+\begin{itemize}[leftmargin=5mm, itemsep=1pt]
+\item Attempt every part: an earlier answer can still earn credit even if a later step goes wrong.
+\item Write the \tderiv on its own line before substituting.
+\item Keep 3 or 4 significant figures until the last step; round the final answer and give units.
+\item Check with the fx-9750GIII (\textsf{GRAPH} $\to$ \textsf{G-SOLVE}, \textsf{d/dx} in \textsf{RUN-MATRIX}), but never instead of the working.
+\end{itemize}
+
+\section{Ways to lose marks}\label{lose}
+From the material plus teaching observation, across the whole standard.
+\begin{enumerate}[leftmargin=7mm, itemsep=2pt]
+\item[\textbf{\lmnum{nocalc}}] \lmtxt{nocalc}
+\item[\textbf{\lmnum{wrongfn}}] \lmtxt{wrongfn}
+\item[\textbf{\lmnum{incomplete}}] \lmtxt{incomplete}
+\item[\textbf{\lmnum{nojust}}] \lmtxt{nojust}
+\item[\textbf{\lmnum{plusc}}] \lmtxt{plusc}
+\item[\textbf{\lmnum{context}}] \lmtxt{context}
+\end{enumerate}
+\end{document}

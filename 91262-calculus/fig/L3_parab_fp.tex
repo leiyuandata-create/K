@@ -1,0 +1,4 @@
+% f'(x) = 2x - 2: crosses the x-axis at x = 1.  Curve drawn only when \showfp is defined.
+\sketch[xmin=-2,xmax=4,ymin=-6,ymax=6,unit=\figunit,yunit=0.5\figunit,xstep=\figxstep,ystep=\figystep,name={$f'(x)$},
+  curve={2*\x-2},show=\ifdefined\showfp 1\else 0\fi,dmin=-2,dmax=4,
+  extra={\draw[dashed, line width=0.6pt] (1,-6) -- (1,6);}]

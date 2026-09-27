@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\input{lostmarks.tex}
+\newlength\figunit
+\newcommand\ddxx[1]{\dfrac{\mathrm{d}^{2}#1}{\mathrm{d}x^{2}}}
+\begin{document}
+\handouthead{Lesson 2 \textperiodcentered\ Turning Points and Optimisation}{NCEA Level 2 Mathematics \textperiodcentered\ AS 91262 Apply calculus methods in solving problems \textperiodcentered\ Handout}
+
+\section{The one idea}\label{idea}
+\begin{minipage}[c]{0.54\linewidth}
+At the top of a hill or the bottom of a valley the \ttangent is flat.
+\begin{keybox}
+At a \tturn the gradient is zero: $\mathbf{f'(x)=0}$.\\
+Maximum or minimum? Look at the gradient on each side.
+\end{keybox}
+On the left of a \kw{maximum} the curve goes up ($+$), on the right it goes down ($-$).
+A \kw{minimum} is the other way round: $-$ then $+$.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\linewidth}\centering
+\setlength\figunit{11mm}
+\input{../fig/L2_turning.tex}
+\end{minipage}
+
+\section{Finding turning points}\label{find}
+\subsection{Write it in this order}
+\begin{enumerate}[leftmargin=7mm, itemsep=1pt]
+\item Differentiate: $f'(x)$.
+\item Set $f'(x)=0$ and solve for $x$ (factorise, formula, or \textsf{EQUA}).
+\item Find each $y$ from $f(x)$, not from $f'(x)$.
+\item Decide maximum or minimum, and say why (section 3).
+\end{enumerate}
+
+\begin{example}{Worked example 1}
+Find the \tturns of $f(x)=x^{3}-6x^{2}+9x+1$ and state their nature.
+\begin{steps}
+\item $f'(x)=3x^{2}-12x+9=3(x^{2}-4x+3)=3(x-1)(x-3)$
+\item $f'(x)=0$ when $x=1$ or $x=3$.
+\item $f(1)=1-6+9+1=5$\quad and\quad $f(3)=27-54+27+1=1$.
+\item $f''(x)=6x-12$:\quad $f''(1)=-6<0$, so $\mathbf{(1,\,5)}$ \textbf{is a maximum};\quad $f''(3)=6>0$, so $\mathbf{(3,\,1)}$ \textbf{is a minimum}.
+\end{steps}
+\end{example}
+
+\section{Maximum or minimum? Two tests}\label{nature}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.36\linewidth}p{0.33\linewidth}@{}}
+\toprule
+test & what you see & conclusion\\
+\midrule
+\kw{gradient each side} & $f'$ goes $+\ \to\ 0\ \to\ -$ & maximum \\
+ & $f'$ goes $-\ \to\ 0\ \to\ +$ & minimum \\
+\kw{second derivative} & $f''(x)<0$ at the point & maximum (curve bends down) \\
+ & $f''(x)>0$ at the point & minimum (curve bends up) \\
+\bottomrule
+\end{tabular}
+
+\medskip
+$f''(x)$ means ``differentiate twice''; it is also written $\ddxx{y}$.
+For the gradient test, choose $x$-values just either side and \emph{show} the substitution:
+e.g.\ $f'(0)=9>0$ and $f'(2)=-3<0$ around $x=1$.
+
+\textbf{Sentence frame:} ``$f''(1)=-6<0$, so the \tturn at $(1,\,5)$ is a maximum.''
+
+\section{Increasing and decreasing}\label{incdec}
+\begin{keybox}
+\kw{Increasing} where $f'(x)>0$.\qquad \kw{Decreasing} where $f'(x)<0$.
+\end{keybox}
+Find where $f'(x)=0$ first; these $x$-values split the line into intervals. Then test each interval.
+If $f'(x)$ is an up-parabola, it is \kw{negative between its roots}.
+
+\begin{example}{Worked example 2}
+For $f(x)=x^{3}-6x^{2}+9x+1$, find where $f$ is decreasing.
+\begin{steps}
+\item $f'(x)=3(x-1)(x-3)$, zero at $x=1$ and $x=3$.
+\item Up-parabola, so negative between the roots: $\mathbf{1<x<3}$.
+\end{steps}
+Increasing for $x<1$ or $x>3$. Matches the picture: down between the maximum and the minimum.
+\end{example}
+
+\begin{example}{Worked example 3}
+For which $x$ is $y=5+4x-x^{2}$ increasing?
+\begin{steps}
+\item $\dydx=4-2x$
+\item $4-2x>0$ gives $2x<4$, so $\mathbf{x<2}$.
+\end{steps}
+\end{example}
+
+\section{Optimisation: the biggest or smallest value}\label{opt}
+\subsection{Write it in this order}
+\begin{enumerate}[leftmargin=7mm, itemsep=1pt]
+\item Write the quantity as a formula in \kw{one variable} (use the constraint to remove the other).
+\item Differentiate.
+\item Set the \tderiv $=0$ and solve.
+\item Justify maximum or minimum ($f''$ or the gradient each side).
+\item Answer the question asked, with units.
+\end{enumerate}
+
+\begin{example}{Worked example 4 \textperiodcentered\ formula given}
+A ball's height is $h=2+19.6t-4.9t^{2}$ metres after $t$ seconds. Find the maximum height.
+\begin{steps}
+\item $\dd{h}{t}=19.6-9.8t=0$, so $t=2$ s.
+\item $h=2+19.6(2)-4.9(2)^{2}=2+39.2-19.6=21.6$
+\item $\dfrac{\mathrm{d}^{2}h}{\mathrm{d}t^{2}}=-9.8<0$, so this is a maximum. \textbf{Maximum height $21.6$ m.}
+\end{steps}
+\end{example}
+
+\begin{example}{Worked example 5 \textperiodcentered\ build the formula (Merit/Excellence)}
+\begin{minipage}[t]{0.60\linewidth}
+A farmer has $60$ m of fence for a rectangular pen against a wall (three sides fenced). Find the maximum area.
+\begin{steps}
+\item Sides $x$, $x$ and $60-2x$:\quad $A=x(60-2x)=60x-2x^{2}$
+\item $\dd{A}{x}=60-4x=0$, so $x=15$.
+\item $\dfrac{\mathrm{d}^{2}A}{\mathrm{d}x^{2}}=-4<0$, so maximum.
+\item $A=15\times30=\mathbf{450\ m^{2}}$ (pen $15$ m by $30$ m).
+\end{steps}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.36\linewidth}\centering\vspace{2mm}
+\setlength\figunit{8mm}
+\input{../fig/L2_pen.tex}
+\end{minipage}
+\end{example}
+
+\section{What each grade looks like here}\label{grades}
+\begin{tabular}{@{}p{0.14\linewidth}p{0.80\linewidth}@{}}
+\toprule
+Achieved & find a \tturn, or the maximum of a given formula, with the method shown.\\
+Merit & link steps: justify the nature, find an interval, find a constant from a \tturn, interpret in context.\\
+Excellence & build the model from words and a diagram, optimise it, justify, and answer in context; or show a general result with letters.\\
+\bottomrule
+\end{tabular}
+
+\section{Checking with the fx-9750GIII}\label{calc}
+\begin{itemize}[leftmargin=5mm, itemsep=1pt]
+\item \textsf{GRAPH}: enter $Y1$, \textsf{DRAW}, then \textsf{G-SOLVE} (SHIFT F5) $\to$ \textsf{MAX} or \textsf{MIN}.
+Use it to check a \tturn, never as the method.
+\item \textsf{EQUA} $\to$ \textsf{POLY} solves $f'(x)=0$ when $f'$ is a quadratic.
+\end{itemize}
+
+\section{Ways to lose marks}\label{lose}
+From the material plus teaching observation.
+\begin{enumerate}[leftmargin=7mm, itemsep=2pt]
+\item[\textbf{\lmnum{noy}}] \lmtxt{noy}
+\item[\textbf{\lmnum{nojust}}] \lmtxt{nojust}
+\item[\textbf{\lmnum{interval}}] \lmtxt{interval}
+\item[\textbf{\lmnum{twovars}}] \lmtxt{twovars}
+\item[\textbf{\lmnum{wrongq}}] \lmtxt{wrongq}
+\item[\textbf{\lmnum{context}}] \lmtxt{context}
+\end{enumerate}
+\end{document}

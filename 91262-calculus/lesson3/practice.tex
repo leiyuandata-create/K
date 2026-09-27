@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+% 12 mm side margins: exam questions print at natural size (crops are at most 181 mm wide)
+\newgeometry{left=12mm,right=12mm,top=14mm,bottom=20mm,footskip=9mm}
+\newcommand\gridlabel[1]{{\sffamily\bfseries #1}\par\smallskip}
+\begin{document}
+\sheethead{Lesson 3 \textperiodcentered\ Practice sheet}{NCEA Level 2 \textperiodcentered\ AS 91262 \textperiodcentered\ Sketching gradient functions}{30 minutes}{}
+
+\section*{Sketch page (for the practice rounds during the lesson)}
+Grids 1 to 4: sketch $f'(x)$ for the graph on the screen. Grids 5 and 6: sketch a possible $f(x)$.
+\medskip
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\gridlabel{Grid 1}
+\sketch[xmin=-3,xmax=3,ymin=-4,ymax=4,unit=9mm,yunit=5mm,ystep=2,name={$f'(x)$},ans={-2},amin=-3,amax=3]
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\gridlabel{Grid 2}
+\sketch[xmin=-1,xmax=5,ymin=-6,ymax=6,unit=9mm,yunit=3.4mm,ystep=2,name={$f'(x)$},ans={-2*\x+4},amin=-1,amax=5]
+\end{minipage}
+
+\medskip
+\begin{minipage}[t]{0.48\linewidth}\centering
+\gridlabel{Grid 3}
+\sketch[xmin=-4,xmax=3,ymin=-8,ymax=24,unit=8mm,yunit=1.3mm,ystep=8,gy=4,name={$f'(x)$},ans={3*\x*\x+3*\x-6},amin=-4,amax=3]
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\gridlabel{Grid 4}
+\sketch[xmin=-3,xmax=3,ymin=-20,ymax=20,unit=9mm,yunit=1mm,ystep=8,gy=4,name={$f'(x)$},ans={4*\x*\x*\x-16*\x},amin=-3,amax=3]
+\end{minipage}
+
+\medskip
+\begin{minipage}[t]{0.48\linewidth}\centering
+\gridlabel{Grid 5}
+\sketch[xmin=-3,xmax=3,ymin=-9,ymax=9,unit=9mm,yunit=2.2mm,ystep=3,gy=3,name={$f(x)$},ans={3*\x},amin=-3,amax=3]
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\gridlabel{Grid 6}
+\sketch[xmin=-1,xmax=5,ymin=-8,ymax=6,unit=9mm,yunit=2.9mm,ystep=2,gy=1,name={$f(x)$},ans={\x*\x*\x/3-2*\x*\x+4},amin=-1,amax=5]
+\end{minipage}
+
+\clearpage
+\noindent Work alone for 30 minutes. Line up every key $x$-value with a ruler. [A] Achieved, [M] Merit, [E] Excellence.
+
+\Q The graph of $y=f(x)$ is shown. Sketch the graph of $y=f'(x)$ on the axes below it.\mk{A}
+
+\begin{center}
+\sketch[xmin=-3,xmax=5,ymin=-10,ymax=4,unit=11mm,yunit=3mm,ystep=2,gy=1,name={$f(x)$},curve={\x*\x*\x/3-\x*\x-3*\x},dmin=-3,dmax=5]\\[3mm]
+\sketch[xmin=-3,xmax=5,ymin=-5,ymax=12,unit=11mm,yunit=2.6mm,ystep=2,gy=1,name={$f'(x)$},ans={\x*\x-2*\x-3},amin=-3,amax=5]
+\end{center}
+
+\Q The graph of $y=f'(x)$ is shown. Sketch a possible graph of $y=f(x)$ on the axes below it.\mk{A}
+
+\begin{center}
+\sketch[xmin=-2,xmax=6,ymin=-4,ymax=4,unit=11mm,yunit=4mm,ystep=2,gy=1,name={$f'(x)$},curve={-\x+2},dmin=-2,dmax=6]\\[3mm]
+\sketch[xmin=-2,xmax=6,ymin=-7,ymax=3,unit=11mm,yunit=4mm,ystep=2,gy=1,name={$f(x)$},ans={-\x*\x/2+2*\x},amin=-2,amax=6]
+\end{center}
+
+\ppQ{[A] \textperiodcentered\ Merit for a fully correct cubic}
+\ppq{a21_2a}
+
+\ppQ{[M]}
+\ppq{a21_3c}
+
+\ppQside{[M]}{a22_2a}
+
+\ppQ{(i) [A]}
+\ppq{a22_3b1}
+
+\ppQ{(ii) [A] \textperiodcentered\ (iii) [M/E]}
+\ppq{a22_3b2}
+\end{document}

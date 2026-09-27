@@ -1,0 +1,122 @@
+% shared.sty -- used by every handout, slide deck and printed sheet in this unit
+% NCEA Level 2 Mathematics and Statistics, AS 91262 (Apply calculus methods)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{shared}[2026/09/27 shared macros for 91262 unit]
+\makeatletter
+
+\RequirePackage{type1cm}
+\RequirePackage{fix-cm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{xcolor}
+\RequirePackage{xspace}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,patterns}
+
+% ---------- colours (printed pages: nothing darker than about 10% grey as a fill) ----------
+\definecolor{ansred}{RGB}{200,0,0}
+\definecolor{boxfill}{gray}{0.94}
+\definecolor{sigcol}{gray}{0.55}
+\definecolor{gridcol}{gray}{0.78}
+\definecolor{curvecol}{gray}{0.0}
+
+% ---------- font path (fonts/ is next to this file) ----------
+\def\fontdir{../fonts/}
+
+% ---------- signature ----------
+\newcommand\signature{Dr.\ Ryan Lei \textperiodcentered\ Auckland}
+
+% ---------- terms (use these everywhere, TikZ nodes included) ----------
+\newcommand\tgradfn{gradient function\xspace}
+\newcommand\tderiv{derivative\xspace}
+\newcommand\ttangent{tangent\xspace}
+\newcommand\tturn{turning point\xspace}
+\newcommand\tturns{turning points\xspace}
+\newcommand\tstat{stationary point\xspace}
+\newcommand\tantider{anti-derivative\xspace}
+\newcommand\tconst{constant of integration\xspace}
+\newcommand\tdisp{displacement\xspace}
+\newcommand\tvel{velocity\xspace}
+\newcommand\tacc{acceleration\xspace}
+\newcommand\tinflect{point of inflection\xspace}
+
+% ---------- maths shorthands ----------
+\newcommand\dydx{\dfrac{\mathrm{d}y}{\mathrm{d}x}}
+\newcommand\ddx{\dfrac{\mathrm{d}}{\mathrm{d}x}}
+\newcommand\dd[2]{\dfrac{\mathrm{d}#1}{\mathrm{d}#2}}
+\newcommand\fp{f'(x)}
+\newcommand\unit[1]{\,\mathrm{#1}}
+\newcommand\mps{\unit{m\,s^{-1}}}
+\newcommand\mpss{\unit{m\,s^{-2}}}
+
+% ---------- lost-mark numbering (L1, L2 ... shared by handout and slides) ----------
+% each lesson defines its list once in lostmarks.tex with \lostmark{key}{text}
+\newcounter{lostmark}
+\newcommand\lostmark[2]{%
+  \stepcounter{lostmark}%
+  \expandafter\xdef\csname lm@num@#1\endcsname{L\arabic{lostmark}}%
+  \expandafter\gdef\csname lm@txt@#1\endcsname{#2}}
+\newcommand\lmnum[1]{\csname lm@num@#1\endcsname}
+\newcommand\lmtxt[1]{\csname lm@txt@#1\endcsname}
+
+% ---------- graph helpers (computed coordinates only) ----------
+% Use inside a tikzpicture whose x and y vectors are set to one unit.
+% \gridaxes{xmin}{xmax}{ymin}{ymax}{x label step}{y label step}{y-axis name}
+%   integer bounds; light grid every unit; tick labels every step (0 = no labels)
+\newcommand\gridaxes[7]{%
+  \foreach \gi in {#1,...,#2}{\draw[gridcol, line width=0.3pt] (\gi,#3) -- (\gi,#4);}%
+  \foreach \gj in {#3,...,#4}{\pgfmathtruncatemacro\gmm{mod(abs(\gj),\gridystep)}%
+    \ifnum\gmm=0 \draw[gridcol, line width=0.3pt] (#1,\gj) -- (#2,\gj);\fi}%
+  \draw[-{Stealth[length=2mm]}, line width=0.6pt] (#1,0) -- (#2+0.4,0) node[right, inner sep=1pt] {$x$};%
+  \draw[-{Stealth[length=2mm]}, line width=0.6pt] (0,#3) -- (0,#4+0.4) node[above, inner sep=1pt] {#7};%
+  \ifnum#5>0
+    \foreach \gi in {#1,...,#2}{\pgfmathtruncatemacro\gm{mod(abs(\gi),#5)}%
+      \ifnum\gm=0 \ifnum\gi=0 \else \node[below, inner sep=1.5pt, fill=white] at (\gi,0) {$\gi$};\fi\fi}%
+  \fi
+  \ifnum#6>0
+    \foreach \gj in {#3,...,#4}{\pgfmathtruncatemacro\gm{mod(abs(\gj),#6)}%
+      \ifnum\gm=0 \ifnum\gj=0 \else \node[left, inner sep=1.5pt, fill=white] at (0,\gj) {$\gj$};\fi\fi}%
+  \fi}
+\def\gridystep{1}% horizontal grid lines every n units (\sketch key gy)
+\providecommand\figxstep{1}\providecommand\figystep{2}% tick-label steps in shared figure files
+% \curve{xmin}{xmax}{expression in \x}: printed curve, clipped by the caller
+\newcommand\curve[3]{\draw[line width=1.1pt, curvecol, domain=#1:#2, samples=121, smooth, variable=\x] plot (\x,{#3});}
+% \anscurve: same in red (answer versions only; callers wrap it in \ifansmode)
+\newcommand\anscurve[3]{\draw[line width=1.2pt, ansred, domain=#1:#2, samples=121, smooth, variable=\x] plot (\x,{#3});}
+
+% ---------- answer switch (printed sheets set it; slides never do) ----------
+\newif\ifansmode
+\ifdefined\withanswers\ansmodetrue\fi
+
+% ---------- \sketch[keys]: grid + axes + printed curve (+ red answer curve in answer versions) ----------
+% keys: xmin xmax ymin ymax (integers), unit, yunit, xstep, ystep (label steps, 0 = none), name (y-axis label),
+%       gy (horizontal grid line step), curve (pgfmath in \x), show (1/0: draw the curve), dmin dmax (curve domain), ans (answer curve), amin amax, extra, ansextra
+\pgfkeys{/sk/.is family, /sk,
+  xmin/.initial=-4, xmax/.initial=4, ymin/.initial=-4, ymax/.initial=4,
+  unit/.initial=5mm, yunit/.initial=5mm, xstep/.initial=1, ystep/.initial=1, name/.initial={$y$},
+  curve/.initial=, show/.initial=1, dmin/.initial=-4, dmax/.initial=4,
+  gy/.initial=1, ans/.initial=, amin/.initial=-4, amax/.initial=4, extra/.initial=, ansextra/.initial=}
+\newcommand\skv[1]{\pgfkeysvalueof{/sk/#1}}
+\newcommand\sketch[1][]{\begingroup\pgfkeys{/sk,#1}\edef\gridystep{\skv{gy}}%
+  \begin{tikzpicture}[x=\skv{unit}, y=\skv{yunit}, line cap=round]
+    \gridaxes{\skv{xmin}}{\skv{xmax}}{\skv{ymin}}{\skv{ymax}}{\skv{xstep}}{\skv{ystep}}{\skv{name}}
+    \begin{scope}
+      \clip (\skv{xmin},\skv{ymin}) rectangle (\skv{xmax},\skv{ymax});
+      \pgfkeysgetvalue{/sk/curve}\sk@c
+      \ifx\sk@c\@empty\else\ifnum\skv{show}=1
+        \draw[line width=1.1pt, curvecol, domain=\skv{dmin}:\skv{dmax}, samples=121, smooth, variable=\x] plot (\x,{\sk@c});
+      \fi\fi
+      \skv{extra}
+      \ifansmode
+        \pgfkeysgetvalue{/sk/ans}\sk@a
+        \ifx\sk@a\@empty\else
+          \draw[line width=1.3pt, ansred, domain=\skv{amin}:\skv{amax}, samples=121, smooth, variable=\x] plot (\x,{\sk@a});
+        \fi
+        \skv{ansextra}
+      \fi
+    \end{scope}
+  \end{tikzpicture}\endgroup}
+
+\endinput
