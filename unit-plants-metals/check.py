@@ -19,8 +19,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SHEETS = ["classwork", "mock", "hw1", "hw2"]
 PAIRS = [(s, f"{s}_answers") for s in SHEETS]
 SHEET_PDFS = [f"{a}.pdf" for pair in PAIRS for a in pair]
-PRINTED = SHEET_PDFS + ["slides_screen.pdf"]
-LOGS = [f"{a}.log" for pair in PAIRS for a in pair] + ["slides_screen.log", "slides_notes.log", "slides.log"]
+PRINTED = SHEET_PDFS + ["slides_screen.pdf", "prep_zh.pdf"]
+LOGS = [f"{a}.log" for pair in PAIRS for a in pair] + ["slides_screen.log", "slides_notes.log", "slides.log", "prep_zh.log"]
 TEX = [f"{s}.tex" for s in SHEETS] + ["slides.tex"]
 UNITS = ["g/cm", "g/mL", "km/s", "m/s", "cm/s", "J/kg"]
 SUPSUB = re.compile("[\u00b2\u00b3\u00b9\u2070-\u209f]")
@@ -73,6 +73,13 @@ def split_macro(tex, name):
 
 def split_notes(tex):
     return split_macro(tex, "note")
+
+
+def screen_of(tex):
+    """Text typeset on screen: \\note and \\zh bodies removed."""
+    t, _ = split_notes(tex)
+    t, _ = split_macro(t, "zh")
+    return t
 
 
 def frames(tex):
@@ -234,7 +241,7 @@ def check_no_answers(slides_tex):
     """Reveal headers, and numerals after the last mark allocation on a line.
     Looks for both \\mk{ and \\smk{ (\\mk{ is not a substring of \\smk{)."""
     probs = []
-    screen, _ = split_notes(strip_comments(slides_tex))
+    screen = screen_of(strip_comments(slides_tex))
     screen, _ = split_macro(screen, "flawed")
     for m in re.finditer(r"Answer:|Answer image:|Key answer:", screen):
         probs.append(f"reveal header on screen: {m.group(0)}")
@@ -444,7 +451,7 @@ def note_lines(notes):
 def notes_structure(title, lines, where):
     """Spec 5.6 / 10.2 item 10 on one slide's note lines."""
     probs = []
-    labels = ("Short solution:", "Watch for:", "Diagnostic:", "Say it:")
+    labels = ("Short solution:", "Watch for:", "Diagnostic:", "Script:", "Say it:")
     for lab in labels:
         if lines.count(lab) > 1:
             probs.append(f"{where}: repeated {lab}")
@@ -454,6 +461,9 @@ def notes_structure(title, lines, where):
     if "Watch for:" in lines and ("Short solution:" not in lines or
                                  lines.index("Short solution:") > lines.index("Watch for:")):
         probs.append(f"{where}: Watch for: without a preceding Short solution:")
+    order = [l for l in lines if l in labels]
+    if order != sorted(order, key=labels.index):
+        probs.append(f"{where}: labels out of order: {order}")
     if "Say it:" in lines:
         k = lines.index("Say it:")
         if any(l in labels for l in lines[k + 1:]):
@@ -476,7 +486,8 @@ def notes_structure(title, lines, where):
             probs.append(f"{where}: Do Now without Diagnostic:")
         # English screen + Chinese notes: answer lines are English
         if not lines[0].startswith("Teaching line"):
-            end = lines.index("Short solution:") if "Short solution:" in lines else len(lines)
+            ends = [lines.index(l) for l in labels if l in lines]
+            end = min(ends) if ends else len(lines)
             for l in lines[:end]:
                 if CJK.search(l):
                     probs.append(f"{where}: Chinese in an answer line: {l[:30]!r}")
@@ -489,7 +500,8 @@ def check_notes_structure_src(slides_tex):
     tex = strip_comments(slides_tex)
     for k, fr in enumerate(frames(tex), 1):
         title = frame_title(fr)
-        screen, notes = split_notes(fr)
+        _, notes = split_notes(fr)
+        screen = screen_of(fr)
         if CJK.search(screen):
             probs.append(f"slide {k} '{title}': Chinese outside \\note")
         lines = [re.sub(r"\\Lref\{[^}]*\}", "Lx", l) for l in note_source_lines(notes[0] if notes else "")]
@@ -617,7 +629,8 @@ def check_sayit(slides_tex):
     seen = {}
     texts = []
     for k, fr in enumerate(frames(tex), 1):
-        screen, notes = split_notes(fr)
+        _, notes = split_notes(fr)
+        screen = screen_of(fr)
         extra = " ".join(figs[f] for f in re.findall(r"\\(Fig\w+)", screen) if f in figs)
         lines = note_source_lines(notes[0] if notes else "")
         words_here = []

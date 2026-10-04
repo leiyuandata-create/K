@@ -7,3 +7,5 @@
 *.vrb
 slides_join.tex
 __pycache__/
+thumbs/
+prep_zh_body.tex

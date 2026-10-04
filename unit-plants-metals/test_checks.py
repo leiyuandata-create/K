@@ -119,6 +119,8 @@ t = sub1(r"Diagnostic:\\par", lambda m: "Diagnostic:\\par\nShort solution:\\par"
 case("10s", "repeated label line", C.check_notes_structure_src(t))
 t = sub1(r"Q1 anther\\par", lambda m: "Q1 anther\uff08x\uff09\\par", SLIDES)
 case("10s", "full-width bracket in a note", C.check_notes_structure_src(t))
+t = sub1(r"Script:\\par", lambda m: "Script:\\par\nWatch for:\\par", SLIDES)
+case("10s", "label after Script: out of order", C.check_notes_structure_src(t))
 case("10s", "real deck is clean", not C.check_notes_structure_src(SLIDES))
 
 # 10 / 11 (PPTX) ------------------------------------------------------

@@ -36,7 +36,7 @@
 \newcommand\sSub{\fontsize{14}{17.4}\selectfont}
 \newcommand\sSum{\fontsize{15}{19.5}\selectfont}
 \newcommand\sFoot{\fontsize{8}{9.6}\selectfont}
-\newcommand\sNote{\fontsize{7.8}{9.9}\selectfont}
+\newcommand\sNote{\fontsize{6.9}{8.6}\selectfont}
 \renewcommand\sSam{\fontsize{17}{20.4}\selectfont}   % handwriting: 2 pt above body
 \renewcommand\figfont{\sQ}
 
@@ -91,8 +91,16 @@
 % divider slide for each lesson
 \newcommand\lessondivider[2]{\vspace*{10mm}{\sTitle\bfseries\color{accent}#1\par}\vspace{1mm}
   {\color{rule}\rule{\textwidth}{0.8pt}}\par\vspace{5mm}#2\par}
+% note page: two columns, so the read-aloud Script fits on one page
+\RequirePackage{multicol}
+\setlength\columnsep{5mm}
 \setbeamertemplate{note page}{%
-  \vspace*{2mm}\noindent\begin{minipage}[t]{\textwidth}\sNote\raggedright
-  \setlength\parskip{1.5pt}\insertnote\end{minipage}}
+  \vspace*{1.5mm}\noindent\begin{minipage}[t]{\textwidth}\sNote\raggedright
+  \setlength\parskip{1.2pt}\begin{multicols}{2}\raggedright\insertnote\end{multicols}\end{minipage}}
+
+% \zh{...}: Chinese translation of the screen and background for the
+% tutor's prep book (prep_zh.pdf, built by tools/build_prep.py). It is
+% never typeset on the slide or in the notes.
+\newcommand\zh[1]{}
 
 \endinput

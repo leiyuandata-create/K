@@ -4,6 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 ./build_sets.sh
 ./build_slides.sh
+./build_prep.sh
 python3 check.py --tex
 python3 export_pptx.py
 python3 check.py --pptx

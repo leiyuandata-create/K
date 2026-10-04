@@ -1,13 +1,13 @@
-# Teaching Materials Specification v20
+# Teaching Materials Specification v21
 
 The single current version; replaces all earlier ones. Each rule is written once, where it applies: global §3, handouts §4, slides §5, homework, classwork and answer files §6, paired output §7.
 
-## Changes in v20 (from v19)
+## Changes in v21 (from v20)
 
-- A new language setting, **English screen + Chinese notes**. Everything the student sees stays English, because the exam is English. The tutor's notes are written in Chinese, every scientific term stays in English, and every hard word gets a `Say it:` line (§2, §3.5, §5.6).
-- Those Chinese notes live in the PPTX notes pane, and therefore also in presenter view and the notes half of the double-width PDF. They are never kept in a separate .md file, lesson script or Word document: with one source, the notes cannot drift away from the slides (§5.6).
-- The note pages embed a CJK font from `fonts/`, and the PPTX notes carry an East Asian typeface (§9, §9.2).
-- Check 10 also confirms that answer lines are English and that no Chinese appears outside `\note{}` (§10.2).
+- Under English screen + Chinese notes, every slide's notes carry a **Script:** block: a mixed Chinese–English script the tutor can read aloud in order. English terms stay English and may carry a Chinese gloss in ASCII parentheses the first time they appear. It sits after Diagnostic: and before Say it: (§5.6).
+- A new parameter, **Tutor's subject background**. When the tutor is not a specialist in the subject, the deck is accompanied by a **tutor's Chinese prep book** (prep_zh.pdf), generated from slides.tex so it cannot drift from the deck (§2, §5.9).
+- The note page may be set in two columns, so the Script fits on one page (§9.2).
+- Check 10 also checks the label order, Script: included (§10.2).
 - Nothing else changed. Existing check numbers are unchanged.
 
 ## 1. Ask before building
@@ -31,6 +31,7 @@ Triggers: Handout / Notes → §4; slides / PPT → §5; homework / answers → 
 | Student activity | handwriting on printed sheets / following the screen / self-study after class | handout printing, pace |
 | Language | English (Cambridge) / English screen + Chinese notes / bilingual / mainly Chinese | everything, notes included |
 | Depth | first contact / consolidation / exam sprint | depth, how much derivation to keep |
+| Tutor's subject background | specialist / non-specialist | non-specialist adds the tutor's prep book (§5.9) |
 
 Defaults (say when used): far / printed handout / English / consolidation. Materials are always handed out in the lesson and collected at the end. Anything the student writes goes on a printed sheet.
 
@@ -394,6 +395,8 @@ Watch for:
 common mistakes and reminders
 Diagnostic:            ← Do Now only
 what a wrong answer reveals
+Script:                ← Chinese notes only, every slide
+the read-aloud script, in teaching order
 Say it:                ← optional, always last
 anomalous = uh-NOM-uh-lus
 ```
@@ -430,6 +433,7 @@ anomalous = uh-NOM-uh-lus
 - **Label lines keep their English form exactly** (Short solution:, Watch for:, Diagnostic:, Say it:, `Teaching line, not a question slide.`), so checks 10 and 13 work unchanged.
 - **Say it: is not optional for hard words** under Chinese notes. Every hard term (rules above) gets one line at its first say, still in ASCII.
 - **Punctuation:** Chinese prose may use Chinese punctuation (，。：“”), but never full-width brackets 【】 or （）; use ASCII parentheses (§3.5).
+- **Script: (every slide).** After Diagnostic: and before Say it:, a script the tutor reads aloud in teaching order, one action per line: what to say (说：), what to ask (问：/ 念第 n 题), the expected answer (她应答：) in the English she should give, and what to say if she is wrong. Mixed Chinese and English; science terms stay English and may carry a Chinese gloss in ASCII parentheses the first time they appear in the deck, e.g. stomata (气孔). It is written for a tutor who is not a subject specialist: it never assumes the tutor knows the answer. On a teaching slide it follows the Chinese teaching lines.
 
 ```latex
 \note{%
@@ -521,6 +525,16 @@ Content the student met earlier (last term, or a test he has already sat) is rev
 - **Notes:** label-first answers, as for any question slide (check 10), with Short solution: and Watch for: when useful, and Say it: for hard words.
 - **Pace:** 60–90 seconds each. If the lesson runs long, the last Quick reviews move to the start of the next lesson. They are never cut from the homework, which carries a short quick-review section on the same topics with new items.
 - **No repeats:** homework quick-review items ask the same facts in a new form (a patient's symptom rather than a part's job), never the slide's wording.
+
+### 5.9 Tutor's Chinese prep book (non-specialist tutor)
+
+When the tutor is not a specialist in the subject, the deck comes with prep_zh.pdf: a printed A4 book for the tutor only, never shown to the student.
+
+- **One source.** It is generated by tools/build_prep.py from slides.tex and slides_screen.pdf; nothing in it is typed twice. Each frame carries a `\zh{...}` block (defined in slidestyle.sty to typeset nothing): the Chinese translation of everything on the screen, then a short background paragraph explaining the science in plain Chinese.
+- **Per slide:** a thumbnail of the screen, the `\zh` block, the answers and explanation from the slide's `\note{}` (labels shown in Chinese), its Script:, and its Say it: lines.
+- **Glossary first:** English term, Chinese meaning, one-line explanation, and the pronunciation taken from the deck's own Say it: lines (tools/glossary_zh.tsv holds the first three columns).
+- **Terms:** English terms stay English; the first appearance carries a Chinese gloss in parentheses, and the glossary covers every later one.
+- It is a printed sheet: §3.3 (no dark fills), §3.5 signature and checks 1, 1d and 2 apply. Checks that read the screen (3, 10, 13) ignore `\zh` bodies.
 
 ## 6. Homework, classwork and answer files
 
@@ -704,7 +718,7 @@ Fonts live in fonts/, loaded by fontspec with Path=, even when installed system-
   - It is the PPTX input and the backup presentation file.
   - Not show notes on second screen (A.3).
   - Not RTF text notes: they align by delimiter and page order, so any added slide shifts everything after it.
-- Note-page minipage uses `\textwidth`, not `\paperwidth`; the latter gives one Overfull \hbox per note page.
+- Note-page minipage uses `\textwidth`, not `\paperwidth`; the latter gives one Overfull \hbox per note page. Under Chinese notes with a Script:, the note page may be set in two columns (multicol) so every note still fits on one page.
 - Every frame has exactly one `\note{}`, inside the frame, so both compiles have equal page counts.
 - Split slides, never overlays. `\pause`, overlays and allowframebreaks break frames = PDF pages = PPTX slides — the only guarantee that notes stay aligned.
 - No macros with parameters (#1) inside a frame, because the body is a macro argument. Put them in the .sty.
@@ -751,7 +765,9 @@ unit-xx/
   build_wb.py       red-answer overlay generator (§6.2)
   build_slides.sh   screen + notes compiles, joined into slides.pdf
   build_sets.sh     printed sheets, blank + answers
-  build.sh          sheets → slides → check.py --tex → export_pptx.py → check.py --pptx
+  prep_zh.tex       the tutor's Chinese prep book (§5.9), body generated by tools/build_prep.py
+  build_prep.sh     prep book build, after build_slides.sh
+  build.sh          sheets → slides → prep book → check.py --tex → export_pptx.py → check.py --pptx
   export_pptx.py    PPTX export
   check.py          §10.2, all items
   test_checks.py    mutation tests for every check (§10.3.6)
@@ -836,7 +852,7 @@ All items must be zero before delivery. Items 1–6 and 12–14 cover LaTeX, PDF
 | 7 | Page alignment | Frames = PDF pages = PPTX slides; joined width = height × 32/9. | equal |
 | 8 | Slides are pure images | Per slide: one 3840 × 2160 PNG, full bleed against sldSz, no other shapes. | pass |
 | 9 | No images in notes | p:pic / a:blip in any notesSlide XML. | 0 |
-| 10 | Notes structure | Question slides (title contains Do Now / Practice / MCQ / Workbook / Spot the error / Classwork / Quick review) have notes. First line starts with a label ((a), Q1, 1., Teaching line…). Short solution: precedes Watch for:; Watch for: alone or a repeated label line is an error. Do Now has Diagnostic:. Say it:, if present, is the last label and every line after it is word = SYL-la-ble (ASCII, one capitalised syllable). No Answer: / Answer image: / Key answer:. No \macro survives anywhere in the notes. Under English screen + Chinese notes, label-first answer lines contain no CJK character, and slides.tex outside `\note{}` contains none either. Run on the source and on the PPTX. | 0 |
+| 10 | Notes structure | Question slides (title contains Do Now / Practice / MCQ / Workbook / Spot the error / Classwork / Quick review) have notes. First line starts with a label ((a), Q1, 1., Teaching line…). Short solution: precedes Watch for:; Watch for: alone or a repeated label line is an error. Do Now has Diagnostic:. Labels appear in the order Short solution:, Watch for:, Diagnostic:, Script:, Say it:. Say it:, if present, is the last label and every line after it is word = SYL-la-ble (ASCII, one capitalised syllable). No Answer: / Answer image: / Key answer:. No \macro survives anywhere in the notes. Under English screen + Chinese notes, label-first answer lines contain no CJK character, and slides.tex outside `\note{}` contains none either. Run on the source and on the PPTX. | 0 |
 | 11 | Notes maths truly typeset | Native branch only: m:f type not lin/skw; the joined m:t text per oMath has no /, ^ or Unicode sub/superscripts. Note prose has no ^, no Unicode sub/superscripts, no unspaced a/b. Each source $...$ has one native equation plus fallback. Units, codes and file names are whitelisted; spaced prose slashes are allowed. | 0 |
 | 12 | Spot the error integrity | Every Spot the error frame states "has N errors" on screen and holds `\flawed{}`; its note numbers exactly 1. … N., each line with an L-reference. `\flawed{}` appears in no other frame. In sheets, every `\flawed{}` is followed by a bold "N errors" and an answer block numbered 1 … N with at least N `\Lref{}`. | 0 |
 | 13 | Say it: once, where first said | Across the deck, each word is pronounced in at most one Say it: block, and no earlier slide uses the word on screen or in its notes. Match on the word stem, not the whole word, or a plural slips through. | 0 |
