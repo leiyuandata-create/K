@@ -1,0 +1,258 @@
+% shared.sty -- Year 9 Green Machines + Metallic materials review.
+% Colours, lost-mark list, Sam's handwriting, booklet-crop overlays and
+% TikZ figures. Used by the slides, classwork, mini mock and homework, so
+% every document draws a figure from one source (spec 7.1). Coordinates
+% come from geom.tex (tools/geom.py) and fig/anchors.tex (tools/anchors.py).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{shared}[2026/10/04 Plants and metals shared macros]
+
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,positioning}
+\input{geom.tex}
+\input{fig/anchors.tex}
+
+% ------------------------------------------------------------ colours
+\definecolor{ansred}{RGB}{200,16,46}
+\definecolor{accent}{RGB}{0,84,110}
+\definecolor{rule}{gray}{0.45}
+\definecolor{boxfill}{gray}{0.95}      % boxes: at most about 10 % grey
+\definecolor{sig}{gray}{0.55}
+\definecolor{pencil}{gray}{0.30}       % Sam's writing
+\colorlet{atom}{black!18}
+\colorlet{bigatom}{black!42}
+\colorlet{water}{cyan!14}
+\colorlet{oil}{yellow!30}
+
+% ------------------------------------------------- Sam's handwriting
+% Patrick Hand (OFL). Defined after fontspec is in place (spec 9).
+\AtBeginDocument{\newfontfamily\samfont[Path=fonts/]{PatrickHand-Regular.ttf}}
+\providecommand\sSam{\large}
+\newcommand\flawed[1]{{\samfont\sSam\color{pencil}\hyphenpenalty=10000\exhyphenpenalty=10000 #1}}
+% Sam's card: outline, light fill, title "Sam's answer"
+\newcommand\samcard[2]{% width, content
+  \begin{tikzpicture}
+    \node[draw=black!55, fill=boxfill, rounded corners=1.5mm, line width=0.6pt,
+      text width=#1, inner xsep=2.5mm, inner ysep=2mm, align=left] (sc) {#2};
+    \node[anchor=south west, inner sep=1pt, font=\bfseries] at ([xshift=1.5mm]sc.north west) {Sam's answer};
+  \end{tikzpicture}}
+
+% ---------------------------------------------------- lost-mark list
+% Numbered once here (spec 7.2); the slides show the most common ones and
+% the exporter reads these definitions for \Lref in the notes. Source:
+% the two booklets plus teaching observation -- no examiner report.
+\newcommand\defL[3]{%
+  \expandafter\def\csname L@n@#1\endcsname{#2}%
+  \expandafter\def\csname L@t@#1\endcsname{#3}}
+\newcommand\Lref[1]{L\csname L@n@#1\endcsname}
+\newcommand\Ltext[1]{\csname L@t@#1\endcsname}
+
+\defL{pollfert}{1}{Pollination is the transfer of pollen from anther to stigma; fertilisation is when the pollen nucleus fuses with the ovule nucleus.}
+\defL{asexual}{2}{Asexual reproduction has one parent, no gametes and identical offspring (clones).}
+\defL{adapt}{3}{An adaptation answer names the feature AND says how it helps.}
+\defL{photoeq}{4}{Photosynthesis: carbon dioxide + water to glucose + oxygen; light energy and chlorophyll go above the arrow.}
+\defL{respire}{5}{Plants respire all the time, day and night; they photosynthesise only in the light.}
+\defL{iodine}{6}{Iodine tests for starch, not glucose: blue-black means starch is present.}
+\defL{xylem}{7}{Xylem carries water and minerals up from the roots; phloem carries glucose.}
+\defL{osmosis}{8}{Osmosis: water moves from a high to a low concentration of water through a semi-permeable membrane.}
+\defL{transp}{9}{Water is pulled up because it evaporates from the leaves through the stomata (transpiration), not because the plant sucks.}
+\defL{density}{10}{Density = mass divided by volume, with units g/cm$^{3}$ or g/mL.}
+\defL{displace}{11}{Volume by displacement = final reading minus first reading.}
+\defL{justify}{12}{A choice of metal needs the property linked to the use, and a comparison with another metal.}
+\defL{alloy}{13}{Alloys are harder because different-sized atoms disrupt the layers, so the layers cannot slide easily.}
+\defL{rust}{14}{Rusting needs both water and oxygen; boiled water and an oil layer remove the oxygen.}
+\defL{wordeq}{15}{Word equations: metal oxide, metal hydroxide + hydrogen, metal chloride + hydrogen.}
+\defL{react}{16}{A reactivity claim needs evidence, and metals low in the series (copper, silver, gold) do not react with dilute acid.}
+
+% ------------------------------------------------------------ figures
+\providecommand\figfont{\small}
+\newlength\fu \setlength\fu{5mm}
+\newif\ifFigAns \FigAnsfalse          % answer layer (red) on/off
+
+\tikzset{
+  fig/.style={line width=0.8pt, >={Stealth[length=2.4mm,width=1.8mm]},
+    every node/.style={font=\figfont, inner sep=1.5pt}},
+  lead/.style={line width=0.6pt},
+  ans/.style={draw=ansred, text=ansred},
+  letter/.style={font=\figfont\bfseries, inner sep=1.2pt},
+}
+
+% --------------------------------------------- booklet crops + labels
+% \CropFig{name}{width}{labels}: the crop, south-west corner at (0,0),
+% one unit = the crop width. Labels use anchors from fig/anchors.tex.
+\newcommand\ancpt[2]{\csname anc@#1@#2\endcsname}
+\newcommand\CropFig[3]{%
+  \begin{tikzpicture}[fig, x=#2, y=#2, baseline=(current bounding box.north)]
+    \def\cropname{#1}%
+    \node[anchor=south west, inner sep=0] at (0,0) {\includegraphics[width=#2]{fig/#1}};
+    #3
+  \end{tikzpicture}}
+% letter at the tail of a printed leader arrow: left (L) or right (R) of it
+\newcommand\TailL[2]{\edef\tmp{\noexpand\node[letter, anchor=east] at (\ancpt{\cropname}{#1}) {#2};}\tmp}
+\newcommand\TailR[2]{\edef\tmp{\noexpand\node[letter, anchor=west] at (\ancpt{\cropname}{#1}) {#2};}\tmp}
+% own leader line from a part (anchor) to a label point (x,y), label side
+\newcommand\LeadTo[4]{\edef\tmp{\noexpand\fill (\ancpt{\cropname}{#1}) circle (0.006);
+  \noexpand\draw[lead] (\ancpt{\cropname}{#1}) -- #2 node[letter, anchor=#3] {#4};}\tmp}
+
+% ---- flower section (Green Machines p.6): A-F at the printed arrows
+\newcommand\FigFlower[1][46mm]{\CropFig{flower}{#1}{%
+  \TailL{stigma}{A}\TailL{style}{B}\TailL{ovary}{C}%
+  \TailR{anther}{D}\TailR{filament}{E}\TailR{sepal}{F}}}
+
+% ---- opened bean seed (Green Machines p.12)
+\newcommand\FigSeed[1][60mm]{\CropFig{seed}{#1}{%
+  \TailR{testa}{P}\TailR{plumule}{Q}\TailR{radicle}{R}\TailL{cotyledon}{S}}}
+
+% ---- leaf cross-section (Green Machines p.15): own leaders, fanned out
+% label column x = -0.07; six labels evenly spaced from y = 0.70 to 0.04
+\newcommand\FigLeaf[1][78mm]{\CropFig{leaf}{#1}{%
+  \LeadTo{cuticle}{(-0.07,0.74)}{east}{A}\LeadTo{upper}{(-0.07,0.61)}{east}{B}%
+  \LeadTo{palisade}{(-0.07,0.48)}{east}{C}\LeadTo{spongy}{(-0.07,0.35)}{east}{D}%
+  \LeadTo{vein}{(-0.07,0.22)}{east}{E}\LeadTo{lower}{(-0.07,0.06)}{east}{F}%
+  \LeadTo{guard}{(0.36,-0.08)}{north}{G}\LeadTo{stoma}{(0.56,-0.08)}{north}{H}}}
+
+% ---- osmosis membrane, magnified (Green Machines p.19)
+\newcommand\FigMembrane[1][40mm]{\CropFig{membrane}{#1}{}}
+
+% ---- Visking tubing model (Green Machines p.18)
+\newcommand\FigVisking[1][9mm]{\CropFig{visking}{#1}{%
+  \TailR{capillary}{X}\TailR{sucrose}{Y}\TailR{tubing}{Z}}}
+
+% ---- variegated leaf with foil (Green Machines p.22)
+\newcommand\FigVarLeaf[1][52mm]{\CropFig{varleaf}{#1}{%
+  \TailR{green}{J}\TailR{white}{K}%
+  \node[letter, anchor=north] at (0.62,0.04) {L};}}
+
+% ---- metal layers: pure (straight rows) and alloy (rows bent by big atoms)
+\newcommand\FigPure[1][4mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \foreach \x/\y in \geomPure {\draw[fill=atom, line width=0.5pt] (\x,\y) circle (\geomRs);}
+\end{tikzpicture}}
+% pure metal after a force: top two rows slid one atom to the right
+\newcommand\FigPureSlid[1][4mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \foreach \x/\y in \geomPure {
+    \pgfmathsetmacro\sx{\y > 1.5 ? 1 : 0}
+    \draw[fill=atom, line width=0.5pt] (\x+\sx,\y) circle (\geomRs);}
+  \draw[->, line width=1.2pt] (1,4.0) -- (5,4.0);
+\end{tikzpicture}}
+\newcommand\FigAlloy[1][4mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \foreach \x/\y in \geomAlloySmall {\draw[fill=atom, line width=0.5pt] (\x,\y) circle (\geomRs);}
+  \foreach \x/\y in \geomAlloyBig {\draw[fill=bigatom, line width=0.5pt] (\x,\y) circle (\geomRb);}
+\end{tikzpicture}}
+
+% ---- rusting tubes: A dry air, B boiled water under oil, C tap water + air
+% tube: width 2w (w = 0.8), straight wall from y = w to y = 7, round bottom
+\newcommand\TubeOutline[1]{% x shift
+  \draw[line width=0.9pt] (#1-0.8,7) -- (#1-0.8,0.8) arc (180:360:0.8) -- (#1+0.8,7);}
+\newcommand\Cork[1]{\draw[fill=black!15, line width=0.7pt] (#1-0.92,6.6) rectangle (#1+0.92,7.6);}
+% liquid up to height #2 in tube at #1, fill style #3
+\newcommand\Liquid[3]{\fill[#3] (#1-0.8,#2) -- (#1-0.8,0.8) arc (180:360:0.8) -- (#1+0.8,#2) -- cycle;}
+% nail from (x1,y1) to (x2,y2): shaft plus a head at the first end
+\newcommand\Nail[4]{\draw[line width=2pt, black!65] (#1,#2) -- (#3,#4);
+  \draw[line width=3.2pt, black!65] ($(#1,#2)!0.12cm!90:(#3,#4)$) -- ($(#1,#2)!0.12cm!-90:(#3,#4)$);}
+\newcommand\FigRustTubes[1][4.4mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  % A: granules in the bottom (top of the pile y = 1.24), nail leaning on the
+  % wall and resting on the granules, corked
+  \foreach \x/\y in \geomGranules {\draw[fill=black!12, line width=0.4pt] (\x,\y) circle (0.17);}
+  \Nail{-0.72}{4.8}{0.45}{1.27}
+  \TubeOutline{0}\Cork{0}
+  \node[letter] at (0,-0.9) {A};
+  % B: boiled water to 4.6, oil layer 4.6-5.2, nail fully under water; the
+  % nail's foot is on the glass: at x offset 0.3 the inside bottom is at
+  % y = 0.8 - sqrt(0.8^2 - 0.3^2) = 0.06
+  \Liquid{8}{5.2}{oil}\Liquid{8}{4.6}{water}
+  \draw[line width=0.5pt] (7.2,4.6) -- (8.8,4.6);
+  \Nail{7.28}{3.9}{8.3}{0.12}
+  \TubeOutline{8}\Cork{8}
+  \node[letter] at (8,-0.9) {B};
+  % C: tap water to 2.8, nail half out of the water, open to the air
+  \Liquid{16}{2.8}{water}
+  \Nail{15.28}{5.0}{16.3}{0.12}
+  \TubeOutline{16}
+  \node[letter] at (16,-0.9) {C};
+  % labels (right of each tube); leader ends on the item named
+  \draw[lead] (-0.55,0.75) -- (-1.5,0.2) node[anchor=east, align=right] {calcium\\chloride};
+  \draw[lead] (8.6,4.9) -- (9.5,5.6) node[anchor=west] {oil};
+  \draw[lead] (8.6,2.6) -- (9.5,2.4) node[anchor=west, align=left] {boiled\\water};
+  \draw[lead] (16.6,1.8) -- (17.5,1.6) node[anchor=west, align=left] {tap\\water};
+\end{tikzpicture}}
+
+% ---- reactivity series (Metallic materials p.20), re-drawn with the
+% booklet's wording: four groups, then the three "react with" ranges,
+% each drawn under the groups it covers, its label on the arrow
+\newcommand\FigReactivity{%
+\begin{tikzpicture}[fig, baseline=(current bounding box.north),
+    grp/.style={draw=black!55, fill=boxfill, rounded corners=1mm, align=left, anchor=north west, inner sep=1.4mm}]
+  \node[grp] (g1) at (0,0) {\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}potassium & lithium\\sodium & calcium\end{tabular}};
+  \node[grp] (g2) at ([xshift=4mm]g1.north east) {\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}magnesium & iron\\aluminium & tin\\zinc & lead\end{tabular}};
+  \node[grp] (g3) at ([xshift=4mm]g2.north east) {copper\\mercury\\silver};
+  \node[grp] (g4) at ([xshift=4mm]g3.north east) {gold};
+  \coordinate (base) at (g1.south west);
+  \foreach \k/\t/\e in {1/react with water/g1, 2/react with acids/g2, 3/react with oxygen/g3}{
+    \draw[<->, line width=1pt] ($(base)+(0,-\k*6.6mm+1.6mm)$) -- ($(\e.east |- base)+(0,-\k*6.6mm+1.6mm)$)
+      node[pos=0.5, fill=white, inner sep=1pt] {\t};}
+  \draw[->, line width=1pt] ([yshift=3mm]g1.north west) -- ([yshift=3mm]g4.north east);
+  \node[anchor=south west] at ([yshift=3.3mm]g1.north west) {most reactive};
+  \node[anchor=south east] at ([yshift=3.3mm]g4.north east) {least reactive};
+\end{tikzpicture}}
+
+% ---- measuring cylinder: scale 0-50 mL, level #2 mL, object if #3 = 1
+% inside width 2, scale height 10 units for 50 mL (0.2 unit per mL)
+\newcommand\FigCylinder[3][3.2mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \pgfmathsetmacro\lev{0.2*#2}
+  \fill[water] (0,0) rectangle (2,\lev);
+  \draw[line width=0.6pt] (0,\lev) .. controls (0.5,\lev-0.25) and (1.5,\lev-0.25) .. (2,\lev);
+  \draw[line width=0.9pt] (0,11) -- (0,0) -- (2,0) -- (2,11);
+  \draw[line width=0.9pt] (-0.6,0) -- (2.6,0);
+  \foreach \v in {0,5,...,50} {\pgfmathsetmacro\yy{0.2*\v}
+    \draw[line width=0.4pt] (2,\yy) -- (1.55,\yy);}
+  \foreach \v in {10,20,...,50} {\pgfmathsetmacro\yy{0.2*\v}
+    \draw[line width=0.7pt] (2,\yy) -- (1.2,\yy); \node[anchor=west] at (2.15,\yy) {\v};}
+  \ifnum#3=1 \draw[fill=black!35, line width=0.6pt] (0.55,0.15) rectangle (1.25,1.6); \fi
+\end{tikzpicture}}
+
+% ---- melting point of mixtures of metals X and Y (made-up data)
+% x: % of X, 0-100 -> 0-10 units; y: 150-350 C -> 0-8 units
+\def\mpdata{0/330,20/290,40/248,60/206,70/190,80/214,100/262}
+\newcommand\FigMPGraph[1][5.2mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \foreach \i in {0,1,...,10} \draw[black!20, line width=0.3pt] (\i,0) -- (\i,8);
+  \foreach \j in {0,1,...,8} \draw[black!20, line width=0.3pt] (0,\j) -- (10,\j);
+  \draw[->] (0,0) -- (10.6,0); \draw[->] (0,0) -- (0,8.6);
+  \foreach \v in {0,20,...,100} \node[below] at (\v/10,0) {\v};
+  \foreach \t in {150,200,...,350} \node[left] at (0,{(\t-150)/25}) {\t};
+  \node[below=5mm] at (5,0) {percentage of metal X (\%)};
+  \node[rotate=90, above=14mm] at (0,4) {melting point (\textdegree C)};
+  \draw[line width=1pt] plot[mark=x, mark size=3pt, mark options={line width=1pt}]
+    coordinates {(0,7.2) (2,5.6) (4,3.92) (6,2.24) (7,1.6) (8,2.56) (10,4.48)};
+\end{tikzpicture}}
+
+% ---- the one idea (Green Machines): three jobs of a green machine
+\newcommand\FigGreenIdea{%
+\begin{tikzpicture}[fig, box/.style={draw=black!55, fill=boxfill, rounded corners=1.5mm,
+    text width=44mm, align=center, minimum height=20mm, inner sep=2mm}]
+  \node[box] (a) at (0,0) {\textbf{MAKE food}\\in the leaves};
+  \node[box] (b) at (52mm,0) {\textbf{MOVE materials}\\through the plant};
+  \node[box] (c) at (104mm,0) {\textbf{MAKE new plants}\\from flowers};
+  \draw[->, line width=1.2pt] (a) -- (b); \draw[->, line width=1.2pt] (b) -- (c);
+\end{tikzpicture}}
+
+% ---- the one idea (Metals): structure -> properties -> uses; reactivity
+\newcommand\FigMetalIdea{%
+\begin{tikzpicture}[fig, box/.style={draw=black!55, fill=boxfill, rounded corners=1.5mm,
+    text width=31mm, align=center, minimum height=13mm, inner sep=1.5mm}]
+  \node[box] (a) at (0,0) {how the atoms are packed};
+  \node[box] (b) at (40mm,0) {physical properties};
+  \node[box] (c) at (80mm,0) {what we use it for};
+  \node[box] (d) at (0,-20mm) {how reactive the metal is};
+  \node[box] (e) at (40mm,-20mm) {what it reacts with};
+  \node[box] (f) at (80mm,-20mm) {how we protect it};
+  \foreach \u/\v in {a/b,b/c,d/e,e/f} \draw[->, line width=1.2pt] (\u) -- (\v);
+\end{tikzpicture}}
+
+\endinput
