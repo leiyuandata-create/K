@@ -163,12 +163,15 @@ case("7t", "Chinese frame without an \\answers block",
      C.check_teacher(z, SLIDES, C.p("teacher_pages.pdf"), C.p("slides_teacher.pdf")))
 # an answer too long for its box must report Overfull \vbox (spec 10.4)
 tp = C.read("teacher_pages.tex")
-tp = sub1(r"\\teacherpage\{3\}\{", lambda m: "\\teacherpage{3}{" + "long answer line\\par " * 12, tp)
+tp = sub1(r"\\teacherpagesay\{3\}\{", lambda m: "\\teacherpagesay{3}{" + "long answer line\\par " * 12, tp)
+tp = sub1(r"\\sayline\{ovule\}\{OV-yool\}", lambda m: "\\sayline{ovule}{OV-yool-OV-yool-OV-yool-OV-yool-OV-yool}", tp)
 open(tmp("teacher_pages.tex"), "w", encoding="utf-8").write(tp)
 for d in ("fonts", "slides_zh_screen.pdf"):
     src = C.p(d)
     os.symlink(src, tmp(d))
 subprocess.run(["xelatex", "-interaction=nonstopmode", "teacher_pages.tex"], cwd=TD, capture_output=True)
+tl = open(tmp("teacher_pages.log"), encoding="utf-8", errors="replace").read() if os.path.exists(tmp("teacher_pages.log")) else ""
+case("7t", "pronunciation wider than the blue column reports Overfull \\hbox", "Overfull \\hbox" in tl)
 case("7t", "over-long answer reports Overfull \\vbox", C.check_logs([tmp("teacher_pages.log")]),
      os.path.exists(tmp("teacher_pages.pdf")))
 z = sub1(r"课前小测", lambda m: "课前小测\\answers{Answer: anther}", ZH)

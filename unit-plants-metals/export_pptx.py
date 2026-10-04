@@ -196,9 +196,15 @@ def to_pptx_math(om):
     return om
 
 
-def text_run(text):
+SAY_BLUE = "0046BE"     # Say it lines, same blue as the teacher PDF
+
+
+def text_run(text, colour=None):
     r = etree.Element(f"{{{NS['a']}}}r")
     rpr = etree.SubElement(r, f"{{{NS['a']}}}rPr", lang="zh-CN", sz=str(NOTE_PT * 100), dirty="0")
+    if colour:
+        fill = etree.SubElement(rpr, f"{{{NS['a']}}}solidFill")
+        etree.SubElement(fill, f"{{{NS['a']}}}srgbClr", val=colour)
     etree.SubElement(rpr, f"{{{NS['a']}}}latin", typeface="Arial")
     etree.SubElement(rpr, f"{{{NS['a']}}}ea", typeface="Microsoft YaHei")
     t = etree.SubElement(r, f"{{{NS['a']}}}t")
@@ -253,11 +259,14 @@ def main():
         etree.SubElement(bpr, f"{{{NS['a']}}}noAutofit")
         for p in body.findall("a:p", NS):
             body.remove(p)
+        in_say = False
         for line in parsed[k]:
             p = etree.SubElement(body, f"{{{NS['a']}}}p")
+            if len(line) == 1 and line[0] == ("t", "Say it:"):
+                in_say = True
             for kind, val in line:
                 if kind == "t":
-                    p.append(text_run(val))
+                    p.append(text_run(val, SAY_BLUE if in_say else None))
                 else:
                     p.append(math_block(to_pptx_math(next(maths)), linear(val)))
             end = etree.SubElement(p, f"{{{NS['a']}}}endParaRPr", lang="zh-CN", sz=str(NOTE_PT * 100))

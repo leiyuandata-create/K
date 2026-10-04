@@ -706,6 +706,14 @@ def check_teacher(zh_frames_tex, en_tex, teacher_pdf, joined_pdf):
         if "\\answers{" not in blocks[i + 1]:
             probs.append(f"Chinese frame {blocks[i]}: no \\answers block")
     n = len(frames(strip_comments(en_tex)))
+    # every slide whose notes have Say it: gets the blue column, no other
+    want = [k for k, fr in enumerate(frames(strip_comments(en_tex)), 1)
+            if "Say it:" in note_source_lines(split_notes(fr)[1][0])]
+    tp = os.path.join(os.path.dirname(teacher_pdf), "teacher_pages.tex")
+    if os.path.exists(tp):
+        got = [int(x) for x in re.findall(r"\\teacherpagesay\{(\d+)\}", open(tp, encoding="utf-8").read())]
+        if got != want:
+            probs.append(f"Say it column on pages {got}, notes have Say it on {want}")
     t = pymupdf.open(teacher_pdf)
     j = pymupdf.open(joined_pdf)
     if not (t.page_count == j.page_count == n):

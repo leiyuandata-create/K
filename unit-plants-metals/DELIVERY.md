@@ -1,6 +1,6 @@
 # Green Machines + Metallic materials 冲刺课 · 交付说明
 
-Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学校考试按 A / M / E 评分 · 规范 v23
+Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学校考试按 A / M / E 评分 · 规范 v24
 
 ## 参数
 
@@ -22,15 +22,15 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 | `slides.pdf` | 双宽 PDF（左幻灯片、右备注，备注两栏排），PPTX 的来源，也是备用放映文件 | 61 页 |
 | `slides_zh.pptx` | **中文版课件**：和英文版一页对一页，句子是中文，术语保留英文、括号附中文，如 stigma（柱头）；图里的标签也换成中文；Sam 的答案保留英文（学生要改的是英文答案）；备注和英文版完全一样 | 61 张 |
 | `slides_zh.pdf` | 中文版的双宽 PDF（左幻灯片、右备注），备用 | 61 页 |
-| `slides_teacher.pdf` | **老师用的双宽 PDF**：左边是英文幻灯片（投屏用）；右边是同一页的中文幻灯片，下面用红色粗体写出这一页的答案 | 61 页 |
+| `slides_teacher.pdf` | **老师用的双宽 PDF**：左边是英文幻灯片（投屏用）；右边是同一页的中文幻灯片，下面用红色粗体写出这一页的答案；有难词的页（25 页），右侧另有一栏蓝色的自然拼读 Say it | 61 页 |
 | `classwork.pdf` / `classwork_answers.pdf` | 课堂练习 Part A–F，Part C 有一张真实尺寸的坐标纸（需按 100 % 打印）；答案版同版面红字 | 4 / 4 |
 | `mock.pdf` / `mock_answers.pdf` | Mini mock，17 分钟，6 题，两个单元交替 | 2 / 2 |
 | `hw1.pdf` / `hw1_answers.pdf` | 作业 1 Green Machines，约 40 分钟 | 2 / 2 |
 | `hw2.pdf` / `hw2_answers.pdf` | 作业 2 Metallic materials，约 40 分钟 | 3 / 3 |
 
-重新生成：`./build.sh`（sheets → 英文版课件 → 中文版课件 → 老师用 PDF → `check.py --tex` → 两份 PPTX → `check.py --pptx`）。所有检查对两份课件都跑。`python3 test_checks.py` 在草稿副本里对每项检查植入错误，37 个全部被抓到。
+重新生成：`./build.sh`（sheets → 英文版课件 → 中文版课件 → 老师用 PDF → `check.py --tex` → 两份 PPTX → `check.py --pptx`）。所有检查对两份课件都跑。`python3 test_checks.py` 在草稿副本里对每项检查植入错误，38 个全部被抓到。
 
-**老师用 PDF 怎么放映**：用 SlidePilot (Mac) 或 pympress (Windows) 打开 `slides_teacher.pdf`，选“右半边是备注”的模式：投影仪显示左边的英文幻灯片，你的电脑屏幕显示右边的中文页和红色答案。答案写在 `slides_zh_frames.tex` 每一页的 `\answers{...}` 里，改答案只改这里。
+**老师用 PDF 怎么放映**：用 SlidePilot (Mac) 或 pympress (Windows) 打开 `slides_teacher.pdf`，选“右半边是备注”的模式：投影仪显示左边的英文幻灯片，你的电脑屏幕显示右边的中文页和红色答案。答案写在 `slides_zh_frames.tex` 每一页的 `\answers{...}` 里，改答案只改这里。蓝色读音直接取自 `slides.tex` 备注里的 `Say it:`，改读音只改备注。PPTX 备注里的 Say it 也是蓝色。
 
 **中文版怎么来的**：中文屏幕内容写在 `slides_zh_frames.tex`（每页一段）；`tools/build_zh_deck.py` 把它和 `slides.tex` 里同一页的备注拼成 `slides_zh.tex`，所以两份课件的备注永远一样（第 7z 项检查）。改备注只改 `slides.tex`；改中文屏幕只改 `slides_zh_frames.tex`。讲稿在备注的 `Script:` 段。上一版的中文备课手册已经删掉。
 
