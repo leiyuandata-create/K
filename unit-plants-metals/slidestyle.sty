@@ -16,10 +16,10 @@
   UprightFont=*-regular, ItalicFont=*-italic]{texgyreheros}
 \setmathrm[Path=fonts/, Extension=.otf, UprightFont=*-regular,
   BoldFont=*-bold, ItalicFont=*-italic]{texgyreheros}
-% Chinese appears only in \note{} (tutor notes, language parameter)
+% Chinese: in \note{} (tutor notes) and on the screen of slides_zh.tex
 \RequirePackage{xeCJK}
-\setCJKmainfont[Path=fonts/]{wqy-microhei.ttc}
-\setCJKsansfont[Path=fonts/]{wqy-microhei.ttc}
+\setCJKmainfont[Path=fonts/, AutoFakeBold=2]{wqy-microhei.ttc}
+\setCJKsansfont[Path=fonts/, AutoFakeBold=2]{wqy-microhei.ttc}
 \usefonttheme{professionalfonts}
 
 \geometry{paperwidth=170mm,paperheight=95.625mm}
@@ -98,9 +98,5 @@
   \vspace*{1.5mm}\noindent\begin{minipage}[t]{\textwidth}\sNote\raggedright
   \setlength\parskip{1.2pt}\begin{multicols}{2}\raggedright\insertnote\end{multicols}\end{minipage}}
 
-% \zh{...}: Chinese translation of the screen and background for the
-% tutor's prep book (prep_zh.pdf, built by tools/build_prep.py). It is
-% never typeset on the slide or in the notes.
-\newcommand\zh[1]{}
 
 \endinput

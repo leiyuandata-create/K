@@ -1,6 +1,6 @@
 # Green Machines + Metallic materials 冲刺课 · 交付说明
 
-Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学校考试按 A / M / E 评分 · 规范 v21
+Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学校考试按 A / M / E 评分 · 规范 v22
 
 ## 参数
 
@@ -10,7 +10,7 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 | 观看距离 | far，字号按 §5.4 far 一栏 |
 | 学生活动 | 打印 Classwork、Mini mock、Homework，下课收回 |
 | 语言 | English screen + Chinese notes：屏幕和纸全英文；PPTX 备注中文，术语全英文，难词有 `Say it:`；每页备注有中英混合讲稿 `Script:` |
-| 老师背景 | non-specialist（v21 新增）：另附中文备课手册 `prep_zh.pdf` |
+| 老师背景 | non-specialist：另附中文版课件 `slides_zh.pptx`（v22，取代备课手册） |
 | 深度 | exam sprint：范围和难度不超出两本 booklet，只换提问角度 |
 | 考试 | 学校年底考试，A / M / E |
 
@@ -20,15 +20,16 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 |---|---|---|
 | `slides.pptx` | 课件：每页一张全屏图片；备注是中文 + 英文术语 + 原生公式 | 61 张 |
 | `slides.pdf` | 双宽 PDF（左幻灯片、右备注，备注两栏排），PPTX 的来源，也是备用放映文件 | 61 页 |
-| `prep_zh.pdf` | 中文备课手册（老师自用，不给学生）：术语表（英文、中文、读音、说明）+ 每页课件截图、屏幕内容中文翻译、背景知识、答案与讲解、讲稿、读音 | 34 页 |
+| `slides_zh.pptx` | **中文版课件**：和英文版一页对一页，句子是中文，术语保留英文、括号附中文，如 stigma（柱头）；图里的标签也换成中文；Sam 的答案保留英文（学生要改的是英文答案）；备注和英文版完全一样 | 61 张 |
+| `slides_zh.pdf` | 中文版的双宽 PDF（左幻灯片、右备注），备用 | 61 页 |
 | `classwork.pdf` / `classwork_answers.pdf` | 课堂练习 Part A–F，Part C 有一张真实尺寸的坐标纸（需按 100 % 打印）；答案版同版面红字 | 4 / 4 |
 | `mock.pdf` / `mock_answers.pdf` | Mini mock，17 分钟，6 题，两个单元交替 | 2 / 2 |
 | `hw1.pdf` / `hw1_answers.pdf` | 作业 1 Green Machines，约 40 分钟 | 2 / 2 |
 | `hw2.pdf` / `hw2_answers.pdf` | 作业 2 Metallic materials，约 40 分钟 | 3 / 3 |
 
-重新生成：`./build.sh`（sheets → slides → 备课手册 → `check.py --tex` → `export_pptx.py` → `check.py --pptx`）。`python3 test_checks.py` 在草稿副本里对每项检查植入错误，31 个全部被抓到。
+重新生成：`./build.sh`（sheets → 英文版课件 → 中文版课件 → `check.py --tex` → 两份 PPTX → `check.py --pptx`）。所有检查对两份课件都跑。`python3 test_checks.py` 在草稿副本里对每项检查植入错误，34 个全部被抓到。
 
-**讲稿和备课手册的来源**：每页的中文翻译和背景写在 `slides.tex` 每个 frame 的 `\zh{...}` 里（不显示在幻灯片上），讲稿写在备注的 `Script:` 段。`tools/build_prep.py` 从 `slides.tex` 生成手册，所以手册和课件、备注永远一致；改内容只改 `slides.tex`。
+**中文版怎么来的**：中文屏幕内容写在 `slides_zh_frames.tex`（每页一段）；`tools/build_zh_deck.py` 把它和 `slides.tex` 里同一页的备注拼成 `slides_zh.tex`，所以两份课件的备注永远一样（第 7z 项检查）。改备注只改 `slides.tex`；改中文屏幕只改 `slides_zh_frames.tex`。讲稿在备注的 `Script:` 段。上一版的中文备课手册已经删掉。
 
 ## 课堂时间表（每页备注里也写了）
 
@@ -66,7 +67,7 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 ## 与规范（v20）不同的地方
 
 1. **用 A / M / E 等级代替 [n] 分**（按你的选择）。题目标 [A] / [M] / [E]，表头写 “Each question: A / M / E”，没有总分。
-2. **没有讲义**（按你的选择）。两本 booklet 当讲义用，每页页脚写 `Green Machines p.X` 或 `Metals p.X`。§7（讲义和课件配对）不适用，所以没有 term macros。
+2. **没有讲义**（按你的选择）。中文版课件也不是讲义，只是同一份课件的中文屏幕。两本 booklet 当讲义用，每页页脚写 `Green Machines p.X` 或 `Metals p.X`。§7（讲义和课件配对）不适用，所以没有 term macros。
 3. **两课合一份课件**：每课各有 Do Now、divider、lose-marks、Summary，各有一页 Classwork（共两页，不是整份课件一页）。
 4. **rusty nail 试管和 reactivity series 是重画的**，没有裁图：原图标签在远距离看不清。重画时用了 booklet 的原词。
 5. **备注页（双宽 PDF 右半边）改为两栏、字号 6.9 pt**，加了讲稿后每页备注仍能放在一页；PPTX 备注栏仍是 16 pt，可以滚动。

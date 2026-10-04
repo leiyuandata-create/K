@@ -148,6 +148,14 @@ fx = mutate_pptx(lambda x: re.sub(r"<m:fPr>", '<m:fPr><m:type m:val="lin"/>', x,
                  if "<m:fPr>" in x else None)
 case("11", "linear fraction in note maths", C.check_notes_maths(SLIDES, bad), fx)
 
+# 7z (deck pairing) -------------------------------------------------
+ZH = C.read("slides_zh.tex")
+z = sub1(r"Q1 anther\\par", lambda m: "Q1 stamen\\par", ZH)
+case("7z", "Chinese deck note differs from the English note", C.check_deck_pair(SLIDES, z))
+case("7z", "real decks match", not C.check_deck_pair(SLIDES, ZH))
+z = sub1(r"课前小测", lambda m: "课前小测 Answer: anther", ZH)
+case("3", "reveal header on the Chinese screen", C.check_no_answers(z))
+
 # 12 ------------------------------------------------------------------
 t = sub1(r"has 3 errors", lambda m: "has 4 errors", SLIDES)
 case("12", "stated count differs from the numbered answers", C.check_spot_error(t, {}))

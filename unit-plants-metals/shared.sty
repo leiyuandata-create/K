@@ -65,6 +65,11 @@
 \defL{wordeq}{15}{Word equations: metal oxide, metal hydroxide + hydrogen, metal chloride + hydrogen.}
 \defL{react}{16}{A reactivity claim needs evidence, and metals low in the series (copper, silver, gold) do not react with dilute acid.}
 
+% ------------------------------------------------- deck language
+% slides_zh.tex sets \zhdecktrue: figure labels switch to Chinese
+\newif\ifzhdeck \zhdeckfalse
+\newcommand\zhen[2]{\ifzhdeck#1\else#2\fi}
+
 % ------------------------------------------------------------ figures
 \providecommand\figfont{\small}
 \newlength\fu \setlength\fu{5mm}
@@ -175,10 +180,10 @@
   \TubeOutline{16}
   \node[letter] at (16,-0.9) {C};
   % labels (right of each tube); leader ends on the item named
-  \draw[lead] (-0.55,0.75) -- (-1.5,0.2) node[anchor=east, align=right] {calcium\\chloride};
-  \draw[lead] (8.6,4.9) -- (9.5,5.6) node[anchor=west] {oil};
-  \draw[lead] (8.6,2.6) -- (9.5,2.4) node[anchor=west, align=left] {boiled\\water};
-  \draw[lead] (16.6,1.8) -- (17.5,1.6) node[anchor=west, align=left] {tap\\water};
+  \draw[lead] (-0.55,0.75) -- (-1.5,0.2) node[anchor=east, align=right] {\zhen{氯化钙}{calcium\\chloride}};
+  \draw[lead] (8.6,4.9) -- (9.5,5.6) node[anchor=west] {\zhen{油}{oil}};
+  \draw[lead] (8.6,2.6) -- (9.5,2.4) node[anchor=west, align=left] {\zhen{煮过\\的水}{boiled\\water}};
+  \draw[lead] (16.6,1.8) -- (17.5,1.6) node[anchor=west, align=left] {\zhen{自来\\水}{tap\\water}};
 \end{tikzpicture}}
 
 % ---- reactivity series (Metallic materials p.20), re-drawn with the
@@ -187,17 +192,17 @@
 \newcommand\FigReactivity{%
 \begin{tikzpicture}[fig, baseline=(current bounding box.north),
     grp/.style={draw=black!55, fill=boxfill, rounded corners=1mm, align=left, anchor=north west, inner sep=1.4mm}]
-  \node[grp] (g1) at (0,0) {\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}potassium & lithium\\sodium & calcium\end{tabular}};
-  \node[grp] (g2) at ([xshift=4mm]g1.north east) {\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}magnesium & iron\\aluminium & tin\\zinc & lead\end{tabular}};
-  \node[grp] (g3) at ([xshift=4mm]g2.north east) {copper\\mercury\\silver};
-  \node[grp] (g4) at ([xshift=4mm]g3.north east) {gold};
+  \node[grp] (g1) at (0,0) {\zhen{\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}钾 K & 锂 Li\\钠 Na & 钙 Ca\end{tabular}}{\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}potassium & lithium\\sodium & calcium\end{tabular}}};
+  \node[grp] (g2) at ([xshift=4mm]g1.north east) {\zhen{\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}镁 Mg & 铁 Fe\\铝 Al & 锡 Sn\\锌 Zn & 铅 Pb\end{tabular}}{\begin{tabular}{@{}l@{\hspace{3mm}}l@{}}magnesium & iron\\aluminium & tin\\zinc & lead\end{tabular}}};
+  \node[grp] (g3) at ([xshift=4mm]g2.north east) {\zhen{铜 Cu\\汞 Hg\\银 Ag}{copper\\mercury\\silver}};
+  \node[grp] (g4) at ([xshift=4mm]g3.north east) {\zhen{金 Au}{gold}};
   \coordinate (base) at (g1.south west);
-  \foreach \k/\t/\e in {1/react with water/g1, 2/react with acids/g2, 3/react with oxygen/g3}{
+  \foreach \k/\t/\e in {1/\zhen{和水反应}{react with water}/g1, 2/\zhen{和酸反应}{react with acids}/g2, 3/\zhen{和氧气反应}{react with oxygen}/g3}{
     \draw[<->, line width=1pt] ($(base)+(0,-\k*6.6mm+1.6mm)$) -- ($(\e.east |- base)+(0,-\k*6.6mm+1.6mm)$)
       node[pos=0.5, fill=white, inner sep=1pt] {\t};}
   \draw[->, line width=1pt] ([yshift=3mm]g1.north west) -- ([yshift=3mm]g4.north east);
-  \node[anchor=south west] at ([yshift=3.3mm]g1.north west) {most reactive};
-  \node[anchor=south east] at ([yshift=3.3mm]g4.north east) {least reactive};
+  \node[anchor=south west] at ([yshift=3.3mm]g1.north west) {\zhen{最活泼}{most reactive}};
+  \node[anchor=south east] at ([yshift=3.3mm]g4.north east) {\zhen{最不活泼}{least reactive}};
 \end{tikzpicture}}
 
 % ---- measuring cylinder: scale 0-50 mL, level #2 mL, object if #3 = 1
@@ -226,8 +231,9 @@
   \draw[->] (0,0) -- (10.6,0); \draw[->] (0,0) -- (0,8.6);
   \foreach \v in {0,20,...,100} \node[below] at (\v/10,0) {\v};
   \foreach \t in {150,200,...,350} \node[left] at (0,{(\t-150)/25}) {\t};
-  \node[below=5mm] at (5,0) {percentage of metal X (\%)};
-  \node[rotate=90, above=14mm] at (0,4) {melting point (\textdegree C)};
+  \node[below=5mm] at (5,0) {\zhen{金属 X 的百分比 (\%)}{percentage of metal X (\%)}};
+  % rotated label: placed 11 mm left of the axis, clear of the tick labels
+  \node[rotate=90, anchor=south] at ($(0,4)+(-11mm,0)$) {\zhen{熔点 (\textdegree C)}{melting point (\textdegree C)}};
   \draw[line width=1pt] plot[mark=x, mark size=3pt, mark options={line width=1pt}]
     coordinates {(0,7.2) (2,5.6) (4,3.92) (6,2.24) (7,1.6) (8,2.56) (10,4.48)};
 \end{tikzpicture}}
@@ -236,9 +242,9 @@
 \newcommand\FigGreenIdea{%
 \begin{tikzpicture}[fig, box/.style={draw=black!55, fill=boxfill, rounded corners=1.5mm,
     text width=44mm, align=center, minimum height=20mm, inner sep=2mm}]
-  \node[box] (a) at (0,0) {\textbf{MAKE food}\\in the leaves};
-  \node[box] (b) at (52mm,0) {\textbf{MOVE materials}\\through the plant};
-  \node[box] (c) at (104mm,0) {\textbf{MAKE new plants}\\from flowers};
+  \node[box] (a) at (0,0) {\zhen{\textbf{制造食物}\\MAKE food\\在叶子里}{\textbf{MAKE food}\\in the leaves}};
+  \node[box] (b) at (52mm,0) {\zhen{\textbf{运输物质}\\MOVE materials\\在植物体内}{\textbf{MOVE materials}\\through the plant}};
+  \node[box] (c) at (104mm,0) {\zhen{\textbf{产生新植物}\\MAKE new plants\\用花和种子}{\textbf{MAKE new plants}\\from flowers}};
   \draw[->, line width=1.2pt] (a) -- (b); \draw[->, line width=1.2pt] (b) -- (c);
 \end{tikzpicture}}
 
@@ -246,12 +252,12 @@
 \newcommand\FigMetalIdea{%
 \begin{tikzpicture}[fig, box/.style={draw=black!55, fill=boxfill, rounded corners=1.5mm,
     text width=31mm, align=center, minimum height=13mm, inner sep=1.5mm}]
-  \node[box] (a) at (0,0) {how the atoms are packed};
-  \node[box] (b) at (40mm,0) {physical properties};
-  \node[box] (c) at (80mm,0) {what we use it for};
-  \node[box] (d) at (0,-20mm) {how reactive the metal is};
-  \node[box] (e) at (40mm,-20mm) {what it reacts with};
-  \node[box] (f) at (80mm,-20mm) {how we protect it};
+  \node[box] (a) at (0,0) {\zhen{原子怎样排列}{how the atoms are packed}};
+  \node[box] (b) at (40mm,0) {\zhen{物理性质}{physical properties}};
+  \node[box] (c) at (80mm,0) {\zhen{用途}{what we use it for}};
+  \node[box] (d) at (0,-20mm) {\zhen{金属有多活泼}{how reactive the metal is}};
+  \node[box] (e) at (40mm,-20mm) {\zhen{它和什么反应}{what it reacts with}};
+  \node[box] (f) at (80mm,-20mm) {\zhen{怎样保护它}{how we protect it}};
   \foreach \u/\v in {a/b,b/c,d/e,e/f} \draw[->, line width=1.2pt] (\u) -- (\v);
 \end{tikzpicture}}
 

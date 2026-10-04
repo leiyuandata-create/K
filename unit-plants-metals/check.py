@@ -19,8 +19,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SHEETS = ["classwork", "mock", "hw1", "hw2"]
 PAIRS = [(s, f"{s}_answers") for s in SHEETS]
 SHEET_PDFS = [f"{a}.pdf" for pair in PAIRS for a in pair]
-PRINTED = SHEET_PDFS + ["slides_screen.pdf", "prep_zh.pdf"]
-LOGS = [f"{a}.log" for pair in PAIRS for a in pair] + ["slides_screen.log", "slides_notes.log", "slides.log", "prep_zh.log"]
+DECKS = ["slides", "slides_zh"]        # English screen; Chinese screen (same notes)
+PRINTED = SHEET_PDFS + [f"{d}_screen.pdf" for d in DECKS]
+LOGS = [f"{a}.log" for pair in PAIRS for a in pair] + [f"{d}{x}.log" for d in DECKS for x in ("_screen", "_notes", "")]
 TEX = [f"{s}.tex" for s in SHEETS] + ["slides.tex"]
 UNITS = ["g/cm", "g/mL", "km/s", "m/s", "cm/s", "J/kg"]
 SUPSUB = re.compile("[\u00b2\u00b3\u00b9\u2070-\u209f]")
@@ -494,15 +495,16 @@ def notes_structure(title, lines, where):
     return probs
 
 
-def check_notes_structure_src(slides_tex):
-    """Item 10 on the source: notes as written, plus no CJK on screen."""
+def check_notes_structure_src(slides_tex, chinese_screen=False):
+    """Item 10 on the source: notes as written, plus no CJK on screen
+    (the Chinese-screen deck is exempt from the screen rule)."""
     probs = []
     tex = strip_comments(slides_tex)
     for k, fr in enumerate(frames(tex), 1):
         title = frame_title(fr)
         _, notes = split_notes(fr)
         screen = screen_of(fr)
-        if CJK.search(screen):
+        if CJK.search(screen) and not chinese_screen:
             probs.append(f"slide {k} '{title}': Chinese outside \\note")
         lines = [re.sub(r"\\Lref\{[^}]*\}", "Lx", l) for l in note_source_lines(notes[0] if notes else "")]
         lines = [re.sub(r"\$[^$]*\$", "x", l) for l in lines]
@@ -678,41 +680,66 @@ def check_layout_pairs(pairs):
     return probs
 
 
+# ------------------------------------------------------------ pairing
+def check_deck_pair(en_tex, zh_tex):
+    """The Chinese deck has the same frames, in order, with the same notes."""
+    en = frames(strip_comments(en_tex))
+    zh = frames(strip_comments(zh_tex))
+    if len(en) != len(zh):
+        return [f"English deck {len(en)} frames, Chinese deck {len(zh)}"]
+    probs = []
+    for k, (a, b) in enumerate(zip(en, zh), 1):
+        if split_notes(a)[1] != split_notes(b)[1]:
+            probs.append(f"slide {k}: notes differ between the decks")
+    return probs
+
+
 # ------------------------------------------------------------ runner
 def run_tex():
-    slides = read("slides.tex")
     texts = {n: read(n) for n in TEX}
     sheet_texts = {n: read(n) for n in TEX if n != "slides.tex"}
-    return [
+    res = [
         ("1", "Clean compile", check_logs([p(l) for l in LOGS])),
-        ("1b", "Screen text clears the footer", check_footer_clear(p("slides_screen.pdf"))),
-        ("1c", "Note pages do not overflow", check_notes_inside(p("slides_notes.pdf"))),
         ("1d", "No solid dark fills", sum((check_dark_fills(p(f)) for f in PRINTED), [])),
-        ("2", "Fonts embedded", check_fonts([p(f) for f in PRINTED + ["slides_notes.pdf", "slides.pdf"]],
+        ("2", "Fonts embedded", check_fonts([p(f) for f in PRINTED] +
+                                            [p(f"{d}{x}.pdf") for d in DECKS for x in ("_notes", "")],
                                             [p(l) for l in LOGS])),
-        ("3", "No answers on screen", check_no_answers(slides)),
         ("4", "No slash fractions or fake superscripts", check_fractions(texts)),
-        ("5", "No banned commands", check_banned(slides)),
-        ("5b", "Frame bodies not swallowed", check_frames(slides)),
         ("6", "Plots stay on canvas (n/a: all figures are TikZ or crops)",
          check_plots([p(f) for f in os.listdir(HERE) if f.endswith(".py") and f != "check.py"])),
-        ("10s", "Notes structure (source) + no Chinese on screen", check_notes_structure_src(slides)),
-        ("12", "Spot the error integrity", check_spot_error(slides, sheet_texts)),
-        ("13", "Say it: once, where first said", check_sayit(slides)),
+        ("12", "Spot the error integrity", check_spot_error(read("slides.tex"), sheet_texts)),
         ("14", "Blank and answer layouts match", check_layout_pairs(PAIRS)),
+        ("7z", "Chinese deck: same frames and notes as English", check_deck_pair(read("slides.tex"), read("slides_zh.tex"))),
     ]
+    for d in DECKS:
+        t = read(f"{d}.tex")
+        tag = "" if d == "slides" else " [zh]"
+        res += [
+            ("1b", "Screen text clears the footer" + tag, check_footer_clear(p(f"{d}_screen.pdf"))),
+            ("1c", "Note pages do not overflow" + tag, check_notes_inside(p(f"{d}_notes.pdf"))),
+            ("3", "No answers on screen" + tag, check_no_answers(t)),
+            ("5", "No banned commands" + tag, check_banned(t)),
+            ("5b", "Frame bodies not swallowed" + tag, check_frames(t)),
+            ("10s", "Notes structure (source)" + tag, check_notes_structure_src(t, chinese_screen=d != "slides")),
+            ("13", "Say it: once, where first said" + tag, check_sayit(t)),
+        ]
+    return res
 
 
 def run_pptx():
-    slides = read("slides.tex")
-    x = p("slides.pptx")
-    return [
-        ("7", "Page alignment", check_alignment(slides, p("slides.pdf"), x)),
-        ("8", "Slides are pure images", check_pure_images(x)),
-        ("9", "No images in notes", check_no_note_images(x)),
-        ("10", "Notes structure", check_notes_structure(slides, x)),
-        ("11", "Notes maths truly typeset", check_notes_maths(slides, x)),
-    ]
+    res = []
+    for d in DECKS:
+        t = read(f"{d}.tex")
+        x = p(f"{d}.pptx")
+        tag = "" if d == "slides" else " [zh]"
+        res += [
+            ("7", "Page alignment" + tag, check_alignment(t, p(f"{d}.pdf"), x)),
+            ("8", "Slides are pure images" + tag, check_pure_images(x)),
+            ("9", "No images in notes" + tag, check_no_note_images(x)),
+            ("10", "Notes structure" + tag, check_notes_structure(t, x)),
+            ("11", "Notes maths truly typeset" + tag, check_notes_maths(t, x)),
+        ]
+    return res
 
 
 def main():

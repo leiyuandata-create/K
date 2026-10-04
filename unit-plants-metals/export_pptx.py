@@ -217,8 +217,9 @@ def math_block(om, fallback):
 
 
 def main():
-    frames, notes = frames_and_notes(os.path.join(HERE, "slides.tex"))
-    pdf = pymupdf.open(os.path.join(HERE, "slides.pdf"))
+    deck = sys.argv[1] if len(sys.argv) > 1 else "slides"
+    frames, notes = frames_and_notes(os.path.join(HERE, deck + ".tex"))
+    pdf = pymupdf.open(os.path.join(HERE, deck + ".pdf"))
     if not (len(frames) == pdf.page_count):
         raise SystemExit(f"frames {len(frames)} != PDF pages {pdf.page_count}; nothing written")
 
@@ -263,9 +264,9 @@ def main():
 
     if len(prs.slides) != len(frames):
         raise SystemExit("slide count mismatch; nothing written")
-    out = os.path.join(HERE, "slides.pptx")
+    out = os.path.join(HERE, deck + ".pptx")
     prs.save(out)
-    print(f"slides.pptx: {len(prs.slides)} slides, {len(eqs)} native equations in notes")
+    print(f"{deck}.pptx: {len(prs.slides)} slides, {len(eqs)} native equations in notes")
 
 
 if __name__ == "__main__":
