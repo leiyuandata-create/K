@@ -16,7 +16,7 @@ import tempfile
 import zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SHEETS = ["classwork", "mock", "hw1", "hw2"]
+SHEETS = ["inclass", "homework"]
 PAIRS = [(s, f"{s}_answers") for s in SHEETS]
 SHEET_PDFS = [f"{a}.pdf" for pair in PAIRS for a in pair]
 DECKS = ["slides", "slides_zh"]        # English screen; Chinese screen (same notes)

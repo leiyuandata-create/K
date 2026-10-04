@@ -74,7 +74,7 @@ with pikepdf.new() as pd:
 ren = pymupdf.open(pdf)[0].get_pixmap(dpi=72, colorspace=pymupdf.csGRAY)
 fx = min(ren.samples) < 60
 case("1d", "dark fill whose colour is set inside BT..ET", C.check_dark_fills(pdf), fx)
-case("1d", "a real sheet (outlined boxes) is not a false alarm", not C.check_dark_fills(C.p("classwork_answers.pdf")))
+case("1d", "a real sheet (outlined boxes) is not a false alarm", not C.check_dark_fills(C.p("inclass_answers.pdf")))
 
 # 2 -------------------------------------------------------------------
 pdf = tmp("font.pdf")
@@ -97,9 +97,9 @@ case("3", "reveal header on screen", C.check_no_answers(t))
 # 4 -------------------------------------------------------------------
 t = sub1(r"= \\dfrac\{36", lambda m: r"= 36/20 + \dfrac{36", SLIDES)
 case("4", "slash fraction in note maths", C.check_fractions({"slides.tex": t}))
-hw = C.read("hw1.tex")
+hw = C.read("homework.tex")
 t = sub1(r"\\alines\{1\}\{12 g", lambda m: r"\alines{1}{$\dfrac{12}{1}$ 12 g", hw)
-case("4", "stacked fraction on a 9 mm line", C.check_fractions({"hw1.tex": t}))
+case("4", "stacked fraction on a 9 mm line", C.check_fractions({"homework.tex": t}))
 case("4", "real sources are clean", not C.check_fractions({n: C.read(n) for n in C.TEX}))
 
 # 5 / 5b --------------------------------------------------------------
@@ -182,9 +182,9 @@ t = sub1(r"has 3 errors", lambda m: "has 4 errors", SLIDES)
 case("12", "stated count differs from the numbered answers", C.check_spot_error(t, {}))
 t = sub1(r"\\qline\{1\} Which part", lambda m: r"\flawed{x}\qline{1} Which part", SLIDES)
 case("12", "\\flawed outside a Spot the error frame", C.check_spot_error(t, {}))
-hw = C.read("hw1.tex")
+hw = C.read("homework.tex")
 t = sub1(r"\(\\Lref\{respire\}\)", lambda m: "", hw)
-case("12", "sheet answer block with too few \\Lref", C.check_spot_error(SLIDES, {"hw1.tex": t}))
+case("12", "sheet answer block with too few \\Lref", C.check_spot_error(SLIDES, {"homework.tex": t}))
 
 # 13 ------------------------------------------------------------------
 t = sub1(r"cuticle = KYOO-tih-kul\\par", lambda m: "cuticle = KYOO-tih-kul\\par\nstamens = STAY-munz\\par", SLIDES)
@@ -194,20 +194,20 @@ case("13", "word used on screen before its Say it slide", C.check_sayit(t))
 case("13", "real deck is clean", not C.check_sayit(SLIDES))
 
 # 14 ------------------------------------------------------------------
-for f in ("hw1.pdf", "hw1_answers.pdf"):
+for f in ("homework.pdf", "homework_answers.pdf"):
     shutil.copy(C.p(f), tmp(f))
-d = pymupdf.open(C.p("hw1_answers.pdf"))
+d = pymupdf.open(C.p("homework_answers.pdf"))
 nd = pymupdf.open()
 nd.insert_pdf(d)
 page = nd[0]
 # move the whole page content down 3 pt: every left-margin word shifts
 page.set_mediabox(pymupdf.Rect(0, -3, page.rect.width, page.rect.height - 3))
 nd.save(tmp("hw1s_answers.pdf"))
-shutil.copy(C.p("hw1.pdf"), tmp("hw1s.pdf"))
+shutil.copy(C.p("homework.pdf"), tmp("hw1s.pdf"))
 orig_p = C.p
 C.p = lambda name: tmp(name)
 caught = C.check_layout_pairs([("hw1s", "hw1s_answers")])
-clean = C.check_layout_pairs([("hw1", "hw1_answers")])
+clean = C.check_layout_pairs([("homework", "homework_answers")])
 C.p = orig_p
 case("14", "answer page shifted by 3 pt", caught)
 case("14", "real pair is clean", not clean)

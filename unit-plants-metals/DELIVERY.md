@@ -8,7 +8,7 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 |---|---|
 | 教学方式 | slide-led，没有白板（讲解都拆成多页逐步出） |
 | 观看距离 | far，字号按 §5.4 far 一栏 |
-| 学生活动 | 打印 Classwork、Mini mock、Homework，下课收回 |
+| 学生活动 | 打印 In-class work（含 Mini mock）和 Homework，下课收回 |
 | 语言 | English screen + Chinese notes：屏幕和纸全英文；PPTX 备注中文，术语全英文，难词有 `Say it:`；每页备注有中英混合讲稿 `Script:` |
 | 老师背景 | non-specialist：另附中文版课件 `slides_zh.pptx`（v22，取代备课手册） |
 | 深度 | exam sprint：范围和难度不超出两本 booklet，只换提问角度 |
@@ -23,10 +23,8 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 | `slides_zh.pptx` | **中文版课件**：和英文版一页对一页，句子是中文，术语保留英文、括号附中文，如 stigma（柱头）；图里的标签也换成中文；Sam 的答案保留英文（学生要改的是英文答案）；备注和英文版完全一样 | 61 张 |
 | `slides_zh.pdf` | 中文版的双宽 PDF（左幻灯片、右备注），备用 | 61 页 |
 | `slides_teacher.pdf` | **老师用的双宽 PDF**：左边是英文幻灯片（投屏用）；右边是同一页的中文幻灯片，下面用红色粗体写出这一页的答案；有难词的页（25 页），右侧另有一栏蓝色的自然拼读 Say it | 61 页 |
-| `classwork.pdf` / `classwork_answers.pdf` | 课堂练习 Part A–F，Part C 有一张真实尺寸的坐标纸（需按 100 % 打印）；答案版同版面红字 | 4 / 4 |
-| `mock.pdf` / `mock_answers.pdf` | Mini mock，17 分钟，6 题，两个单元交替 | 2 / 2 |
-| `hw1.pdf` / `hw1_answers.pdf` | 作业 1 Green Machines，约 40 分钟 | 2 / 2 |
-| `hw2.pdf` / `hw2_answers.pdf` | 作业 2 Metallic materials，约 40 分钟 | 3 / 3 |
+| `inclass.pdf` / `inclass_answers.pdf` | **In-class work + Mini mock**（一份纸）：Part A–C 第一课后做，Part D–F 第二课后做，Part G 是 17 分钟的 Mini mock；Part C 有一张真实尺寸的坐标纸（需按 100 % 打印）；答案版同版面红字 | 6 / 6 |
+| `homework.pdf` / `homework_answers.pdf` | **Homework**（一份纸）：Part 1 Green Machines、Part 2 Metallic materials，各约 40 分钟，分两天做；答案版同版面红字 | 5 / 5 |
 
 重新生成：`./build.sh`（sheets → 英文版课件 → 中文版课件 → 老师用 PDF → `check.py --tex` → 两份 PPTX → `check.py --pptx`）。所有检查对两份课件都跑。`python3 test_checks.py` 在草稿副本里对每项检查植入错误，38 个全部被抓到。
 
@@ -49,14 +47,14 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 | 1:12–1:20 | Loop 3 corrosion + rusty nail（含 Spot the error 5） | 46–51 |
 | 1:20–1:27 | Loop 4 reactions + reactivity series（含 Spot the error 6） | 52–56 |
 | 1:27–1:40 | Ways to lose marks、Summary、Classwork Part D–F | 57–59 |
-| 1:40–1:57 | Mini mock | 60 |
+| 1:40–1:57 | Mini mock（In-class work Part G） | 60 |
 | 1:57–2:00 | Homework | 61 |
 
 她最容易丢分的四类，每个 loop 都有覆盖：
 - **Explain 长答题**：4 页 “write it in this order”（variation、transpiration pull、justify a choice、rusty nail 结论），alloy 的第二页也是同样的链条；每页标出 A / M / E 各写到哪一步；6 个 Spot the error 让她改 Sam 的答案。
 - **实验题**：淀粉测试每一步的原因、foil leaf、bell jar + soda lime、cress 种子四管、rusty nail 两页、rusting 实验设计、reactivity 实验设计（Classwork Part F）。
 - **术语、定义、拼写**：每个 loop 开头一个 Quick review；Mock Q1 拼写计分；作业另布置 booklet p.24 glossary 和 Metals p.16 crossword。
-- **计算和图表**：density 三种题型（规则物体、排水法、对表认金属）、Visking tubing 速率、alloy melting point 图、Classwork Part C 画图、hw2 温度数据表。
+- **计算和图表**：density 三种题型（规则物体、排水法、对表认金属）、Visking tubing 速率、alloy melting point 图、In-class work Part C 画图、Homework Part 2 温度数据表。
 
 ## 生成的图
 
@@ -121,3 +119,9 @@ Year 9 Science · 两小时一对一考前冲刺（投屏，远距离）· 学�
 - PowerPoint 演讲者视图（Microsoft 365，Windows 或 Mac）里中文备注和原生公式的显示（容器里无法检查）。讲稿较长，演讲者视图里可以把备注字号放大或滚动。
 - Classwork 第 2 页的坐标纸按 100 % 打印后，1 cm 格子是否准确。
 - 课件 2-up 打印时，裁图（叶片、花）的细节在黑白打印里是否清楚。
+
+## 这一版的改动
+
+- 原来的 Classwork 和 Mini mock 合成一份 In-class work（Mini mock 是 Part G）；原来的 hw1 和 hw2 合成一份 Homework（Part 1、Part 2）。每份都有同版面的红字答案版。题目内容没有变。
+- Part G 标了 17 分钟，和 §6.5“课堂练习不印时间”不同：这是模考，需要计时。
+- 课件里提到文件名的页（第 1、29、59、60、61 页和备注、老师用 PDF 的红字答案）都改成新名字。

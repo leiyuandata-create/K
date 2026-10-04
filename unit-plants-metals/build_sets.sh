@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 python3 tools/geom.py
 python3 tools/anchors.py > /dev/null
 run() { xelatex -interaction=nonstopmode -halt-on-error "$@" > /dev/null || { echo "compile failed: $*"; exit 1; }; }
-for f in ${SHEETS:-classwork mock hw1 hw2}; do
+for f in ${SHEETS:-inclass homework}; do
   for pass in 1 2; do
     run "$f.tex"
     run -jobname="${f}_answers" "\def\withanswers{1}\input{$f.tex}"

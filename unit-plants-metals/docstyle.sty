@@ -68,7 +68,8 @@
 % ------------------------------------------------ sheet header
 \newcommand\sheethead[3]{% title, subtitle line, right-hand info
   {\sffamily\bfseries\LARGE #1\par}\vspace{2pt}
-  {\sffamily #2\hfill #3\par}\vspace{1pt}
+  % fixed-width line: subtitle and info that do not fit report Overfull \hbox
+  {\sffamily\noindent\hbox to\textwidth{#2\hskip 1em plus 1fill #3}\par}\vspace{1pt}
   {\color{rule}\rule{\textwidth}{0.8pt}}\par
   \ansnote{5mm}{Tutor's working, not an official mark scheme}\vspace{1pt}}
 
