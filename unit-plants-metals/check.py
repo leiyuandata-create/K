@@ -20,8 +20,8 @@ SHEETS = ["classwork", "mock", "hw1", "hw2"]
 PAIRS = [(s, f"{s}_answers") for s in SHEETS]
 SHEET_PDFS = [f"{a}.pdf" for pair in PAIRS for a in pair]
 DECKS = ["slides", "slides_zh"]        # English screen; Chinese screen (same notes)
-PRINTED = SHEET_PDFS + [f"{d}_screen.pdf" for d in DECKS]
-LOGS = [f"{a}.log" for pair in PAIRS for a in pair] + [f"{d}{x}.log" for d in DECKS for x in ("_screen", "_notes", "")]
+PRINTED = SHEET_PDFS + [f"{d}_screen.pdf" for d in DECKS] + ["teacher_pages.pdf"]
+LOGS = [f"{a}.log" for pair in PAIRS for a in pair] + [f"{d}{x}.log" for d in DECKS for x in ("_screen", "_notes", "")] + ["teacher_pages.log", "slides_teacher.log"]
 TEX = [f"{s}.tex" for s in SHEETS] + ["slides.tex"]
 UNITS = ["g/cm", "g/mL", "km/s", "m/s", "cm/s", "J/kg"]
 SUPSUB = re.compile("[\u00b2\u00b3\u00b9\u2070-\u209f]")
@@ -77,9 +77,9 @@ def split_notes(tex):
 
 
 def screen_of(tex):
-    """Text typeset on screen: \\note and \\zh bodies removed."""
+    """Text typeset on screen: \\note and \\answers bodies removed."""
     t, _ = split_notes(tex)
-    t, _ = split_macro(t, "zh")
+    t, _ = split_macro(t, "answers")
     return t
 
 
@@ -694,6 +694,28 @@ def check_deck_pair(en_tex, zh_tex):
     return probs
 
 
+# ------------------------------------------------------------ teacher PDF
+def check_teacher(zh_frames_tex, en_tex, teacher_pdf, joined_pdf):
+    """Every Chinese frame has an \\answers block; the teacher pages match the
+    deck one for one; the joined PDF is double width; no answer text reaches
+    the projected (English) half."""
+    import pymupdf
+    probs = []
+    blocks = re.split(r"^%%% FRAME (\d+) \{.*\}\s*$", zh_frames_tex, flags=re.M)
+    for i in range(1, len(blocks), 2):
+        if "\\answers{" not in blocks[i + 1]:
+            probs.append(f"Chinese frame {blocks[i]}: no \\answers block")
+    n = len(frames(strip_comments(en_tex)))
+    t = pymupdf.open(teacher_pdf)
+    j = pymupdf.open(joined_pdf)
+    if not (t.page_count == j.page_count == n):
+        probs.append(f"frames {n}, teacher pages {t.page_count}, joined pages {j.page_count}")
+    for k, page in enumerate(j, 1):
+        if abs(page.rect.width - page.rect.height * 32 / 9) > 0.5:
+            probs.append(f"teacher page {k}: not double width")
+    return probs
+
+
 # ------------------------------------------------------------ runner
 def run_tex():
     texts = {n: read(n) for n in TEX}
@@ -710,6 +732,9 @@ def run_tex():
         ("12", "Spot the error integrity", check_spot_error(read("slides.tex"), sheet_texts)),
         ("14", "Blank and answer layouts match", check_layout_pairs(PAIRS)),
         ("7z", "Chinese deck: same frames and notes as English", check_deck_pair(read("slides.tex"), read("slides_zh.tex"))),
+        ("7t", "Teacher PDF: answers for every slide, pages aligned",
+         check_teacher(read("slides_zh_frames.tex"), read("slides.tex"), p("teacher_pages.pdf"), p("slides_teacher.pdf"))),
+        ("1c", "Teacher pages: text inside the page", check_notes_inside(p("teacher_pages.pdf"))),
     ]
     for d in DECKS:
         t = read(f"{d}.tex")

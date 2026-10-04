@@ -85,9 +85,14 @@
 % short gap the student answers aloud
 \newcommand\gap[1][14mm]{\underline{\hspace{#1}}}
 % numbered question line
-\newcommand\qline[2][7mm]{\par\smallskip\noindent\hangindent=#1\hangafter=1\makebox[#1][l]{\bfseries #2}}
+% label box of fixed width with \hfil: a label wider than the box reports
+% Overfull \hbox instead of silently running into the text (spec 10.4)
+\newcommand\qline[2][7mm]{\par\smallskip\noindent\hangindent=#1\hangafter=1\hbox to #1{\bfseries #2\hfil}}
 
 % ------------------------------------------------------------ notes
+% \answers{...}: red answers for the teacher page (slides_teacher.pdf,
+% built by tools/build_teacher.py); never typeset on a slide
+\newcommand\answers[1]{}
 % divider slide for each lesson
 \newcommand\lessondivider[2]{\vspace*{10mm}{\sTitle\bfseries\color{accent}#1\par}\vspace{1mm}
   {\color{rule}\rule{\textwidth}{0.8pt}}\par\vspace{5mm}#2\par}

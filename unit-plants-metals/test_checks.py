@@ -156,6 +156,24 @@ case("7z", "real decks match", not C.check_deck_pair(SLIDES, ZH))
 z = sub1(r"课前小测", lambda m: "课前小测 Answer: anther", ZH)
 case("3", "reveal header on the Chinese screen", C.check_no_answers(z))
 
+# 7t (teacher PDF) ---------------------------------------------------
+zf = C.read("slides_zh_frames.tex")
+z = sub1(r"\\answers\{%\n1  anther", lambda m: "\\relax{%\n1  anther", zf)
+case("7t", "Chinese frame without an \\answers block",
+     C.check_teacher(z, SLIDES, C.p("teacher_pages.pdf"), C.p("slides_teacher.pdf")))
+# an answer too long for its box must report Overfull \vbox (spec 10.4)
+tp = C.read("teacher_pages.tex")
+tp = sub1(r"\\teacherpage\{3\}\{", lambda m: "\\teacherpage{3}{" + "long answer line\\par " * 12, tp)
+open(tmp("teacher_pages.tex"), "w", encoding="utf-8").write(tp)
+for d in ("fonts", "slides_zh_screen.pdf"):
+    src = C.p(d)
+    os.symlink(src, tmp(d))
+subprocess.run(["xelatex", "-interaction=nonstopmode", "teacher_pages.tex"], cwd=TD, capture_output=True)
+case("7t", "over-long answer reports Overfull \\vbox", C.check_logs([tmp("teacher_pages.log")]),
+     os.path.exists(tmp("teacher_pages.pdf")))
+z = sub1(r"课前小测", lambda m: "课前小测\\answers{Answer: anther}", ZH)
+case("3", "\\answers on a screen is not counted as screen text", not C.check_no_answers(z))
+
 # 12 ------------------------------------------------------------------
 t = sub1(r"has 3 errors", lambda m: "has 4 errors", SLIDES)
 case("12", "stated count differs from the numbered answers", C.check_spot_error(t, {}))

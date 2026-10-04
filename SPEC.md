@@ -1,12 +1,12 @@
-# Teaching Materials Specification v22
+# Teaching Materials Specification v23
 
 The single current version; replaces all earlier ones. Each rule is written once, where it applies: global §3, handouts §4, slides §5, homework, classwork and answer files §6, paired output §7.
 
-## Changes in v22 (from v21)
+## Changes in v23 (from v22)
 
-- The tutor's Chinese prep book is withdrawn: a separate book with translations, background and scripts laid out differently from the deck confused the tutor. In its place, a non-specialist tutor gets a **Chinese-screen deck** (slides_zh.pptx): the same slides, page for page, with Chinese sentences and English terms glossed in brackets, and the same notes (§2, §5.9).
-- Under English screen + Chinese notes, every slide's notes still carry a **Script:** block, a mixed Chinese–English script to read aloud (from v21, unchanged) (§5.6).
-- Check 7z confirms the two decks have the same frames and identical notes; the slide checks run on both decks (§10.2).
+- A non-specialist tutor also gets a **teacher PDF** (slides_teacher.pdf): a double-width page per slide, the English slide on the left (the half that is projected) and, on the right, the Chinese slide scaled down with that slide's answers underneath in red. Answers are written once per frame in `\answers{...}` in slides_zh_frames.tex (§5.9).
+- A `\qline` label wider than its box now reports Overfull \hbox instead of silently running into the text; the label box is `\hbox to w{...\hfil}` (§10.4).
+- Check 7t confirms every Chinese frame has answers and the teacher pages align with the deck (§10.2).
 - Nothing else changed. Existing check numbers are unchanged.
 
 ## 1. Ask before building
@@ -534,6 +534,7 @@ When the tutor is not a specialist in the subject, the English deck comes with s
 - **Figure labels** switch to Chinese through `\zhdecktrue` and the `\zhen{中文}{English}` macro in shared.sty; lettered labels (A–H) stay letters.
 - **One source for the notes.** The Chinese screens live in slides_zh_frames.tex, one block per frame (`%%% FRAME n {title}`). tools/build_zh_deck.py joins each block with that frame's `\note{}` from slides.tex to write slides_zh.tex, so the notes are typed once and are identical in both decks (check 7z).
 - **No separate prep book.** A book laid out differently from the deck is harder to follow than the deck itself; do not add one unless asked.
+- **Teacher PDF (slides_teacher.pdf).** Each frame block in slides_zh_frames.tex carries `\answers{...}`: short answers to every gap and question on that slide, in the English the student should give, with brief Chinese where it helps; on slides with no question, one line on what to do. `\answers` typesets nothing on a slide. tools/build_teacher.py writes teacher_pages.tex, one page per slide: page k of slides_zh_screen.pdf at 0.63 of the width, framed, and the answers below in bold red in a fixed-height `\vbox` (an answer that does not fit reports Overfull \vbox). build_teacher.sh joins slides_screen.pdf (left) and teacher_pages.pdf (right) into slides_teacher.pdf, presented like slides.pdf (§9.2): the left half goes to the projector.
 - Check 10s exempts this deck from "no Chinese on screen"; every other slide check runs on it.
 
 ## 6. Homework, classwork and answer files
@@ -767,7 +768,8 @@ unit-xx/
   build_sets.sh     printed sheets, blank + answers
   slides_zh_frames.tex  Chinese screens, one block per frame (§5.9); tools/build_zh_deck.py
                     joins them with the notes of slides.tex into slides_zh.tex
-  build.sh          sheets → slides → slides_zh → check.py --tex → export_pptx.py (both) → check.py --pptx
+  build_teacher.sh  teacher PDF: English slide | Chinese slide + red answers (§5.9)
+  build.sh          sheets → slides → slides_zh → teacher PDF → check.py --tex → export_pptx.py (both) → check.py --pptx
   export_pptx.py    PPTX export
   check.py          §10.2, all items
   test_checks.py    mutation tests for every check (§10.3.6)
@@ -856,6 +858,7 @@ All items must be zero before delivery. Items 1–6 and 12–14 cover LaTeX, PDF
 | 11 | Notes maths truly typeset | Native branch only: m:f type not lin/skw; the joined m:t text per oMath has no /, ^ or Unicode sub/superscripts. Note prose has no ^, no Unicode sub/superscripts, no unspaced a/b. Each source $...$ has one native equation plus fallback. Units, codes and file names are whitelisted; spaced prose slashes are allowed. | 0 |
 | 12 | Spot the error integrity | Every Spot the error frame states "has N errors" on screen and holds `\flawed{}`; its note numbers exactly 1. … N., each line with an L-reference. `\flawed{}` appears in no other frame. In sheets, every `\flawed{}` is followed by a bold "N errors" and an answer block numbered 1 … N with at least N `\Lref{}`. | 0 |
 | 13 | Say it: once, where first said | Across the deck, each word is pronounced in at most one Say it: block, and no earlier slide uses the word on screen or in its notes. Match on the word stem, not the whole word, or a plural slips through. | 0 |
+| 7t | Teacher PDF | Every frame block in slides_zh_frames.tex has `\answers{}`; teacher pages = joined pages = frames; joined pages are double width; teacher pages pass 1c. | 0 |
 | 7z | Chinese deck paired | slides_zh.tex has the same number of frames as slides.tex, and each frame's `\note{}` is identical. | 0 |
 | 14 | Blank and answer layouts match | For each sheet pair: equal page counts, and every word at the left margin present on the same page of the answer version at the same height (≤ 0.5 pt). The answer version holds extra left-margin words (the answers), so the two lists cannot be zipped — each blank word is looked up in the answer page. Dot leaders are excluded: every rule prints the same run of dots, so comparing them by position pairs unrelated rules. The practice set's mark-scheme pages are identified and dropped first (§6.3). | 0 |
 
@@ -915,6 +918,7 @@ Never return to page-by-page checking. Fix the macro so the same mistake becomes
 - Formula box: a fixed-width `\hbox` with `\hfil`, not `\hss` (which shrinks without limit and swallows the warning). An overlong formula then reports Overfull \hbox.
 - Answer line: a `\vbox` to its pitch, so an outgrown answer reports Overfull \vbox.
 - Answer-only content: `\ansnote{h}{…}`, which reserves the height in both versions and overflows visibly if it grows.
+- Question labels: `\qline[w]{label}` sets the label in `\hbox to w{…\hfil}`; "Step 1" in a 14 mm box ran into the text with no warning until this change.
 - PPTX: first change export_pptx.py or add a §10.2 check, then fix the file.
 - A duplicated definition: delete the duplicate and read the original. The exporter's copy of the L-numbers could not be kept in step by discipline; reading shared.sty removed the possibility.
 
