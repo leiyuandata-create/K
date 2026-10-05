@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Mock exam}
+\renewcommand\anslabel{Answers \textperiodcentered{} official assessment schedule extracts on the last pages}
+% one crop at natural width; each question page starts a new page (spec 6.3)
+\newcommand\ppq[1]{\par\noindent\includegraphics[width=\textwidth]{fig/M/ppfull/#1}\par}
+\newcommand\msq[2]{\par\needspace{8\baselineskip}\medskip
+  {\sffamily\bfseries\color{ansred}Official assessment schedule extract \textperiodcentered{} #1}\par\smallskip
+  \noindent\includegraphics[width=\textwidth]{fig/M/ms/#2}\par}
+
+\begin{document}
+\sheethead{Mock exam}{Algebra \textperiodcentered{} 60 minutes \textperiodcentered{} formula sheet and calculator allowed}{Three questions}
+\section*{Instructions}
+\begin{itemize}
+\item Attempt all three questions. Show all working.
+\item You may use the formula sheet and a calculator.
+\item Time: 60 minutes. Start the clock when you turn the page.
+\item Each question is graded N0--E8; the total is out of 24.
+\end{itemize}
+\section*{After the exam}
+\begin{itemize}
+\item Mark each question with the assessment schedule: count the u, r and t evidence, then give it a grade from N0 to E8.
+\item Add the three grades. Cut scores move a little each year: Achievement from about 7--8, Merit 13--14, Excellence 19--20.
+\item For every mark lost, write the L-number from your handouts next to it.
+\end{itemize}
+\clearpage
+\ppq{q1}
+\clearpage
+\ppq{q2}
+\clearpage
+\ppq{q3}
+\clearpage
+\ppq{q4}
+\clearpage
+\ppq{q5}
+\clearpage
+\ppq{q6}
+\clearpage
+\ppq{q7}
+\ifansmode
+\clearpage
+\msq{Question One}{q1a}
+\clearpage
+\msq{Question One, continued}{q1b}
+\clearpage
+\msq{Question Two}{q2a}
+\clearpage
+\msq{Question Two, continued}{q2b}
+\clearpage
+\msq{Question Three}{q3a}
+\clearpage
+\msq{Question Three, continued}{q3b}
+\fi
+\end{document}

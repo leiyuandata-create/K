@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Handout 4 \textperiodcentered{} Merit and Excellence problem solving}
+
+\begin{document}
+\sheethead{Lesson 4 \textperiodcentered{} Merit and Excellence Problem Solving}
+  {NCEA Level 2 Mathematics \textperiodcentered{} Algebra}{Handout}
+
+\begin{keybox}[title={The one idea: general, complete, checked}]
+At Excellence the algebra is the same as in Lessons 1--3. What changes is the \textbf{argument}: it must hold for \textbf{every} case (letters, not examples), find \textbf{every} answer, and be \textbf{checked} against the question, with a written conclusion. Markers write it as ``correct mathematical statements'' and ``with reasoning''.
+\end{keybox}
+
+% =================================================================== 1
+\section{Algebraic proof}\label{h4:proof}
+\begin{minipage}[t]{0.46\textwidth}\vspace{0pt}
+\renewcommand\arraystretch{1.4}
+\begin{tabular}{@{}>{\raggedright}p{0.52\linewidth} >{\raggedright\arraybackslash}p{0.4\linewidth}@{}}
+\toprule
+\textbf{Words} & \textbf{Algebra}\\ \midrule
+consecutive whole numbers & $n$, $n+1$, $n+2$ \\
+an even number & $2n$ \\
+an odd number & $2n+1$ \\
+two different odd numbers & $2m+1$, $2n+1$ \\
+a multiple of 3 & $3k$ \\
+next day down a calendar & $n+7$ \\
+\bottomrule
+\end{tabular}\par\smallskip
+$n$, $m$, $k$ stand for whole numbers.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.5\textwidth}\vspace{0pt}
+\textbf{Write it in this order}
+\begin{enumerate}
+\item Name every number with letters.
+\item Write the expression the question is about, and simplify it.
+\item Take out the factor the question needs: $3(n+1)$, $8n$, $2(\ldots) + 1$.
+\item Finish with a sentence that says what the factor means: ``so it is always a multiple of 3''.
+\end{enumerate}
+Examples, however many, are not a proof.
+\end{minipage}
+
+\begin{multicols}{2}
+\textbf{Example 1.} Prove that the sum of three consecutive whole numbers is a multiple of 3.
+\[ n + (n+1) + (n+2) = 3n + 3 = 3(n+1) \]
+$3(n+1)$ is 3 times a whole number, \textbf{so the sum is always a multiple of 3.} \mtag{r}
+
+\textbf{Example 2.} Prove that $(2n+1)^{2} - (2n-1)^{2}$ is a multiple of 8.
+\[ (4n^{2}+4n+1) - (4n^{2}-4n+1) = 8n \]
+\textbf{so it is always a multiple of 8.} \mtag{r}
+\columnbreak
+
+\textbf{Example 3.} On a calendar, a 3-by-3 square has top-left number $n$. Show that the diagonals have equal sums but never equal products.\par
+\par\smallskip{\setlength\figunit{4mm}\hbox to\linewidth{\hfil\FigCalAlgebra\hfil}}\par\smallskip
+Corners: $n$, $n+2$, $n+14$, $n+16$.\par
+Sums: $n + (n+16) = 2n + 16 = (n+2) + (n+14)$.\par
+Products: $(n+2)(n+14) - n(n+16) = 28$, never 0, \textbf{so the products are never equal.} \mtag{t}
+\end{multicols}
+
+% =================================================================== 2
+\section{Where a line meets a curve}\label{h4:simul}
+\begin{keybox}[title={Write it in this order}]
+\begin{enumerate}
+\item Make one variable the subject of the simpler equation ($y = \ldots$ or $x^{2} = \ldots$).
+\item Substitute into the other: you get a quadratic in one variable. Rearrange to $= 0$.
+\item Solve, then find the \textbf{other coordinate for every value}. Reject values that give no real point.
+\item Tangent (touches once): the quadratic has $b^{2} - 4ac = 0$. Do not meet: $< 0$.
+\end{enumerate}
+\end{keybox}
+
+\begin{multicols}{2}
+\textbf{Example 4.} Where does $y = 2x - 3$ meet $y = x^{2} - 2x - 3$?
+\begin{align*}
+x^{2} - 2x - 3 &= 2x - 3\\
+x^{2} - 4x = x(x - 4) &= 0
+\end{align*}
+$x = 0$: $y = -3$;\quad $x = 4$: $y = 5$.\quad \textbf{$(0,-3)$ and $(4,5)$} \mtag{u}
+
+\textbf{Example 5.} Find $k$ so that $y = kx$ is a tangent to $y = x^{2} + 3$.
+\[ x^{2} - kx + 3 = 0,\quad k^{2} - 12 = 0,\quad \mathbf{k = \pm 2\sqrt{3}} \]
+\mtag{r}
+\columnbreak
+
+\textbf{Example 6.} Where do $x^{2} + y^{2} = 13$ and $y = x^{2} - 1$ meet?\par
+$x^{2} = y + 1$, so $y + 1 + y^{2} = 13$:
+\begin{align*}
+y^{2} + y - 12 = (y+4)(y-3) &= 0
+\end{align*}
+$y = 3$: $x^{2} = 4$, $x = \pm 2$.\quad $y = -4$: $x^{2} = -3$, \textbf{no real point}.\par
+Points: \textbf{$(2, 3)$ and $(-2, 3)$} \mtag{t}
+\end{multicols}
+
+% =================================================================== 3
+\section{Equations with a square root}\label{h4:surd}
+Square both sides, solve the quadratic, then \textbf{check every answer in the original equation}: squaring can create an answer that does not work, because $\sqrt{\ \ }$ is never negative. And $(x+2)^{2} = x^{2} + 4x + 4$, not $x^{2} + 4$.
+
+\textbf{Example 7.} Solve $\sqrt{3x + 10} = x + 2$.
+\[ 3x + 10 = x^{2} + 4x + 4,\qquad x^{2} + x - 6 = (x+3)(x-2) = 0 \]
+Check $x = 2$: $\sqrt{16} = 4 = 2 + 2$. \quad Check $x = -3$: $\sqrt{1} = 1$ but $-3 + 2 = -1$, \textbf{rejected}. So $\mathbf{x = 2}$. \mtag{r}
+
+% =================================================================== 4
+\section{Modelling and constraints}\label{h4:model}
+\begin{multicols}{2}
+\textbf{Example 8.} A garden is 3 m longer than it is wide, with area 70 m$^{2}$. Find its size.
+\[ x(x+3) = 70,\quad (x+10)(x-7) = 0 \]
+A width cannot be negative, so $x = 7$: \textbf{7 m by 10 m}. \mtag{u}
+\columnbreak
+
+\textbf{Example 9.} A rectangle has perimeter 40 m. What is the largest area it can have?\par
+Sides $x$ and $20 - x$: $x(20 - x) = A$, so $x^{2} - 20x + A = 0$.\par
+A real width needs $400 - 4A \geq 0$, so $A \leq 100$: \textbf{at most 100 m$^{2}$}, a 10 m square. \mtag{t}
+\end{multicols}
+This is the move behind ``find the largest value of $a$'': write the condition as a quadratic, then ask when it has real solutions, then check the solutions against the context (a length must be positive).
+
+% =================================================================== 5
+\section{Versions the marker won't accept}\label{h4:wontaccept}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{0.3\textwidth} >{\raggedright}p{0.26\textwidth} X@{}}
+\toprule
+\textbf{Question} & \textbf{Answer given} & \textbf{Why it falls short} \\ \midrule
+Prove the sums of the corners are always equal & three squares checked by hand & Examples are not a proof. Use $A$ for the corner and write every corner from it. \tabularnewline
+Find the co-ordinates of each intersection point & $x = \pm\sqrt{5}$, $x = \pm\sqrt{2}$ & Co-ordinates need $y$ too: four points, $(\pm\sqrt{5}, 2)$ and $(\pm\sqrt{2}, -1)$. \tabularnewline
+Largest whole-number $a$ & $a = 7$, because $a^{2} < 50$ & The context also needs $p - a > 0$: with $a = 7$ that fails, so $a = 6$. \tabularnewline
+\bottomrule
+\end{tabularx}
+
+% =================================================================== 6
+\section{Ways to lose marks}\label{h4:lose}
+From the wording of the marking schedules and from teaching observation; numbered for marking.
+\begin{description}[leftmargin=10mm, labelwidth=9mm, labelsep=1mm, font=\normalfont]
+\item[\textbf{\Lref{squaresum}}] \textbf{\Ltext{squaresum}.} $(x+3)^{2} = x^{2} + 6x + 9$.
+\item[\textbf{\Lref{check}}] \textbf{\Ltext{check}.} Put each answer back into the square-root equation.
+\item[\textbf{\Lref{general}}] \textbf{\Ltext{general}.} Letters for every case, then a sentence.
+\item[\textbf{\Lref{allpoints}}] \textbf{\Ltext{allpoints}.} $x^{2} = 4$ gives $x = 2$ \textbf{and} $x = -2$; each $x$ needs its $y$.
+\item[\textbf{\Lref{contextcheck}}] \textbf{\Ltext{contextcheck}.} Lengths and speeds are positive; sides like $p - a$ must be too.
+\end{description}
+
+% =================================================================== 7
+\section{Quick review}\label{h4:review}
+\renewcommand\arraystretch{1.45}
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{The discriminant (Lesson 3)}\par\smallskip
+\begin{tabular}{@{}l l@{}}
+\toprule
+$b^{2} - 4ac > 0$ & two different real roots \\
+$b^{2} - 4ac = 0$ & one repeated root (tangent) \\
+$b^{2} - 4ac < 0$ & no real roots (no meeting) \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Squares to expand by sight}\par\smallskip
+\begin{tabular}{@{}l l@{}}
+\toprule
+$(x + 2)^{2}$ & $x^{2} + 4x + 4$ \\
+$(x - 5)^{2}$ & $x^{2} - 10x + 25$ \\
+$(2n + 1)^{2}$ & $4n^{2} + 4n + 1$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{document}

@@ -40,6 +40,10 @@
 \newcommand\sFoot{\fontsize{8}{9.6}\selectfont}
 \newcommand\sNote{\fontsize{8}{10.6}\selectfont}
 \renewcommand\figfont{\sQ}
+% the 12-row calendar needs 12 rows in the 69 mm body: its numbers sit at
+% the far-distance floor, 13 pt (spec 5.4), not below it
+\newcommand\sFloor{\fontsize{13}{15}\selectfont}
+\renewcommand\calfont{\sFloor}
 \renewcommand\samsize{\sHand}
 % \normalsize is the body size, so TikZ labels and table cells inherit it
 \renewcommand\normalsize{\sQ}

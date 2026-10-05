@@ -9,9 +9,12 @@ N=${1:?lesson number}
 run() { xelatex -interaction=nonstopmode -halt-on-error "$@" > /dev/null || { echo "compile failed: $*"; exit 1; }; }
 
 if [ -f tools/crop.py ] && [ -f practice$N.tex ]; then python3 tools/crop.py $N; fi
+# the last lesson also builds the mock exam (the 2023 paper, held back)
+EXTRA=""
+if [ "$N" = 4 ] && [ -f mock.tex ]; then python3 tools/crop.py M; EXTRA=mock; fi
 
 run handout$N.tex; run handout$N.tex; echo "handout$N.pdf"
-for f in classwork$N hw$N practice$N; do
+for f in classwork$N hw$N practice$N $EXTRA; do
   [ -f $f.tex ] || continue
   run $f.tex; run $f.tex
   run -jobname=${f}_answers "\def\withanswers{1}\input{$f.tex}"

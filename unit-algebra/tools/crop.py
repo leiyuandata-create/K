@@ -63,12 +63,53 @@ TABLE = {
         "ms/q1": (3, "ms", [(127, 172), (232, END)]),      # header + (b), (c)
         "ms/q3": (27, "ms", [(63, 86), (86, 289)]),        # header + (a), (b)(i)(ii)
     },
+    4: {
+        "ppfull/q1": (12, "booklet", 54, FOOT, 236),   # 2021 Q ONE (d); under the header
+        "ppfull/q2": (19, "booklet", 54, 755),         # 2021 Q THREE (d)(i); stop above "Please turn over"
+        "ppfull/q3": (20, "booklet", 54, FOOT),        # (d)(ii)
+        "ppfull/q4": (34, "booklet", 54, FOOT, 236),   # 2022 Q ONE (c) stem, (i); under the header
+        "ppfull/q5": (35, "booklet", 54, FOOT),        # (c)(ii)
+        "ppfull/q6": (36, "booklet", 54, FOOT, 255),   # (d)
+        "ppfull/q7": (38, "booklet", 54, FOOT, 255),   # 2022 Q TWO (c), (d)(i)
+        "ppfull/q8": (39, "booklet", 54, FOOT),        # (d)(ii)
+        "ms/q1": (4, "ms", [(54, END)]),                     # 2021 (d), and its grade row
+        "ms/q2": (7, "ms", [(68, 115), (378, END)]),         # header + (d)(i)(ii)
+        "ms/q4": (25, "ms", [(106, 130), (359, END)]),       # header + (c)(i)(ii)
+        "ms/q6": (26, "ms", [(49, 232)]),                    # (d) and its grade row
+        "ms/q7": (27, "ms", [(63, 86), (289, END)]),         # header + (c), (d)(i)
+        "ms/q8": (28, "ms", [(49, END)]),                    # (d)(ii) and grade row
+    },
+    # the 2023 paper as a mock exam: odd booklet pages have the hatched
+    # strip on the left, even pages on the right
+    "M": {
+        "ppfull/q1": (54, "booklet", 55, FOOT, 255),   # Q ONE (a)(b); the cover page holds the header
+        "ppfull/q2": (55, "booklet_odd", 54, FOOT),    # (c)(d)
+        "ppfull/q3": (56, "booklet", 55, FOOT, 255),   # Q TWO (a)(b)(c)
+        "ppfull/q4": (57, "booklet_odd", 54, FOOT),    # (d)
+        "ppfull/q5": (58, "booklet", 55, FOOT, 255),   # Q THREE (a)(b)(c)
+        "ppfull/q6": (59, "booklet_odd", 54, 760),     # (d); stop above "Question Three continues"
+        "ppfull/q7": (60, "booklet", 54, FOOT),        # (e)
+        "ms/q1a": (47, "ms", [(106, END)]),            # Q ONE (a)-(c)
+        "ms/q1b": (48, "ms", [(49, END)]),             # (d) and the grade row
+        "ms/q2a": (49, "ms", [(49, END)]),             # Q TWO (a)-(c)
+        "ms/q2b": (50, "ms", [(49, END)]),             # (d) and the grade row
+        "ms/q3a": (51, "ms", [(49, END)]),             # Q THREE (a)-(d)
+        "ms/q3b": (52, "ms", [(49, END)]),             # (e) and the grade row
+    },
 }
 
 
-def render(page, clip):
-    pix = page.get_pixmap(dpi=DPI, clip=clip, colorspace=pymupdf.csGRAY, alpha=False)
-    return np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width).copy()
+def render(page, clip, rgb=False):
+    """Grey for analysis and schedule rows; RGB for booklet questions, whose
+    colours can carry meaning (the 2022 calendar's orange and blue corners)."""
+    cs = pymupdf.csRGB if rgb else pymupdf.csGRAY
+    pix = page.get_pixmap(dpi=DPI, clip=clip, colorspace=cs, alpha=False)
+    shape = (pix.height, pix.width, 3) if rgb else (pix.height, pix.width)
+    return np.frombuffer(pix.samples, dtype=np.uint8).reshape(shape).copy()
+
+
+def grey(img):
+    return img if img.ndim == 2 else img.min(axis=2)
 
 
 def rule_above(page, y, x0, x1, search=30):
@@ -84,7 +125,7 @@ def rule_above(page, y, x0, x1, search=30):
 
 
 def trim(img, pad=5):
-    ink = img < 200
+    ink = grey(img) < 200
     rows = np.where(ink.any(axis=1))[0]
     cols = np.where(ink.any(axis=0))[0]
     r0, r1 = max(rows[0] - pad, 0), min(rows[-1] + pad + 1, img.shape[0])
@@ -96,7 +137,7 @@ def cap_space(img, max_mm):
     """Cap every run of blank rows (no ink at all) at the largest cap that keeps
     the crop within max_mm (spec 5.5, 6.3). Answer lines are ink, so they stay;
     nothing of the question is removed and nothing is scaled."""
-    blank = ~(img < 200).any(axis=1)
+    blank = ~(grey(img) < 200).any(axis=1)
     runs, start = [], None
     for i, b in enumerate(blank):
         if b and start is None:
@@ -118,11 +159,15 @@ def cap_space(img, max_mm):
     raise SystemExit(f"cannot fit within {max_mm} mm by capping white space")
 
 
+def folder(n):
+    return f"L{n}" if n.isdigit() else n
+
+
 def main(n):
     for sub in ("ppfull", "ms"):
-        os.makedirs(os.path.join(HERE, "fig", f"L{n}", sub), exist_ok=True)
+        os.makedirs(os.path.join(HERE, "fig", folder(n), sub), exist_ok=True)
     doc = pymupdf.open(SRC)
-    for name, spec in TABLE[int(n)].items():
+    for name, spec in TABLE[int(n) if n.isdigit() else n].items():
         if len(spec) == 3:
             pg, kind, bands = spec
             page = doc[pg - 1]
@@ -133,23 +178,24 @@ def main(n):
                 b = rule_above(page, bottom, x0, x1) + 1.5
                 parts.append(render(page, pymupdf.Rect(x0, t, x1, b)))
             img = trim(np.vstack(parts))
-            out = os.path.join(HERE, "fig", f"L{n}", name + ".png")
+            out = os.path.join(HERE, "fig", folder(n), name + ".png")
             Image.fromarray(img).save(out, dpi=(DPI, DPI))
             print(f"{name}.png  {img.shape[1] * 25.4 / DPI:.0f} x {img.shape[0] * 25.4 / DPI:.0f} mm")
             continue
         pg, kind, top, bottom, *rest = spec
         page = doc[pg - 1]
-        if kind == "booklet":
-            clip = pymupdf.Rect(36, top - 8, 562, bottom - 12)
+        if kind in ("booklet", "booklet_odd"):
+            x0, x1 = (36, 558) if kind == "booklet" else (50, 572)   # the hatched strip starts at x = 562
+            clip = pymupdf.Rect(x0, top - 8, x1, bottom - 12)
         else:
             x0, x1 = 30, 566
             t = rule_above(page, top, x0, x1) - 1.5
             b = rule_above(page, bottom, x0, x1) + 1.5
             clip = pymupdf.Rect(x0, t, x1, b)
-        img = trim(render(page, clip))
+        img = trim(render(page, clip, rgb=kind.startswith("booklet")))
         if rest:
             img = cap_space(img, rest[0])
-        out = os.path.join(HERE, "fig", f"L{n}", name + ".png")
+        out = os.path.join(HERE, "fig", folder(n), name + ".png")
         Image.fromarray(img).save(out, dpi=(DPI, DPI))
         print(f"{name}.png  {img.shape[1] * 25.4 / DPI:.0f} x {img.shape[0] * 25.4 / DPI:.0f} mm")
 

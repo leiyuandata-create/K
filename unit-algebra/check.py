@@ -773,7 +773,8 @@ def check_notes_maths(slides_tex, pptx):
 def lesson_files(n):
     sheets = [f"handout{n}"]
     pairs = []
-    for s in (f"classwork{n}", f"hw{n}", f"practice{n}"):
+    extra = ("mock",) if str(n) == "4" else ()
+    for s in (f"classwork{n}", f"hw{n}", f"practice{n}") + extra:
         if os.path.exists(p(s + ".tex")):
             sheets += [s, s + "_answers"]
             pairs.append((s, s + "_answers"))

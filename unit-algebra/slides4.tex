@@ -1,0 +1,661 @@
+\documentclass[aspectratio=169,11pt,xcolor=table,t]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout4}
+\ifdefined\notesmode
+  \setbeameroption{show only notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+\newcommand\hp[1]{\fref{Handout p.\pageref{H-#1}}}
+
+\begin{document}
+
+% ================================================================ opening
+\begin{frame}{Lesson 4 \textperiodcentered{} Merit and Excellence}
+\relax
+NCEA Level 2 Mathematics \textperiodcentered{} Algebra\par\vspace{3mm}
+{\bfseries By the end of today you can:}
+\begin{enumerate}
+\item write an algebraic proof that holds in every case
+\item find every point where a line and a curve meet
+\item solve an equation with a square root, and check it
+\item use the discriminant to find a largest or smallest value
+\end{enumerate}
+\note{%
+Teaching line, not a question slide.\par
+100 分钟。时间：对作业 0:00–0:05；Do Now 0:05–0:10；核心思想 0:10–0:12；Block 1 证明 0:12–0:30；Block 2 联立 0:30–0:45；Block 3 根式方程 0:45–0:53；Block 4 建模 0:53–1:00；Classwork 1:00–1:15；真题演练 1:15–1:37；收尾 1:37–1:40。\par
+发四份纸：Handout 4、Classwork 4、Practice set 4、Homework 4。另外发 Mock exam（2023 整套，学生第一次见），约定下次限时 60 分钟做。\par
+今天的真题有 11 页，全是 Merit 和 Excellence 题：时间不够就先做 2022 的日历题和 2021 的 (d)。\par
+Say it:\par
+excellence = EK-suh-lunce\par
+algebraic = al-juh-BRAY-ik\par
+discriminant = dis-KRIM-ih-nunt}
+\end{frame}
+
+\begin{frame}{Do Now}
+\relax
+\qline{1} Solve $x^{2} - x - 20 = 0$.
+\qline{2} Find the discriminant of $x^{2} + 3x + 5 = 0$.
+\qline{3} Write a quadratic with roots $\dfrac{1}{2}$ and $-3$, whole-number coefficients.
+\qline{4} Solve $\log_{3} x = 4$.
+\qline{5} Simplify $\dfrac{x^{2} - 4}{x^{2} + x - 6}$.
+\note{%
+Q1 $x = 5$ or $x = -4$\par
+Q2 $-11$\par
+Q3 $2x^{2} + 5x - 3 = 0$\par
+Q4 $x = 81$\par
+Q5 $\dfrac{x+2}{x+3}$\par
+Short solution:\par
+Q2 $9 - 20$：没有实根\par
+Q3 $(2x - 1)(x + 3)$\par
+Q5 $\dfrac{(x-2)(x+2)}{(x+3)(x-2)}$\par
+Watch for:\par
+Q3 符号（L17）\par
+Diagnostic:\par
+Q1–Q3 错：Lesson 3 不稳，今天 Block 2 用判别式时多停一下\par
+Q4 错：Lesson 2 的 log form，作业前复习讲义 2 第 1 页\par
+Q5 错：Lesson 1 的分式，模考前一定要再练}
+\end{frame}
+
+\begin{frame}{The one idea}
+\relax
+\begin{rulebox}
+At Excellence the algebra is the same. What changes:\par
+\textbf{general}: letters, not examples\par
+\textbf{complete}: every answer, every point\par
+\textbf{checked}: against the question, with a sentence
+\end{rulebox}
+\ask{$1 + 2 + 3 = 6$ and $4 + 5 + 6 = 15$. Is that a proof that three consecutive numbers add to a multiple of 3?}
+\hp{h4:proof}
+\note{%
+Q no: two examples cannot cover every case\par
+Short solution:\par
+Q 证明要用字母代表“任意一个”：$n$、$n+1$、$n+2$\par
+Watch for:\par
+学生觉得试很多个就够了：问“试了一百万个，第一百万零一个呢？”\par
+Say it:\par
+consecutive = kun-SEK-yoo-tiv}
+\end{frame}
+
+% ================================================================ block 1: proof
+\begin{frame}{Words into algebra}
+\relax
+$n$ is a whole number.
+\wline{\text{an even number: } 2n \qquad \text{an odd number: } \underline{\hspace{16mm}}}
+\wline{\text{three consecutive numbers: } n,\ n+1,\ \underline{\hspace{16mm}}}
+\wline{\text{a multiple of 3: } 3 \times (\text{whole number})}
+\ask{Why must two different odd numbers use two letters, $2m + 1$ and $2n + 1$?}
+\hp{h4:proof}
+\note{%
+Gap $2n + 1$; $n + 2$\par
+Q with one letter both odd numbers are the same number\par
+Short solution:\par
+Q $2n + 1$ 和 $2n + 1$ 是同一个数；$2n + 1$ 和 $2n + 3$ 是相邻的两个奇数\par
+Watch for:\par
+把奇数写成 $n + 1$：$n = 2$ 时是 3，$n = 3$ 时是 4（\Lref{general}）}
+\end{frame}
+
+\begin{frame}{A first proof}
+\relax
+Prove that the sum of three consecutive whole numbers is a multiple of 3.
+\wline{n + (n + 1) + (n + 2) = 3n + 3}
+\wline{= 3(\,\underline{\hspace{14mm}}\,)}
+\ask{What sentence finishes the proof?}
+\hp{h4:proof}
+\note{%
+Gap $n + 1$\par
+Q $3(n+1)$ is 3 times a whole number, so the sum is always a multiple of 3\par
+Short solution:\par
+Q 提出公因式 3，说明括号里是整数，再写结论\par
+Watch for:\par
+停在 $3n + 3$：没有说明为什么是 3 的倍数（\Lref{general}）}
+\end{frame}
+
+\begin{frame}{Expanding to prove}
+\relax
+Prove that $(2n + 1)^{2} - (2n - 1)^{2}$ is a multiple of 8.
+\wline{(4n^{2} + 4n + 1) - (4n^{2} - 4n + 1)}
+\wline{= \underline{\hspace{14mm}}}
+\ask{What happens to the $4n^{2}$ and the 1 when you subtract?}
+\hp{h4:proof}
+\note{%
+Gap $8n$\par
+Q they cancel, leaving $8n$: always a multiple of 8\par
+Short solution:\par
+Q 第二个括号整体变号：$-4n^{2} + 4n - 1$\par
+Watch for:\par
+$(2n + 1)^{2} = 4n^{2} + 1$：漏了中间项（\Lref{squaresum}）\par
+减号没有乘进整个括号（L7）}
+\end{frame}
+
+\begin{frame}{A calendar square}
+\relax
+\twocol{0.42}{%
+On a calendar, each row is a week of 7 days. A 3-by-3 square has top-left number $n$.\par\smallskip
+The number below $n$ is $n + 7$.}{0.55}{%
+\setlength\figunit{5.6mm}%
+\hbox to\linewidth{\hfil\FigCalAlgebra\hfil}}
+\ask{Fill the four corners in terms of $n$.}
+\hp{h4:proof}
+\note{%
+Q $n$, $n + 2$, $n + 14$, $n + 16$\par
+Short solution:\par
+Q 往右一格加 1，往下一格加 7；右下角是 $n + 2 + 14$\par
+Watch for:\par
+往下写成 $n + 3$：把方格当成 3 列一行\par
+Ask:\par
+正中间是什么？（$n + 8$）}
+\end{frame}
+
+\begin{frame}{Sums and products of the diagonals}
+\relax
+Corners: $n$, $n + 2$, $n + 14$, $n + 16$.
+\wline{n + (n + 16) = 2n + 16 \qquad (n + 2) + (n + 14) = \underline{\hspace{16mm}}}
+\wline{n(n + 16) = n^{2} + 16n}
+\wline{(n + 2)(n + 14) = n^{2} + 16n + \underline{\hspace{9mm}}}
+\ask{Can the two products ever be equal? Why not?}
+\hp{h4:proof}
+\note{%
+Gap $2n + 16$; 28\par
+Q no: they always differ by 28, and 28 is never 0\par
+Short solution:\par
+Q 和永远相等；积永远差 28，所以永远不相等 (t)\par
+Watch for:\par
+只算出两个式子不写结论：E 要 complete reasoning with conclusion\par
+这一页就是今天真题 2022 日历题的方法\par
+Say it:\par
+diagonal = dy-AG-uh-nul}
+\end{frame}
+
+\begin{frame}{Spot the error (1)}
+\relax
+Prove that the sum of any two odd numbers is even.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{3 + 5 = 8 and 7 + 9 = 16, both even.\par
+Two odd numbers are 2n + 1 and 2n + 1:\ \ 2n + 1 + 2n + 1 = 4n + 2 = 2(2n + 1),\ \ even.}
+\end{samcard}
+\hp{h4:lose}
+\note{%
+1. examples are not a proof: they cover only those numbers (\Lref{general})\par
+2. one letter makes the two odd numbers equal: use $2m + 1$ and $2n + 1$ (\Lref{general})\par
+Short solution:\par
+$(2m + 1) + (2n + 1) = 2m + 2n + 2 = 2(m + n + 1)$, so the sum is always even\par
+Watch for:\par
+Sam 的结论是对的，但推理不能得分：学生要学会给推理打分，不只是看结论}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Prove that the product of two consecutive even numbers is a multiple of 8.
+\qline{Q2} Prove that the difference between the squares of two consecutive whole numbers is always odd.
+\qline{Q3} On a calendar, a 2-by-2 square has top-left number $n$. Show that the products of its diagonals always differ by 7.
+\hp{h4:proof}
+\note{%
+Q1 $2n(2n + 2) = 4n(n + 1)$; $n(n + 1)$ is even, so it is $8 \times$ a whole number\par
+Q2 $(n + 1)^{2} - n^{2} = 2n + 1$, which is odd\par
+Q3 $(n + 1)(n + 7) - n(n + 8) = 7$\par
+Short solution:\par
+Q1 两个相邻整数中有一个是偶数，所以 $n(n+1)$ 是偶数 (t)\par
+Q2 (r)\par
+Q3 四个角：$n$、$n + 1$、$n + 7$、$n + 8$ (r)\par
+Watch for:\par
+Q1 停在 $4n(n + 1)$：只证明了是 4 的倍数}
+\end{frame}
+
+% ================================================================ block 2: simultaneous
+\begin{frame}{Where a line meets a curve}
+\relax
+\twocol{0.55}{%
+$y = x^{2} - 2x - 3$ and $y = 2x - 3$\par\smallskip
+$x^{2} - 2x - 3 = 2x - 3$\par
+$x^{2} - 4x = 0$\par
+$x(x - 4) = 0$}{0.42}{%
+\setlength\figunit{6mm}%
+\FigLineCurve}
+\ask{$x = 0$ or $x = 4$. Is that the answer?}
+\hp{h4:simul}
+\note{%
+Q no: co-ordinates need $y$ too: $(0, -3)$ and $(4, 5)$\par
+Short solution:\par
+Q 每个 $x$ 代回直线（更简单）求 $y$\par
+Watch for:\par
+只写 $x$：题目问 points（\Lref{allpoints}）\par
+Say it:\par
+intersection = in-ter-SEK-shun}
+\end{frame}
+
+\begin{frame}{Touching once: a tangent}
+\relax
+Find $k$ so that $y = kx$ is a tangent to $y = x^{2} + 3$.
+\wline{x^{2} + 3 = kx}
+\wline{x^{2} - kx + 3 = 0}
+\wline{(-k)^{2} - 4(1)(3) = \underline{\hspace{9mm}}}
+\ask{How many times does a tangent meet the curve? Which discriminant condition is that?}
+\hp{h4:simul}
+\note{%
+Gap 0\par
+Q once: $b^{2} - 4ac = 0$, so $k^{2} = 12$ and $k = \pm 2\sqrt{3}$\par
+Short solution:\par
+Q 代入后得到关于 $x$ 的二次方程；相切 = 一个解 = 判别式 0\par
+Watch for:\par
+只给 $k = 2\sqrt{3}$（两条切线）\par
+Say it:\par
+tangent = TAN-junt}
+\end{frame}
+
+\begin{frame}{Curve meets curve}
+\relax
+Where do $x^{2} + y^{2} = 13$ and $y = x^{2} - 1$ meet?
+\wline{x^{2} = y + 1, \quad\text{so}\quad (y + 1) + y^{2} = 13}
+\wline{y^{2} + y - 12 = 0}
+\wline{(y + 4)(y - 3) = 0}
+\ask{$y = -4$ gives $x^{2} = -3$. What do you do with it?}
+\hp{h4:simul}
+\note{%
+Q reject it: no real $x$; the points are $(2, 3)$ and $(-2, 3)$\par
+Short solution:\par
+Q 用 $x^{2} = y + 1$ 代入，消去 $x$，比代 $y$ 更简单\par
+$y = 3$：$x^{2} = 4$，$x = \pm 2$ (t)\par
+Watch for:\par
+只写 $x = 2$（\Lref{allpoints}）\par
+这是 2021 年 (d) 的方法}
+\end{frame}
+
+\begin{frame}{Spot the error (2)}
+\relax
+Where does $y = x + 2$ meet $y = x^{2} + x - 2$?\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{x\hsp{2} + x \hminus 2 = x + 2,\ \ so x\hsp{2} = 4,\ \ x = 2,\ \ y = 4\par
+They meet at one point, (2, 4), so the line is a tangent.}
+\end{samcard}
+\hp{h4:lose}
+\note{%
+1. $x^{2} = 4$ gives $x = 2$ and $x = -2$: the second point $(-2, 0)$ is missing (\Lref{allpoints})\par
+2. two meeting points, so it is not a tangent: $x^{2} - 4 = 0$ has $b^{2} - 4ac = 16 > 0$ (\Lref{disccond})\par
+Short solution:\par
+$(2, 4)$ and $(-2, 0)$\par
+Watch for:\par
+第二个错是第一个错带出来的：先找全部解，再下结论}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Find the points where $y = x^{2} + x - 6$ meets $y = 3x + 2$.
+\qline{Q2} Find $c$ so that $y = 2x + c$ is a tangent to $y = x^{2} + 5$.
+\qline{Q3} Where do $x^{2} - y^{2} = 7$ and $y = x - 1$ meet?
+\hp{h4:simul}
+\note{%
+Q1 $(4, 14)$ and $(-2, -4)$\par
+Q2 $c = 4$\par
+Q3 $(4, 3)$ only\par
+Short solution:\par
+Q1 $x^{2} - 2x - 8 = 0$ (u)\par
+Q2 $x^{2} - 2x + (5 - c) = 0$，$4 - 4(5 - c) = 0$ (r)\par
+Q3 $x^{2} - (x - 1)^{2} = 7$，$2x - 1 = 7$ (r)\par
+Watch for:\par
+Q3 $(x - 1)^{2}$ 展开（\Lref{squaresum}）；只有一个交点，不是切线也可以只交一次（直线和双曲线）}
+\end{frame}
+
+% ================================================================ block 3: surds
+\begin{frame}{Equations with a square root}
+\relax
+Solve $\sqrt{x + 6} = x$.
+\wline{x + 6 = x^{2}}
+\wline{x^{2} - x - 6 = 0}
+\wline{(x - 3)(x + 2) = 0}
+\ask{Put $x = -2$ into $\sqrt{x + 6} = x$. What happens?}
+\hp{h4:surd}
+\note{%
+Q $\sqrt{4} = 2$ but the right side is $-2$: reject; $x = 3$\par
+Short solution:\par
+Q 平方会把 $\sqrt{\ } = -2$ 和 $\sqrt{\ } = 2$ 变成同一个方程，所以要代回检查\par
+Watch for:\par
+两个解都留下（\Lref{check}）}
+\end{frame}
+
+\begin{frame}{Square the whole side}
+\relax
+Solve $\sqrt{3x + 10} = x + 2$.
+\wline{3x + 10 = (x + 2)^{2} = \underline{\hspace{30mm}}}
+\wline{x^{2} + x - 6 = 0}
+\wline{(x + 3)(x - 2) = 0}
+\ask{Which answer survives the check?}
+\hp{h4:surd}
+\note{%
+Gap $x^{2} + 4x + 4$\par
+Q $x = 2$; $x = -3$ gives $\sqrt{1} = 1$ but $-3 + 2 = -1$\par
+Short solution:\par
+Q 右边整个平方，再移项成 $= 0$ (r)\par
+Watch for:\par
+$(x + 2)^{2} = x^{2} + 4$（\Lref{squaresum}）}
+\end{frame}
+
+\begin{frame}{Spot the error (3)}
+\relax
+Solve $\sqrt{2x + 9} = x + 3$.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{2x + 9 = x\hsp{2} + 9\qquad x\hsp{2} \hminus 2x = 0\qquad x(x \hminus 2) = 0\qquad x = 0 or x = 2}
+\end{samcard}
+\hp{h4:lose}
+\note{%
+1. $(x + 3)^{2} = x^{2} + 6x + 9$, not $x^{2} + 9$ (\Lref{squaresum})\par
+2. neither answer was checked in the original: $x = 2$ gives $\sqrt{13} \neq 5$ (\Lref{check})\par
+Short solution:\par
+$2x + 9 = x^{2} + 6x + 9$，$x^{2} + 4x = 0$，$x = 0$ 或 $-4$\par
+检查：$x = -4$ 时 $\sqrt{1} = 1$，右边 $-1$，舍去；$x = 0$\par
+Watch for:\par
+检查能抓出第一个错：这就是为什么一定要代回去}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Solve $\sqrt{5x - 4} = x$.
+\qline{Q2} Solve $\sqrt{x + 7} = x - 5$.
+\hp{h4:surd}
+\note{%
+Q1 $x = 1$ or $x = 4$ (both check)\par
+Q2 $x = 9$\par
+Short solution:\par
+Q1 $x^{2} - 5x + 4 = 0$；两个都满足原方程 (r)\par
+Q2 $x + 7 = x^{2} - 10x + 25$，$x^{2} - 11x + 18 = 0$，$x = 9$ 或 2；$x = 2$：$\sqrt{9} = 3 \neq -3$ (r)\par
+Watch for:\par
+Q1 不是每次都要舍去：检查后两个都留}
+\end{frame}
+
+% ================================================================ block 4: modelling
+\begin{frame}{Modelling: reject what the context forbids}
+\relax
+A garden is 3 m longer than it is wide. Its area is 70 m$^{2}$.
+\wline{x(x + 3) = 70}
+\wline{x^{2} + 3x - 70 = 0}
+\wline{(x + 10)(x - 7) = 0}
+\ask{Which answer do you keep, and what is the garden's size?}
+\hp{h4:model}
+\note{%
+Q $x = 7$: the garden is 7 m by 10 m\par
+Short solution:\par
+Q 宽度不能是负数，所以 $x = -10$ 舍去，写出理由\par
+Watch for:\par
+答案只写 $x = 7$：题目问 size，两条边都要写（\Lref{contextcheck}）}
+\end{frame}
+
+\begin{frame}{The largest value: use the discriminant}
+\relax
+A rectangle has perimeter 40 m. What is the largest area it can have?
+\wline{\text{sides } x \text{ and } 20 - x:\qquad x(20 - x) = A}
+\wline{x^{2} - 20x + A = 0}
+\wline{\text{a real width needs } 400 - 4A \geq \underline{\hspace{7mm}}}
+\ask{Why does a real width need $b^{2} - 4ac \geq 0$?}
+\hp{h4:model}
+\note{%
+Gap 0\par
+Q the width is a solution of the quadratic, so the quadratic must have real solutions: $A \leq 100$, a 10 m square\par
+Short solution:\par
+Q $A$ 越大，判别式越小；判别式等于 0 时 $A$ 最大，$x = 10$ (t)\par
+Watch for:\par
+这是 2021 Q3(d)(ii) 的方法：用判别式求 “largest possible value”}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} A rectangle has perimeter 30 cm and area 50 cm$^{2}$. Find its sides.
+\qline{Q2} Show that no rectangle has perimeter 20 cm and area 30 cm$^{2}$.
+\hp{h4:model}
+\note{%
+Q1 5 cm by 10 cm\par
+Q2 $x^{2} - 10x + 30 = 0$ has $b^{2} - 4ac = -20 < 0$: no real side\par
+Short solution:\par
+Q1 $x(15 - x) = 50$，$x^{2} - 15x + 50 = 0$ (r)\par
+Q2 (r)；结论：所以不存在这样的长方形\par
+Watch for:\par
+Q1 两个解 5 和 10 是同一个长方形的两条边}
+\end{frame}
+
+\begin{frame}{Classwork}
+\relax
+Classwork 4 \textperiodcentered{} about 15 minutes
+\begin{itemize}
+\item \textbf{Part A}: a proof, a meeting point, a square-root equation
+\item \textbf{Part B}: a tangent and a calendar rectangle
+\item \textbf{Part C}: a largest area, explained
+\item \textbf{Extension}, if you finish
+\end{itemize}
+\note{%
+Teaching line, not a question slide.\par
+答案在 classwork4\_answers.pdf（同版面，红色答案）。\par
+A1 $4(n + 1)$；A2 $(1, -1)$、$(3, 1)$；A3 $x = 2$\par
+B1 $k = \pm 4$；B2 差 14\par
+C：$A \leq 36$\par
+Extension：$(3, 4)$、$(-4, -3)$}
+\end{frame}
+
+% ================================================================ exam run
+\begin{frame}{Practice}
+\relax
+\qline{(d)} Consider the following two curves:
+\fbx{x^{2} = y^{2} + 1 \qquad\text{and}\qquad y = (x - 1)(x + 1) - 2}
+Find the co-ordinates of each intersection point of the two curves.
+\fref{Practice set p.1}
+\note{%
+(d) $(\sqrt{5}, 2)$, $(-\sqrt{5}, 2)$, $(\sqrt{2}, -1)$, $(-\sqrt{2}, -1)$\par
+Short solution:\par
+(d) $y = x^{2} - 3$；$x^{2} = y^{2} + 1$ 代入：$y = y^{2} - 2$，$(y - 2)(y + 1) = 0$\par
+$y = 2$：$x^{2} = 5$；$y = -1$：$x^{2} = 2$\par
+评分：展开化简第二条曲线是 u；得到一个变量的方程是 r；两个解或四个 $x$ 是 T1，完整正确是 T2\par
+Watch for:\par
+只给两个点（\Lref{allpoints}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.6}{%
+\textbf{(d)} Junyang realises that the \textbf{surface area} of the cuboid will not be the same as the surface area of the cube unless he also changes the height. He decides to make the height of the cuboid 10 cm.\par\smallskip
+He wants to find out which value of $p$ would result in the cube having the same surface area as the cuboid. To do this, he needs to form and solve an equation for $p$.}{0.37}{%
+\setlength\figunit{5mm}%
+\Cuboid{1.6}{2.6}{2.4}{$p-a$}{$p+a$}{10 cm}}
+\fref{Practice set p.2 \textperiodcentered{} diagram not to scale}
+\note{%
+Teaching line, not a question slide.\par
+这是 2021 Question Three (d) 的题干（cube 边长 $p$，cuboid 是 $p - a$、$p + a$ 和 10）；下一页是 (i)\par
+提醒学生：cube 的表面积是 $6p^{2}$}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(i)} If the surface area of the cube is the same as the surface area of the cuboid, show that
+\fbx{2p^{2} - 20p + a^{2} = 0}
+Remember that the surface area of the cube is $6p^{2}$ cm$^{2}$.
+\fref{Practice set p.2}
+\note{%
+(i) SA of cuboid $= 2[(p - a)(p + a) + 10(p - a) + 10(p + a)] = 2p^{2} - 2a^{2} + 40p$; set equal to $6p^{2}$\par
+Short solution:\par
+(i) $6p^{2} = 2p^{2} - 2a^{2} + 40p$，所以 $4p^{2} - 40p + 2a^{2} = 0$，除以 2\par
+评分：写出并展开 cuboid 的表面积是 u；清楚推出给定方程是 r\par
+Watch for:\par
+只算了 3 个面：表面积有 6 个面，相对的面相等，所以乘 2}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(ii)} As mentioned in part (i), if the surface area of the cube is the same as the surface area of the cuboid, then $2p^{2} - 20p + a^{2} = 0$.\par\smallskip
+By using the discriminant ($\Delta$), find the largest possible whole number value that $a$ could take in this context.\par\smallskip
+Use this value of $a$ to find the dimensions of both the cube and the cuboid.\par\smallskip
+Explain your reasoning clearly.
+\fref{Practice set p.3}
+\note{%
+(ii) $a = 6$: cube $7.646$ cm; cuboid $1.646 \times 13.646 \times 10$ cm\par
+Short solution:\par
+(ii) $400 - 8a^{2} > 0$，$a^{2} < 50$，$a < 7.07$\par
+$a = 7$：$2p^{2} - 20p + 49 = 0$，$p = 5.707$ 或 $4.293$，但 $p - a < 0$，不行\par
+$a = 6$：$2p^{2} - 20p + 36 = 0$，$p = 7.646$ 或 $2.354$；$p = 7.646$ 时 $p - a > 0$\par
+评分：算判别式是 u；得到 $a$ 的不等式是 r；$a = 7$ 和 5.707 是 T1；正确的两个尺寸是 T2\par
+Watch for:\par
+停在 $a = 7$：没检查 context（\Lref{contextcheck}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.36}{%
+\textbf{(c)} A calendar can be presented in the following way, where each day is given a number from 1 to 365.\par\smallskip
+This is the beginning of a year's calendar:}{0.62}{%
+\setlength\figunit{5mm}%
+\hbox to\linewidth{\hfil\FigCalendar\hfil}}
+\fref{Practice set p.4}
+\note{%
+Teaching line, not a question slide.\par
+这是 2022 Question One (c) 的日历；原卷用橙色和蓝色标出 4-by-4 方格的对角，这里蓝色格加了斜线，黑白打印也能分\par
+先让学生找规律：往下一格加 7，往右一格加 1}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+Jo draws a 4-by-4 square on the calendar to check a claim that she heard:\par\smallskip
+``\emph{the sums of the diagonally opposite corners are always the same, no matter where you make your square}''.\par\smallskip
+In other words, when you add the numbers in the orange corners, it is the same as when you add the numbers in the blue corners.
+\fref{Practice set p.4}
+\note{%
+Teaching line, not a question slide.\par
+先用上一页日历里的方格验证：橙色 $18 + 42 = 60$，蓝色 $21 + 39 = 60$\par
+下一页是 (i)}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.56}{%
+Jo wonders if the claim will still be true no matter where she starts the square, so she begins an investigation using algebra.\par\smallskip
+\textbf{(i)} Use algebra to prove that, no matter where the 4-by-4 square is drawn on the calendar, \textbf{the sum of the orange corners must be the same as the sum of the blue corners}.}{0.41}{%
+\setlength\figunit{4.6mm}%
+\hbox to\linewidth{\hfil\FigCalSquare\hfil}}
+\fref{Practice set p.4}
+\note{%
+(i) orange: $A + (A + 24) = 2A + 24$; blue: $(A + 3) + (A + 21) = 2A + 24$: the same for every $A$\par
+Short solution:\par
+(i) 左上角 A（橙色），右上角 $A + 3$（蓝色），左下角 $A + 21$（蓝色），右下角 $A + 24$（橙色）\par
+评分：有正确的代数但没有结论是 u；两个和比较并明确写出结论是 r\par
+Watch for:\par
+用具体数字（18、42）：不是证明（\Lref{general}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(ii)} Jo wonders about the products of the diagonally opposite corners: could they be the same?\par\smallskip
+Use algebra to prove that it is not possible to draw any 4-by-4 square for which the products of the diagonally opposite corners are the same.
+\fref{Practice set p.5}
+\note{%
+(ii) $A(A + 24) = A^{2} + 24A$ and $(A + 3)(A + 21) = A^{2} + 24A + 63$; equal would need $63 = 0$, impossible\par
+Short solution:\par
+(ii) 评分：正确代数到列出相等的那一行是 r；完整正确的代数推理加结论是 t\par
+Watch for:\par
+写 “they are different” 但没有说明为什么任何 $A$ 都不行}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(d)} Will it always be true that the sum of the orange corners must be the same as the sum of the blue corners, regardless of the size or shape of the rectangle Jo draws?\par\smallskip
+Use algebra to support your answer by considering an $m$-by-$n$ rectangle drawn on the calendar (where $m$ and $n$ are whole numbers greater than 1, and $m \neq n$).\par\smallskip
+You may wish to draw a diagram on the calendar, or beside it, to help explain your reasoning.
+\fref{Practice set p.6}
+\note{%
+(d) yes: both sums are $2A + m + 7n - 8$\par
+Short solution:\par
+(d) $m$ 宽、$n$ 高：四个角 $A$、$A + (m - 1)$、$A + 7(n - 1)$、$A + (m - 1) + 7(n - 1)$\par
+评分：推理正确但角的表达式用错 $m$、$n$，或代数对但没结论，是 r；完整正确加结论是 t\par
+Watch for:\par
+宽多 $m - 1$，不是 $m$：画一个 2-by-3 的例子检查}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(c)} Solve $\sqrt{2x + 3} = 3x$.
+\fref{Practice set p.7}
+\note{%
+(c) $x = 0.6991$ ($-0.4768$ fails the check)\par
+Short solution:\par
+(c) $2x + 3 = 9x^{2}$，$9x^{2} - 2x - 3 = 0$，公式：$x = \dfrac{2 \pm \sqrt{112}}{18}$\par
+评分：得到二次方程是 u；两个解是 r（评分表把两个值都列了）\par
+Watch for:\par
+$x = -0.4768$ 代回去：左边 $1.430$，右边 $-1.430$，不成立；写出检查并舍去更稳妥（\Lref{check}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(d)} Suppose $Q(x) = fx^{2} + gx + h$, where $f$, $g$, and $h$ are constants. The ``reciprocal polynomial'' of $Q(x)$ is defined as $Q^{*}(x) = hx^{2} + gx + f$, where the coefficients are in the reverse order.\par\smallskip
+\textbf{(i)} Find the solutions of the equation $Q(x) = Q^{*}(x)$.
+\fref{Practice set p.7}
+\note{%
+(i) $x = 1$ or $x = -1$\par
+Short solution:\par
+(i) $fx^{2} + gx + h = hx^{2} + gx + f$，$(f - h)x^{2} - (f - h) = 0$，$(f - h)(x^{2} - 1) = 0$\par
+评分：只得到一个解是 r；两个解都正确是 t\par
+Watch for:\par
+除以 $f - h$ 时要说明 $f \neq h$\par
+Say it:\par
+polynomial = pol-ee-NOH-mee-ul}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(ii)} Suppose that $Q(x) = 0$ has 2 different roots, $A$ and $B$.\par\smallskip
+The roots of $Q^{*}(x) = 0$ are multiples of $A$ and of $B$, i.e.\ the roots are $kA$ and $kB$ for some constant $k$.\par\smallskip
+Find an expression for $k$ in terms of $f$, $g$, and\,/\,or $h$.
+\fref{Practice set p.8}
+\note{%
+(ii) $k = \dfrac{f}{h}$\par
+Short solution:\par
+(ii) 用公式：$Q$ 的根 $\dfrac{-g \pm \sqrt{g^{2} - 4fh}}{2f}$，$Q^{*}$ 的根 $\dfrac{-g \pm \sqrt{g^{2} - 4fh}}{2h}$，分子相同\par
+所以 $Q^{*}$ 的根 $= \dfrac{f}{h} \times Q$ 的根\par
+评分：四个根的表达式是 u；含 $k$ 的正确式子（或 $k = \dfrac{h}{f}$）是 r；$k = \dfrac{f}{h}$ 是 t\par
+Watch for:\par
+这题是全卷最难的一题，没时间就跳过}
+\end{frame}
+
+% ================================================================ close
+\begin{frame}{Ways to lose marks}
+\relax
+\begin{itemize}
+\item \textbf{\Lref{squaresum}} $(x + 3)^{2} = x^{2} + 6x + 9$
+\item \textbf{\Lref{check}} Check every answer of a square-root equation
+\item \textbf{\Lref{general}} Letters, not examples, and a sentence at the end
+\item \textbf{\Lref{allpoints}} $x^{2} = 4$: both $x = 2$ and $x = -2$, each with its $y$
+\item \textbf{\Lref{contextcheck}} Lengths positive, sides like $p - a$ too
+\end{itemize}
+\hp{h4:lose}
+\note{%
+Teaching line, not a question slide.\par
+讲义上有 L22–L26；四节课一共 L1–L26，模考前让学生把自己最常犯的 5 个圈出来}
+\end{frame}
+
+\begin{frame}{Summary}
+\relax
+\begin{itemize}
+\item Proof: letters for every case, take out the factor, finish with a sentence.
+\item Meeting points: substitute, solve, find every point with both co-ordinates.
+\item Square roots: square the whole side, then check every answer.
+\item Largest value: write a quadratic, then ask when it has real roots.
+\end{itemize}
+\hp{h4:proof}
+\note{%
+Teaching line, not a question slide.\par
+下一次：模考（2023 整套，60 分钟，用 formula sheet 和计算器）}
+\end{frame}
+
+\begin{frame}{Homework}
+\relax
+Homework 4 \textperiodcentered{} about 60 minutes
+\begin{itemize}
+\item \textbf{Quick review}: four short items
+\item \textbf{Question One}: algebraic proof
+\item \textbf{Question Two}: lines and curves
+\item \textbf{Question Three}: square roots and modelling
+\end{itemize}
+Then: the \textbf{mock exam}, 60 minutes, timed.
+\note{%
+Teaching line, not a question slide.\par
+答案在 hw4\_answers.pdf；模考卷是 mock.pdf，答案是 mock\_answers.pdf（官方评分表）\par
+模考：60 分钟、formula sheet、计算器；做完按评分表给每题 N0–E8，再按 cut score 估等级}
+\end{frame}
+
+\end{document}

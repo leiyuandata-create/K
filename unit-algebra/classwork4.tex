@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Classwork 4}
+
+\begin{document}
+\sheethead{Classwork 4}{Merit and Excellence problem solving}{Grades: [A] [M] [E]}
+
+Show all working. Finish every proof with a sentence.
+
+\section*{Part A \textperiodcentered{} Prove, meet, check}
+\qpart{A1}Prove that the sum of two consecutive odd numbers is always a multiple of 4.\lvl{M}
+\al{Two consecutive odd numbers: $2n + 1$ and $2n + 3$}
+\al{$(2n + 1) + (2n + 3) = 4n + 4 = 4(n + 1)$, which is 4 times a whole number,}
+\al{so the sum is always a multiple of 4.}
+
+\qpart{A2}Find the points where $y = x^{2} - 3x + 1$ meets $y = x - 2$.\lvl{A}
+\al{$x^{2} - 3x + 1 = x - 2$,\quad $x^{2} - 4x + 3 = 0$,\quad $(x - 1)(x - 3) = 0$}
+\al{$x = 1$: $y = -1$;\quad $x = 3$: $y = 1$.\quad Points $(1, -1)$ and $(3, 1)$}
+
+\qpart{A3}Solve $\sqrt{x + 2} = x$.\lvl{M}
+\al{$x + 2 = x^{2}$,\quad $x^{2} - x - 2 = 0$,\quad $(x - 2)(x + 1) = 0$}
+\al{Check: $x = 2$ gives $\sqrt{4} = 2$; $x = -1$ gives $\sqrt{1} = 1 \neq -1$, rejected. So $x = 2$.}
+
+\section*{Part B \textperiodcentered{} A tangent and a calendar}
+\qpart{B1}Find $k$ so that the line $y = kx - 1$ is a tangent to $y = x^{2} + 3$.\lvl{M}
+\al{$x^{2} + 3 = kx - 1$,\quad $x^{2} - kx + 4 = 0$}
+\al{Tangent: $(-k)^{2} - 4(1)(4) = 0$,\quad $k^{2} = 16$,\quad $k = 4$ or $k = -4$}
+
+\qpart{B2}On a calendar, a rectangle 2 days wide and 3 weeks tall has top-left number $n$. Show that the products of its diagonally opposite corners always differ by 14.\lvl{M}
+\al{Corners: $n$, $n + 1$ (top right), $n + 14$ (bottom left), $n + 15$ (bottom right)}
+\al{$(n + 1)(n + 14) - n(n + 15) = n^{2} + 15n + 14 - n^{2} - 15n = 14$, for every $n$}
+
+\section*{Part C \textperiodcentered{} A largest area}
+\qpart{C}A rectangle has perimeter 24 cm. Show that its area cannot be more than 36 cm$^{2}$.\lvl{E}
+\begin{plainbox}[title={Words you may use}]
+width $x$ \textperiodcentered{} quadratic \textperiodcentered{} real solution \textperiodcentered{} discriminant \textperiodcentered{} therefore
+\end{plainbox}
+Sentence starters (optional): \emph{If the width is $x$, the length is \ldots} \quad \emph{For a real width, \ldots}
+\al{Width $x$, length $12 - x$, area $A$:\quad $x(12 - x) = A$,\quad $x^{2} - 12x + A = 0$ \hfill MP1}
+\al{A real width needs $b^{2} - 4ac \geq 0$:\quad $144 - 4A \geq 0$ \hfill MP2}
+\al{So $A \leq 36$: the area is never more than 36 cm$^{2}$ (the 6 cm square). \hfill MP3}
+\ansnote{6mm}{\small MP1 is r; MP2 with the conclusion MP3 is t.}
+
+\section*{Extension}
+Where do $x^{2} + y^{2} = 25$ and $y = x + 1$ meet?
+\al{$x^{2} + (x + 1)^{2} = 25$,\quad $2x^{2} + 2x - 24 = 0$,\quad $x^{2} + x - 12 = 0$,\quad $x = 3$ or $x = -4$}
+\al{Points $(3, 4)$ and $(-4, -3)$}
+\end{document}

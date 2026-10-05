@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Practice set 4}
+\renewcommand\anslabel{Answers \textperiodcentered{} official assessment schedule extracts on the last pages}
+% one crop at natural width; a new page for each structured question (spec 6.3)
+\newcommand\ppq[1]{\par\noindent\includegraphics[width=\textwidth]{fig/L4/ppfull/#1}\par}
+\newcommand\msq[2]{\par\needspace{8\baselineskip}\medskip
+  {\sffamily\bfseries\color{ansred}Official assessment schedule extract \textperiodcentered{} #1}\par\smallskip
+  \noindent\includegraphics[width=\textwidth]{fig/L4/ms/#2}\par}
+
+\begin{document}
+\sheethead{Practice set 4}{Merit and Excellence problem solving}{Write in the spaces}
+\ppq{q1}
+\clearpage
+\ppq{q2}
+\clearpage
+\ppq{q3}
+\clearpage
+\ppq{q4}
+\clearpage
+\ppq{q5}
+\clearpage
+\ppq{q6}
+\clearpage
+\ppq{q7}
+\clearpage
+\ppq{q8}
+\ifansmode
+\clearpage
+\msq{page 1}{q1}
+\msq{pages 2 and 3}{q2}
+\clearpage
+\msq{pages 4 and 5}{q4}
+\msq{page 6}{q6}
+\clearpage
+\msq{page 7}{q7}
+\clearpage
+\msq{page 8}{q8}
+\fi
+\end{document}

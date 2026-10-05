@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Homework 4}
+
+\begin{document}
+\sheethead{Homework 4}{Merit and Excellence problem solving \textperiodcentered{} about 60 minutes}{Each question graded N0--E8}
+
+Show all working, and finish every proof with a sentence. Each part shows the highest grade it can give: [A], [M] or [E].
+
+\section*{Quick review}
+\qpart{1}Find the discriminant of $x^{2} - 4x + 4 = 0$. How many roots are there?\lvl{A}
+\al{$16 - 16 = 0$: one repeated root ($x = 2$)}
+\qpart{2}Solve $\log_{2} x = 5$.\lvl{A}
+\al{$x = 2^{5} = 32$}
+\qpart{3}Factorise $6x^{2} + x - 2$.\lvl{A}
+\al{$(3x + 2)(2x - 1)$}
+\qpart{4}Write a quadratic with roots $\dfrac{1}{2}$ and $3$, with whole-number coefficients.\lvl{A}
+\al{$(2x - 1)(x - 3) = 0$,\quad $2x^{2} - 7x + 3 = 0$}
+
+% ================================================================= ONE
+\QUESTION{ONE}
+\qpart{(a)}Show that the sum of four consecutive whole numbers is always even.\lvl{A}
+\al{$n + (n + 1) + (n + 2) + (n + 3) = 4n + 6 = 2(2n + 3)$, so it is always even}
+
+\qpart{(b)}Prove that the product of an odd number and an even number is always even.\lvl{A}
+\al{$(2m + 1)(2n) = 2n(2m + 1)$, which is 2 times a whole number, so it is even}
+
+\qpart{(c)}Prove that $(n + 3)^{2} - (n - 3)^{2}$ is always a multiple of 12.\lvl{M}
+\al{$(n^{2} + 6n + 9) - (n^{2} - 6n + 9) = 12n$, so it is always a multiple of 12}
+
+\qpart{(d)}Sam was asked to prove that the square of any odd number is one more than a multiple of 8. \textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.\lvl{M}
+\begin{samcard}
+\flawed{3\hsp{2} = 9 = 8 + 1 and 5\hsp{2} = 25 = 24 + 1, so it is true.\par
+Also (2n + 1)\hsp{2} = 4n\hsp{2} + 1.}
+\end{samcard}
+\begin{errorlist}
+\erritem{1}{two examples are not a proof: use $2n + 1$ for every odd number (\Lref{general})}
+\erritem{2}{$(2n + 1)^{2} = 4n^{2} + 4n + 1 = 4n(n + 1) + 1$; $n(n + 1)$ is even, so $8k + 1$ (\Lref{squaresum})}
+\end{errorlist}
+\al{}
+
+\qpart{(e)}On a calendar (7 days a row), a 3-by-3 square has top-left number $n$. Prove that the sum of all nine numbers is always 9 times the middle number.\lvl{E}
+\al{Rows: $n$, $n + 1$, $n + 2$;\quad $n + 7$, $n + 8$, $n + 9$;\quad $n + 14$, $n + 15$, $n + 16$}
+\al{Sum $= 9n + 72 = 9(n + 8)$, and the middle number is $n + 8$,}
+\al{so the sum is always 9 times the middle number.}
+\gradescore{u: (a), (b) shown. r: (c) proved; (d) both errors fixed with reasons; (e) all nine numbers in terms of $n$.\\
+t: (e) $9(n + 8)$ with the conclusion.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+% ================================================================= TWO
+\QUESTION{TWO}
+\qpart{(a)}Find the points where $y = x^{2} - 4$ meets $y = 3x$.\lvl{A}
+\al{$x^{2} - 3x - 4 = 0$,\quad $(x - 4)(x + 1) = 0$:\quad points $(4, 12)$ and $(-1, -3)$}
+
+\qpart{(b)}Show that the line $y = 2x - 5$ never meets the curve $y = x^{2} + 1$.\lvl{M}
+\al{$x^{2} + 1 = 2x - 5$,\quad $x^{2} - 2x + 6 = 0$,\quad $b^{2} - 4ac = 4 - 24 = -20 < 0$}
+\al{No real solutions, so the line never meets the curve.}
+
+\qpart{(c)}Find the values of $m$ for which $y = mx + 1$ is a tangent to $y = x^{2} + 2x + 5$.\lvl{M}
+\al{$x^{2} + (2 - m)x + 4 = 0$;\quad tangent: $(2 - m)^{2} - 16 = 0$}
+\al{$2 - m = \pm 4$:\quad $m = -2$ or $m = 6$}
+
+\qpart{(d)}Find every point where $x^{2} + y^{2} = 20$ meets $y = x^{2}$.\lvl{E}
+\al{$x^{2} = y$, so $y + y^{2} = 20$,\quad $(y + 5)(y - 4) = 0$}
+\al{$y = -5$ gives $x^{2} = -5$: no real point.\quad $y = 4$ gives $x = \pm 2$.}
+\al{The points are $(2, 4)$ and $(-2, 4)$.}
+\gradescore{u: (a) both points. r: (b) shown with the discriminant; (c) both values.\\
+t: (d) both points with $y = -5$ rejected for a reason.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+% ================================================================= THREE
+\QUESTION{THREE}
+\qpart{(a)}Solve $\sqrt{2x + 1} = 5$.\lvl{A}
+\al{$2x + 1 = 25$,\quad $x = 12$}
+
+\qpart{(b)}Solve $\sqrt{x + 12} = x$.\lvl{M}
+\al{$x^{2} - x - 12 = 0$,\quad $(x - 4)(x + 3) = 0$}
+\al{Check: $x = -3$ gives $\sqrt{9} = 3 \neq -3$, rejected.\quad $x = 4$}
+
+A rectangular pen is built against a wall, so 30 m of fencing makes only three sides: two of width $x$ m and one of length $(30 - 2x)$ m.
+\qpart{(c)}The pen has area 100 m$^{2}$. Find its possible dimensions.\lvl{M}
+\al{$x(30 - 2x) = 100$,\quad $x^{2} - 15x + 50 = 0$,\quad $(x - 5)(x - 10) = 0$}
+\al{5 m by 20 m, or 10 m by 10 m}
+
+\qpart{(d)}Show that the pen cannot have area 120 m$^{2}$.\lvl{M}
+\al{$x^{2} - 15x + 60 = 0$:\quad $b^{2} - 4ac = 225 - 240 = -15 < 0$, so no real width}
+
+\qpart{(e)}Use the discriminant to find the largest area the pen can enclose, and its dimensions.\lvl{E}
+\al{$x(30 - 2x) = A$,\quad $2x^{2} - 30x + A = 0$;\quad real $x$ needs $900 - 8A \geq 0$}
+\al{$A \leq 112.5$: the largest area is 112.5 m$^{2}$, when $x = 7.5$ m and the length is 15 m.}
+\gradescore{u: (a) correct; (b) the quadratic formed. r: (b) $x = 4$ with $-3$ rejected; (c) both shapes; (d) shown.\\
+t: (e) 112.5 m$^{2}$ with its dimensions and reasoning.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+\ansnote{6mm}{\small Totals out of 24. Cut scores move a little each year: Achievement from about 7--8, Merit 13--14, Excellence 19--20.}
+\end{document}
