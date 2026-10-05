@@ -35,6 +35,14 @@
 \newcommand\Tindices{indices}
 \newcommand\TIndices{Indices}
 \newcommand\Tsubject{subject}
+\newcommand\Tlog{logarithm}
+\newcommand\Tbase{base}
+\newcommand\Texp{exponential}
+\newcommand\TExp{Exponential}
+\newcommand\Tdisc{discriminant}
+\newcommand\TDisc{Discriminant}
+\newcommand\Tquad{quadratic}
+\newcommand\Tgrowth{growth factor}
 
 % ---------------------------------------------------- lost-mark list
 % \defL{key}{n}{text}: numbered once, here. Handout prints all of them,
@@ -59,6 +67,25 @@
 \defL{simplest}{8}{Answer not left in simplest form}
 \defL{everyterm}{9}{Not every term multiplied by the denominator}
 \defL{subject}{10}{Subject left on both sides}
+% lesson 2
+\defL{logform}{11}{Exponential and log forms mixed up}
+\defL{loglaw}{12}{Log laws used on a sum, or on a quotient of logs}
+\defL{bracketpower}{13}{Power not bracketed when it comes down}
+\defL{argument}{14}{Log of zero or a negative number, or a negative base, kept}
+\defL{factor}{15}{Growth factor wrong}
+\defL{context}{16}{Answer not interpreted in context}
+% lesson 3
+\defL{rootsign}{17}{Signs wrong when forming an equation from its roots}
+\defL{whole}{18}{Coefficients not whole numbers when asked}
+\defL{notzero}{19}{Not set equal to zero before factorising}
+\defL{disccond}{20}{Wrong discriminant condition}
+\defL{discbracket}{21}{Negative b or k not bracketed}
+% lesson 4
+\defL{squaresum}{22}{Squaring a sum term by term}
+\defL{check}{23}{Solutions of a squared equation not checked}
+\defL{general}{24}{Proof by examples, or no conclusion}
+\defL{allpoints}{25}{Not every intersection point found}
+\defL{contextcheck}{26}{Solutions not checked against the context}
 
 % --------------------------------------------------- Sam (spec 5.7)
 % Sam's text is set in Patrick Hand inside \flawed{}; \samsize is
@@ -101,6 +128,95 @@
   \node[anchor=north east] at ($(O)!0.5!(L)$) {#4};
   \node[anchor=north west] at ($(O)!0.5!(R)$) {#5};
   \node[anchor=west] at ($(R)!0.5!($(R)+(h)$)$) {#6};
+\end{tikzpicture}}
+
+% ---- y = x^2 + #1 on [-1.9, 1.9] with the x-axis: one panel of the
+% discriminant picture. The curve is plotted from its equation and
+% clipped inside a scope, so nothing after it is clipped.
+\newcommand\DiscPanel[1]{%
+\begin{tikzpicture}[fig, x=\figunit, y=0.55\figunit, baseline=(current bounding box.north)]
+  \draw[->] (-2.2,0) -- (2.4,0) node[right] {$x$};
+  \begin{scope}
+    \clip (-2.2,-1.6) rectangle (2.2,4.6);
+    \draw[line width=1.1pt, domain=-1.9:1.9, samples=60, smooth] plot (\x,{\x*\x+#1});
+  \end{scope}
+\end{tikzpicture}}
+
+% ---- y = 2(x+1)(x-5): x-intercepts -1 and 5, y-intercept -10 (lesson 3).
+% y scale 0.16: the vertex (2,-18) sits at -2.88 units.
+\newcommand\FigRootsParabola{%
+\begin{tikzpicture}[fig, x=\figunit, y=0.16\figunit, baseline=(current bounding box.north)]
+  \draw[->] (-2.2,0) -- (6.8,0) node[right] {$x$};
+  \draw[->] (0,-20) -- (0,9) node[above] {$y$};
+  \begin{scope}
+    \clip (-2.2,-20) rectangle (6.6,9);
+    \draw[line width=1.1pt, domain=-1.6:5.6, samples=80, smooth] plot (\x,{2*(\x+1)*(\x-5)});
+  \end{scope}
+  \fill (-1,0) circle (0.9mm) node[above left] {$-1$};
+  \fill (5,0) circle (0.9mm) node[above right] {$5$};
+  \fill (0,-10) circle (0.9mm) node[left] {$(0,-10)$};
+\end{tikzpicture}}
+
+% ---- y = x^2 - 2x - 3 and y = 2x - 3 meeting at (0,-3) and (4,5) (lesson 4).
+\newcommand\FigLineCurve{%
+\begin{tikzpicture}[fig, x=\figunit, y=0.32\figunit, baseline=(current bounding box.north)]
+  \draw[->] (-1.8,0) -- (5.6,0) node[right] {$x$};
+  \draw[->] (0,-5) -- (0,10) node[above] {$y$};
+  \begin{scope}
+    \clip (-1.8,-5) rectangle (5.4,9.6);
+    \draw[line width=1.1pt, domain=-1.6:5.2, samples=80, smooth] plot (\x,{\x*\x-2*\x-3});
+    \draw[line width=1.1pt, dash pattern=on 5pt off 3pt, domain=-1:5.2] plot (\x,{2*\x-3});
+  \end{scope}
+  \fill (0,-3) circle (0.9mm);
+  \fill (4,5) circle (0.9mm);
+  \node[anchor=west] at (4.15,4.3) {?};
+  \node[anchor=east] at (-0.15,-3.6) {?};
+\end{tikzpicture}}
+
+% ---- calendar (2022 paper): day n sits in row r, column c (Monday = 1)
+% with n = 7r + c - 4, so day 1 is the Friday of row 0. The 4-by-4 square
+% has corners 18 (r3 c1), 21 (r3 c4), 39 (r6 c1), 42 (r6 c4). Orange
+% corners are a light orange tint; blue corners a light blue tint with
+% grey hatching, so the two pairs differ in black and white too.
+\colorlet{calorange}{orange!40}
+\colorlet{calblue}{cyan!30}
+\colorlet{calyellow}{yellow!35}
+\newcommand\calcell[4]{% col, row, fill, text
+  \fill[#3] (#1-1,-#2) rectangle (#1,-#2-1);
+  \node at (#1-0.5,-#2-0.5) {#4};}
+\newcommand\calblue[2]{% col, row: blue tint plus hatching
+  \fill[calblue] (#1-1,-#2) rectangle (#1,-#2-1);
+  \fill[pattern=north east lines, pattern color=black!30] (#1-1,-#2) rectangle (#1,-#2-1);}
+\newcommand\FigCalendar{%
+\begin{tikzpicture}[fig, x=1.25\figunit, y=0.62\figunit, every node/.style={font=\figfont, inner sep=0pt}]
+  \foreach \r in {3,...,6}{\foreach \c in {1,...,4}{\fill[calyellow] (\c-1,-\r-1) rectangle (\c,-\r-2);}}
+  \fill[calorange] (0,-4) rectangle (1,-5);   \fill[calorange] (3,-7) rectangle (4,-8);
+  \calblue{4}{4}\calblue{1}{7}
+  \foreach \c/\d in {1/M,2/T,3/W,4/TH,5/F,6/SA,7/SU} \node[font=\figfont\bfseries] at (\c-0.5,-0.5) {\d};
+  \foreach \r in {0,...,10}{\foreach \c in {1,...,7}{
+    \pgfmathtruncatemacro\n{7*\r+\c-4}
+    \ifnum\n>0 \node at (\c-0.5,-\r-1.5) {\n};\fi}}
+  \draw[line width=0.5pt] (0,0) grid (7,-12);
+\end{tikzpicture}}
+% the square Jo draws: A top left; orange corners top left and bottom
+% right, blue corners top right and bottom left
+\newcommand\FigCalSquare{%
+\begin{tikzpicture}[fig, x=0.9\figunit, y=0.9\figunit]
+  \fill[calyellow] (0,0) rectangle (4,-4);
+  \fill[calorange] (0,0) rectangle (1,-1); \fill[calorange] (3,-3) rectangle (4,-4);
+  \calblue{4}{0}\calblue{1}{3}
+  \draw[line width=0.5pt] (0,0) grid (4,-4);
+  \node at (0.5,-0.5) {A};
+\end{tikzpicture}}
+% a 3-by-3 square on a 7-day calendar, labelled from n (lesson 4)
+\newcommand\FigCalAlgebra{%
+\begin{tikzpicture}[fig, x=1.9\figunit, y=0.85\figunit]
+  \fill[black!8] (0,0) rectangle (1,-1); \fill[black!8] (2,-2) rectangle (3,-3);
+  \fill[pattern=north east lines, pattern color=black!35] (2,0) rectangle (3,-1);
+  \fill[pattern=north east lines, pattern color=black!35] (0,-2) rectangle (1,-3);
+  \draw[line width=0.5pt] (0,0) grid (3,-3);
+  \foreach \r/\c/\t in {0/0/n, 0/1/n+1, 0/2/n+2, 1/0/n+7, 1/1/?, 1/2/?, 2/0/?, 2/1/?, 2/2/?}
+    \node at (\c+0.5,-\r-0.5) {$\t$};
 \end{tikzpicture}}
 % "Diagram is NOT to scale" box, as printed beside the source figures
 \newcommand\NotToScale{{\itshape\begin{tabular}{|c|}\hline Diagram is\\ NOT to scale\\\hline\end{tabular}}}

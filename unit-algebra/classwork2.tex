@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Classwork 2}
+
+\begin{document}
+\sheethead{Classwork 2}{Exponentials and logarithms}{Grades: [A] [M] [E]}
+
+Show all working. Give answers to 3 decimal places unless the question asks for an exact answer.
+
+\section*{Part A \textperiodcentered{} Switch, combine, solve}
+\qpart{A1}Evaluate $\log_{3} 243$.\lvl{A}
+\al{$3^{5} = 243$, so $\log_{3} 243 = 5$}
+
+\qpart{A2}Solve $\log_{6} x = 2$.\lvl{A}
+\al{$x = 6^{2} = 36$}
+
+\qpart{A3}Write $3\log 2 + \log 5 - \log 4$ as a single logarithm, and find its value.\lvl{A}
+\af{\log 8 + \log 5 - \log 4 = \log\frac{8\times5}{4} = \log 10 = 1}
+
+\qpart{A4}Solve $6^{x} = 75$.\lvl{A}
+\af{x\log 6 = \log 75,\qquad x = \frac{\log 75}{\log 6} = 2.410}
+
+\qpart{A5}Solve $\log_{x} 16 = 4$.\lvl{A}
+\al{$x^{4} = 16$, so $x = 2$ (the base cannot be $-2$)}
+
+\section*{Part B \textperiodcentered{} Two logs, and a model}
+\qpart{B1}Solve $2^{3x-2} = 50$.\lvl{M}
+\af{(3x-2)\log 2 = \log 50,\qquad 3x - 2 = \frac{\log 50}{\log 2} = 5.6439}
+\al{$3x = 7.6439$,\quad $x = 2.548$}
+
+\qpart{B2}Solve $\log_{5}(x+1) + \log_{5}(x-3) = 1$.\lvl{M}
+\al{$\log_{5}\bigl((x+1)(x-3)\bigr) = 1$,\quad $(x+1)(x-3) = 5$,\quad $x^{2} - 2x - 8 = 0$}
+\al{$(x-4)(x+2) = 0$:\quad $x = 4$\quad ($x = -2$ rejected: $\log_{5}(-1)$ does not exist)}
+
+\qpart{B3}A phone bought for \$1200 loses 18\% of its value each year. When is it first worth less than \$300?\lvl{M}
+\al{$1200(0.82)^{t} = 300$,\quad $0.82^{t} = 0.25$}
+\af{t = \frac{\log 0.25}{\log 0.82} = 6.99}
+\al{It is first worth less than \$300 during the 7th year, after about 7.0 years.}
+
+\section*{Part C \textperiodcentered{} A quadratic in disguise}
+\qpart{C}Solve $4^{x} - 5\times 2^{x} + 4 = 0$. Explain each step.\lvl{E}
+\begin{plainbox}[title={Words you may use}]
+let $u = 2^{x}$ \textperiodcentered{} $4^{x} = (2^{x})^{2}$ \textperiodcentered{} factorise \textperiodcentered{} change back \textperiodcentered{} always positive
+\end{plainbox}
+Sentence starters (optional): \emph{Since $4 = 2^{2}$, \ldots} \quad \emph{Letting $u = 2^{x}$, \ldots} \quad \emph{So $2^{x} = \ldots$}
+\al{Since $4^{x} = (2^{2})^{x} = (2^{x})^{2}$, let $u = 2^{x}$:\quad $u^{2} - 5u + 4 = 0$ \hfill MP1}
+\al{$(u - 1)(u - 4) = 0$, so $u = 1$ or $u = 4$ \hfill MP2}
+\al{$2^{x} = 1$ gives $x = 0$;\quad $2^{x} = 4$ gives $x = 2$ \hfill MP3}
+\al{Both values of $u$ are positive, so neither is rejected ($2^{x}$ is always positive).}
+\ansnote{6mm}{\small MP1 and MP2 are r; both values of $x$ with the reasoning is t.}
+
+\section*{Extension}
+Solve $2^{x} = 3^{x-1}$.
+\al{$x\log 2 = (x-1)\log 3$,\quad $x(\log 3 - \log 2) = \log 3$}
+\af{x = \frac{\log 3}{\log 3 - \log 2} = 2.710}
+\end{document}

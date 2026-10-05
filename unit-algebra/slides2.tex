@@ -1,0 +1,677 @@
+\documentclass[aspectratio=169,11pt,xcolor=table,t]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout2}
+\ifdefined\notesmode
+  \setbeameroption{show only notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+\newcommand\hp[1]{\fref{Handout p.\pageref{H-#1}}}
+
+\begin{document}
+
+% ================================================================ opening
+\begin{frame}{Lesson 2 \textperiodcentered{} Exponentials and Logarithms}
+\relax
+NCEA Level 2 Mathematics \textperiodcentered{} Algebra\par\vspace{3mm}
+{\bfseries By the end of today you can:}
+\begin{enumerate}
+\item switch between power form and log form
+\item use the three log laws to combine and solve
+\item solve equations with the unknown in the power
+\item answer growth and decay questions in context
+\end{enumerate}
+\note{%
+Teaching line, not a question slide.\par
+100 分钟。时间：Do Now 0:00–0:05；核心思想 0:05–0:07；Block 1 log 的意思 0:07–0:17；Block 2 log laws 0:17–0:32；Block 3 解指数方程 0:32–0:47；Block 4 增长和衰减 0:47–0:57；Classwork 0:57–1:17；真题演练 1:17–1:35；收尾 1:35–1:40。\par
+发四份纸：Handout 2、Classwork 2、Practice set 2、Homework 2。学生需要计算器（log、ln 键）。\par
+先用 5 分钟对 Homework 1 的答案（按 L 编号说错在哪），再开始 Do Now；时间不够就把 Block 4 的 Practice 放进作业。\par
+Say it:\par
+exponential = ek-spoh-NEN-shul\par
+logarithm = LOG-uh-rith-um\par
+ln = el-EN}
+\end{frame}
+
+\begin{frame}{Do Now}
+\relax
+\qline{1} Simplify $\dfrac{(2x)^{3}}{x^{-1}}$.
+\qline{2} Write $\sqrt[3]{x^{2}}$ as a power of $x$.
+\qline{3} Solve $2^{x} = 32$.
+\qline{4} Factorise $2x^{2} + 7x + 3$.
+\qline{5} Which is bigger: $2^{10}$ or $10^{3}$?
+\note{%
+Q1 $8x^{4}$\par
+Q2 $x^{\frac{2}{3}}$\par
+Q3 $x = 5$\par
+Q4 $(2x+1)(x+3)$\par
+Q5 $2^{10} = 1024$ is bigger\par
+Short solution:\par
+Q1 $8x^{3} \div x^{-1} = 8x^{3-(-1)}$\par
+Q3 2, 4, 8, 16, 32：数了 5 次\par
+Watch for:\par
+Q1 写 $8x^{2}$：减负数（L1）\par
+Q4 $ac = 6$：6 和 1\par
+Diagnostic:\par
+Q1、Q2 错：Lesson 1 的指数还不稳，Block 2 讲 log laws 前先回顾 index laws\par
+Q3 靠猜也可以；问他 “$2^{x} = 30$ 怎么办”，引出今天的 log\par
+Q4 错：Block 3 的 disguised quadratic 要慢一点}
+\end{frame}
+
+\begin{frame}{The one idea}
+\relax
+\fbx{2^{3} = 8 \qquad\Longleftrightarrow\qquad \log_{2} 8 = 3}
+A log answers one question: \textbf{what power?}\par\smallskip
+$\log_{2} 8$ means: 2 to the power \gap[16mm] gives 8.
+\ask{So what is $\log_{2} 16$?}
+\hp{h2:meaning}
+\note{%
+Gap what (the power 3)\par
+Q 4, because $2^{4} = 16$\par
+Short solution:\par
+Q log 的答案就是一个 power；把它读成问题：“2 的几次方是 16？”\par
+Watch for:\par
+答 8（$16 \div 2$）：把 log 当成除法\par
+Ask:\par
+$\log_{2} 2$？（1）$\log_{2} 1$？（0）}
+\end{frame}
+
+% ================================================================ block 1
+\begin{frame}{Quick review: powers}
+\relax
+\qline{1} $2^{6} = \gap[14mm]$
+\qline{2} $3^{4} = \gap[14mm]$
+\qline{3} $10^{-2} = \gap[14mm]$
+\qline{4} $5^{0} = \gap[14mm]$
+\qline{5}
+\fbx{9^{\frac{1}{2}} = \underline{\hspace{12mm}}}
+\hp{h2:review}
+\note{%
+Q1 64\par
+Q2 81\par
+Q3 0.01\par
+Q4 1\par
+Q5 3\par
+Short solution:\par
+Q3 $10^{-2} = \dfrac{1}{10^{2}} = \dfrac{1}{100}$\par
+Q5 power $\dfrac{1}{2}$ 是 square root\par
+Watch for:\par
+Q3 答 $-100$ 或 $-20$：负 index（L1）\par
+讲义最后一页有常用的 power 表，今天每个 log 都会用到}
+\end{frame}
+
+\begin{frame}{Switching forms}
+\relax
+\fbx{y = b^{x} \qquad\Longleftrightarrow\qquad \log_{b} y = x}
+Base to the bottom, $y$ in the brackets.\par\smallskip
+\wline{3^{4} = 81 \quad\Longleftrightarrow\quad \log_{3} \underline{\hspace{9mm}} = \underline{\hspace{9mm}}}
+\wline{\log_{5} x = 3 \quad\Longleftrightarrow\quad x = \underline{\hspace{14mm}}}
+\ask{In $\log_{5} x = 3$, which number is the base?}
+\hp{h2:meaning}
+\note{%
+Gap 81; 4; $5^{3} = 125$\par
+Q 5\par
+Short solution:\par
+Q base 是 log 下面的小数字；它在 power form 里是底数\par
+Watch for:\par
+写成 $x = 3^{5}$：base 和 power 弄反（\Lref{logform}）\par
+Say it:\par
+base = BAYS}
+\end{frame}
+
+\begin{frame}{When the unknown is the base}
+\relax
+Solve $\log_{x} 49 = 2$.
+\wline{x^{2} = 49}
+\wline{x = 7 \quad\text{or}\quad x = -7\;?}
+\ask{Can a base be negative? Which answer survives?}
+\hp{h2:meaning}
+\note{%
+Q no; $x = 7$\par
+Short solution:\par
+Q base 必须是正数（且不是 1），所以 $x = -7$ 舍去，并写出理由\par
+Watch for:\par
+只写 $x = \pm 7$ 或只写 7 不说理由：评分表要 evidence of negative value being disregarded（\Lref{argument}）}
+\end{frame}
+
+\begin{frame}{Logs you can do in your head}
+\relax
+\wline{\log_{7} 1 = \underline{\hspace{9mm}} \qquad \log_{6} 6 = \underline{\hspace{9mm}}}
+\wline{\log 1000 = \underline{\hspace{9mm}} \qquad \ln e = \underline{\hspace{9mm}}}
+No base written: base 10 (the \textbf{log} key). $\ln$ is base $e \approx 2.718$ (the \textbf{ln} key).
+\ask{Why is $\log_{7} 1$ the same as $\log_{6} 1$?}
+\hp{h2:meaning}
+\note{%
+Gap 0; 1; 3; 1\par
+Q any base to the power 0 is 1\par
+Short solution:\par
+Q $7^{0} = 1$，$6^{0} = 1$，所以都是 0\par
+Watch for:\par
+$\log 1000$ 答 100：把 log 当成除以 10\par
+计算器上 log 是 base 10，ln 是 base $e$；今天的指数方程两个都会用}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Evaluate \ (a) $\log_{2} 32$ \quad (b) $\log_{9} 3$ \quad (c) $\log 0.01$
+\qline{Q2} Solve $\log_{4} x = 3$.
+\qline{Q3} Solve $\log_{x} 125 = 3$.
+\hp{h2:meaning}
+\note{%
+Q1 (a) 5; (b) $\dfrac{1}{2}$; (c) $-2$\par
+Q2 $x = 64$\par
+Q3 $x = 5$\par
+Short solution:\par
+Q1 (b) 9 的几次方是 3？square root，所以 $\dfrac{1}{2}$ (u)\par
+Q2 $x = 4^{3}$ (u)\par
+Q3 $x^{3} = 125$，cube root (u)\par
+Watch for:\par
+Q1 (b) 答 3：方向反了（\Lref{logform}）\par
+Q3 这里 cube root 只有一个值，不需要舍去}
+\end{frame}
+
+% ================================================================ block 2: laws
+\begin{frame}{The three log laws}
+\relax
+\begin{rulebox}
+$\log_{b}(xy) = \log_{b}x + \log_{b}y$\qquad (multiply: add the powers)\par
+$\log_{b}\Bigl(\dfrac{x}{y}\Bigr) = \log_{b}x - \log_{b}y$\qquad (divide: subtract)\par
+$\log_{b}(x^{n}) = n\log_{b}x$\qquad (power: multiply)
+\end{rulebox}
+\wline{\log_{2}3 + \log_{2}5 = \log_{2}\underline{\hspace{9mm}}\qquad \log_{2}12 - \log_{2}4 = \log_{2}\underline{\hspace{9mm}}}
+\ask{Which index law is behind the first log law?}
+\hp{h2:laws}
+\note{%
+Gap 15; 3\par
+Q $x^{a}\times x^{b} = x^{a+b}$: multiplying adds the powers\par
+Short solution:\par
+Q log 就是 power，所以 log 的加法对应里面的乘法\par
+三条都在 formula sheet 上，不用背，但要会用\par
+Watch for:\par
+$\log_{2}3 + \log_{2}5 = \log_{2}8$：加法对应乘法，不是加法（\Lref{loglaw}）}
+\end{frame}
+
+\begin{frame}{Writing a single log}
+\relax
+Write $2\log x + \log 5 - \log 10$ as a single log.
+\wline{= \log x^{\underline{\hspace{7mm}}} + \log 5 - \log 10}
+\wline{= \log\frac{5x^{2}}{10} = \log\underline{\hspace{14mm}}}
+\ask{Why move the 2 up as a power first?}
+\hp{h2:laws}
+\note{%
+Gap 2; $\dfrac{x^{2}}{2}$\par
+Q the add and subtract laws only work on logs with nothing in front\par
+Short solution:\par
+Q 前面的系数先变成 power，然后加号进分子、减号进分母，最后约分\par
+Watch for:\par
+写成 $\log 2x$：2 没有变成 power（\Lref{bracketpower}）\par
+答案停在 $\log\dfrac{5x^{2}}{10}$：分数要约到最简}
+\end{frame}
+
+\begin{frame}{Equations with two logs}
+\relax
+Solve $\log_{3}(x+4) + \log_{3}(x-4) = 2$.
+\wline{\log_{3}\bigl((x+4)(x-4)\bigr) = 2}
+\wline{x^{2} - 16 = 3^{2}}
+\wline{x = 5 \quad\text{or}\quad x = -5}
+\ask{Put $x = -5$ into $\log_{3}(x-4)$. What goes wrong?}
+\hp{h2:laws}
+\note{%
+Q $\log_{3}(-9)$ does not exist: reject $x = -5$; $x = 5$\par
+Short solution:\par
+Q 先合并成一个 log，再换成 power form：$x^{2} - 16 = 9$\par
+Watch for:\par
+两个解都留下（\Lref{argument}）\par
+右边的 2 换成 $3^{2} = 9$，不是 $2^{3}$（\Lref{logform}）}
+\end{frame}
+
+\begin{frame}{Spot the error (1)}
+\relax
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{(a)\ \ Expand log(x + 3)\quad\ \ log(x + 3) = log x + log 3\par
+(b)\ \ Write 3 log 2 as a single log\quad\ \ 3 log 2 = log 6}
+\end{samcard}
+\hp{h2:lose}
+\note{%
+1. (a) there is no law for $\log(x+3)$: it cannot be split (\Lref{loglaw})\par
+2. (b) $3\log 2 = \log 2^{3} = \log 8$, not $\log 6$ (\Lref{bracketpower})\par
+Short solution:\par
+(a) $\log(x+3)$ already simplest\par
+(b) $\log 8$\par
+Watch for:\par
+(a) 代 $x = 7$ 检查：$\log 10 = 1$，但 $\log 7 + \log 3 = \log 21 \approx 1.32$}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Write $\log(4a) + 3\log\Bigl(\dfrac{a}{2}\Bigr)$ as a single logarithm.
+\qline{Q2} Solve $\log_{2}(x+2) + \log_{2}(x-2) = 5$.
+\qline{Q3} Solve $\log x - \log(x-3) = \log 4$.
+\hp{h2:laws}
+\note{%
+Q1 $\log\dfrac{a^{4}}{2}$\par
+Q2 $x = 6$\par
+Q3 $x = 4$\par
+Short solution:\par
+Q1 $\log 4a + \log\dfrac{a^{3}}{8} = \log\dfrac{4a^{4}}{8}$ (r)\par
+Q2 $x^{2} - 4 = 32$，$x = \pm 6$，舍去 $-6$ (r)\par
+Q3 $\log\dfrac{x}{x-3} = \log 4$，所以 $x = 4x - 12$ (u)\par
+Watch for:\par
+Q1 $\Bigl(\dfrac{a}{2}\Bigr)^{3}$ 分母也要立方（L2）\par
+Q2 不舍去 $-6$（\Lref{argument}）}
+\end{frame}
+
+% ================================================================ block 3: solving
+\begin{frame}{The unknown in the power}
+\relax
+Solve $3^{x} = 50$.
+\wline{\log 3^{x} = \log 50}
+\wline{x\log 3 = \log 50}
+\wline{x = \frac{\log 50}{\log 3} = \underline{\hspace{16mm}}}
+\ask{Why can't you just divide 50 by 3?}
+\hp{h2:solve}
+\note{%
+Gap 3.561\par
+Q $3^{x}$ is not $3 \times x$; the power has to come down first\par
+Short solution:\par
+Q 两边取 log，power law 把 $x$ 拿下来，再除以 $\log 3$\par
+检查：$3^{3} = 27$，$3^{4} = 81$，所以答案在 3 和 4 之间\par
+Watch for:\par
+$\dfrac{\log 50}{\log 3}$ 写成 $\log\dfrac{50}{3}$（\Lref{loglaw}）}
+\end{frame}
+
+\begin{frame}{Bracket the power}
+\relax
+Solve $5^{2x-1} = 200$.
+\wline{(2x-1)\log 5 = \log 200}
+\wline{2x - 1 = \frac{\log 200}{\log 5} = 3.2920\ldots}
+\wline{x = \underline{\hspace{16mm}}}
+\ask{What goes wrong if you write $2x - 1\log 5$?}
+\hp{h2:solve}
+\note{%
+Gap 2.146\par
+Q only the 1 gets multiplied by $\log 5$\par
+Short solution:\par
+Q 整个 power $(2x-1)$ 拿下来要加括号；先求 $2x - 1$，最后再解 $x$\par
+中间值保留计算器里的全部位数，最后才四舍五入（\Lref{context}）\par
+Watch for:\par
+没有括号（\Lref{bracketpower}）}
+\end{frame}
+
+\begin{frame}{Same base: solve exactly}
+\relax
+Solve $4^{x+1} = 8^{x}$.
+\wline{4 = 2^{2} \quad\text{and}\quad 8 = 2^{\underline{\hspace{7mm}}}}
+\wline{2^{2(x+1)} = 2^{3x}}
+\wline{2x + 2 = 3x}
+\ask{What base do 4 and 8 share? What is $x$?}
+\hp{h2:solve}
+\note{%
+Gap 3\par
+Q base 2; $x = 2$\par
+Short solution:\par
+Q 底数相同时 power 相等；精确解，不用计算器\par
+检查：$4^{3} = 64 = 8^{2}$\par
+Watch for:\par
+$(2^{2})^{x+1}$ 写成 $2^{2x+1}$：括号（L1 的 power of a power）}
+\end{frame}
+
+\begin{frame}{$e$ and $\ln$}
+\relax
+Solve $e^{0.3t} = 5$.
+\wline{\ln e^{0.3t} = \ln 5}
+\wline{0.3t = \ln 5}
+\wline{t = \underline{\hspace{16mm}}}
+\ask{What undoes $e$ to a power?}
+\hp{h2:solve}
+\note{%
+Gap 5.365\par
+Q $\ln$, because $\ln e^{k} = k$\par
+Short solution:\par
+Q $t = \dfrac{\ln 5}{0.3}$；也可以用 log：$t = \dfrac{\log 5}{0.3 \log e}$，答案一样\par
+Watch for:\par
+写 $t = \ln\dfrac{5}{0.3}$：先除再取 ln 是错的\par
+考试里常见 $T = T_{0} + ke^{-rt}$ 的冷却模型，先把 $e$ 的那一项单独移出来}
+\end{frame}
+
+\begin{frame}{A quadratic in disguise}
+\relax
+Solve $3^{2x} - 4\times 3^{x} + 3 = 0$.\par
+Let $u = 3^{x}$. Then $3^{2x} = (3^{x})^{2} = u^{2}$.
+\wline{u^{2} - 4u + 3 = 0}
+\wline{(u-1)(u-3) = 0}
+\wline{3^{x} = 1 \quad\text{or}\quad 3^{x} = 3}
+\ask{What are the two values of $x$?}
+\hp{h2:solve}
+\note{%
+Q $x = 0$ or $x = 1$\par
+Short solution:\par
+Q $3^{x} = 1$ 时 $x = 0$；$3^{x} = 3$ 时 $x = 1$ (t)\par
+如果某个 $u$ 是负数，要舍去：$3^{x}$ 永远是正的\par
+Watch for:\par
+解出 $u$ 就停：要换回 $x$\par
+认出 $3^{2x} = (3^{x})^{2}$ 是 Excellence 的关键一步}
+\end{frame}
+
+\begin{frame}{Spot the error (2)}
+\relax
+Solve $5^{x-2} = 40$.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{x \hminus 2 log 5 = log 40\par
+x \hminus 2 = \hfr{log 40}{log 5} = log 8 = 0.903\par
+x = 2.903}
+\end{samcard}
+\hp{h2:lose}
+\note{%
+1. the power comes down in a bracket: $(x-2)\log 5 = \log 40$ (\Lref{bracketpower})\par
+2. $\dfrac{\log 40}{\log 5} \neq \log 8$: divide on the calculator, $= 2.292$ (\Lref{loglaw})\par
+Short solution:\par
+$x - 2 = 2.292$，$x = 4.292$\par
+Watch for:\par
+检查：$5^{4.292-2} = 5^{2.292} \approx 40$；Sam 的 $5^{0.903} \approx 4.3$}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Solve $2^{x} = 300$.
+\qline{Q2} Solve $7^{3x+1} = 90$.
+\qline{Q3} Solve $9^{x} = 27^{x-1}$ exactly.
+\hp{h2:solve}
+\note{%
+Q1 $x = 8.229$\par
+Q2 $x = 0.4375$\par
+Q3 $x = 3$\par
+Short solution:\par
+Q1 $x = \dfrac{\log 300}{\log 2}$ (u)\par
+Q2 $3x + 1 = \dfrac{\log 90}{\log 7} = 2.3124$ (u)\par
+Q3 $3^{2x} = 3^{3x-3}$，$2x = 3x - 3$ (r)\par
+Watch for:\par
+Q2 括号（\Lref{bracketpower}）\par
+Q3 用计算器得到小数也对，但题目要 exactly}
+\end{frame}
+
+% ================================================================ block 4: growth
+\begin{frame}{Growth and decay}
+\relax
+\fbx{P = A\,r^{t}}
+A car bought for \$18\,000 loses 15\% of its value each year.
+\wline{V = 18\,000 \times \underline{\hspace{12mm}}^{\,t}}
+\ask{Why is the \Tgrowth{} 0.85 and not 0.15?}
+\hp{h2:growth}
+\note{%
+Gap 0.85\par
+Q each year it keeps 85\% of its value\par
+Short solution:\par
+Q 增长 $R\%$：乘 $1 + \dfrac{R}{100}$；减少 $R\%$：乘 $1 - \dfrac{R}{100}$\par
+Watch for:\par
+用 0.15：一年后只剩 15\%（\Lref{factor}）}
+\end{frame}
+
+\begin{frame}{When does it happen?}
+\relax
+When is the car first worth less than \$6000?
+\wline{18\,000(0.85)^{t} = 6000}
+\wline{0.85^{t} = \frac{1}{3}}
+\wline{t = \frac{\log\frac{1}{3}}{\log 0.85} = 6.76}
+\ask{Is the answer ``6.76''? What do you write?}
+\hp{h2:growth}
+\note{%
+Q no: it is first worth less than \$6000 during the 7th year, after about 6.8 years\par
+Short solution:\par
+Q 先除以 18000，再取 log；最后一句话要有单位和情境\par
+Watch for:\par
+只写 6.76 或 “6 years”：没解释（\Lref{context}）\par
+$\log\dfrac{1}{3}$ 和 $\log 0.85$ 都是负数，相除是正数}
+\end{frame}
+
+\begin{frame}{What rate?}
+\relax
+\$5000 grows to \$7500 in 8 years at a fixed annual rate $R\%$.
+\wline{5000\Bigl(1 + \frac{R}{100}\Bigr)^{8} = 7500}
+\fbx{1 + \frac{R}{100} = 1.5^{\frac{1}{8}} = \underline{\hspace{18mm}}}
+\ask{When the unknown is the base, do you take logs or a root?}
+\hp{h2:growth}
+\note{%
+Gap 1.0520\par
+Q a root: the 8th root, then $R = 5.2\%$\par
+Short solution:\par
+Q 未知数在 base，不在 power：开 8 次方（power $\dfrac{1}{8}$）\par
+Watch for:\par
+答 $R = 1.052$ 或 0.052：要换成百分数\par
+答 $R = 6.25$（把 50\% 平均分给 8 年）：复利不是平均}
+\end{frame}
+
+\begin{frame}{Spot the error (3)}
+\relax
+A \$15\,000 car loses 20\% of its value each year. When is it first worth less than \$5000?\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{15000(0.2)\hsp{t} = 5000\qquad 0.2\hsp{t} = \hfr{1}{3}\qquad t = \hfr{log(1/3)}{log 0.2} = 0.683\par
+Answer: 0.683}
+\end{samcard}
+\hp{h2:lose}
+\note{%
+1. a 20\% loss keeps 80\%: the factor is 0.8, not 0.2 (\Lref{factor})\par
+2. the answer needs units and a sentence in context (\Lref{context})\par
+Short solution:\par
+$0.8^{t} = \dfrac{1}{3}$，$t = 4.92$：during the 5th year, after about 4.9 years\par
+Watch for:\par
+Sam 的 0.683 年明显不合理：一年后车还值 \$12000}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} A bacteria count is $N = 200(1.35)^{t}$ after $t$ hours. When does it first pass 10\,000?
+\qline{Q2} A coffee cools as $T = 20 + 65e^{-0.08t}$ ($t$ in minutes). When is it 50\,\textdegree C?
+\qline{Q3} A town grows from 4200 to 5600 people in 6 years at a constant rate. Find the annual rate.
+\hp{h2:growth}
+\note{%
+Q1 after about 13.0 hours\par
+Q2 after about 9.7 minutes\par
+Q3 about 4.9\% per year\par
+Short solution:\par
+Q1 $1.35^{t} = 50$，$t = \dfrac{\log 50}{\log 1.35} = 13.04$ (u)\par
+Q2 $65e^{-0.08t} = 30$，$-0.08t = \ln\dfrac{30}{65}$，$t = 9.665$ (r)\par
+Q3 $r^{6} = \dfrac{4}{3}$，$r = 1.0491$ (r)\par
+Watch for:\par
+Q2 先减 20 再除 65：顺序反了得不到 $e$ 单独一项\par
+每题最后写一句话（\Lref{context}）}
+\end{frame}
+
+\begin{frame}{Classwork}
+\relax
+Classwork 2 \textperiodcentered{} about 20 minutes
+\begin{itemize}
+\item \textbf{Part A}: switching forms, single logs, solving
+\item \textbf{Part B}: two-log equations and a decay model
+\item \textbf{Part C}: a quadratic in disguise, explained
+\item \textbf{Extension}, if you finish
+\end{itemize}
+\note{%
+Teaching line, not a question slide.\par
+答案在 classwork2\_answers.pdf（同版面，红色答案）。\par
+A1 5；A2 36；A3 $\log 10 = 1$；A4 $x = 2.410$；A5 $x = 2$\par
+B1 $x = 2.548$；B2 $x = 4$（舍去 $-2$）；B3 during the 7th year\par
+C：$x = 0$ or $x = 2$\par
+Extension：$x = 2.710$\par
+学生做的时候不要讲；收卷后先看 Part C 有没有写 $u = 2^{x}$ 和舍去的理由}
+\end{frame}
+
+% ================================================================ exam run
+\begin{frame}{Practice}
+\relax
+\textbf{(c)} Jessica is investigating a compounding investment. She wants to know how long it would take for an investment of \$1000 to double in value to \$2000. She forms the following equation:
+\fbx{2000 = 1000\Bigl(1 + \frac{R}{100}\Bigr)^{D}}
+where $R$ is the rate of return on the investment, as a percentage, and $D$ is the time that the investment would take to double in value, in years.\par\smallskip
+\textbf{(i)} If an investment takes 11 years to double in value, what is its rate of return?
+\fref{Practice set p.1}
+\note{%
+(i) $R = 6.5\%$\par
+Short solution:\par
+(i) $\Bigl(1 + \dfrac{R}{100}\Bigr)^{11} = 2$，$1 + \dfrac{R}{100} = 2^{\frac{1}{11}} = 1.065$\par
+评分：列出方程并用 11 次方根是 u，正确答案是 r\par
+Watch for:\par
+未知数在 base：开方，不是取 log}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(ii)} By making $D$ the subject of the expression:
+\fbx{2000 = 1000\Bigl(1 + \frac{R}{100}\Bigr)^{D}}
+show that
+\fbx{D = \frac{\log(2)}{\log\bigl(1 + \frac{R}{100}\bigr)}}
+\fref{Practice set p.1}
+\note{%
+(ii) divide by 1000, take logs of both sides, bring $D$ down, divide\par
+Short solution:\par
+(ii) $\Bigl(1 + \dfrac{R}{100}\Bigr)^{D} = 2$\par
+$\log\Bigl(1 + \dfrac{R}{100}\Bigr)^{D} = \log 2$\par
+$D\log\Bigl(1 + \dfrac{R}{100}\Bigr) = \log 2$\par
+评分：写出两边取 log 的一行（第 2 或第 3 行）是 u；完整推出给定式子是 r\par
+Watch for:\par
+Show that 题只写最后一行：没有分}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+In her research, Jessica comes across a simple but \textbf{approximate} rule for calculating $D$, the time that the investment would take to double in value. It is commonly called the `Rule of 72', and it states that: $D = \dfrac{72}{R}$\par\smallskip
+Jessica wonders how close the values of $D$ from the `Rule of 72' are to those calculated using the actual expression, which is:
+\fbx{D = \frac{\log(2)}{\log\bigl(1 + \frac{R}{100}\bigr)}}
+\fref{Practice set p.2}
+\note{%
+Teaching line, not a question slide.\par
+这是 (iii) 的背景，先读题，下一页是问题\par
+问学生：$R = 8$ 时 Rule of 72 给几年？（9 年）真实值？（$\dfrac{\log 2}{\log 1.08} = 9.006$ 年）\par
+Say it:\par
+approximate = uh-PROK-sih-mit}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(iii)} Show clearly that the value of $R$ for which the `Rule of 72' exactly calculates $D$, is the solution to the equation:
+\fbx{2^{R} - \Bigl(1 + \frac{R}{100}\Bigr)^{72} = 0}
+You do not need to solve this equation.
+\fref{Practice set p.2}
+\note{%
+(iii) set the two expressions for $D$ equal and rearrange with log laws\par
+Short solution:\par
+(iii) $\dfrac{72}{R} = \dfrac{\log 2}{\log\bigl(1 + \frac{R}{100}\bigr)}$\par
+$72\log\Bigl(1 + \dfrac{R}{100}\Bigr) = R\log 2$\par
+$\log\Bigl(1 + \dfrac{R}{100}\Bigr)^{72} = \log 2^{R}$，所以 $\Bigl(1 + \dfrac{R}{100}\Bigr)^{72} = 2^{R}$\par
+评分：两式相等是 u；处理 power（第 3 行）是 r；推出给定式子且数学表述正确是 t\par
+Watch for:\par
+两边的 log 去掉之前要先写成 $\log(\ldots) = \log(\ldots)$ 的形式}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(a)} (ii)\quad Solve the equation $2^{x} = 2022$.
+\fref{Practice set p.3}
+\note{%
+(ii) $x = 10.98$\par
+Short solution:\par
+(ii) $x\log 2 = \log 2022$；评分：Correct solution (u)；写 $\log_{2} 2022$ 也接受\par
+Watch for:\par
+检查：$2^{11} = 2048$，所以略小于 11}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(b)} Simplify the following expression fully, writing your answer as a single logarithm.
+\fbx{\log(3a) + 2\log\Bigl(\frac{a}{6}\Bigr)}
+\fref{Practice set p.3}
+\note{%
+(b) $\log\dfrac{a^{3}}{12}$\par
+Short solution:\par
+(b) $\log 3a + \log\dfrac{a^{2}}{36} = \log\dfrac{3a^{3}}{36}$\par
+评分：分数没有化简是 u；正确的 single log 是 r\par
+Watch for:\par
+$\Bigl(\dfrac{a}{6}\Bigr)^{2}$ 分母是 36（L2）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(c)} Consider the equation $\log_{2}(x-a) - \log_{2}(x+a) = c$, where $a$ and $c$ are constants.\par\smallskip
+\textbf{(i)} Show that when $x$ is made the subject of this equation,
+\fbx{x = a\,\frac{1 + 2^{c}}{1 - 2^{c}}}
+Ensure that you use correct mathematical statements in your reasoning.
+\fref{Practice set p.4}
+\note{%
+(i) combine the logs, switch to power form, collect the $x$ terms, factorise\par
+Short solution:\par
+(i) $\log_{2}\dfrac{x-a}{x+a} = c$，所以 $\dfrac{x-a}{x+a} = 2^{c}$\par
+$x - a = 2^{c}x + 2^{c}a$，$x(1 - 2^{c}) = a(1 + 2^{c})$\par
+评分：合并 log 是 u；写出 power form（第 3 行）是 r；完整正确的推理是 t\par
+Watch for:\par
+这是 Lesson 1 的“换主元”：$x$ 在两边，要提公因式（L10）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\textbf{(ii)} The equation $\log_{2}(x-a) - \log_{2}(x+a) = c$ is only possible to solve for some values of $a$ and for some values of $c$.\par\smallskip
+Explaining your reasoning clearly, describe which values of $a$ and of $c$ will make the equation possible to solve.\par\smallskip
+You may find it useful to recall that, when $x$ is made the subject of this equation,
+\fbx{x = a\,\frac{1 + 2^{c}}{1 - 2^{c}}}
+\fref{Practice set p.5}
+\note{%
+(ii) $c \neq 0$ and $a \neq 0$, with $x - a > 0$ and $x + a > 0$; this happens exactly when $a$ and $c$ have opposite signs\par
+Short solution:\par
+(ii) $c = 0$ 时 $1 - 2^{c} = 0$，$x$ 没有定义\par
+$a = 0$ 时 $x = 0$，$\log_{2}0$ 没有定义\par
+两个 log 的括号都要为正\par
+评分：一个条件加理由是 r；两个条件加理由是 t\par
+Watch for:\par
+只写条件不写理由：Explaining your reasoning clearly\par
+进一步：$a > 0$ 需要 $c < 0$；$a < 0$ 需要 $c > 0$（评分表只要求前面的条件）}
+\end{frame}
+
+% ================================================================ close
+\begin{frame}{Ways to lose marks}
+\relax
+\begin{itemize}
+\item \textbf{\Lref{logform}} Base to the bottom, $y$ in the brackets
+\item \textbf{\Lref{loglaw}} No law for $\log(x+3)$; $\dfrac{\log 40}{\log 5}$ is not $\log 8$
+\item \textbf{\Lref{bracketpower}} $(x-2)\log 5$: the whole power in a bracket
+\item \textbf{\Lref{argument}} Check every answer: logs need positive brackets
+\item \textbf{\Lref{factor}} A 20\% loss multiplies by 0.8
+\item \textbf{\Lref{context}} A sentence with units; round at the end
+\end{itemize}
+\hp{h2:lose}
+\note{%
+Teaching line, not a question slide.\par
+讲义上有 L11–L16 的完整说明\par
+让学生对照 Classwork 和 Practice set 的错，说出是哪一个 L}
+\end{frame}
+
+\begin{frame}{Summary}
+\relax
+\begin{itemize}
+\item A log is a power: $\log_{b} y = x$ means $b^{x} = y$.
+\item Laws: plus multiplies, minus divides, a number in front becomes a power.
+\item Unknown in the power: take logs, bracket the power.
+\item Growth: $P = Ar^{t}$; answer in a sentence with units.
+\end{itemize}
+\hp{h2:meaning}
+\note{%
+Teaching line, not a question slide.\par
+让学生用自己的话说第一条：“log 问的是什么？”}
+\end{frame}
+
+\begin{frame}{Homework}
+\relax
+Homework 2 \textperiodcentered{} about 60 minutes
+\begin{itemize}
+\item \textbf{Quick review}: four short items
+\item \textbf{Question One}: meaning of logs and the log laws
+\item \textbf{Question Two}: exponential equations
+\item \textbf{Question Three}: growth and decay in context
+\end{itemize}
+Each question is marked like the real paper: N0 to E8.
+\note{%
+Teaching line, not a question slide.\par
+答案在 hw2\_answers.pdf；每题的 (e) 是 Excellence 题\par
+下节课开头 5 分钟对答案}
+\end{frame}
+
+\end{document}

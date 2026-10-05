@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Handout 2 \textperiodcentered{} Exponentials and logarithms}
+
+\begin{document}
+\sheethead{Lesson 2 \textperiodcentered{} Exponentials and Logarithms}
+  {NCEA Level 2 Mathematics \textperiodcentered{} Algebra}{Handout}
+
+\begin{keybox}[title={The one idea: a log is a power}]
+$\log_{b} y$ asks one question: \textbf{what power of $b$ gives $y$?}
+\[ 2^{3} = 8 \quad\Longleftrightarrow\quad \log_{2} 8 = 3 \qquad\qquad y = b^{x} \quad\Longleftrightarrow\quad \log_{b} y = x \]
+Every question in this lesson is a switch between these two forms. Say it as you write it: \textbf{base to the bottom, $y$ in the brackets}.
+\end{keybox}
+
+% =================================================================== 1
+\section{What a log means}\label{h2:meaning}
+\begin{minipage}[t]{0.48\textwidth}\vspace{0pt}
+\renewcommand\arraystretch{1.5}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Power form} & \textbf{Log form} & \textbf{Value}\\ \midrule
+$3^{4} = 81$ & $\log_{3} 81 = 4$ & 4 \\
+$10^{-2} = 0.01$ & $\log 0.01 = -2$ & $-2$ \\
+$9^{\frac{1}{2}} = 3$ & $\log_{9} 3 = \frac{1}{2}$ & $\frac{1}{2}$ \\
+$b^{0} = 1$ & $\log_{b} 1 = 0$ & 0 \\
+$b^{1} = b$ & $\log_{b} b = 1$ & 1 \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}\vspace{0pt}
+\begin{itemize}
+\item $\log$ with no base written means $\log_{10}$: the calculator's \textbf{log} key.
+\item $\ln$ means $\log_{e}$, where $e \approx 2.718$: the calculator's \textbf{ln} key. $e^{x}$ and $\ln x$ undo each other.
+\item The \Tbase{} is positive and not 1. You can only take the log of a \textbf{positive} number.
+\end{itemize}
+\end{minipage}
+
+\subsection*{Write it in this order (an equation with one log)}
+\begin{enumerate}
+\item Get the log on its own: $\log_{b}(\text{something}) = k$.
+\item Switch to power form: $\text{something} = b^{k}$.
+\item Solve. If the unknown is the base, the base must be positive: $\log_{x} 49 = 2$ gives $x^{2} = 49$, so $x = 7$, not $-7$.
+\end{enumerate}
+
+\textbf{Example 1.} Solve $\log_{5} x = 3$.\quad $x = 5^{3} = \mathbf{125}$ \mtag{u}
+
+% =================================================================== 2
+\section{The log laws}\label{h2:laws}
+These are on the formula sheet. Each one is an index law in disguise.
+\begin{center}
+\renewcommand\arraystretch{1.6}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Log law} & \textbf{Index law behind it} & \textbf{Example} \\ \midrule
+$\log_{b}(xy) = \log_{b}x + \log_{b}y$ & multiply: add the powers & $\log_{2}3 + \log_{2}5 = \log_{2}15$ \\
+$\log_{b}\Bigl(\dfrac{x}{y}\Bigr) = \log_{b}x - \log_{b}y$ & divide: subtract the powers & $\log_{2}12 - \log_{2}4 = \log_{2}3$ \\
+$\log_{b}(x^{n}) = n\log_{b}x$ & power of a power: multiply & $\log x^{3} = 3\log x$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{There is no law for} $\log(x+y)$, and $\dfrac{\log x}{\log y}$ is \textbf{not} $\log\dfrac{x}{y}$.
+
+\subsection*{Write it in this order (a single log)}
+\begin{enumerate}
+\item Move every number in front of a log up as a power: $2\log x = \log x^{2}$.
+\item Plus signs multiply inside one log; minus signs divide.
+\item Simplify the fraction inside.
+\end{enumerate}
+
+\begin{multicols}{2}
+\textbf{Example 2.} Write $2\log x + \log 5 - \log 10$ as a single log.
+\[ = \log x^{2} + \log 5 - \log 10 = \log\frac{5x^{2}}{10} = \mathbf{\log\frac{x^{2}}{2}} \]
+\mtag{u}
+\columnbreak
+
+\textbf{Example 3.} Solve $\log_{3}(x+4) + \log_{3}(x-4) = 2$.
+\begin{align*}
+\log_{3}\bigl((x+4)(x-4)\bigr) &= 2\\
+x^{2} - 16 &= 3^{2} = 9\\
+x &= 5 \quad (x = -5 \text{ rejected})
+\end{align*}
+\mtag{r}
+$x = -5$ makes $x - 4$ negative, and the log of a negative number does not exist.
+\end{multicols}
+
+% =================================================================== 3
+\section{Solving exponential equations}\label{h2:solve}
+\begin{keybox}[title={Write it in this order (unknown in the power)}]
+\begin{enumerate}
+\item Get the power on its own: $b^{(\ldots)} = k$.
+\item Same base on both sides? Match the powers and solve exactly. Otherwise:
+\item Take logs of both sides and bring the power down \textbf{in a bracket}: $(2x-1)\log 5 = \log 200$.
+\item Divide by the log, then finish the rearranging. Round only at the end.
+\item For $e$, use $\ln$: $e^{0.3t} = 5$ gives $0.3t = \ln 5$.
+\end{enumerate}
+\end{keybox}
+
+\begin{multicols}{2}
+\textbf{Example 4.} Solve $5^{2x-1} = 200$.
+\begin{align*}
+(2x-1)\log 5 &= \log 200\\
+2x - 1 &= \frac{\log 200}{\log 5} = 3.2920\ldots\\
+x &= \mathbf{2.146}
+\end{align*}
+\mtag{u}
+
+\textbf{Example 5.} Solve $4^{x+1} = 8^{x}$ exactly.
+\[ 2^{2(x+1)} = 2^{3x} \;\Rightarrow\; 2x + 2 = 3x \;\Rightarrow\; x = \mathbf{2} \]
+\mtag{u}
+\columnbreak
+
+\textbf{Example 6.} Solve $3^{2x} - 4\times 3^{x} + 3 = 0$.\par
+Let $u = 3^{x}$, so $3^{2x} = u^{2}$:
+\begin{align*}
+u^{2} - 4u + 3 &= 0\\
+(u-1)(u-3) &= 0\\
+3^{x} = 1 \text{ or } 3^{x} &= 3\\
+x = \mathbf{0} \text{ or } x &= \mathbf{1}
+\end{align*}
+\mtag{t}
+\end{multicols}
+
+% =================================================================== 4
+\section{Growth and decay}\label{h2:growth}
+\[ P = A\,r^{t} \qquad A = \text{starting amount},\quad r = \text{\Tgrowth{} per time step},\quad t = \text{number of steps} \]
+\begin{itemize}
+\item Growth of $R\%$: $r = 1 + \dfrac{R}{100}$ (6\% growth: $r = 1.06$). Decay of $R\%$: $r = 1 - \dfrac{R}{100}$ (15\% loss: $r = 0.85$).
+\item \textbf{When} questions: put the numbers in, divide by $A$, take logs. \textbf{What rate} questions: divide, then take the root ($t$-th root).
+\item Finish with \textbf{a sentence in context}, with units, and say what the decimal means (``during the 7th year'').
+\end{itemize}
+
+\begin{multicols}{2}
+\textbf{Example 7.} A car bought for \$18\,000 loses 15\% of its value each year. When is it first worth less than \$6000?
+\begin{align*}
+18\,000(0.85)^{t} &= 6000\\
+0.85^{t} &= \tfrac{1}{3}\\
+t &= \frac{\log\frac{1}{3}}{\log 0.85} = 6.76
+\end{align*}
+\mtag{r}
+It is first worth less than \$6000 \textbf{during the 7th year}, after about 6.8 years.
+\columnbreak
+
+\textbf{Example 8.} \$5000 grows to \$7500 in 8 years at a fixed annual rate $R\%$. Find $R$.
+\begin{align*}
+5000\Bigl(1 + \frac{R}{100}\Bigr)^{8} &= 7500\\
+1 + \frac{R}{100} &= 1.5^{\frac{1}{8}} = 1.0520\\
+R &= \mathbf{5.2\%}
+\end{align*}
+\mtag{r}
+\end{multicols}
+
+% =================================================================== 5
+\section{Versions the marker won't accept}\label{h2:wontaccept}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{0.3\textwidth} >{\raggedright}p{0.24\textwidth} X@{}}
+\toprule
+\textbf{Question} & \textbf{Answer given} & \textbf{Why it falls short} \\ \midrule
+Show that $D = \dfrac{\log 2}{\log\bigl(1 + \frac{R}{100}\bigr)}$ & the final line only & A ``show that'' needs the line where logs are taken of both sides: markers look for that line. \tabularnewline
+Solve $\log_{x} 49 = 2$ & $x = \pm 7$ & A base cannot be negative. The answer is $x = 7$ with $-7$ rejected for that reason. \tabularnewline
+How long until \ldots? & $t = 6.7599$ & No units, no meaning. Give a sentence: ``during the 7th year''. \tabularnewline
+Write as a single logarithm & $\log 3a + \log\dfrac{a^{2}}{36}$ & Two logs are not a single log, and the fraction inside is not simplified. \tabularnewline
+\bottomrule
+\end{tabularx}
+
+% =================================================================== 6
+\section{Ways to lose marks}\label{h2:lose}
+From the wording of the marking schedules and from teaching observation; numbered for marking.
+\begin{description}[leftmargin=10mm, labelwidth=9mm, labelsep=1mm, font=\normalfont]
+\item[\textbf{\Lref{logform}}] \textbf{\Ltext{logform}.} $\log_{2} 32 = 5$ means $2^{5} = 32$. Base to the bottom, $y$ in the brackets.
+\item[\textbf{\Lref{loglaw}}] \textbf{\Ltext{loglaw}.} $\log(x+3) \neq \log x + \log 3$, and $\dfrac{\log 40}{\log 5} \neq \log 8$.
+\item[\textbf{\Lref{bracketpower}}] \textbf{\Ltext{bracketpower}.} $\log 5^{x-2} = (x-2)\log 5$, not $x - 2\log 5$.
+\item[\textbf{\Lref{argument}}] \textbf{\Ltext{argument}.} Check every answer in the original logs: each bracket must be positive, and a base must be positive.
+\item[\textbf{\Lref{factor}}] \textbf{\Ltext{factor}.} A 20\% loss each year multiplies by $0.8$, not $0.2$.
+\item[\textbf{\Lref{context}}] \textbf{\Ltext{context}.} Units, a sentence, and rounding only at the end.
+\end{description}
+
+% =================================================================== 7
+\section{Quick review}\label{h2:review}
+\renewcommand\arraystretch{1.45}
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Powers to know by sight}\par\smallskip
+\begin{tabular}{@{}l l l l@{}}
+\toprule
+$2^{5} = 32$ & $2^{6} = 64$ & $2^{7} = 128$ & $2^{10} = 1024$\\
+$3^{4} = 81$ & $3^{5} = 243$ & $5^{3} = 125$ & $5^{4} = 625$\\
+$4^{3} = 64$ & $6^{3} = 216$ & $7^{3} = 343$ & $10^{-2} = 0.01$\\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Index laws behind the log laws}\par\smallskip
+\begin{tabular}{@{}>{\raggedright}p{0.42\linewidth} >{\raggedright\arraybackslash}p{0.5\linewidth}@{}}
+\toprule
+$x^{a}\times x^{b} = x^{a+b}$ & $\log(xy) = \log x + \log y$ \\
+$x^{a} \div x^{b} = x^{a-b}$ & $\log\frac{x}{y} = \log x - \log y$ \\
+$(x^{a})^{n} = x^{an}$ & $\log x^{n} = n\log x$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{document}

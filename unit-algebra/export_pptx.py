@@ -150,6 +150,16 @@ def linear(latex):
     return s
 
 
+PANDOC_FIX = [(r"\Bigl", r"\left"), (r"\Bigr", r"\right"), (r"\bigl", r"\left"), (r"\bigr", r"\right")]
+
+
+def for_pandoc(e):
+    """texmath has no \Bigl / \Bigr: the sized delimiters become \left / \right."""
+    for a, b in PANDOC_FIX:
+        e = e.replace(a, b)
+    return e
+
+
 def omml_for(equations):
     """One pandoc call for all equations; returns a list of m:oMath elements."""
     from lxml import etree
@@ -159,7 +169,7 @@ def omml_for(equations):
         with open(src, "w", encoding="utf-8") as fh:
             fh.write("\\documentclass{article}\\begin{document}\n")
             for e in equations:
-                fh.write(f"${e}$\n\n")
+                fh.write(f"${for_pandoc(e)}$\n\n")
             fh.write("\\end{document}\n")
         subprocess.run(["pandoc", "-f", "latex", "-t", "docx", "-o", out, src], check=True)
         xml = zipfile.ZipFile(out).read("word/document.xml")

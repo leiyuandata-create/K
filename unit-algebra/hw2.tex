@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Homework 2}
+
+\begin{document}
+\sheethead{Homework 2}{Exponentials and logarithms \textperiodcentered{} about 60 minutes}{Each question graded N0--E8}
+
+Show all working. Give answers to 3 decimal places unless the question asks for an exact answer. Each part shows the highest grade it can give: [A], [M] or [E].
+
+\section*{Quick review}
+\qpart{1}Write $5^{3} = 125$ in log form.\lvl{A}
+\al{$\log_{5} 125 = 3$}
+\qpart{2}Mia says $\log(10 + 10) = \log 10 + \log 10 = 2$. Is she right? Give a reason.\lvl{A}
+\al{No: there is no law for the log of a sum. $\log 20 = 1.301$}
+\qpart{3}Write $x^{-2}$ without a negative index.\lvl{A}
+\af{\frac{1}{x^{2}}}
+\qpart{4}Factorise $x^{2} - 49$.\lvl{A}
+\al{$(x - 7)(x + 7)$}
+
+% ================================================================= ONE
+\QUESTION{ONE}
+\qpart{(a)}Evaluate\quad (i) $\log_{2} 128$\qquad (ii) $\log_{25} 5$\lvl{A}
+\af{\text{(i) } 2^{7} = 128, \text{ so } 7\qquad \text{(ii) } 25^{\frac{1}{2}} = 5, \text{ so } \frac{1}{2}}
+
+\qpart{(b)}Solve $\log_{x} 343 = 3$.\lvl{A}
+\al{$x^{3} = 343$,\quad $x = 7$}
+
+\qpart{(c)}Write $2\log(3a) - \log\Bigl(\dfrac{a}{4}\Bigr)$ as a single logarithm in its simplest form.\lvl{M}
+\af{\log 9a^{2} - \log\frac{a}{4} = \log\Bigl(9a^{2}\times\frac{4}{a}\Bigr) = \log 36a}
+\ansnote{5mm}{\small u: the 2 moved up as a power;\quad r: single log, simplified}
+
+\qpart{(d)}Solve $\log_{4}(x - 1) + \log_{4}(x + 5) = 2$.\lvl{M}
+\al{$(x - 1)(x + 5) = 4^{2} = 16$,\quad $x^{2} + 4x - 21 = 0$,\quad $(x + 7)(x - 3) = 0$}
+\al{$x = 3$\quad ($x = -7$ rejected: $\log_{4}(-8)$ does not exist)}
+
+\qpart{(e)}$\log_{2} x + \log_{2} y = 3$ and $\log_{2} x - \log_{2} y = 1$. Find $x$ and $y$, explaining your reasoning.\lvl{E}
+\af{xy = 2^{3} = 8\quad\text{and}\quad \frac{x}{y} = 2^{1} = 2}
+\al{Multiplying: $x^{2} = 16$, so $x = 4$ (not $-4$: $\log_{2} x$ needs $x > 0$), and $y = 2$.}
+\al{}
+\gradescore{u: (a), (b) correct; (c) first step. r: (c) correct; (d) correct with $-7$ rejected; (e) both equations in power form.\\
+t: (e) $x = 4$, $y = 2$ with the negative value rejected for a reason.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+% ================================================================= TWO
+\QUESTION{TWO}
+\qpart{(a)}Solve $3^{x} = 40$.\lvl{A}
+\af{x = \frac{\log 40}{\log 3} = 3.358}
+
+\qpart{(b)}Solve $2^{x+3} = 100$.\lvl{A}
+\af{(x+3)\log 2 = \log 100,\qquad x + 3 = \frac{\log 100}{\log 2} = 6.644,\qquad x = 3.644}
+
+\qpart{(c)}Solve $25^{x} = 125^{x-2}$ exactly.\lvl{M}
+\al{$5^{2x} = 5^{3(x-2)}$,\quad $2x = 3x - 6$,\quad $x = 6$}
+
+\qpart{(d)}Sam solved $4^{2x+1} = 60$. \textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.\lvl{M}
+\begin{samcard}
+\flawed{2x + 1 log 4 = log 60\qquad\qquad 2x + 1 = log 15 = 1.176\qquad\qquad x = 0.088}
+\end{samcard}
+\begin{errorlist}
+\erritem{1}{the power comes down in a bracket: $(2x + 1)\log 4 = \log 60$ (\Lref{bracketpower})}
+\erritem{2}{$\log 60 \div \log 4$ is not $\log 15$: it is $2.9534$, so $x = 0.977$ (\Lref{loglaw})}
+\end{errorlist}
+\al{}
+
+\qpart{(e)}Solve $9^{x} - 10\times 3^{x} + 9 = 0$.\lvl{E}
+\al{Let $u = 3^{x}$, so $9^{x} = u^{2}$:\quad $u^{2} - 10u + 9 = 0$,\quad $(u - 1)(u - 9) = 0$}
+\al{$3^{x} = 1$ gives $x = 0$;\quad $3^{x} = 9$ gives $x = 2$}
+\al{}
+\gradescore{u: (a), (b) correct. r: (c) exact answer; (d) both errors fixed with reasons; (e) the quadratic in $u$ formed.\\
+t: (e) both values of $x$ found, with $u$ changed back.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+% ================================================================= THREE
+\QUESTION{THREE}
+A town of 8000 people grows by 3\% each year, so its population is $P = 8000(1.03)^{t}$ after $t$ years.
+\qpart{(a)}Find the population after 5 years.\lvl{A}
+\al{$8000(1.03)^{5} = 9274$ people}
+
+\qpart{(b)}When will the population first reach 12\,000?\lvl{A}
+\af{1.03^{t} = 1.5,\qquad t = \frac{\log 1.5}{\log 1.03} = 13.72}
+\al{It first reaches 12\,000 during the 14th year.}
+
+\qpart{(c)}A 400 mg dose of a medicine decays so that 250 mg remain after 6 hours. Find the percentage lost each hour.\lvl{M}
+\af{400r^{6} = 250,\qquad r = 0.625^{\frac{1}{6}} = 0.9247}
+\al{About 7.5\% of the medicine is lost each hour.}
+
+\qpart{(d)}A kettle's water cools as $T = 22 + 78e^{-0.05t}$ ($t$ in minutes). When is it 40\,\textdegree C?\lvl{M}
+\af{78e^{-0.05t} = 18,\qquad -0.05t = \ln\frac{18}{78},\qquad t = 29.33}
+\al{The water reaches 40\,\textdegree C after about 29.3 minutes.}
+
+\qpart{(e)}Account A holds \$5000 growing at 4\% a year; account B holds \$4000 growing at 6\% a year. After how many whole years does B first hold more than A? Show your reasoning with logs.\lvl{E}
+\af{4000(1.06)^{t} > 5000(1.04)^{t}\quad\Longrightarrow\quad \Bigl(\frac{1.06}{1.04}\Bigr)^{t} > 1.25}
+\af{t > \frac{\log 1.25}{\log\frac{1.06}{1.04}} = 11.71}
+\al{B first holds more than A after 12 whole years.}
+\gradescore{u: (a), (b) correct. r: (c) rate found; (d) time found; (e) inequality set up.\\
+t: (e) 12 years with the reasoning in context.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+\ansnote{6mm}{\small Totals out of 24. Cut scores move a little each year: Achievement from about 7--8, Merit 13--14, Excellence 19--20.}
+\end{document}
