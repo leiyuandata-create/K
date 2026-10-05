@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Practice set 1}
+\renewcommand\anslabel{Answers \textperiodcentered{} official assessment schedule extracts on the last pages}
+% one crop at natural width; a new page for each structured question (spec 6.3)
+\newcommand\ppq[1]{\par\noindent\includegraphics[width=\textwidth]{fig/ppfull/#1}\par}
+\newcommand\msq[2]{\par\needspace{8\baselineskip}\medskip
+  {\sffamily\bfseries\color{ansred}Official assessment schedule extract \textperiodcentered{} #1}\par\smallskip
+  \noindent\includegraphics[width=\textwidth]{fig/ms/#2}\par}
+
+\begin{document}
+\sheethead{Practice set 1}{Powers, factorising and algebraic fractions}{Write in the spaces}
+\ppq{q1}
+\bigskip
+\ppq{q7}
+\clearpage
+\ppq{q6}
+\clearpage
+\ppq{q2}
+\clearpage
+\ppq{q3}
+\clearpage
+\ppq{q4}
+\clearpage
+\ppq{q5}
+\ifansmode
+\clearpage
+\msq{page 1, first question}{q1}
+\msq{page 1, second question}{q7}
+\msq{page 2}{q6}
+\msq{page 3}{q2}
+\msq{pages 4 to 6}{q3}
+\fi
+\end{document}

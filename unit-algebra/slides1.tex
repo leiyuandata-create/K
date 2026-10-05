@@ -1,0 +1,880 @@
+\documentclass[aspectratio=169,11pt,xcolor=table,t]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout1}
+\ifdefined\notesmode
+  \setbeameroption{show only notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+\newcommand\hp[1]{\fref{Handout p.\pageref{H-#1}}}
+
+\begin{document}
+
+% ================================================================ opening
+\begin{frame}{Lesson 1 \textperiodcentered{} Powers, Factorising, Fractions}
+\relax
+NCEA Level 2 Mathematics \textperiodcentered{} Algebra\par\vspace{3mm}
+{\bfseries By the end of today you can:}
+\begin{enumerate}
+\item simplify any power or root, leaving positive indices
+\item factorise completely, whatever the number of terms
+\item simplify, combine and solve algebraic fractions
+\end{enumerate}
+\vspace{2mm}
+Every step today starts the same way: \textbf{factorise first}.
+\note{%
+Teaching line, not a question slide.\par
+100 分钟。时间：Do Now 0:00–0:05；核心思想 0:05–0:07；Block 1 指数 0:07–0:20；Block 2 展开和因式分解 0:20–0:35；Block 3 分式 0:35–0:55；Classwork 0:55–1:15；真题演练 1:15–1:35；收尾 1:35–1:40。\par
+发四份纸：Handout 1、Classwork 1、Practice set 1、Homework 1（下课收回 Handout、Classwork、Practice set）。\par
+时间不够时：真题演练只做前 6 页，其余放进下节课开头。\par
+Say it:\par
+algebraic = al-juh-BRAY-ik\par
+factorise = FAK-tuh-rize\par
+indices = IN-dih-seez}
+\end{frame}
+
+\begin{frame}{Do Now}
+\relax
+\qline{1} Simplify $x^{5}\times x^{3}$.
+\qline{2} Simplify $\dfrac{12a^{6}}{3a^{2}}$.
+\qline{3} Expand $(x+4)(x-2)$.
+\qline{4} Factorise $x^{2}-7x+12$.
+\qline{5} Work out $\dfrac{3}{5}-\dfrac{1}{2}$.
+\note{%
+Q1 $x^{8}$\par
+Q2 $4a^{4}$\par
+Q3 $x^{2}+2x-8$\par
+Q4 $(x-3)(x-4)$\par
+Q5 $\dfrac{1}{10}$\par
+Short solution:\par
+Q2 数字 $12 \div 3 = 4$，字母 $6 - 2 = 4$\par
+Q4 乘积 12、和 $-7$：$-3$ 和 $-4$\par
+Q5 通分到 10：$\dfrac{6}{10}-\dfrac{5}{10}$\par
+Watch for:\par
+Q1 答 $x^{15}$：把乘法当成 power of a power\par
+Q3 漏掉中间项，写成 $x^{2}-8$\par
+Diagnostic:\par
+Q1、Q2 错：Block 1 的 Quick review 多花 2 分钟\par
+Q4 错：Block 2 从 $a = 1$ 的情况讲起，再讲 $a \neq 1$\par
+Q5 答 $\dfrac{2}{3}$（分子减分子、分母减分母）：Block 3 的 Quick review 必须做\par
+学生自己改错时题目留在屏幕上}
+\end{frame}
+
+\begin{frame}{The one idea}
+\relax
+\vspace{2mm}
+\fbx{\frac{3x}{5x}\qquad\qquad \frac{x+3}{x+5}}
+\vspace{2mm}
+You can only cancel \gap[30mm].
+\ask{Which one can you cancel? Why not the other one?}
+\hp{h:indices}
+\note{%
+Gap factors\par
+Q the first one, $\dfrac{3x}{5x} = \dfrac{3}{5}$; the second does not cancel\par
+Short solution:\par
+Q $3x$ 里 $x$ 是 factor（乘上去的），可以约；$x + 3$ 里 $x$ 是 term（加上去的），不能约\par
+Watch for:\par
+学生说“$x$ 约掉剩 $\dfrac{3}{5}$”：让他代 $x = 1$，$\dfrac{4}{6} \neq \dfrac{3}{5}$\par
+Ask:\par
+那怎样才能约？（先 factorise，整个 bracket 相同才约）\par
+Say it:\par
+cancel = KAN-sul}
+\end{frame}
+
+% ================================================================ block 1: indices
+\begin{frame}{Quick review: index laws}
+\relax
+\qline{1} $x^{4}\times x^{6} = x^{\gap[10mm]}$
+\qline{2} $\dfrac{y^{9}}{y^{3}} = y^{\gap[10mm]}$
+\qline{3} $(a^{3})^{5} = a^{\gap[10mm]}$
+\qline{4} $(2x)^{3} = \gap[12mm]\,x^{3}$
+\qline{5} $p^{0} = \gap[12mm]$
+\hp{h:review}
+\note{%
+Q1 10\par
+Q2 6\par
+Q3 15\par
+Q4 8\par
+Q5 1\par
+Short solution:\par
+Q4 bracket 里每个 factor 都要 power，数字也要：$2^{3} = 8$\par
+Watch for:\par
+Q4 答 2：数字没有 power（\Lref{coef}），这是今天最常见的失分\par
+每题 10 秒内答出；答不出的那一条，到讲义 Quick review 页再看一遍\par
+Say it:\par
+index = IN-deks}
+\end{frame}
+
+\begin{frame}{Negative indices}
+\relax
+Each step down the list divides by 2.
+\fbx{2^{3} = 8\quad\ \ 2^{2} = 4\quad\ \ 2^{1} = 2\quad\ \ 2^{0} = \underline{\hspace{9mm}}\quad\ \ 2^{-1} = \underline{\hspace{9mm}}}
+\ask{Keep going: what is $2^{-2}$?}
+\hp{h:indices}
+\note{%
+Gap 1; $\dfrac{1}{2}$\par
+Q $\dfrac{1}{4}$\par
+Short solution:\par
+Q 再除以 2：$\dfrac{1}{2} \div 2 = \dfrac{1}{4} = \dfrac{1}{2^{2}}$\par
+Watch for:\par
+答 $-4$：把 negative index 当成负数\par
+Ask:\par
+$2^{-3}$ 呢？（$\dfrac{1}{8}$）}
+\end{frame}
+
+\begin{frame}{Where does the minus belong?}
+\relax
+\fbx{x^{-n} = \frac{1}{x^{n}}}
+The negative index belongs only to the factor it is written on.
+\fbx{3y^{-1} = \frac{3}{\underline{\hspace{9mm}}}\qquad\qquad (3y)^{-1} = \frac{1}{\underline{\hspace{9mm}}}}
+\ask{In $3y^{-1}$, does the 3 move under the line?}
+\hp{h:indices}
+\note{%
+Gap $y$; $3y$\par
+Q no, only $y$ moves\par
+Short solution:\par
+Q $-1$ 只写在 $y$ 上，所以只有 $y$ 移到分母；$(3y)^{-1}$ 有括号，整个 $3y$ 都移下去\par
+Watch for:\par
+$3y^{-1} = \dfrac{1}{3y}$ 是 \Lref{negindex}\par
+Ask:\par
+$\dfrac{1}{x^{-2}}$ 等于什么？（$x^{2}$：移到分子，index 变正）}
+\end{frame}
+
+\begin{frame}{Dividing by a negative power}
+\relax
+Simplify, leaving positive indices: $\dfrac{(2y)^{3}}{4y^{-2}}$
+\wline{\frac{(2y)^{3}}{4y^{-2}} = \frac{8y^{3}}{4y^{-2}}}
+\wline{= 2y^{3-(-2)}}
+\wline{= 2y^{\underline{\hspace{9mm}}}}
+\ask{What is $3-(-2)$, and why write the bracket?}
+\hp{h:indices}
+\note{%
+Gap 5\par
+Q 5; the bracket stops you writing $3-2$\par
+Short solution:\par
+Q 数字 $\dfrac{8}{4} = 2$；字母 index 相减，减负数等于加：$3 + 2 = 5$\par
+Watch for:\par
+答 $2y^{1}$：把 $3-(-2)$ 算成 $3-2$（\Lref{negindex}）\par
+答 $8y^{5}$ 或 $\dfrac{8}{4}y^{5}$ 没约：数字也要化简}
+\end{frame}
+
+\begin{frame}{Fractional indices}
+\relax
+A fraction in the power means a root.
+\fbx{x^{\frac{1}{2}} = \sqrt{x}\qquad\qquad x^{\frac{1}{3}} = \sqrt[3]{x}\qquad\qquad 8^{\frac{1}{3}} = \underline{\hspace{9mm}}}
+\ask{Write $\sqrt{25}$ as a power of 25. What is its value?}
+\hp{h:indices}
+\note{%
+Gap 2\par
+Q $25^{\frac{1}{2}} = 5$\par
+Short solution:\par
+Q 分母是几就开几次方：$\dfrac{1}{2}$ 是 square root\par
+Watch for:\par
+把 $8^{\frac{1}{3}}$ 算成 $\dfrac{8}{3}$：把 power 当成乘法\par
+Ask:\par
+$27^{\frac{1}{3}}$？（3）$16^{\frac{1}{4}}$？（2）\par
+Say it:\par
+fractional = FRAK-shuh-nul}
+\end{frame}
+
+\begin{frame}{Fractional indices: root first, then power}
+\relax
+\fbx{x^{\frac{m}{n}} = \bigl(\sqrt[n]{x}\,\bigr)^{m}}
+\fbx{8^{\frac{2}{3}} = \bigl(\sqrt[3]{8}\,\bigr)^{2} = \underline{\hspace{9mm}}}
+\fbx{16^{-\frac{3}{4}} = \frac{1}{\bigl(\sqrt[4]{16}\,\bigr)^{3}} = \underline{\hspace{9mm}}}
+\ask{Root first or power first: which keeps the numbers small?}
+\hp{h:indices}
+\note{%
+Gap 4; $\dfrac{1}{8}$\par
+Q root first\par
+Short solution:\par
+Q 先开方：$\sqrt[3]{8} = 2$，再平方是 4；先平方是 $\sqrt[3]{64}$，数字变大\par
+负号只决定上下翻，分母 4 决定开几次方，分子 3 决定几次方\par
+Watch for:\par
+$16^{-\frac{3}{4}}$ 答成 $-8$：负 index 不是负数}
+\end{frame}
+
+\begin{frame}{The root of a power}
+\relax
+Root the number. Divide the index by the root.
+\fbx{\sqrt{36a^{16}} = 6a^{\frac{16}{2}} = \underline{\hspace{12mm}}}
+\fbx{\sqrt[3]{27b^{12}} = 3b^{\frac{12}{3}} = \underline{\hspace{12mm}}}
+\ask{Why is $\sqrt{a^{16}}$ not $a^{4}$?}
+\hp{h:indices}
+\note{%
+Gap $6a^{8}$; $3b^{4}$\par
+Q a square root halves the index; $a^{4}$ takes the square root of the index\par
+Short solution:\par
+Q $\sqrt{a^{16}} = (a^{16})^{\frac{1}{2}} = a^{8}$；检查：$a^{8} \times a^{8} = a^{16}$\par
+Watch for:\par
+数字忘了开方，写 $36a^{8}$（\Lref{coef}）\par
+$\sqrt{a^{16}} = a^{4}$：对 index 开方而不是除以 2}
+\end{frame}
+
+\begin{frame}{Spot the error (1)}
+\relax
+Simplify $\dfrac{(3x^{2})^{3}}{9x^{-1}}$, leaving positive indices.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{\hfr{(3x\hsp{2})\hsp{3}}{9x\hsp{\hminus1}} = \hfr{3x\hsp{6}}{9x\hsp{\hminus1}} = \hfr{x\hsp{6}}{3x\hsp{\hminus1}} = \hfr{x\hsp{5}}{3}}
+\end{samcard}
+\hp{h:lose}
+\note{%
+1. $(3x^{2})^{3} = 27x^{6}$, not $3x^{6}$: the 3 must be cubed too (\Lref{coef})\par
+2. $x^{6} \div x^{-1} = x^{6-(-1)} = x^{7}$, not $x^{5}$ (\Lref{negindex})\par
+Short solution:\par
+$\dfrac{27x^{6}}{9x^{-1}} = 3x^{7}$\par
+Watch for:\par
+学生只找到一个错就停：屏幕上写了 2 个，让他继续找\par
+第二个错要说清楚“减负数”：$6-(-1)$\par
+Ask:\par
+Sam 中间那步 $\dfrac{3}{9} = \dfrac{1}{3}$ 对吗？（对，只是用了错的 3）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+Simplify, leaving positive indices.
+\qline{Q1} $\dfrac{(2a^{3})^{4}}{8a^{-2}}$
+\qline{Q2} $\sqrt[3]{64m^{15}}$
+\qline{Q3}
+\fbx{\Bigl(\frac{9x^{4}}{x^{10}}\Bigr)^{-\frac{1}{2}}}
+\hp{h:indices}
+\note{%
+Q1 $2a^{14}$\par
+Q2 $4m^{5}$\par
+Q3 $\dfrac{x^{3}}{3}$\par
+Short solution:\par
+Q1 $\dfrac{16a^{12}}{8a^{-2}} = 2a^{12-(-2)}$ (u)\par
+Q2 $\sqrt[3]{64} = 4$，$15 \div 3 = 5$ (u)\par
+Q3 先化简括号：$9x^{-6}$；再 power $-\dfrac{1}{2}$：$9^{-\frac{1}{2}} = \dfrac{1}{3}$，$x^{-6 \times (-\frac{1}{2})} = x^{3}$ (r)\par
+Watch for:\par
+Q1 写 $2a^{10}$：$12-2$（\Lref{negindex}）\par
+Q3 先化简括号里面，数字小很多}
+\end{frame}
+
+% ================================================================ block 2: expanding and factorising
+\begin{frame}{Expanding three brackets}
+\relax
+Expand and simplify $(x+2)(x-1)(x+3)$.\par
+\textbf{Step 1}: expand two of the brackets.
+\wline{(x+2)(x-1) = x^{2} - x + 2x - 2}
+\wline{= x^{2} + \underline{\hspace{9mm}}\,x - 2}
+\ask{Which two brackets would you multiply first? Does it matter?}
+\hp{h:expand}
+\note{%
+Gap 1\par
+Q any two; the answer is the same\par
+Short solution:\par
+Q 乘法交换律，先乘哪两个都可以；挑数字小的两个更快\par
+Watch for:\par
+$-x + 2x$ 合并成 $-3x$ 或 $3x$：符号\par
+Say it:\par
+cubic = KYOO-bik}
+\end{frame}
+
+\begin{frame}{Expanding three brackets}
+\relax
+\textbf{Step 2}: every term times every term.
+\wline{(x^{2} + x - 2)(x+3)}
+\wline{= x^{3} + 3x^{2} + x^{2} + 3x - 2x - 6}
+\wline{= \underline{\hspace{40mm}}}
+\ask{How many products should you have before you collect like terms?}
+\hp{h:expand}
+\note{%
+Gap $x^{3} + 4x^{2} + x - 6$\par
+Q six: three terms times two terms\par
+Short solution:\par
+Q 数乘积个数再合并；检查：$x = 1$ 时原式 $3 \times 0 \times 4 = 0$，结果 $1 + 4 + 1 - 6 = 0$\par
+Watch for:\par
+只有 4 或 5 个乘积就合并：漏项（\Lref{cubic}）}
+\end{frame}
+
+\begin{frame}{Two products worth knowing}
+\relax
+\fbx{(a+b)^{2} = a^{2} + \underline{\hspace{12mm}} + b^{2}\qquad\qquad (a-b)(a+b) = \underline{\hspace{16mm}}}
+\wline{(2x-5)^{2} = 4x^{2} - 20x + 25}
+\ask{Why is $(x+3)^{2}$ not $x^{2}+9$?}
+\hp{h:expand}
+\note{%
+Gap $2ab$; $a^{2}-b^{2}$\par
+Q it is $(x+3)(x+3)$: the two middle products $3x + 3x$ are missing\par
+Short solution:\par
+Q $(x+3)^{2} = x^{2} + 6x + 9$；代 $x = 1$：$16 \neq 10$\par
+Watch for:\par
+$(2x-5)^{2}$ 的中间项：$2 \times 2x \times (-5) = -20x$\par
+第二个公式反过来用就是 difference of two squares，马上要用}
+\end{frame}
+
+\begin{frame}{Factorising: which method?}
+\relax
+\begin{rulebox}
+\textbf{1.} Take out the \Thcf{}, numbers and letters.\par
+\textbf{2.} Count the terms left in the bracket:\par
+\hspace*{6mm}two squares: $a^{2}-b^{2} = (a-b)(a+b)$\par
+\hspace*{6mm}three terms: multiply to $c$, add to $b$ (or split if $a \neq 1$)\par
+\textbf{3.} Look again: can a bracket go further?
+\end{rulebox}
+\ask{For $2x^{2}-8$, what do you do first?}
+\hp{h:factorise}
+\note{%
+Q take out the HCF 2: $2(x^{2}-4) = 2(x-2)(x+2)$\par
+Short solution:\par
+Q 第一步永远是 HCF；括号里剩两项，都是平方，用 difference of two squares\par
+Watch for:\par
+直接写 $(\sqrt{2}x-\sqrt{8})(\ldots)$：没先提 HCF\par
+停在 $2(x^{2}-4)$：没有 factorise completely（\Lref{complete}）}
+\end{frame}
+
+\begin{frame}{Step 1: the highest common factor}
+\relax
+Factorise $12a^{3}b^{2} - 18a^{2}b$.
+\wline{\text{HCF} = \underline{\hspace{9mm}}\;\underline{\hspace{9mm}}\;\underline{\hspace{9mm}}}
+\wline{12a^{3}b^{2} - 18a^{2}b = 6a^{2}b(\,\underline{\hspace{25mm}}\,)}
+\ask{What is the lowest power of $a$ in both terms?}
+\hp{h:factorise}
+\note{%
+Gap 6; $a^{2}$; $b$; $2ab - 3$\par
+Q $a^{2}$\par
+Short solution:\par
+Q 数字取最大公因数 6；每个字母取最低次方：$a^{2}$、$b$\par
+检查：展开回去 $6a^{2}b \times 2ab = 12a^{3}b^{2}$\par
+Watch for:\par
+只提 $6a$ 或漏掉 $b$：不完全（\Lref{complete}）}
+\end{frame}
+
+\begin{frame}{When $a \neq 1$: multiply, then split}
+\relax
+Factorise $3x^{2} + 10x - 8$.
+\wline{a \times c = 3 \times (-8) = -24}
+Two numbers that multiply to $-24$ and add to $10$: \gap[12mm] and \gap[12mm]
+\ask{Which pair: 6 and $-4$, 12 and $-2$, or 8 and $-3$?}
+\hp{h:factorise}
+\note{%
+Gap 12; $-2$\par
+Q 12 and $-2$\par
+Short solution:\par
+Q $12 \times (-2) = -24$，$12 + (-2) = 10$；其他两组和是 2 和 5\par
+Watch for:\par
+用 $c = -8$ 而不是 $ac = -24$ 找数：$a \neq 1$ 时这是最常见的错\par
+Say it:\par
+coefficient = koh-uh-FISH-unt}
+\end{frame}
+
+\begin{frame}{When $a \neq 1$: multiply, then split}
+\relax
+\wline{3x^{2} + 10x - 8 = 3x^{2} + 12x - 2x - 8}
+\wline{= 3x(x+4) - 2(x + \underline{\hspace{9mm}})}
+\wline{= (x+4)(\underline{\hspace{18mm}})}
+\ask{Why must the two brackets match before the last step?}
+\hp{h:factorise}
+\note{%
+Gap 4; $3x-2$\par
+Q the matching bracket is the common factor you take out\par
+Short solution:\par
+Q $3x(x+4) - 2(x+4)$：$(x+4)$ 是两项的 common factor，提出来剩 $(3x - 2)$\par
+提 $-2$ 时括号里每个符号都变：$-2x - 8 = -2(x+4)$\par
+Watch for:\par
+写成 $-2(x-4)$：负数提出来符号没变（\Lref{negfactor}）\par
+括号不一样，说明拆分或提公因数错了，回头检查}
+\end{frame}
+
+\begin{frame}{Factorise completely}
+\relax
+\wline{4x^{2} - 25 = (2x - 5)(\underline{\hspace{18mm}})}
+\wline{3x^{3} - 12x = 3x(x^{2} - 4) = \underline{\hspace{36mm}}}
+\ask{Is $3x(x^{2}-4)$ fully factorised?}
+\hp{h:factorise}
+\note{%
+Gap $2x + 5$; $3x(x-2)(x+2)$\par
+Q no: $x^{2}-4$ is a difference of two squares\par
+Short solution:\par
+Q 提完 HCF 后再看括号：两项且都是平方，还能分\par
+Watch for:\par
+题目写 “Factorise completely” 就要检查每个括号（\Lref{complete}）\par
+$4x^{2}-25$ 写成 $(4x-25)(4x+25)$ 或 $(2x-25)$：数字也要开方（\Lref{coef}）}
+\end{frame}
+
+\begin{frame}{Spot the error (2)}
+\relax
+Factorise completely: \textbf{(a)} $6x^{2}+7x-20$ \quad \textbf{(b)} $5x^{3}-45x$\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{(a)\ \ 6x\hsp{2} + 15x \hminus 8x \hminus 20 = 3x(2x + 5) \hminus 4(2x \hminus 5)\par
+\hspace*{9mm}the brackets don't match, so it doesn't factorise\par
+(b)\ \ 5x\hsp{3} \hminus 45x = 5x(x\hsp{2} \hminus 9)}
+\end{samcard}
+\hp{h:lose}
+\note{%
+1. (a) $-8x - 20 = -4(2x + 5)$, not $-4(2x - 5)$; then $(2x+5)(3x-4)$ (\Lref{negfactor})\par
+2. (b) $x^{2}-9$ factorises again: $5x(x-3)(x+3)$ (\Lref{complete})\par
+Short solution:\par
+(a) $3x(2x+5) - 4(2x+5) = (2x+5)(3x-4)$\par
+(b) $5x(x-3)(x+3)$\par
+Watch for:\par
+Sam 的结论“不能分解”是错的推理推出来的：括号不一样时应该先查符号\par
+展开 $-4(2x - 5)$ 得 $-8x + 20$，和原来的 $-20$ 对不上}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Expand and simplify $(x-3)(x+2)(2x+1)$.
+\qline{Q2} Factorise completely $8x^{2}-18$.
+\qline{Q3} Factorise $5x^{2}-13x-6$.
+\hp{h:factorise}
+\note{%
+Q1 $2x^{3} - x^{2} - 13x - 6$\par
+Q2 $2(2x-3)(2x+3)$\par
+Q3 $(x-3)(5x+2)$\par
+Short solution:\par
+Q1 $(x^{2}-x-6)(2x+1) = 2x^{3} + x^{2} - 2x^{2} - x - 12x - 6$ (u)\par
+Q2 $2(4x^{2}-9)$，再用 difference of two squares (u)\par
+Q3 $ac = -30$：$-15$ 和 2；$5x(x-3) + 2(x-3)$ (u)\par
+Watch for:\par
+Q1 数 6 个乘积（\Lref{cubic}）\par
+Q2 停在 $2(4x^{2}-9)$（\Lref{complete}）}
+\end{frame}
+
+% ================================================================ block 3: algebraic fractions
+\begin{frame}{Quick review: number fractions}
+\relax
+\qline{1} Simplify $\dfrac{12}{18}$.
+\qline{2} $\dfrac{3}{4}\times\dfrac{8}{9}$
+\qline{3} $\dfrac{5}{6}\div\dfrac{10}{3}$
+\qline{4} $\dfrac{5}{6}-\dfrac{3}{4}$
+\hp{h:review}
+\note{%
+Q1 $\dfrac{2}{3}$\par
+Q2 $\dfrac{2}{3}$\par
+Q3 $\dfrac{1}{4}$\par
+Q4 $\dfrac{1}{12}$\par
+Short solution:\par
+Q3 翻转第二个再乘：$\dfrac{5}{6}\times\dfrac{3}{10}$\par
+Q4 lowest common denominator 是 12，不是 24\par
+Watch for:\par
+Q4 用 24 也对，但最后要约分；代数分式里用“乘起来”的分母会让化简很难\par
+Say it:\par
+denominator = dih-NOM-ih-nay-ter}
+\end{frame}
+
+\begin{frame}{Simplifying: cancel brackets, not terms}
+\relax
+Simplify $\dfrac{x^{2}+3x}{x^{2}-9}$.
+\wline{= \frac{x(x+3)}{(x-3)(x+3)} = \frac{\underline{\hspace{9mm}}}{\underline{\hspace{14mm}}}}
+\ask{Which bracket cancels? Why can't you cancel the $x^{2}$?}
+\hp{h:fractions}
+\note{%
+Gap $x$; $x-3$\par
+Q $(x+3)$ cancels; $x^{2}$ is a term, not a factor of the whole top\par
+Short solution:\par
+Q 分子提 $x$，分母 difference of two squares；约掉相同的整个 bracket\par
+Watch for:\par
+约掉 $x^{2}$ 得 $\dfrac{3x}{-9} = -\dfrac{x}{3}$（\Lref{cancel}）\par
+Say it:\par
+numerator = NOO-muh-ray-ter}
+\end{frame}
+
+\begin{frame}{Simplifying when $a \neq 1$}
+\relax
+Simplify $\dfrac{2x^{2}+5x-3}{4x^{2}-1}$.
+\wline{= \frac{(2x-1)(x+3)}{(2x-1)(\,\underline{\hspace{14mm}}\,)}}
+\wline{= \underline{\hspace{30mm}}}
+\ask{How did $4x^{2}-1$ factorise?}
+\hp{h:fractions}
+\note{%
+Gap $2x+1$; $\dfrac{x+3}{2x+1}$\par
+Q difference of two squares: $(2x)^{2} - 1^{2}$\par
+Short solution:\par
+Q 分子：$ac = -6$，6 和 $-1$：$2x^{2} + 6x - x - 3 = 2x(x+3) - (x+3)$\par
+Watch for:\par
+分子分母都分解后才看哪个 bracket 一样\par
+答案停在没约的形式：要求 simplified fraction（\Lref{simplest}）}
+\end{frame}
+
+\begin{frame}{Multiplying and dividing}
+\relax
+Simplify $\dfrac{x^{2}-4}{3x} \div \dfrac{x+2}{6x^{2}}$.
+\wline{= \frac{(x-2)(x+2)}{3x} \times \frac{6x^{2}}{x+2}}
+\wline{= \underline{\hspace{30mm}}}
+\ask{What is the first move when you divide by a fraction?}
+\hp{h:fractions}
+\note{%
+Gap $2x(x-2)$\par
+Q flip the second fraction and multiply\par
+Short solution:\par
+Q 翻转后：$(x+2)$ 约掉，$\dfrac{6x^{2}}{3x} = 2x$\par
+Watch for:\par
+两个都翻转，或翻转第一个\par
+答 $2x^{2}-4x$ 也对；factorised 形式更好检查}
+\end{frame}
+
+\begin{frame}{Adding and subtracting}
+\relax
+Write $\dfrac{3}{x+1} + \dfrac{2}{x-4}$ as a single fraction.
+\wline{= \frac{3(\,\underline{\hspace{12mm}}\,) + 2(\,\underline{\hspace{12mm}}\,)}{(x+1)(x-4)}}
+\wline{= \frac{5x-10}{(x+1)(x-4)} = \frac{5(x-2)}{(x+1)(x-4)}}
+\ask{What does the top of the first fraction get multiplied by?}
+\hp{h:fractions}
+\note{%
+Gap $x-4$; $x+1$\par
+Q $(x-4)$: the factor its own denominator is missing\par
+Short solution:\par
+Q common denominator 是每个不同 factor 各一次：$(x+1)(x-4)$\par
+最后检查分子能不能提公因数：$5(x-2)$\par
+Watch for:\par
+分子分母分别相加：$\dfrac{5}{2x-3}$}
+\end{frame}
+
+\begin{frame}{Subtracting: bracket the second top}
+\relax
+Write $\dfrac{4x}{x-2} - \dfrac{x+3}{x+1}$ as a single fraction.
+\wline{= \frac{4x(x+1) - (x+3)(x-2)}{(x-2)(x+1)}}
+\wline{= \frac{4x^{2} + 4x - (x^{2} + x - 6)}{(x-2)(x+1)}}
+\wline{= \frac{3x^{2} + 3x + \underline{\hspace{9mm}}}{(x-2)(x+1)}}
+\ask{After the bracket, what does $-(-6)$ become?}
+\hp{h:fractions}
+\note{%
+Gap 6\par
+Q $+6$\par
+Short solution:\par
+Q 先把第二个乘积展开放进括号，再整体变号：$-x^{2} - x + 6$\par
+最后：$\dfrac{3(x^{2}+x+2)}{(x-2)(x+1)}$\par
+Watch for:\par
+只变第一项的符号：$-x^{2} + x - 6$（\Lref{minus}）}
+\end{frame}
+
+\begin{frame}{Spot the error (3)}
+\relax
+Write $\dfrac{2x}{x+3} - \dfrac{x-1}{x-2}$ as a single fraction in its simplest form.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{\hfr{2x(x\hminus2) \hminus (x\hminus1)(x+3)}{(x+3)(x\hminus2)} = \hfr{2x\hsp{2} \hminus 4x \hminus x\hsp{2} + 2x \hminus 3}{x\hsp{2} + x \hminus 6} = \hfr{x\hsp{2} \hminus 2x \hminus 3}{x\hsp{2} + x \hminus 6} = \hfr{\hminus2x \hminus 3}{x \hminus 6}}
+\end{samcard}
+\hp{h:lose}
+\note{%
+1. $-(x^{2}+2x-3) = -x^{2} - 2x + 3$: Sam changed only the first sign (\Lref{minus})\par
+2. The $x^{2}$ terms are not factors and cannot cancel (\Lref{cancel})\par
+Short solution:\par
+$\dfrac{2x^{2}-4x-x^{2}-2x+3}{(x+3)(x-2)} = \dfrac{x^{2}-6x+3}{(x+3)(x-2)}$\par
+Watch for:\par
+Sam 第一行是对的：先肯定，再找后面的错\par
+正确答案分子不能分解，所以已经是最简}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Simplify $\dfrac{x^{2}-5x+6}{3x-9}$.
+\qline{Q2} Write $\dfrac{2}{x-3} - \dfrac{x+1}{x^{2}-9}$ as a single fraction.
+\qline{Q3} Simplify $\dfrac{3x^{2}-12}{x^{2}+x-6}\times\dfrac{x+3}{6x}$.
+\hp{h:fractions}
+\note{%
+Q1 $\dfrac{x-2}{3}$\par
+Q2 $\dfrac{x+5}{(x-3)(x+3)}$\par
+Q3 $\dfrac{x+2}{2x}$\par
+Short solution:\par
+Q1 $\dfrac{(x-2)(x-3)}{3(x-3)}$ (u)\par
+Q2 $x^{2}-9 = (x-3)(x+3)$ 已经包含 $x - 3$：$\dfrac{2(x+3) - (x+1)}{(x-3)(x+3)}$ (r)\par
+Q3 $\dfrac{3(x-2)(x+2)}{(x+3)(x-2)} \times \dfrac{x+3}{6x}$ (u)\par
+Watch for:\par
+Q2 用 $(x-3)(x^{2}-9)$ 作分母：能做但后面约分很难\par
+Q2 $-(x+1)$ 括号（\Lref{minus}）}
+\end{frame}
+
+\begin{frame}{Equations with fractions}
+\relax
+Solve $\dfrac{3x+1}{x-2} - 4 = 0$.\par
+Multiply \textbf{every term} by $(x-2)$:
+\wline{3x + 1 - 4(\,\underline{\hspace{12mm}}\,) = 0}
+\wline{3x + 1 - 4x + 8 = 0}
+\wline{x = \underline{\hspace{9mm}}}
+\ask{What happens to the $-4$ when you multiply through?}
+\hp{h:solve}
+\note{%
+Gap $x-2$; 9\par
+Q it becomes $-4(x-2)$, which is $-4x + 8$\par
+Short solution:\par
+Q 两边每一项都乘 $(x-2)$，右边 0 还是 0\par
+检查：$x = 9$ 时 $\dfrac{28}{7} - 4 = 0$\par
+Watch for:\par
+写 $3x + 1 - 4 = 0$：$4$ 没乘（\Lref{everyterm}）\par
+Say it:\par
+equation = ih-KWAY-zhun}
+\end{frame}
+
+\begin{frame}{When an $x^{2}$ appears}
+\relax
+Solve $\dfrac{6}{x} + \dfrac{4}{x+1} = 3$.\par
+Multiply every term by \gap[22mm]:
+\wline{6(x+1) + 4x = 3x(x+1)}
+\wline{3x^{2} - 7x - 6 = 0}
+\wline{(3x+2)(x-3) = 0}
+\ask{Can either answer make a denominator zero?}
+\hp{h:solve}
+\note{%
+Gap $x(x+1)$\par
+Q no: $x = 3$ or $x = -\dfrac{2}{3}$, and only 0 or $-1$ would\par
+Short solution:\par
+Q $10x + 6 = 3x^{2} + 3x$，移项成 $= 0$ 再分解\par
+检查 $x = 3$：$2 + 1 = 3$\par
+Watch for:\par
+右边的 3 也要乘 $x(x+1)$（\Lref{everyterm}）\par
+只写一个解：二次方程两个都要写}
+\end{frame}
+
+\begin{frame}{Changing the subject}
+\relax
+Make $x$ the subject of $y = \dfrac{2x+3}{x-1}$.
+\wline{y(x-1) = 2x + 3}
+\wline{xy - y = 2x + 3}
+\wline{xy - 2x = y + 3}
+\wline{x(\,\underline{\hspace{14mm}}\,) = y + 3}
+\ask{$x$ is in two terms. What single move leaves one $x$?}
+\hp{h:solve}
+\note{%
+Gap $y-2$\par
+Q factorise $x$ out\par
+Short solution:\par
+Q 两个含 $x$ 的项放一边，提出 $x$，再除：$x = \dfrac{y+3}{y-2}$\par
+Watch for:\par
+写 $x = \dfrac{y+3+2x}{y}$：$x$ 还在右边（\Lref{subject}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Solve $\dfrac{2x-1}{x+3} - 1 = 0$.
+\qline{Q2} Solve $\dfrac{4}{x-1} - \dfrac{3}{x} = 1$.
+\qline{Q3} Make $a$ the subject of $k = \dfrac{a+4}{3a-2}$.
+\hp{h:solve}
+\note{%
+Q1 $x = 4$\par
+Q2 $x = 3$ or $x = -1$\par
+Q3 $a = \dfrac{2k+4}{3k-1}$\par
+Short solution:\par
+Q1 $2x - 1 - (x+3) = 0$ (u)\par
+Q2 乘 $x(x-1)$：$4x - 3(x-1) = x(x-1)$，$x^{2} - 2x - 3 = 0$ (r)\par
+Q3 $3ak - 2k = a + 4$，$a(3k-1) = 2k + 4$ (r)\par
+Watch for:\par
+Q1 $-1$ 乘 $(x+3)$ 后要括号\par
+Q2 两个解都检查：$x = -1$ 时 $-2 + 3 = 1$}
+\end{frame}
+
+\begin{frame}{Classwork}
+\relax
+Classwork 1 \textperiodcentered{} about 20 minutes
+\begin{itemize}
+\item \textbf{Part A}: powers, roots and factorising
+\item \textbf{Part B}: fractions: combine, solve, change the subject
+\item \textbf{Part C}: show that \ldots{} for every whole number
+\item \textbf{Extension}, if you finish
+\end{itemize}
+\note{%
+Teaching line, not a question slide.\par
+答案在 classwork1\_answers.pdf（同版面，红色答案）。\par
+A1 $\dfrac{5x^{7}}{2}$；A2 $5p^{3}$；A3 $3xy(3x-2y)$；A4 $(x-3)(2x+5)$；A5 $\dfrac{x-4}{x-2}$\par
+B1 $\dfrac{2}{x}$；B2 $x = 1$ or $x = 3$；B3 $t = \dfrac{1+2m}{3-m}$\par
+C：$(x+1)^{3} - (x-1)^{3} = 6x^{2} + 2$，所以是 6 的倍数加 2\par
+Extension：$x = 3$ or $x = -3$\par
+学生做的时候不要讲；收卷后先看 Part C 的推理写法}
+\end{frame}
+
+% ================================================================ exam run
+\begin{frame}{Practice}
+\relax
+\qline{(a)} Simplify each expression, leaving your answer with positive indices.
+\subline{(i)} $\dfrac{(3y)^{4}}{3y^{-1}}$
+\subline{(ii)} $\sqrt[3]{8y^{27}}$
+\fref{Practice set p.1}
+\note{%
+(i) $27y^{5}$\par
+(ii) $2y^{9}$\par
+Short solution:\par
+(i) $\dfrac{81y^{4}}{3y^{-1}} = 27y^{4-(-1)}$；评分：Correct expression (u)\par
+(ii) $\sqrt[3]{8} = 2$，$27 \div 3 = 9$ (u)\par
+Watch for:\par
+(i) 写 $27y^{3}$（\Lref{negindex}）或 $(3y)^{4} = 3y^{4}$（\Lref{coef}）\par
+Say it:\par
+expression = ik-SPRESH-un}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(a)} (i)\quad Simplify fully $\sqrt{49y^{36}}$.
+\fref{Practice set p.1}
+\note{%
+(i) $7y^{18}$\par
+Short solution:\par
+(i) $\sqrt{49} = 7$，$36 \div 2 = 18$；评分：Correct response (u)\par
+Watch for:\par
+$7y^{6}$：对 index 开方（\Lref{coef}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(b)} (i)\quad Factorise completely $6x^{3}y - 15x^{2}\sqrt{y}$.
+\subline{(ii)} Simplify fully $\dfrac{6x^{2}-x-12}{3x^{2}-5x-12}$.
+\fref{Practice set p.2}
+\note{%
+(i) $3x^{2}\sqrt{y}\,(2x\sqrt{y} - 5)$\par
+(ii) $\dfrac{2x-3}{x-3}$\par
+Short solution:\par
+(i) $y = \sqrt{y}\times\sqrt{y}$，所以两项都有 $\sqrt{y}$；评分：$3x^{2}(2xy - 5\sqrt{y})$ 只算 u，完整的才是 r\par
+(ii) $\dfrac{(2x-3)(3x+4)}{(3x+4)(x-3)}$ (u)\par
+Watch for:\par
+(i) 没看见 $\sqrt{y}$ 也是公因数（\Lref{complete}）\par
+(ii) 分子 $ac = -72$：$-9$ 和 8}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(a)} Simplify: $\dfrac{x^{2}-x-12}{4x+12}$
+\fref{Practice set p.3}
+\note{%
+(a) $\dfrac{x-4}{4}$\par
+Short solution:\par
+(a) $\dfrac{(x-4)(x+3)}{4(x+3)}$；评分：Correct simplified fraction (u)\par
+Watch for:\par
+停在没约的形式（\Lref{simplest}）\par
+约成 $x - 1$：$\dfrac{x-4}{4}$ 里的 4 不能约（\Lref{cancel}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(b)} Write $\dfrac{5x}{x-3} - \dfrac{x-4}{x+2}$ as a single fraction in its simplest form.
+\fref{Practice set p.3}
+\note{%
+(b) $\dfrac{4x^{2}+17x-12}{(x-3)(x+2)}$\par
+Short solution:\par
+(b) $\dfrac{5x(x+2) - (x-3)(x-4)}{(x-3)(x+2)}$：写对这一行是 u，得到正确分式是 r\par
+$5x^{2} + 10x - (x^{2} - 7x + 12)$\par
+Watch for:\par
+$-(x^{2} - 7x + 12)$ 每一项变号（\Lref{minus}）\par
+分子不能分解，所以已经最简}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(a)} Solve $\dfrac{2x-3}{x+4} - 3 = 0$.
+\fref{Practice set p.2}
+\note{%
+(a) $x = -15$\par
+Short solution:\par
+(a) $2x - 3 = 3(x+4)$，$2x - 3 = 3x + 12$；评分：Correct solution (u)\par
+Watch for:\par
+$3$ 没乘 $(x+4)$（\Lref{everyterm}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.6}{%
+Consider a cube with sides of $p$ cm (where $p \neq 0$). The volume of the cube would be $p^{3}$ cm$^{3}$, and the surface area of the cube would be $6p^{2}$ cm$^{2}$.\par\smallskip
+Junyang wonders if it is possible to change the dimensions of the cube to make a cuboid that still has the same volume.}{0.37}{%
+\setlength\figunit{5.5mm}%
+\hbox to\linewidth{\hfil\Cuboid{2.2}{2.2}{2.2}{$p$}{$p$}{$p$}\hfil}}
+\fref{Practice set p.4}
+\note{%
+Teaching line, not a question slide.\par
+这是 Question Three 的题干，先读题，不答题。下面三页是 (a)(b)(c)\par
+让学生说出 cube 的体积和表面积是怎么来的：$p \times p \times p$，6 个面各 $p^{2}$\par
+Say it:\par
+cuboid = KYOO-boyd}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.58}{%
+\textbf{(a)} First, he tries doubling the length, halving the width, and keeping the height as $p$, as sketched below.\par\smallskip
+Using algebra, find the volume of this cuboid.}{0.39}{%
+\setlength\figunit{5.5mm}%
+\Cuboid{0.9}{3.8}{1.8}{$\dfrac{p}{2}$}{$2p$}{$p$}}
+\fref{Practice set p.4 \textperiodcentered{} diagram not to scale}
+\note{%
+(a) $p^{3}$\par
+Short solution:\par
+(a) $2p \times \dfrac{p}{2} \times p = p^{3}$；评分：Correct answer (u)\par
+Watch for:\par
+要写出乘法过程（Using algebra）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.58}{%
+\textbf{(b)} The volume of the cuboid below is given by the expression: $(p-4)(p+5)(p-3)$.\par\smallskip
+Expand and simplify this expression.}{0.39}{%
+\setlength\figunit{5.5mm}%
+\Cuboid{1.3}{3.6}{1.6}{$p-4$}{$p+5$}{$p-3$}}
+\fref{Practice set p.5 \textperiodcentered{} diagram not to scale}
+\note{%
+(b) $p^{3} - 2p^{2} - 23p + 60$\par
+Short solution:\par
+(b) $(p-4)(p+5) = p^{2} + p - 20$，再乘 $(p-3)$；评分：Correct simplified expression (u)\par
+Watch for:\par
+6 个乘积：$p^{3} - 3p^{2} + p^{2} - 3p - 20p + 60$（\Lref{cubic}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\twocol{0.58}{%
+\textbf{(c)} Next, Junyang tries adding an amount, $a$, to the length and then taking off the same amount from the width, keeping the height the same.\par\smallskip
+Are there any values of $a$ for which the volume of the cuboid will be the same as the volume of the cube?}{0.39}{%
+\setlength\figunit{5.5mm}%
+\Cuboid{1.6}{2.6}{2.2}{$p-a$}{$p+a$}{$p$}}
+\fref{Practice set p.6 \textperiodcentered{} diagram not to scale}
+\note{%
+(c) only $a = 0$, so no: the cuboid never has the same volume unless nothing changes\par
+Short solution:\par
+(c) $p(p+a)(p-a) = p^{3} - pa^{2}$；令 $= p^{3}$，$pa^{2} = 0$；因为 $p \neq 0$，$a = 0$\par
+评分：列到两个体积相等是 u；有理由的结论是 r\par
+Watch for:\par
+只写 “no” 没有代数过程：没有分\par
+结论要用题目的语言说：cuboid 和 cube 体积一样只能 $a = 0$}
+\end{frame}
+
+% ================================================================ close
+\begin{frame}{Ways to lose marks}
+\relax
+\begin{itemize}
+\item \textbf{\Lref{negindex}} $3y^{-1} = \dfrac{3}{y}$; write $6-(-1)$ in full
+\item \textbf{\Lref{coef}} $(3y)^{4} = 81y^{4}$: power the number too
+\item \textbf{\Lref{complete}} Factorise completely: check every bracket again
+\item \textbf{\Lref{cancel}} Cancel whole brackets, never single terms
+\item \textbf{\Lref{minus}} Bracket the second numerator before subtracting
+\item \textbf{\Lref{everyterm}} Multiply every term by the denominator
+\end{itemize}
+\hp{h:lose}
+\note{%
+Teaching line, not a question slide.\par
+讲义上有完整的 L1–L10；这里是今天最常见的 6 个\par
+让学生对照自己 Classwork 和 Practice set 的错，说出是哪一个 L}
+\end{frame}
+
+\begin{frame}{Summary}
+\relax
+\begin{itemize}
+\item Factorise first: cancel, combine and solve on factors, never terms.
+\item Powers: every factor, number too; a negative index moves the factor across the line.
+\item Factorising: HCF, count the terms, look again.
+\item Fractions: one common denominator, bracket the second top, multiply every term.
+\end{itemize}
+\hp{h:indices}
+\note{%
+Teaching line, not a question slide.\par
+让学生用自己的话说一遍第一条，再看作业}
+\end{frame}
+
+\begin{frame}{Homework}
+\relax
+Homework 1 \textperiodcentered{} about 60 minutes
+\begin{itemize}
+\item \textbf{Quick review}: four short items
+\item \textbf{Question One}: powers, roots, factorising
+\item \textbf{Question Two}: algebraic fractions
+\item \textbf{Question Three}: equations and changing the subject
+\end{itemize}
+Each question is marked like the real paper: N0 to E8.
+\note{%
+Teaching line, not a question slide.\par
+作业是一份三题的小卷子，每题按 u、r、t 给 N0–E8；答案在 hw1\_answers.pdf\par
+最后一部分 (e) 是 Excellence 题，先做完 (a)–(d) 再做\par
+下节课开头 5 分钟对答案，按 L 编号说错在哪}
+\end{frame}
+
+\end{document}

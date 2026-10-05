@@ -1,0 +1,108 @@
+% shared.sty -- NCEA L2 Algebra (91261) unit: colours, terms, lost-mark
+% list, Sam's handwriting, shared figures. Loaded by every slide deck and
+% every printed sheet, so a term, an L-number or a figure exists once.
+% Must not load fontspec (slidestyle/docstyle load it through mathspec).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{shared}[2026/10/05 L2 Algebra shared macros]
+
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns}
+
+% ------------------------------------------------------------ colours
+\definecolor{ansred}{RGB}{200,16,46}
+\definecolor{accent}{RGB}{0,84,110}
+\definecolor{rule}{gray}{0.45}
+\definecolor{boxfill}{gray}{0.95}      % boxes: at most about 10 % grey
+\definecolor{sig}{gray}{0.55}
+\definecolor{pagenum}{gray}{0.30}      % n / N: darker than the signature
+\definecolor{pencil}{gray}{0.35}       % Sam's drawings
+
+% -------------------------------------------------------------- terms
+% One macro per term, used everywhere (spec 7). Sentence-start forms are
+% a second macro beside the first, never a hand-typed capital.
+\newcommand\Tfactorise{factorise}
+\newcommand\TFactorise{Factorise}
+\newcommand\Tcoef{coefficient}
+\newcommand\Tnum{numerator}
+\newcommand\Tden{denominator}
+\newcommand\Tlcd{lowest common denominator}
+\newcommand\Thcf{highest common factor}
+\newcommand\THcf{Highest common factor}
+\newcommand\Tdots{difference of two squares}
+\newcommand\TDots{Difference of two squares}
+\newcommand\Tindex{index}
+\newcommand\Tindices{indices}
+\newcommand\TIndices{Indices}
+\newcommand\Tsubject{subject}
+
+% ---------------------------------------------------- lost-mark list
+% \defL{key}{n}{text}: numbered once, here. Handout prints all of them,
+% slides the most common; sheets refer to them with \Lref{key}.
+% Source: the assessment schedules' own wording ("correct simplified
+% fraction", "positive index", "not bashed") plus teaching observation.
+% No examiner report was supplied, and none is cited.
+\newcommand\Lprefix{L}
+\newcommand\defL[3]{\expandafter\def\csname Lnum@#1\endcsname{#2}%
+  \expandafter\def\csname Ltxt@#1\endcsname{#3}}
+\newcommand\Lref[1]{\ifcsname Lnum@#1\endcsname
+  \Lprefix\csname Lnum@#1\endcsname\else\errmessage{undefined L key #1}\fi}
+\newcommand\Ltext[1]{\csname Ltxt@#1\endcsname}
+
+\defL{negindex}{1}{Negative index left in the answer, or put on the wrong factor}
+\defL{coef}{2}{Power or root applied to the letter but not the number}
+\defL{cubic}{3}{Terms lost when expanding three brackets}
+\defL{complete}{4}{Not factorised completely}
+\defL{negfactor}{5}{Signs not changed when a negative factor is taken out}
+\defL{cancel}{6}{Cancelling terms instead of factors}
+\defL{minus}{7}{Minus sign not carried through the second numerator}
+\defL{simplest}{8}{Answer not left in simplest form}
+\defL{everyterm}{9}{Not every term multiplied by the denominator}
+\defL{subject}{10}{Subject left on both sides}
+
+% --------------------------------------------------- Sam (spec 5.7)
+% Sam's text is set in Patrick Hand inside \flawed{}; \samsize is
+% provided by slidestyle (17 pt) or docstyle. Sam's maths: \hsp{} for a
+% power, \hfr{}{} for a stacked fraction, both in the handwriting face.
+\providecommand\samsize{}
+\AtBeginDocument{\newfontfamily\samfont[Path=fonts/]{PatrickHand-Regular.ttf}}
+\newcommand\flawed[1]{{\samfont\samsize\color{pencil!70!black}#1}}
+\newcommand\hsp[1]{\textsuperscript{#1}}
+\newcommand\hfr[2]{\ensuremath{\dfrac{\mbox{\samfont\samsize #1}}{\mbox{\samfont\samsize #2}}}}
+\newcommand\hminus{\textendash}
+
+% ------------------------------------------------------------ figures
+\providecommand\figfont{\small}
+\newlength\figunit \setlength\figunit{5mm}
+
+\tikzset{
+  fig/.style={line width=0.8pt, line join=round,
+    every node/.style={font=\figfont, inner sep=1.5pt}},
+}
+
+% Isometric cuboid (2021 Q3 redraws, identical labels).
+% Front-bottom vertex O = (0,0). The left edge runs to (-cos30, sin30)*#1,
+% the right edge to (cos30, sin30)*#2, the vertical edge is #3. Labels sit
+% at the midpoints of the bottom-left, bottom-right and right vertical
+% edges, offset along the outward normal of each edge.
+\newcommand\Cuboid[6]{% depth-left, width-right, height, labels L, R, H
+\begin{tikzpicture}[fig, x=\figunit, y=\figunit]
+  \pgfmathsetmacro\cs{cos(30)}\pgfmathsetmacro\sn{sin(30)}
+  \coordinate (O) at (0,0);
+  \coordinate (L) at ({-\cs*#1},{\sn*#1});
+  \coordinate (R) at ({\cs*#2},{\sn*#2});
+  \coordinate (B) at ({-\cs*#1+\cs*#2},{\sn*#1+\sn*#2});
+  \coordinate (h) at (0,#3);
+  \fill[black!4] (L) -- (O) -- ($(O)+(h)$) -- ($(L)+(h)$) -- cycle;
+  \fill[black!9] ($(L)+(h)$) -- ($(O)+(h)$) -- ($(R)+(h)$) -- ($(B)+(h)$) -- cycle;
+  \draw (L) -- (O) -- (R) -- ($(R)+(h)$) -- ($(B)+(h)$) -- ($(L)+(h)$) -- cycle;
+  \draw (O) -- ($(O)+(h)$) -- ($(R)+(h)$);
+  \draw ($(O)+(h)$) -- ($(L)+(h)$);
+  \node[anchor=north east] at ($(O)!0.5!(L)$) {#4};
+  \node[anchor=north west] at ($(O)!0.5!(R)$) {#5};
+  \node[anchor=west] at ($(R)!0.5!($(R)+(h)$)$) {#6};
+\end{tikzpicture}}
+% "Diagram is NOT to scale" box, as printed beside the source figures
+\newcommand\NotToScale{{\itshape\begin{tabular}{|c|}\hline Diagram is\\ NOT to scale\\\hline\end{tabular}}}
+
+\endinput

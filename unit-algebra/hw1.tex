@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Homework 1}
+
+\begin{document}
+\sheethead{Homework 1}{Powers, factorising and algebraic fractions \textperiodcentered{} about 60 minutes}{Each question graded N0--E8}
+
+Show all working. Leave answers with positive indices and fractions in simplest form. Each part shows the highest grade it can give: [A], [M] or [E].
+
+\section*{Quick review}
+\qpart{1}Write $\dfrac{1}{x^{3}}$ using a negative index.\lvl{A}
+\al{$x^{-3}$}
+\qpart{2}Ana says $(a^{2})^{3} = a^{5}$. Is she right? Give a reason.\lvl{A}
+\al{No: a power of a power multiplies the indices, $(a^{2})^{3} = a^{6}$}
+\qpart{3}Kai says $\dfrac{1}{2} + \dfrac{1}{3} = \dfrac{2}{5}$. Show why he is wrong.\lvl{A}
+\alx{Lowest common denominator 6:\quad $\dfrac{3}{6} + \dfrac{2}{6} = \dfrac{5}{6}$, not $\dfrac{2}{5}$}
+\qpart{4}Which is bigger: $2^{0}$ or $0^{2}$?\lvl{A}
+\al{$2^{0} = 1$ and $0^{2} = 0$, so $2^{0}$ is bigger}
+
+% ================================================================= ONE
+\QUESTION{ONE}
+\qpart{(a)}Simplify each expression, leaving your answer with positive indices.
+\qsub{(i)}$\dfrac{(4a)^{2}}{2a^{-3}}$\lvl{A}
+\af{\frac{16a^{2}}{2a^{-3}} = 8a^{2-(-3)} = 8a^{5}}
+\qsub{(ii)}$\sqrt{81m^{20}n^{6}}$\lvl{A}
+\al{$\sqrt{81} = 9$, halve each index:\quad $9m^{10}n^{3}$}
+
+\qpart{(b)}Factorise completely $10x^{3}y^{2} - 25x^{2}y^{3}$.\lvl{A}
+\al{HCF $5x^{2}y^{2}$:\quad $5x^{2}y^{2}(2x - 5y)$}
+
+\qpart{(c)}Simplify fully, leaving your answer with positive indices.\lvl{M}
+\par\smallskip\hspace*{8mm}$\Bigl(\dfrac{27x^{6}}{x^{12}}\Bigr)^{-\frac{1}{3}}$
+\al{Inside the bracket first: $27x^{-6}$}
+\af{27^{-\frac{1}{3}}\times x^{-6\times(-\frac{1}{3})} = \frac{1}{3}\times x^{2} = \frac{x^{2}}{3}}
+\ansnote{5mm}{\small u: negative or fractional power interpreted correctly;\quad r: correct simplified answer}
+
+\qpart{(d)}Sam was asked to factorise completely (i) $2x^{3} - 50x$ and (ii) $3x^{2} + 5x - 12$. \textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.\lvl{M}
+\begin{samcard}
+\flawed{(i)\ \ 2x\hsp{3} \hminus 50x = 2x(x\hsp{2} \hminus 25) = 2x(x \hminus 25)(x + 25)\par
+(ii)\ \ 3x\hsp{2} + 9x \hminus 4x \hminus 12 = 3x(x + 3) \hminus 4(x \hminus 3)\ \ \ \ so it won't factorise}
+\end{samcard}
+\begin{errorlist}
+\erritem{1}{(i) $x^{2} - 25 = (x-5)(x+5)$: root the 25 too. Answer $2x(x-5)(x+5)$ (\Lref{coef})}
+\erritem{2}{(ii) $-4x - 12 = -4(x+3)$. Answer $(x+3)(3x-4)$ (\Lref{negfactor})}
+\end{errorlist}
+\al{}
+
+\qpart{(e)}Box A has sides $(x+3)$, $(x-2)$ and $(x+1)$ cm. Box B has sides $x$, $(x+1)$ and $(x+2)$ cm, where $x > 2$.
+\qsub{(i)}Show that Box B always has the larger volume.\lvl{E}
+\al{A: $(x^{2} + x - 6)(x+1) = x^{3} + 2x^{2} - 5x - 6$;\quad B: $x(x^{2} + 3x + 2) = x^{3} + 3x^{2} + 2x$}
+\al{B $-$ A $= x^{2} + 7x + 6$. For $x > 2$ every term is positive, so B $-$ A $> 0$: B is larger.}
+\al{}
+\qsub{(ii)}Find the value of $x$ for which Box B's volume is 36~cm$^{3}$ more than Box A's.\lvl{E}
+\al{$x^{2} + 7x + 6 = 36$,\quad $x^{2} + 7x - 30 = 0$,\quad $(x + 10)(x - 3) = 0$}
+\al{$x = 3$ (reject $x = -10$: a side cannot be negative, and $x > 2$)}
+\gradescore{u: (a)(i), (a)(ii), (b) each correct. r: (c) correct; (d) both errors fixed with reasons; (e)(i) both volumes expanded.\\
+t: (e) both volumes compared with a reason, and $x = 3$ with $-10$ rejected.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+% ================================================================= TWO
+\QUESTION{TWO}
+\qpart{(a)}Simplify $\dfrac{x^{2}+4x-21}{2x+14}$.\lvl{A}
+\af{\frac{(x+7)(x-3)}{2(x+7)} = \frac{x-3}{2}}
+
+\qpart{(b)}Simplify $\dfrac{3x^{2}+7x+2}{9x^{2}-1}$.\lvl{A}
+\af{\frac{(3x+1)(x+2)}{(3x-1)(3x+1)} = \frac{x+2}{3x-1}}
+
+\qpart{(c)}Write $\dfrac{2x}{x+4} - \dfrac{x-3}{x-1}$ as a single fraction in its simplest form.\lvl{M}
+\af{\frac{2x(x-1) - (x-3)(x+4)}{(x+4)(x-1)} = \frac{2x^{2} - 2x - (x^{2} + x - 12)}{(x+4)(x-1)}}
+\af{= \frac{x^{2} - 3x + 12}{(x+4)(x-1)}}
+\ansnote{5mm}{\small u: first line set up;\quad r: correct fraction (the numerator does not factorise)}
+
+\qpart{(d)}Simplify $\dfrac{x^{2}-9}{4x} \div \dfrac{x^{2}+x-6}{8x^{2}}$.\lvl{M}
+\af{\frac{(x-3)(x+3)}{4x}\times\frac{8x^{2}}{(x+3)(x-2)} = \frac{2x(x-3)}{x-2}}
+
+\qpart{(e)}\qsub{(i)}Show that $\dfrac{1}{n} - \dfrac{1}{n+1} = \dfrac{1}{n(n+1)}$.\lvl{M}
+\af{\frac{1}{n} - \frac{1}{n+1} = \frac{(n+1) - n}{n(n+1)} = \frac{1}{n(n+1)}}
+\qsub{(ii)}Hence find the exact value of\quad $\dfrac{1}{2\times3} + \dfrac{1}{3\times4} + \dfrac{1}{4\times5} + \cdots + \dfrac{1}{9\times10}$.\lvl{E}
+\af{\Bigl(\frac{1}{2} - \frac{1}{3}\Bigr) + \Bigl(\frac{1}{3} - \frac{1}{4}\Bigr) + \cdots + \Bigl(\frac{1}{9} - \frac{1}{10}\Bigr)}
+\af{= \frac{1}{2} - \frac{1}{10} = \frac{2}{5}}
+\al{Every middle term cancels with the next one; only the first and last are left.}
+\gradescore{u: (a), (b) correct; (c) first line set up. r: (c) correct; (d) correct; (e)(i) shown.\\
+t: (e)(ii) $\tfrac{2}{5}$ with the cancelling explained.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+% ================================================================= THREE
+\QUESTION{THREE}
+\qpart{(a)}Solve $\dfrac{4x+3}{x-5} - 2 = 0$.\lvl{A}
+\al{$4x + 3 - 2(x - 5) = 0$,\quad $2x + 13 = 0$}
+\af{x = -\frac{13}{2}}
+
+\qpart{(b)}Solve $\dfrac{x+2}{3} - \dfrac{x-1}{4} = 2$.\lvl{A}
+\al{Multiply every term by 12:\quad $4(x+2) - 3(x-1) = 24$,\quad $x + 11 = 24$,\quad $x = 13$}
+
+\qpart{(c)}Make $r$ the subject of $P = \dfrac{2r+5}{r-3}$.\lvl{M}
+\al{$Pr - 3P = 2r + 5$,\quad $Pr - 2r = 3P + 5$,\quad $r(P - 2) = 3P + 5$}
+\af{r = \frac{3P+5}{P-2}}
+
+\qpart{(d)}Solve $\dfrac{9}{x} - \dfrac{4}{x+1} = 2$.\lvl{M}
+\al{Multiply every term by $x(x+1)$:\quad $9(x+1) - 4x = 2x(x+1)$}
+\al{$5x + 9 = 2x^{2} + 2x$,\quad $2x^{2} - 3x - 9 = 0$,\quad $(2x+3)(x-3) = 0$}
+\af{x = 3\quad\text{or}\quad x = -\frac{3}{2}}
+
+\qpart{(e)}A kayaker paddles 16 km up a river against a current of 2 km/h, then 16 km back down with the current. The whole trip takes 6 hours. Her speed in still water is $v$ km/h.
+\qsub{(i)}Show that $3v^{2} - 16v - 12 = 0$.\lvl{M}
+\af{\frac{16}{v-2} + \frac{16}{v+2} = 6}
+\al{$16(v+2) + 16(v-2) = 6(v-2)(v+2)$,\quad $32v = 6v^{2} - 24$,\quad $3v^{2} - 16v - 12 = 0$}
+\qsub{(ii)}Find her speed in still water. Explain why there is only one answer.\lvl{E}
+\alx{$(3v + 2)(v - 6) = 0$, so $v = 6$ or $v = -\dfrac{2}{3}$}
+\al{A speed cannot be negative (and she must beat the current, $v > 2$), so $v = 6$ km/h.}
+\gradescore{u: (a), (b) correct; (c) first step. r: (c) correct; (d) both solutions; (e)(i) derived clearly.\\
+t: (e)(ii) $v = 6$ with the negative root rejected for a reason.\quad N1 partial; N2 1u; A3 2u; A4 3u; M5 1r; M6 2r; E7 t, minor error; E8 t.}
+
+\ansnote{6mm}{\small Totals out of 24. Cut scores move a little each year: Achievement from about 7--8, Merit 13--14, Excellence 19--20.}
+\end{document}

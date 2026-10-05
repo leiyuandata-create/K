@@ -1,0 +1,127 @@
+% slidestyle.sty -- L2 Algebra slides. Far viewing distance (one-to-one
+% lesson shown on a TV): sizes follow the spec 5.4 "far" column. All text
+% goes through the size macros below; slidesN.tex never sets a size.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{slidestyle}[2026/10/05 L2 Algebra slides]
+
+\RequirePackage{type1cm}
+\RequirePackage{fix-cm}
+\RequirePackage{amssymb}
+\RequirePackage{mathspec}
+\setsansfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmainfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmathsfont(Digits,Latin)[Path=fonts/, Extension=.otf,
+  UprightFont=*-regular, ItalicFont=*-italic]{texgyreheros}
+\setmathrm[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic]{texgyreheros}
+% Chinese appears only on the note page (notes-language parameter).
+% xeCJK is not available: XeTeX's own locale line breaking is used.
+\newfontfamily\notefont[Path=fonts/]{NotoSansSC-Regular.otf}
+\usefonttheme{professionalfonts}
+
+\geometry{paperwidth=170mm,paperheight=95.625mm}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\RequirePackage{shared}
+\RequirePackage{xr}
+\RequirePackage{array,booktabs}
+\RequirePackage[skins,breakable]{tcolorbox}
+
+% ------------------------------------------------------------- sizes
+\newcommand\sTitle{\fontsize{21}{25}\selectfont}
+\newcommand\sEmph{\fontsize{19}{23}\selectfont}
+\newcommand\sQ{\fontsize{15}{18.6}\selectfont}
+\newcommand\sSub{\fontsize{14}{17.4}\selectfont}
+\newcommand\sSum{\fontsize{15}{19.5}\selectfont}
+\newcommand\sHand{\fontsize{17}{21}\selectfont}
+\newcommand\sPage{\fontsize{10}{12}\selectfont}
+\newcommand\sFoot{\fontsize{8}{9.6}\selectfont}
+\newcommand\sNote{\fontsize{8}{10.6}\selectfont}
+\renewcommand\figfont{\sQ}
+\renewcommand\samsize{\sHand}
+% \normalsize is the body size, so TikZ labels and table cells inherit it
+\renewcommand\normalsize{\sQ}
+
+\setbeamerfont{normal text}{size=\sQ}
+\setbeamerfont{itemize/enumerate body}{size=\sQ}
+\setbeamerfont{itemize/enumerate subbody}{size=\sQ}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\sQ}
+\setbeamerfont{frametitle}{size=\sTitle, series=\bfseries}
+\setbeamerfont{title}{size=\sTitle, series=\bfseries}
+\setbeamerfont{subtitle}{size=\sQ}
+\AtBeginDocument{\sQ}
+
+% ------------------------------------------------------------ colours
+\setbeamercolor{normal text}{fg=black, bg=white}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{frametitle}{fg=accent, bg=}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\raisebox{1pt}{\rule{4pt}{4pt}}}
+\setbeamertemplate{enumerate items}[default]
+
+% ---------------------------------- title: bold text over a thin rule
+\setbeamertemplate{frametitle}{%
+  \vspace*{2mm}\vbox{\hsize\textwidth\hbox{\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\strut\insertframetitle}
+  \kern0.8mm{\color{rule}\hrule height 0.8pt}}\vspace{1mm}}
+
+% ------------------------- footer: signature | cross-reference | n / N
+% The total comes from the compile; the notes compile cannot count
+% frames, so build_slides.sh passes \totalframes (spec 5.9).
+\newcommand\thetotal{\ifdefined\totalframes\totalframes\else\inserttotalframenumber\fi}
+\gdef\thefref{}
+\newcommand\fref[1]{\gdef\thefref{#1}}
+\setbeamertemplate{footline}{%
+  \hbox to\paperwidth{\hspace{5mm}\sFoot\color{sig}%
+    \rlap{Dr. Ryan Lei \textperiodcentered{} Auckland}\hfill\thefref\hfill
+    \llap{\sPage\color{pagenum}\insertframenumber\,/\,\thetotal}\hspace{5mm}}%
+  \vspace{2.2mm}\gdef\thefref{}}
+
+% ------------------------------------------------------- formula box
+% fixed-width \hbox with \hfil: an overlong formula reports Overfull \hbox.
+% Every fraction in an exponent goes here (19 pt base, spec 5.4).
+\newcommand\fbx[1]{\par\smallskip\hbox to\textwidth{\hfil\sEmph$\displaystyle #1$\hfil}\par\smallskip}
+% a left-aligned display line at body size (working shown step by step)
+\newcommand\wline[1]{\par\addvspace{1.6mm}\hbox to\textwidth{\hspace{8mm}$\displaystyle #1$\hfil}\par}
+% emphasis line
+\newcommand\emphline[1]{\par{\sEmph\bfseries #1}\par}
+% the tutor's question, emphasis size, marked with an outlined "?"
+\newcommand\ask[1]{\par\medskip\noindent
+  \tikz[baseline=(q.base)]\node[draw=accent, line width=1pt, circle, inner sep=1pt,
+    minimum size=7mm, text=accent, font=\sEmph\bfseries](q){?};%
+  \hspace{2.5mm}\parbox[t]{\dimexpr\textwidth-12mm\relax}{\sEmph\raggedright #1}\par}
+% a short on-screen blank the student answers aloud
+\newcommand\gap[1][18mm]{\underline{\hspace{#1}}}
+% two columns with fixed split
+\newcommand\twocol[4]{\par\noindent\begin{minipage}[t]{#1\textwidth}\vspace{0pt}\raggedright#2\end{minipage}\hfill
+  \begin{minipage}[t]{#3\textwidth}\vspace{0pt}\raggedright#4\end{minipage}\par}
+% numbered question line
+\newcommand\qline[1]{\par\addvspace{2.2mm}\noindent\hangindent=8mm\hangafter=1\makebox[8mm][l]{\bfseries #1}}
+% sub-part line, 14 pt
+\newcommand\subline[1]{\par\noindent\hangindent=16mm\hangafter=1\hspace*{8mm}\makebox[8mm][l]{\sSub #1}\sSub}
+% flush-right mark allocation (spec 9.1 recipe)
+\newcommand\smk[1]{{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill
+  [#1]\parfillskip=0pt\par}}
+% Sam's answer card (spec 5.7): outline, light fill
+\newtcolorbox{samcard}{enhanced, colback=boxfill, colframe=black!55, boxrule=0.6pt,
+  arc=1.5mm, left=2mm, right=2mm, top=1mm, bottom=1mm, fonttitle=\sQ\bfseries,
+  coltitle=black, colbacktitle=boxfill, titlerule=0.4pt, titlerule style={black!55},
+  title={Sam's answer}}
+% a light outlined box for a rule or method
+\newtcolorbox{rulebox}{enhanced, colback=boxfill, colframe=black!55, boxrule=0.6pt,
+  arc=1.5mm, left=2mm, right=2mm, top=1mm, bottom=1mm}
+
+% ------------------------------------------------------------ notes
+% Note page: n / N and signature on top, the note in Noto Sans SC, then
+% the sentinel "end of notes" that check 1c looks for (spec 9.2, 10.2).
+\setbeamertemplate{note page}{%
+  \vspace*{1.5mm}\noindent\hbox to\textwidth{\sFoot\color{sig}Dr. Ryan Lei \textperiodcentered{} Auckland\hfill
+    \sPage\color{pagenum}\insertframenumber\,/\,\thetotal}\par\vspace{1mm}
+  \noindent\begin{minipage}[t]{\textwidth}\notefont\sNote\raggedright
+  \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip=0pt plus 0.5pt
+  \setlength\parskip{1.2pt}\insertnote\par\vspace{1mm}
+  {\fontsize{5}{6}\selectfont\color{sig}end of notes}\end{minipage}}
+
+\endinput

@@ -1,0 +1,258 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Handout 1 \textperiodcentered{} Powers, factorising, fractions}
+
+\begin{document}
+\sheethead{Lesson 1 \textperiodcentered{} Powers, Factorising and Algebraic Fractions}
+  {NCEA Level 2 Mathematics \textperiodcentered{} Algebra}{Handout}
+
+\begin{keybox}[title={The one idea: factorise first}]
+Cancelling, combining, solving and rearranging all work on \textbf{factors} (things multiplied), never on \textbf{terms} (things added).
+\[ \frac{3x}{5x} = \frac{3}{5} \qquad\text{but}\qquad \frac{x+3}{x+5}\ \text{does not cancel: try } x=1,\ \text{you get } \frac{4}{6} \neq \frac{3}{5}. \]
+So the first move in almost every question in this lesson is the same: \textbf{factorise}, then act on whole factors.
+\end{keybox}
+
+\section*{How the paper is marked}\label{h:marking}
+\begin{itemize}
+\item Three questions, each with parts (a), (b), (c), \ldots{} Each part is evidence at one level: \textbf{u} (Achievement), \textbf{r} (Merit) or \textbf{t} (Excellence).
+\item Each question gets a grade score:\quad N1 partial \textperiodcentered{} N2 one u \textperiodcentered{} A3 two u \textperiodcentered{} A4 three u \textperiodcentered{} M5 one r \textperiodcentered{} M6 two r \textperiodcentered{} E7 t with a minor error \textperiodcentered{} E8 t complete.
+\item The three scores are added (out of 24). The cut scores move a little each year: Achievement starts at about 7--8, Merit at about 13--14, Excellence at about 19--20.
+\item \textbf{Show all working.} A bare answer to a ``show that'' or ``prove'' part earns nothing. The formula sheet gives the quadratic formula and the log laws, \textbf{not} the index laws or the factorising methods on this handout.
+\end{itemize}
+
+% =================================================================== 1
+\section{Powers and roots (indices)}\label{h:indices}
+\begin{minipage}[t]{0.5\textwidth}\vspace{0pt}
+\renewcommand\arraystretch{1.55}
+\begin{tabular}{@{}l l@{}}
+\toprule
+\textbf{Law} & \textbf{Example} \\ \midrule
+$x^{a}\times x^{b} = x^{a+b}$ & $x^{4}\times x^{6} = x^{10}$ \\
+$\dfrac{x^{a}}{x^{b}} = x^{a-b}$ & $\dfrac{y^{3}}{y^{-2}} = y^{3-(-2)} = y^{5}$ \\
+$(x^{a})^{b} = x^{ab}$ & $(a^{3})^{5} = a^{15}$ \\
+$(kx)^{n} = k^{n}x^{n}$ & $(2x)^{3} = 8x^{3}$ \\
+$x^{0} = 1$ & $p^{0} = 1$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\renewcommand\arraystretch{1.55}
+\begin{tabular}{@{}l l@{}}
+\toprule
+\textbf{Law} & \textbf{Example} \\ \midrule
+$x^{-n} = \dfrac{1}{x^{n}}$ & $2^{-3} = \dfrac{1}{8}$ \\
+$x^{\frac{1}{n}} = \sqrt[n]{x}$ & $8^{\frac{1}{3}} = 2$ \\
+$x^{\frac{m}{n}} = \bigl(\sqrt[n]{x}\bigr)^{m}$ & $8^{\frac{2}{3}} = 2^{2} = 4$ \\
+$\sqrt[n]{x^{k}} = x^{\frac{k}{n}}$ & $\sqrt[3]{x^{12}} = x^{4}$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+\subsection*{Where does the minus belong?}
+A negative index belongs only to the factor it is written on. Moving that factor across the fraction line makes the index positive.
+\[ 3y^{-1} = \frac{3}{y} \qquad (3y)^{-1} = \frac{1}{3y} \qquad \frac{1}{x^{-2}} = x^{2} \]
+
+\subsection*{Write it in this order (simplifying a power expression)}
+\begin{enumerate}
+\item \textbf{Brackets first}: raise \textbf{every} factor inside to the power, the number too: $(3x^{2})^{3} = 27x^{6}$.
+\item \textbf{Numbers}: simplify the number part like an ordinary fraction.
+\item \textbf{Each letter}: add indices when multiplying, subtract when dividing. Write the subtraction out when an index is negative: $6-(-1) = 7$.
+\item \textbf{Roots}: root the number, divide the index: $\sqrt{36a^{16}} = 6a^{8}$.
+\item \textbf{Check}: positive indices only, and each letter appears once.
+\end{enumerate}
+
+\subsection*{Worked examples}
+\begin{multicols}{2}
+\textbf{Example 1.} Simplify $\dfrac{(2y)^{3}}{4y^{-2}}$, positive indices.
+\[ \frac{(2y)^{3}}{4y^{-2}} = \frac{8y^{3}}{4y^{-2}} = 2y^{3-(-2)} \]
+$= \mathbf{2y^{5}}$ \mtag{u}
+\columnbreak
+
+\textbf{Example 2.} Simplify $\sqrt[3]{27b^{12}}$ and $16^{-\frac{3}{4}}$.
+\[ \sqrt[3]{27b^{12}} = 3b^{\frac{12}{3}} = \mathbf{3b^{4}} \]
+\[ 16^{-\frac{3}{4}} = \frac{1}{\bigl(\sqrt[4]{16}\bigr)^{3}} = \frac{1}{2^{3}} = \mathbf{\frac{1}{8}} \]
+\mtag{u}
+\end{multicols}
+
+% =================================================================== 2
+\section{Expanding}\label{h:expand}
+\textbf{Two brackets}: every term in the first times every term in the second (FOIL). \textbf{Three brackets}: expand two of them, then multiply the result by the third, every term by every term. Three terms times two terms gives \textbf{six products} before you collect like terms.
+
+\textbf{Example 3.} Expand and simplify $(x+2)(x-1)(x+3)$.\par
+\step{Step 1} $(x+2)(x-1) = x^{2} - x + 2x - 2 = x^{2} + x - 2$\par
+\step{Step 2} $(x^{2}+x-2)(x+3) = x^{3} + 3x^{2} + x^{2} + 3x - 2x - 6$\par
+\step{Step 3} $= \mathbf{x^{3} + 4x^{2} + x - 6}$ \mtag{u}
+\step{Check} at $x = 1$: the brackets give $3 \times 0 \times 4 = 0$ and $1 + 4 + 1 - 6 = 0$.\par
+
+\textbf{Special products} (worth knowing by sight): $(a+b)^{2} = a^{2} + 2ab + b^{2}$, so $(2x-5)^{2} = 4x^{2} - 20x + 25$, never $4x^{2}+25$; and $(a-b)(a+b) = a^{2} - b^{2}$.
+
+% =================================================================== 3
+\section{Factorising}\label{h:factorise}
+\begin{keybox}[title={Write it in this order (factorising)}]
+\begin{enumerate}
+\item \textbf{Take out the \Thcf{}}: the largest number and the lowest power of each letter in every term.
+\item \textbf{Count the terms} left in the bracket.
+  \begin{itemize}
+  \item Two terms, both squares: \textbf{\Tdots{}}, $a^{2}-b^{2} = (a-b)(a+b)$.
+  \item Three terms, $x^{2}+bx+c$: two numbers that \textbf{multiply to $c$} and \textbf{add to $b$}.
+  \item Three terms, $ax^{2}+bx+c$ with $a \neq 1$: multiply $a \times c$, find two numbers that multiply to $ac$ and add to $b$, \textbf{split the middle term}, factorise each pair, take out the common bracket.
+  \end{itemize}
+\item \textbf{Look again}: can any bracket be factorised further? ``Factorise completely'' means nothing is left.
+\item \textbf{Check}: expand your answer back.
+\end{enumerate}
+\end{keybox}
+
+\begin{multicols}{2}
+\textbf{Example 4.} Factorise $12a^{3}b^{2} - 18a^{2}b$.\par
+\Thcf{}: $6$, $a^{2}$ (lowest power of $a$), $b$ (lowest power of $b$).
+\[ 12a^{3}b^{2} - 18a^{2}b = \mathbf{6a^{2}b(2ab - 3)} \]
+\mtag{u}
+
+\textbf{Example 5.} Factorise $3x^{3} - 12x$ completely.
+\[ 3x^{3}-12x = 3x(x^{2}-4) = \mathbf{3x(x-2)(x+2)} \]
+\mtag{u}
+\columnbreak
+
+\textbf{Example 6.} Factorise $3x^{2} + 10x - 8$.\par
+$a \times c = 3 \times (-8) = -24$. Multiply to $-24$, add to $10$: $\mathbf{12}$ and $\mathbf{-2}$.
+\begin{align*}
+3x^{2} + 10x - 8 &= 3x^{2} + 12x - 2x - 8\\
+&= 3x(x+4) - 2(x+4)\\
+&= \mathbf{(x+4)(3x-2)}
+\end{align*}
+\mtag{u}
+When you take out a negative number, \textbf{every sign in that bracket changes}: $-2x - 8 = -2(x+4)$.
+\end{multicols}
+
+% =================================================================== 4
+\section{Algebraic fractions}\label{h:fractions}
+They follow the rules of number fractions. \textbf{Factorise every \Tnum{} and \Tden{} first.}
+
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Job} & \textbf{Method} \\ \midrule
+Simplify & Factorise top and bottom, cancel \textbf{whole common factors} (brackets), never single terms. \\
+Multiply & Factorise everything, cancel across, multiply what is left. \\
+Divide & Flip the second fraction and multiply. \\
+Add or subtract & Common \Tden{} = every different factor once. Multiply each \Tnum{} by the factors its own \Tden{} is missing. Put the second \Tnum{} in \textbf{brackets} when subtracting. Then simplify. \\
+\bottomrule
+\end{tabularx}
+
+\begin{multicols}{2}
+\textbf{Example 7.} Simplify $\dfrac{2x^{2}+5x-3}{4x^{2}-1}$.
+\[ = \frac{(2x-1)(x+3)}{(2x-1)(2x+1)} = \mathbf{\frac{x+3}{2x+1}} \]
+\mtag{u}
+
+\textbf{Example 8.} Simplify $\dfrac{x^{2}-4}{3x} \div \dfrac{x+2}{6x^{2}}$.
+\[ = \frac{(x-2)(x+2)}{3x} \times \frac{6x^{2}}{x+2} = \mathbf{2x(x-2)} \]
+\mtag{u}
+\columnbreak
+
+\textbf{Example 9.} Write $\dfrac{4x}{x-2} - \dfrac{x+3}{x+1}$ as a single fraction.
+\begin{align*}
+&= \frac{4x(x+1) - (x+3)(x-2)}{(x-2)(x+1)}\\
+&= \frac{4x^{2}+4x - (x^{2}+x-6)}{(x-2)(x+1)}\\
+&= \frac{3x^{2}+3x+6}{(x-2)(x+1)} = \mathbf{\frac{3(x^{2}+x+2)}{(x-2)(x+1)}}
+\end{align*}
+\mtag{r}
+The bracket makes the $-6$ become $\mathbf{+6}$.
+\end{multicols}
+
+% =================================================================== 5
+\section{Equations with fractions, and changing the subject}\label{h:solve}
+\begin{keybox}[title={Write it in this order (solving)}]
+\begin{enumerate}
+\item Find the \Tlcd{} of \textbf{every} term.
+\item Multiply \textbf{every term on both sides} by it, the whole-number terms too. The fractions disappear.
+\item Expand, collect, solve. If an $x^{2}$ appears, rearrange to $ax^{2}+bx+c = 0$ and factorise.
+\item Reject any answer that makes a \Tden{} zero. Check one answer in the original equation.
+\end{enumerate}
+\end{keybox}
+
+\begin{multicols}{2}
+\textbf{Example 10.} Solve $\dfrac{3x+1}{x-2} - 4 = 0$.
+\begin{align*}
+3x + 1 - 4(x-2) &= 0\\
+3x + 1 - 4x + 8 &= 0\\
+x &= \mathbf{9}
+\end{align*}
+\mtag{u}
+
+\textbf{Example 11.} Solve $\dfrac{6}{x} + \dfrac{4}{x+1} = 3$.\par
+Multiply every term by $x(x+1)$:
+\begin{align*}
+6(x+1) + 4x &= 3x(x+1)\\
+3x^{2} - 7x - 6 &= 0\\
+(3x+2)(x-3) &= 0
+\end{align*}
+$x = \mathbf{3}$ or $x = \mathbf{-\tfrac{2}{3}}$\mtag{r}
+\columnbreak
+
+\textbf{Example 12.} Make $x$ the \Tsubject{} of $y = \dfrac{2x+3}{x-1}$.\par
+When the new \Tsubject{} appears \textbf{twice}: collect both terms on one side, then \textbf{factorise it out}.
+\begin{align*}
+y(x-1) &= 2x+3\\
+xy - y &= 2x + 3\\
+xy - 2x &= y + 3\\
+x(y-2) &= y+3\\
+x &= \mathbf{\frac{y+3}{y-2}}
+\end{align*}
+\mtag{r}
+\end{multicols}
+
+% =================================================================== 6
+\section{Versions the marker won't accept}\label{h:wontaccept}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{0.3\textwidth} >{\raggedright}p{0.24\textwidth} X@{}}
+\toprule
+\textbf{Question} & \textbf{Answer given} & \textbf{Why it falls short} \\ \midrule
+Factorise completely $6x^{3}y - 15x^{2}\sqrt{y}$ & $3x^{2}(2xy - 5\sqrt{y})$ & Correct but not complete: $\sqrt{y}$ is still common. Markers treat this as Achievement evidence only; $3x^{2}\sqrt{y}(2x\sqrt{y} - 5)$ is needed for Merit. \tabularnewline
+Simplify, positive indices & $27y^{5}$ written as $\dfrac{27}{y^{-5}}$ & A negative index is still showing. \tabularnewline
+Simplify $\dfrac{x^{2}-x-12}{4x+12}$ & $\dfrac{(x-4)(x+3)}{4(x+3)}$ & Not simplified: the common bracket has not been cancelled. Markers want the simplified fraction, $\dfrac{x-4}{4}$. \tabularnewline
+Any part & a correct answer followed by a wrong ``further simplification'' & Stop when the answer is simplest. Extra wrong working can cost the mark. \tabularnewline
+\bottomrule
+\end{tabularx}
+
+% =================================================================== 7
+\section{Ways to lose marks}\label{h:lose}
+From the wording of the marking schedules and from teaching observation; numbered for marking.
+\begin{description}[leftmargin=9mm, labelwidth=8mm, labelsep=1mm, font=\normalfont]
+\item[\textbf{\Lref{negindex}}] \textbf{\Ltext{negindex}.} $3y^{-1} = \dfrac{3}{y}$, not $\dfrac{1}{3y}$. ``Positive indices'' means none negative in the final answer.
+\item[\textbf{\Lref{coef}}] \textbf{\Ltext{coef}.} $(3y)^{4} = 81y^{4}$, not $3y^{4}$. $\sqrt{36a^{16}} = 6a^{8}$: root the 36 as well, and halve the index (not root it).
+\item[\textbf{\Lref{cubic}}] \textbf{\Ltext{cubic}.} Two brackets first, then six products. Count them before collecting.
+\item[\textbf{\Lref{complete}}] \textbf{\Ltext{complete}.} Take out the full \Thcf{}, letters and roots included, then check every bracket again.
+\item[\textbf{\Lref{negfactor}}] \textbf{\Ltext{negfactor}.} $-8x - 20 = -4(2x+5)$, not $-4(2x-5)$. Expand the bracket back to check.
+\item[\textbf{\Lref{cancel}}] \textbf{\Ltext{cancel}.} In $\dfrac{x^{2}+3x}{x^{2}-9}$ the $x^{2}$ terms do not cancel. Factorise, then cancel brackets.
+\item[\textbf{\Lref{minus}}] \textbf{\Ltext{minus}.} $-(x+3)(x-2) = -(x^{2}+x-6) = -x^{2}-x+6$. Bracket first, then change every sign.
+\item[\textbf{\Lref{simplest}}] \textbf{\Ltext{simplest}.} After combining, look for a common factor on top and a bracket that cancels.
+\item[\textbf{\Lref{everyterm}}] \textbf{\Ltext{everyterm}.} In $\dfrac{3x+1}{x-2} - 4 = 0$ the $4$ is multiplied by $(x-2)$ too.
+\item[\textbf{\Lref{subject}}] \textbf{\Ltext{subject}.} If $x$ is still on the right, it is not the \Tsubject{}. Collect, factorise out $x$, divide.
+\end{description}
+
+% =================================================================== 8
+\section{Quick review}\label{h:review}
+\renewcommand\arraystretch{1.45}
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Index laws from Year 11}\par\smallskip
+\begin{tabular}{@{}>{\raggedright}p{0.34\linewidth} >{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
+\toprule
+Multiply & add the indices \\
+Divide & subtract the indices \\
+Power of a power & multiply the indices \\
+Power of a product & every factor, number too \\
+Power zero & equals 1 \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Number fractions}\par\smallskip
+\begin{tabular}{@{}>{\raggedright}p{0.28\linewidth} >{\raggedright\arraybackslash}p{0.64\linewidth}@{}}
+\toprule
+Simplify & divide top and bottom by the \Thcf{} \\
+Multiply & tops times tops, bottoms times bottoms \\
+Divide & flip the second, then multiply \\
+Add, subtract & \Tlcd{}, then add the tops \\
+\bottomrule
+\end{tabular}\par\smallskip
+$\dfrac{5}{6}-\dfrac{3}{4} = \dfrac{10}{12}-\dfrac{9}{12} = \dfrac{1}{12}$\quad (12, not 24)
+\end{minipage}
+\end{document}

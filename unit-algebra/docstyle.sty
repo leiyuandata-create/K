@@ -1,0 +1,137 @@
+% docstyle.sty -- printed A4 sheets: handouts, classwork, homework,
+% practice sets and their answer versions. Headings are bold text over a
+% thin rule and boxes are outlines with a light fill: nothing prints as a
+% solid dark area (spec 3.3). One source gives the blank sheet and the
+% answer sheet: \def\withanswers{1} before \documentclass switches answers
+% on, and nothing answer-only may change the layout (spec 6.1).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{docstyle}[2026/10/05 L2 Algebra printed sheets]
+
+\RequirePackage{type1cm}
+\RequirePackage{fix-cm}
+\RequirePackage[a4paper,top=15mm,bottom=20mm,left=17mm,right=17mm,footskip=9mm]{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathspec}
+\setmainfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyrepagella}
+\setsansfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmathsfont(Digits,Latin)[Path=fonts/, Extension=.otf,
+  UprightFont=*-regular, ItalicFont=*-italic]{texgyrepagella}
+\setmathrm[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic]{texgyrepagella}
+
+\RequirePackage{shared}
+\RequirePackage{array,tabularx,booktabs,multicol,enumitem}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage[skins,breakable]{tcolorbox}
+\RequirePackage{needspace}
+\RequirePackage{graphicx}
+
+\setlength\parindent{0pt}
+\setlength\parskip{3pt plus 1pt}
+\setlength\emergencystretch{2em}
+\renewcommand\arraystretch{1.25}
+\setlist{nosep, leftmargin=*, topsep=2pt, itemsep=1pt}
+\renewcommand\figfont{\normalsize}
+\renewcommand\samsize{\large}
+
+% ------------------------------------------------------- answer switch
+\newif\ifansmode
+\ifdefined\withanswers\ansmodetrue\fi
+
+% ------------------------------------------------ headings: text + rule
+\titleformat{\section}{\needspace{5\baselineskip}\sffamily\bfseries\large}{\thesection}{0.6em}{}[\vspace{-2pt}{\color{rule}\titlerule[0.8pt]}]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+\titleformat{\subsection}{\needspace{4\baselineskip}\sffamily\bfseries\normalsize}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+
+% ------------------------------------------------ boxes: outline only
+\newtcolorbox{keybox}[1][]{enhanced, colback=boxfill, colframe=black!55,
+  boxrule=0.6pt, arc=1.5mm, left=2mm, right=2mm, top=1.2mm, bottom=1.2mm,
+  fonttitle=\sffamily\bfseries, coltitle=black, colbacktitle=boxfill,
+  titlerule=0.4pt, titlerule style={black!55}, #1}
+\newtcolorbox{plainbox}[1][]{enhanced, colback=white, colframe=black!55,
+  boxrule=0.6pt, arc=1.5mm, left=2mm, right=2mm, top=1.2mm, bottom=1.2mm,
+  fonttitle=\sffamily\bfseries, coltitle=black, colbacktitle=white,
+  titlerule=0.4pt, titlerule style={black!55}, #1}
+\newtcolorbox{samcard}{enhanced, colback=boxfill, colframe=black!55, boxrule=0.6pt,
+  arc=1.5mm, left=2mm, right=2mm, top=1mm, bottom=1mm, fonttitle=\sffamily\bfseries,
+  coltitle=black, colbacktitle=boxfill, titlerule=0.4pt, titlerule style={black!55},
+  title={Sam's answer}}
+
+% ------------------------------------------ footer: signature and n / N
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand\headrulewidth{0pt}
+\newcommand\sheetname{}
+\newcommand\sheetfoot{%
+  \fancyfoot[L]{\footnotesize\sffamily\color{sig}\sheetname}%
+  \fancyfoot[C]{\footnotesize\sffamily\color{sig}Dr. Ryan Lei \textperiodcentered{} Auckland}%
+  \fancyfoot[R]{\footnotesize\sffamily\color{sig}\thepage\,/\,\pageref*{LastPage}}}
+\sheetfoot
+\fancypagestyle{plain}{\fancyhf{}\sheetfoot}
+
+% ------------------------------------------------ sheet header
+% #1 title, #2 subtitle line, #3 right-hand info (marks). The answer
+% version adds its label through \ansnote, so both versions match.
+\newcommand\anslabel{Answers \textperiodcentered{} tutor's working, not an official mark scheme}
+\newcommand\sheethead[3]{%
+  {\sffamily\bfseries\LARGE #1\par}\vspace{2pt}
+  {\sffamily #2\hfill #3\par}\vspace{1pt}
+  {\color{rule}\rule{\textwidth}{0.8pt}}\par
+  \ansnote{6mm}{\sffamily\small\bfseries\anslabel}\vspace{2pt}}
+
+% ------------------------------------------------ question layout
+% NCEA layout: QUESTION ONE, (a), (i). The grade a part can reach sits
+% flush right: [A], [M], [E] (spec 9.1 flush-right recipe).
+\newcommand\lvl[1]{{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill
+  \sffamily\bfseries[#1]\parfillskip=0pt\par}}
+\newcommand\QUESTION[1]{\par\needspace{6\baselineskip}\bigskip
+  {\sffamily\bfseries\large QUESTION #1\par}\vspace{2pt}\setlength\ansindent{8mm}}
+\newlength\ansindent \setlength\ansindent{8mm}
+\newcommand\qpart[1]{\par\needspace{4\baselineskip}\medskip\noindent\hangindent=8mm\hangafter=1
+  \setlength\ansindent{8mm}\makebox[8mm][l]{#1}}
+\newcommand\qsub[1]{\par\needspace{3\baselineskip}\smallskip\noindent\hangindent=16mm\hangafter=1
+  \hspace*{8mm}\setlength\ansindent{16mm}\makebox[8mm][l]{#1}}
+
+% ---------------------------------------- answer lines (spec 6.1)
+% Each line is a \vbox to its pitch: an outgrown answer reports Overfull
+% \vbox. The answer sits in an \hbox to the line width: an overlong one
+% reports Overfull \hbox. In the blank version the same boxes are empty.
+\newlength\pitch
+\newcommand\dotrule{\hbox to\dimexpr\linewidth-\ansindent\relax{\color{black!40}%
+  \xleaders\hbox to 1.6mm{\hss\rule{0.32mm}{0.32mm}\hss}\hfil}}
+\newcommand\ansline[3]{% pitch, baseline above rule, answer
+  \par\nointerlineskip\setlength\pitch{#1}%
+  \vbox to\pitch{\offinterlineskip\vfil
+    \moveright\ansindent\hbox to\dimexpr\linewidth-\ansindent\relax{\ifansmode\color{ansred}#3\fi\hfil}%
+    \kern#2\moveright\ansindent\dotrule}}
+\newcommand\al[1]{\ansline{9mm}{1.2mm}{#1}}
+\newcommand\af[1]{\ansline{18mm}{6mm}{$\displaystyle #1$}}
+\newcommand\alx[1]{\ansline{18mm}{6mm}{#1}}% text line holding a displayed fraction
+\newcommand\lines[1]{\foreach\i in {1,...,#1}{\al{}}\par}
+\newcommand\flines[1]{\foreach\i in {1,...,#1}{\af{}}\par}
+% answer-only block: the same height is reserved in both versions
+\newcommand\ansnote[2]{\par\nointerlineskip
+  \vbox to #1{\parskip=0pt\ifansmode\color{ansred}\leavevmode #2\par\fi\vfil}}
+% short blank: smashed in both versions, answer overlaid in red
+\newcommand\blank[2][25mm]{\smash{\rlap{\hspace{1mm}\ifansmode\color{ansred}#2\fi}%
+  \rule[-1.6pt]{#1}{0.4pt}}}
+% Spot the error on sheets (spec 6.4): the answer block numbers each
+% error with its fix and L-number; check 12 counts \erritem and \Lref.
+\newenvironment{errorlist}{\par}{\par}
+\newcommand\erritem[2]{\al{#1.\ #2}}
+% NCEA grade-score line printed under each question in the answer version
+\newcommand\gradescore[1]{\ansnote{12.5mm}{\small #1}}
+
+% ------------------------------------------------ handout helpers
+% marking-point tag at the right margin of a worked example: (u) (r) (t)
+\newcommand\mtag[1]{{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill
+  \sffamily\bfseries(#1)\parfillskip=0pt\par}}
+\newcommand\step[1]{\par\noindent\makebox[16mm][l]{\sffamily\bfseries #1}}
+
+\endinput
