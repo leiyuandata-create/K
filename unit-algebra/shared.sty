@@ -143,18 +143,22 @@
 \end{tikzpicture}}
 
 % ---- y = 2(x+1)(x-5): x-intercepts -1 and 5, y-intercept -10 (lesson 3).
-% y scale 0.16: the vertex (2,-18) sits at -2.88 units.
+% x unit 1.4, y unit 0.2 (the vertex (2,-18) sits at -3.6 units). Labels
+% sit where the curve is not: left of x = -1 and right of x = 5 the curve
+% is above the axis, so "-1" and "5" go below the axis on the outer side;
+% "(0,-10)" goes above-right of the point, inside the cup, where the curve
+% at x = 0.15 is y = 2(1.15)(-4.85) = -11.2, below the label.
 \newcommand\FigRootsParabola{%
-\begin{tikzpicture}[fig, x=\figunit, y=0.16\figunit, baseline=(current bounding box.north)]
-  \draw[->] (-2.2,0) -- (6.8,0) node[right] {$x$};
-  \draw[->] (0,-20) -- (0,9) node[above] {$y$};
+\begin{tikzpicture}[fig, x=1.4\figunit, y=0.2\figunit, baseline=(current bounding box.north)]
+  \draw[->] (-2.2,0) -- (6.6,0) node[right] {$x$};
+  \draw[->] (0,-20) -- (0,10) node[above] {$y$};
   \begin{scope}
-    \clip (-2.2,-20) rectangle (6.6,9);
-    \draw[line width=1.1pt, domain=-1.6:5.6, samples=80, smooth] plot (\x,{2*(\x+1)*(\x-5)});
+    \clip (-2.2,-20) rectangle (6.4,10);
+    \draw[line width=1.1pt, domain=-1.7:5.7, samples=80, smooth] plot (\x,{2*(\x+1)*(\x-5)});
   \end{scope}
-  \fill (-1,0) circle (0.9mm) node[above left] {$-1$};
-  \fill (5,0) circle (0.9mm) node[above right] {$5$};
-  \fill (0,-10) circle (0.9mm) node[left] {$(0,-10)$};
+  \fill (-1,0) circle (0.9mm) node[below left=1pt] {$-1$};
+  \fill (5,0) circle (0.9mm) node[below right=1pt] {$5$};
+  \fill (0,-10) circle (0.9mm) node[above right=1pt] {$(0,-10)$};
 \end{tikzpicture}}
 
 % ---- y = x^2 - 2x - 3 and y = 2x - 3 meeting at (0,-3) and (4,5) (lesson 4).

@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage{docstyle}
+\renewcommand\sheetname{Handout 3 \textperiodcentered{} Quadratics and the discriminant}
+
+\begin{document}
+\sheethead{Lesson 3 \textperiodcentered{} Quadratics and the Discriminant}
+  {NCEA Level 2 Mathematics \textperiodcentered{} Algebra}{Handout}
+
+\begin{keybox}[title={The one idea: get = 0 first}]
+A product is zero only when one of its factors is zero. So $(x-3)(x+2) = 0$ gives $x = 3$ or $x = -2$, but $(x-3)(x+2) = 6$ tells you nothing about either bracket.
+\textbf{Rearrange to $ax^{2} + bx + c = 0$ before you do anything else.} Then three tools work: factorise, the formula, and the \Tdisc{} $b^{2} - 4ac$, which counts the solutions before you find them.
+\end{keybox}
+
+% =================================================================== 1
+\section{Solving a quadratic}\label{h3:solve}
+\begin{keybox}[title={Write it in this order}]
+\begin{enumerate}
+\item Rearrange to $ax^{2} + bx + c = 0$. Divide through by a common factor if there is one.
+\item Try to factorise. If it factorises, set each bracket to zero.
+\item If it does not, use the formula (on the formula sheet), with $a$, $b$, $c$ \textbf{in brackets}:
+\[ x = \frac{-b \pm \sqrt{b^{2} - 4ac}}{2a} \]
+\item Give exact answers (surds) when asked; otherwise round at the end.
+\end{enumerate}
+\end{keybox}
+
+\begin{multicols}{2}
+\textbf{Example 1.} Solve $x(x+2) = 15$.
+\begin{align*}
+x^{2} + 2x - 15 &= 0\\
+(x+5)(x-3) &= 0\\
+x = \mathbf{-5} \text{ or } x &= \mathbf{3}
+\end{align*}
+\mtag{u}
+Not $x = 15$: the right side was not zero.
+
+\textbf{Example 2.} Solve $2x^{2} - 5x - 1 = 0$.\par
+$a = 2$, $b = -5$, $c = -1$:
+\[ x = \frac{-(-5) \pm \sqrt{(-5)^{2} - 4(2)(-1)}}{2(2)} = \frac{5 \pm \sqrt{33}}{4} \]
+$x = \mathbf{2.686}$ or $x = \mathbf{-0.186}$ \mtag{u}
+\columnbreak
+
+\textbf{Example 3.} Solve $x^{2} - 6x + 2 = 0$ by completing the square.
+\begin{align*}
+x^{2} - 6x &= -2\\
+(x - 3)^{2} - 9 &= -2\\
+(x - 3)^{2} &= 7\\
+x &= \mathbf{3 \pm \sqrt{7}}
+\end{align*}
+\mtag{u}
+Halve the $x$ coefficient ($-6 \to -3$) and take away its square.
+
+\textbf{Example 4.} Solve $x^{4} - 13x^{2} + 36 = 0$.\par
+Let $u = x^{2}$: $u^{2} - 13u + 36 = (u-4)(u-9) = 0$, so $x^{2} = 4$ or $x^{2} = 9$: $x = \mathbf{\pm 2}$ or $\mathbf{\pm 3}$. \mtag{r}
+\end{multicols}
+
+% =================================================================== 2
+\section{From the roots back to the equation}\label{h3:roots}
+A root $x = r$ comes from the factor $(x - r)$; a root $x = \dfrac{p}{q}$ comes from the factor $(qx - p)$, which keeps the coefficients whole.
+\begin{multicols}{2}
+\textbf{Example 5.} A quadratic has roots $\dfrac{3}{5}$ and $-2$. Find it with whole-number coefficients.
+\begin{align*}
+x = \tfrac{3}{5} &\Rightarrow (5x - 3)\\
+x = -2 &\Rightarrow (x + 2)\\
+(5x-3)(x+2) &= \mathbf{5x^{2} + 7x - 6 = 0}
+\end{align*}
+\mtag{r}
+\columnbreak
+
+\textbf{Example 6.} A parabola crosses the $x$-axis at $-1$ and $5$ and passes through $(0, -10)$.
+\begin{align*}
+y &= a(x+1)(x-5)\\
+-10 &= a(1)(-5) \;\Rightarrow\; a = 2\\
+y &= \mathbf{2x^{2} - 8x - 10}
+\end{align*}
+\mtag{r}
+\end{multicols}
+
+% =================================================================== 3
+\section{The discriminant}\label{h3:disc}
+\[ \Delta = b^{2} - 4ac \]
+\begin{center}
+\setlength\figunit{4.5mm}
+\begin{tabular}{@{}c c c@{}}
+\DiscPanel{-1} & \DiscPanel{0} & \DiscPanel{1}\\[1mm]
+$b^{2} - 4ac > 0$ & $b^{2} - 4ac = 0$ & $b^{2} - 4ac < 0$\\
+two different real roots & one repeated root (equal roots) & no real roots
+\end{tabular}
+\end{center}
+``Real roots'' (without ``different'') means $b^{2} - 4ac \geq 0$.
+
+\begin{keybox}[title={Write it in this order (find $k$)}]
+\begin{enumerate}
+\item Read the condition and choose the sign: $> 0$, $= 0$, $< 0$ or $\geq 0$.
+\item Write $a$, $b$, $c$, each \textbf{in brackets}, with $k$ wherever it appears.
+\item Substitute into $b^{2} - 4ac$ and solve the equation or inequality. Dividing an inequality by a negative number \textbf{turns it round}.
+\end{enumerate}
+\end{keybox}
+
+\begin{multicols}{2}
+\textbf{Example 7.} $x^{2} + kx + 16 = 0$ has equal roots. Find $k$.
+\[ k^{2} - 4(1)(16) = 0 \;\Rightarrow\; k = \mathbf{\pm 8} \]
+\mtag{u}
+
+\textbf{Example 8.} $2x^{2} + 6x + p = 0$ has two different real roots. Find $p$.
+\[ 36 - 8p > 0 \;\Rightarrow\; -8p > -36 \;\Rightarrow\; \mathbf{p < 4.5} \]
+\mtag{r}
+\columnbreak
+
+\textbf{Example 9.} $kx^{2} + 4x + (k - 3) = 0$ has equal roots. Find $k$.
+\begin{align*}
+4^{2} - 4(k)(k-3) &= 0\\
+k^{2} - 3k - 4 &= 0\\
+k = \mathbf{4} \text{ or } k &= \mathbf{-1}
+\end{align*}
+\mtag{r}
+\end{multicols}
+
+% =================================================================== 4
+\section{Proving something about the roots}\label{h3:prove}
+\textbf{Example 10.} Show that one solution of $x^{2} - 5kx + 4k^{2} = 0$ ($k \neq 0$) is four times the other.
+\[ (x - k)(x - 4k) = 0 \;\Rightarrow\; x = k \text{ or } x = 4k, \text{ and } 4k = 4 \times k. \]
+\mtag{r}
+Or by the formula: $\Delta = 25k^{2} - 16k^{2} = 9k^{2}$, so $x = \dfrac{5k \pm 3k}{2} = 4k$ or $k$. \textbf{Finish with the sentence the question asks for.}
+
+\textbf{Always real roots.} To show an equation has real roots for \textbf{every} $k$, write $\Delta$ as a square: $(k+2)^{2} - 8k = (k-2)^{2} \geq 0$.
+
+% =================================================================== 5
+\section{Versions the marker won't accept}\label{h3:wontaccept}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{0.3\textwidth} >{\raggedright}p{0.26\textwidth} X@{}}
+\toprule
+\textbf{Question} & \textbf{Answer given} & \textbf{Why it falls short} \\ \midrule
+Roots $-\frac{2}{3}$ and $4$; give $ax^{2} + bx + c = 0$ with whole numbers & $x^{2} - \frac{10}{3}x - \frac{8}{3} = 0$ & Correct but not whole numbers: Achievement evidence only. Multiply by 3: $3x^{2} - 10x - 8 = 0$. \tabularnewline
+$y = 0$ has exactly one solution & $144 - 8k > 0$ & Wrong condition: one solution means $\Delta = 0$. \tabularnewline
+Show one solution is twice the other & $x = k$ or $x = 2k$ & Add the conclusion: ``so one solution is twice the other''. \tabularnewline
+\bottomrule
+\end{tabularx}
+
+% =================================================================== 6
+\section{Ways to lose marks}\label{h3:lose}
+From the wording of the marking schedules and from teaching observation; numbered for marking.
+\begin{description}[leftmargin=10mm, labelwidth=9mm, labelsep=1mm, font=\normalfont]
+\item[\textbf{\Lref{rootsign}}] \textbf{\Ltext{rootsign}.} A root of $4$ gives $(x - 4)$, a root of $\frac{2}{3}$ gives $(3x - 2)$.
+\item[\textbf{\Lref{whole}}] \textbf{\Ltext{whole}.} Clear fractions before expanding, or multiply through at the end.
+\item[\textbf{\Lref{notzero}}] \textbf{\Ltext{notzero}.} $x(x+3) = 10$ does not give $x = 10$.
+\item[\textbf{\Lref{disccond}}] \textbf{\Ltext{disccond}.} Two different: $>0$. Equal or exactly one: $=0$. None: $<0$. Real: $\geq 0$.
+\item[\textbf{\Lref{discbracket}}] \textbf{\Ltext{discbracket}.} $(-5)^{2} = 25$, but $-5^{2} = -25$. Brackets round $b$, and round $k$ terms.
+\end{description}
+
+% =================================================================== 7
+\section{Quick review}\label{h3:review}
+\renewcommand\arraystretch{1.45}
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Factorising (Lesson 1)}\par\smallskip
+\begin{tabular}{@{}l l@{}}
+\toprule
+$x^{2} + 5x + 6$ & $(x+2)(x+3)$ \\
+$x^{2} - 9$ & $(x-3)(x+3)$ \\
+$2x^{2} + 5x + 2$ & $(2x+1)(x+2)$ \\
+$3x^{2} - 6x$ & $3x(x-2)$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\textbf{Linear inequalities}\par\smallskip
+\begin{tabular}{@{}l l@{}}
+\toprule
+$3x - 2 > 7$ & $x > 3$ \\
+$12 - 4k < 0$ & $-4k < -12$, so $k > 3$ \\
+$-2p \geq 8$ & $p \leq -4$ \\
+\bottomrule
+\end{tabular}\par\smallskip
+Multiply or divide by a negative: turn the sign round.
+\end{minipage}
+\end{document}

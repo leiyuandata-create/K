@@ -56,6 +56,13 @@ TABLE = {
         "ms/q4": (29, "ms", [(49, 72), (327, 479)]),        # header + (c)(i)
         "ms/q5": (29, "ms", [(49, 72), (479, 697)]),        # header + (c)(ii); stop above the grade row
     },
+    3: {
+        "ppfull/q1": (10, "booklet", 447, FOOT),   # 2021 Q ONE (b)
+        "ppfull/q2": (11, "booklet", 54, FOOT),    # (c)
+        "ppfull/q3": (37, "booklet", 55, FOOT),    # 2022 Q TWO (a), (b)(i)(ii)
+        "ms/q1": (3, "ms", [(127, 172), (232, END)]),      # header + (b), (c)
+        "ms/q3": (27, "ms", [(63, 86), (86, 289)]),        # header + (a), (b)(i)(ii)
+    },
 }
 
 

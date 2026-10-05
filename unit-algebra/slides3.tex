@@ -1,0 +1,612 @@
+\documentclass[aspectratio=169,11pt,xcolor=table,t]{beamer}
+\usepackage{slidestyle}
+\externaldocument[H-]{handout3}
+\ifdefined\notesmode
+  \setbeameroption{show only notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+\newcommand\hp[1]{\fref{Handout p.\pageref{H-#1}}}
+
+\begin{document}
+
+% ================================================================ opening
+\begin{frame}{Lesson 3 \textperiodcentered{} Quadratics and the Discriminant}
+\relax
+NCEA Level 2 Mathematics \textperiodcentered{} Algebra\par\vspace{3mm}
+{\bfseries By the end of today you can:}
+\begin{enumerate}
+\item solve any quadratic: factorise, formula, complete the square
+\item build the equation back from its roots
+\item use $b^{2} - 4ac$ to count roots and find an unknown $k$
+\item prove a fact about the roots
+\end{enumerate}
+\note{%
+Teaching line, not a question slide.\par
+100 分钟。时间：对作业 0:00–0:05；Do Now 0:05–0:10；核心思想 0:10–0:12；Block 1 解方程 0:12–0:30；Block 2 由根求方程 0:30–0:42；Block 3 判别式 0:42–1:00；Block 4 证明 1:00–1:05；Classwork 1:05–1:25；真题演练 1:25–1:35；收尾 1:35–1:40。\par
+发四份纸：Handout 3、Classwork 3、Practice set 3、Homework 3。\par
+真题只有 4 页，时间够就让学生在 Practice set 上完整写，按评分表批。\par
+Say it:\par
+quadratic = kwod-RAT-ik\par
+discriminant = dis-KRIM-ih-nunt}
+\end{frame}
+
+\begin{frame}{Do Now}
+\relax
+\qline{1} Evaluate $\log_{2} 64$.
+\qline{2} Write $\log 12 - \log 3$ as a single log.
+\qline{3} Solve $3^{x} = 20$.
+\qline{4} Factorise $x^{2} - 2x - 15$.
+\qline{5} Expand $(2x - 3)^{2}$.
+\note{%
+Q1 6\par
+Q2 $\log 4$\par
+Q3 $x = 2.727$\par
+Q4 $(x-5)(x+3)$\par
+Q5 $4x^{2} - 12x + 9$\par
+Short solution:\par
+Q3 $x = \dfrac{\log 20}{\log 3}$\par
+Q5 $(2x)^{2} + 2(2x)(-3) + 9$\par
+Watch for:\par
+Q2 答 $\dfrac{\log 12}{\log 3}$：减法对应分数在 log 里面（L12）\par
+Q5 漏掉中间项：$4x^{2} + 9$\par
+Diagnostic:\par
+Q1–Q3 错：Lesson 2 没稳，作业 2 的错题下节课再看一次\par
+Q4、Q5 错：今天 Block 1 前的 Quick review 要做足}
+\end{frame}
+
+\begin{frame}{The one idea}
+\relax
+\fbx{(x-3)(x+2) = 0\qquad\qquad (x-3)(x+2) = 6}
+A product is zero only when one factor is \gap[16mm].
+\ask{Which equation can you solve by setting each bracket to zero? Why not the other?}
+\hp{h3:solve}
+\note{%
+Gap zero\par
+Q the first; in the second, $x - 3 = 6$ does not follow\par
+Short solution:\par
+Q 第二个先展开：$x^{2} - x - 12 = 0$，再分解：$(x-4)(x+3) = 0$\par
+Watch for:\par
+学生写 $x - 3 = 6$：乘积等于 6 时每个括号可以是任何数（\Lref{notzero}）\par
+Ask:\par
+$2 \times 3 = 6$，$1 \times 6 = 6$：哪个括号等于 6？（不一定）}
+\end{frame}
+
+\begin{frame}{Quick review: factorising}
+\relax
+\qline{1} $x^{2} + 5x + 6$
+\qline{2} $x^{2} - 9$
+\qline{3} $2x^{2} + 5x + 2$
+\qline{4} $3x^{2} - 6x$
+\hp{h3:review}
+\note{%
+Q1 $(x+2)(x+3)$\par
+Q2 $(x-3)(x+3)$\par
+Q3 $(2x+1)(x+2)$\par
+Q4 $3x(x-2)$\par
+Short solution:\par
+Q3 $ac = 4$：4 和 1\par
+Watch for:\par
+Q4 写 $3(x^{2} - 2x)$：没有提完公因式（L4）}
+\end{frame}
+
+% ================================================================ block 1: solving
+\begin{frame}{Set each factor to zero}
+\relax
+\wline{(x - 3)(2x + 5) = 0}
+\wline{x - 3 = 0 \quad\text{or}\quad 2x + 5 = 0}
+\wline{x = \underline{\hspace{9mm}} \quad\text{or}\quad x = \underline{\hspace{12mm}}}
+\ask{Why is the second answer not $x = 5$?}
+\hp{h3:solve}
+\note{%
+Gap 3; $-\dfrac{5}{2}$\par
+Q $2x + 5 = 0$ gives $2x = -5$\par
+Short solution:\par
+Q 每个括号单独解：移项再除以系数\par
+Watch for:\par
+答 $x = -5$：忘了除以 2}
+\end{frame}
+
+\begin{frame}{Get = 0 first}
+\relax
+Solve $x(x + 2) = 15$.
+\wline{x^{2} + 2x - 15 = 0}
+\wline{(x + 5)(x - 3) = 0}
+\wline{x = \underline{\hspace{9mm}} \quad\text{or}\quad x = \underline{\hspace{9mm}}}
+\ask{Sam writes $x = 15$ or $x + 2 = 15$. What did Sam skip?}
+\hp{h3:solve}
+\note{%
+Gap $-5$; 3\par
+Q rearranging to $= 0$ before setting brackets to zero\par
+Short solution:\par
+Q 展开，移项成 $= 0$，再分解；检查 $3 \times 5 = 15$\par
+Watch for:\par
+\Lref{notzero}\par
+Say it:\par
+rearrange = ree-uh-RAYNJ}
+\end{frame}
+
+\begin{frame}{When it won't factorise: the formula}
+\relax
+\fbx{x = \frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}}
+Solve $2x^{2} - 5x - 1 = 0$:\quad $a = 2$,\ \ $b = \gap[12mm]$,\ \ $c = -1$
+\wline{x = \frac{-(-5) \pm \sqrt{(-5)^{2} - 4(2)(-1)}}{2(2)} = \frac{5 \pm \sqrt{33}}{4}}
+\ask{What is $-b$ when $b = -5$?}
+\hp{h3:solve}
+\note{%
+Gap $-5$\par
+Q $+5$; $x = 2.686$ or $x = -0.186$\par
+Short solution:\par
+Q 把 $a$、$b$、$c$ 连同符号放进括号再代入；公式在 formula sheet 上\par
+Watch for:\par
+写 $-5$ 或 $-5^{2} = -25$：没有括号（\Lref{discbracket}）\par
+只把 $\sqrt{33}$ 除以 4：整个分子都除以 $2a$}
+\end{frame}
+
+\begin{frame}{Completing the square}
+\relax
+Solve $x^{2} - 6x + 2 = 0$ exactly.
+\wline{x^{2} - 6x = -2}
+\wline{(x - 3)^{2} - \underline{\hspace{9mm}} = -2}
+\wline{(x - 3)^{2} = 7}
+\wline{x = \underline{\hspace{20mm}}}
+\ask{Where does the 3 in $(x - 3)$ come from?}
+\hp{h3:solve}
+\note{%
+Gap 9; $3 \pm \sqrt{7}$\par
+Q half of the $x$ coefficient, $-6$\par
+Short solution:\par
+Q $(x-3)^{2} = x^{2} - 6x + 9$，所以多出来的 9 要减掉\par
+开方时要 $\pm$\par
+Watch for:\par
+只写 $3 + \sqrt{7}$：漏掉负的那个\par
+Exactly 表示留 surd，不要小数}
+\end{frame}
+
+\begin{frame}{A quadratic in disguise}
+\relax
+Solve $x^{4} - 13x^{2} + 36 = 0$.\par
+Let $u = x^{2}$:
+\wline{u^{2} - 13u + 36 = 0}
+\wline{(u - 4)(u - 9) = 0}
+\wline{x^{2} = 4 \quad\text{or}\quad x^{2} = 9}
+\ask{How many values of $x$ are there?}
+\hp{h3:solve}
+\note{%
+Q four: $x = \pm 2$ or $x = \pm 3$\par
+Short solution:\par
+Q 和 Lesson 2 的 $3^{2x}$ 一样：认出“平方的平方”\par
+Watch for:\par
+只写 $u = 4$，$u = 9$ 就停：要换回 $x$\par
+只写正根}
+\end{frame}
+
+\begin{frame}{Spot the error (1)}
+\relax
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{(a)\ \ Solve x\hsp{2} + 3x = 10.\qquad x(x + 3) = 10, so x = 10 or x = 7\par
+(b)\ \ Solve x\hsp{2} \hminus 4x \hminus 2 = 0.\qquad x = \hfr{\hminus4 $\pm$ $\sqrt{16 + 8}$}{2} = \hminus2 $\pm$ $\sqrt{6}$}
+\end{samcard}
+\hp{h3:lose}
+\note{%
+1. (a) set to zero first: $x^{2} + 3x - 10 = 0$, $(x+5)(x-2) = 0$, so $x = -5$ or $x = 2$ (\Lref{notzero})\par
+2. (b) $b = -4$, so $-b = +4$: $x = 2 \pm \sqrt{6}$ (\Lref{discbracket})\par
+Short solution:\par
+(a) $x = -5$ or $x = 2$\par
+(b) $x = 4.449$ or $x = -0.449$\par
+Watch for:\par
+(a) Sam 的第二个答案是 $x + 3 = 10$ 解出来的 7：两个错误都来自没等于 0\par
+(b) 检查：$x = 2 + \sqrt{6}$ 代回去等于 0}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Solve $4x^{2} = 11x + 3$.
+\qline{Q2} Solve $x^{2} + 4x - 7 = 0$. Give your answers to 3 decimal places.
+\qline{Q3} Solve $x^{4} - 10x^{2} + 9 = 0$.
+\hp{h3:solve}
+\note{%
+Q1 $x = 3$ or $x = -\dfrac{1}{4}$\par
+Q2 $x = 1.317$ or $x = -5.317$\par
+Q3 $x = \pm 1$ or $x = \pm 3$\par
+Short solution:\par
+Q1 $4x^{2} - 11x - 3 = (4x + 1)(x - 3)$ (u)\par
+Q2 $x = -2 \pm \sqrt{11}$ (u)\par
+Q3 $(u - 1)(u - 9)$ (r)\par
+Watch for:\par
+Q1 先移项（\Lref{notzero}）\par
+Q2 完全平方：$(x + 2)^{2} = 11$ 也可以}
+\end{frame}
+
+% ================================================================ block 2: roots
+\begin{frame}{From the roots back to the equation}
+\relax
+A quadratic has roots $4$ and $-3$.
+\wline{x = 4 \;\Rightarrow\; (x - \underline{\hspace{7mm}})\qquad x = -3 \;\Rightarrow\; (x + \underline{\hspace{7mm}})}
+\wline{(x - 4)(x + 3) = 0}
+\wline{x^{2} - x - 12 = 0}
+\ask{Why is the bracket $(x - 4)$ and not $(x + 4)$?}
+\hp{h3:roots}
+\note{%
+Gap 4; 3\par
+Q $x = 4$ must make the bracket zero: $4 - 4 = 0$\par
+Short solution:\par
+Q 根是让括号等于 0 的数；倒推回去符号相反\par
+Watch for:\par
+$(x + 4)(x - 3)$：符号反了（\Lref{rootsign}）}
+\end{frame}
+
+\begin{frame}{Fraction roots: keep the coefficients whole}
+\relax
+A quadratic has roots $\dfrac{3}{5}$ and $-2$.
+\wline{x = \frac{3}{5} \;\Rightarrow\; 5x = 3 \;\Rightarrow\; (\,\underline{\hspace{16mm}}\,)}
+\wline{(5x - 3)(x + 2) = 0}
+\wline{5x^{2} + 7x - 6 = 0}
+\ask{Why use $(5x - 3)$ and not $\bigl(x - \frac{3}{5}\bigr)$?}
+\hp{h3:roots}
+\note{%
+Gap $5x - 3$\par
+Q it gives whole-number coefficients straight away\par
+Short solution:\par
+Q 用 $\Bigl(x - \dfrac{3}{5}\Bigr)$ 也可以，但最后整个方程要乘 5\par
+Watch for:\par
+题目要 whole numbers 时留分数：只算 u（\Lref{whole}）}
+\end{frame}
+
+\begin{frame}{Equation of a parabola from its graph}
+\relax
+\twocol{0.5}{%
+The parabola crosses the $x$-axis at $-1$ and $5$, and passes through $(0, -10)$.\par\smallskip
+$y = a(x + 1)(x - 5)$\par\smallskip
+$-10 = a(\underline{\hspace{7mm}})(\underline{\hspace{9mm}})$}{0.47}{%
+\setlength\figunit{5mm}%
+\FigRootsParabola}
+\ask{What does the point $(0, -10)$ give you?}
+\hp{h3:roots}
+\note{%
+Gap 1; $-5$\par
+Q the value of $a$: $a = 2$, so $y = 2x^{2} - 8x - 10$\par
+Short solution:\par
+Q 截距给出两个括号，第三个点求 $a$；代 $x = 0$，$y = -10$\par
+Watch for:\par
+忘了 $a$，写 $y = (x + 1)(x - 5)$：这条抛物线过 $(0, -5)$，不过 $(0, -10)$\par
+Say it:\par
+parabola = puh-RAB-uh-luh}
+\end{frame}
+
+\begin{frame}{Spot the error (2)}
+\relax
+Find a quadratic with roots $\dfrac{2}{3}$ and $-4$, with whole-number coefficients.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{(x + \hfr{2}{3})(x \hminus 4) = 0\qquad x\hsp{2} \hminus \hfr{10}{3}x \hminus \hfr{8}{3} = 0}
+\end{samcard}
+\hp{h3:lose}
+\note{%
+1. the root $\dfrac{2}{3}$ gives $(3x - 2)$, and the root $-4$ gives $(x + 4)$: both signs reversed (\Lref{rootsign})\par
+2. the coefficients are not whole numbers (\Lref{whole})\par
+Short solution:\par
+$(3x - 2)(x + 4) = 3x^{2} + 10x - 8 = 0$\par
+Watch for:\par
+检查：$x = \dfrac{2}{3}$ 代进 Sam 的括号 $\Bigl(x + \dfrac{2}{3}\Bigr)$ 不等于 0}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Find a quadratic with roots $-5$ and $\dfrac{1}{2}$, with whole-number coefficients.
+\qline{Q2} Find a quadratic with roots $\dfrac{3}{4}$ and $-\dfrac{2}{5}$, with whole-number coefficients.
+\qline{Q3} A parabola has $x$-intercepts 2 and 6 and $y$-intercept 24. Find its equation.
+\hp{h3:roots}
+\note{%
+Q1 $2x^{2} + 9x - 5 = 0$\par
+Q2 $20x^{2} - 7x - 6 = 0$\par
+Q3 $y = 2x^{2} - 16x + 24$\par
+Short solution:\par
+Q1 $(x + 5)(2x - 1)$ (u)\par
+Q2 $(4x - 3)(5x + 2)$ (r)\par
+Q3 $y = a(x - 2)(x - 6)$，$24 = 12a$，$a = 2$ (r)\par
+Watch for:\par
+Q2 $-\dfrac{2}{5}$ 给 $(5x + 2)$（\Lref{rootsign}）}
+\end{frame}
+
+% ================================================================ block 3: discriminant
+\begin{frame}{Quick review: inequalities}
+\relax
+\qline{1} Solve $3x - 2 > 7$.
+\qline{2} Solve $12 - 4k < 0$.
+\qline{3} Solve $-2p \geq 8$.
+\hp{h3:review}
+\note{%
+Q1 $x > 3$\par
+Q2 $k > 3$\par
+Q3 $p \leq -4$\par
+Short solution:\par
+Q2 $-4k < -12$，除以 $-4$ 要变号\par
+Watch for:\par
+Q2、Q3 不变号：判别式求 $k$ 的范围时同样的错\par
+Say it:\par
+inequality = in-ih-KWOL-ih-tee}
+\end{frame}
+
+\begin{frame}{What $b^{2} - 4ac$ tells you}
+\relax
+\setlength\figunit{4mm}%
+\hbox to\textwidth{\hfil\DiscPanel{-1}\hfil\DiscPanel{0}\hfil\DiscPanel{1}\hfil}
+\hbox to\textwidth{\hfil\makebox[34mm]{$b^{2}-4ac > 0$}\hfil\makebox[34mm]{$b^{2}-4ac = 0$}\hfil\makebox[34mm]{$b^{2}-4ac < 0$}\hfil}
+\hbox to\textwidth{\hfil\makebox[34mm]{\gap[14mm] roots}\hfil\makebox[34mm]{\gap[14mm] root}\hfil\makebox[34mm]{\gap[14mm] roots}\hfil}
+\ask{Where in the formula does $b^{2} - 4ac$ sit, and why does its sign matter?}
+\hp{h3:disc}
+\note{%
+Gap two; one (repeated); no real\par
+Q under the square root: a negative number has no real square root\par
+Short solution:\par
+Q $\pm\sqrt{\Delta}$：正数给两个不同的根，0 给一个，负数没有实根\par
+Watch for:\par
+“Equal roots”、“exactly one solution”、“touches the $x$-axis”都是 $= 0$}
+\end{frame}
+
+\begin{frame}{Counting roots}
+\relax
+How many real roots has $3x^{2} - 4x + 2 = 0$?
+\wline{b^{2} - 4ac = (-4)^{2} - 4(3)(2)}
+\wline{= 16 - 24 = \underline{\hspace{12mm}}}
+\ask{What does a negative discriminant tell you about the graph?}
+\hp{h3:disc}
+\note{%
+Gap $-8$\par
+Q it never touches the $x$-axis: no real roots\par
+Short solution:\par
+Q $\Delta < 0$，所以没有实根；不用解方程\par
+Watch for:\par
+$-4^{2} = -16$：$b$ 没加括号（\Lref{discbracket}）}
+\end{frame}
+
+\begin{frame}{Finding $k$: equal roots}
+\relax
+$x^{2} + kx + 16 = 0$ has equal roots. Find $k$.
+\wline{k^{2} - 4(1)(16) = \underline{\hspace{9mm}}}
+\wline{k^{2} = 64}
+\ask{Why are there two values of $k$?}
+\hp{h3:disc}
+\note{%
+Gap 0\par
+Q $k^{2} = 64$ gives $k = 8$ or $k = -8$\par
+Short solution:\par
+Q equal roots 就是 $\Delta = 0$；平方根有正负\par
+检查 $k = 8$：$x^{2} + 8x + 16 = (x + 4)^{2}$\par
+Watch for:\par
+只给 $k = 8$}
+\end{frame}
+
+\begin{frame}{Finding $k$: an inequality}
+\relax
+$2x^{2} + 6x + p = 0$ has two different real roots. Find the values of $p$.
+\wline{6^{2} - 4(2)(p) > 0}
+\wline{36 - 8p > 0}
+\wline{-8p > -36}
+\ask{When you divide by $-8$, what happens to the $>$ sign?}
+\hp{h3:disc}
+\note{%
+Q it turns round: $p < 4.5$\par
+Short solution:\par
+Q two different real roots 是 $> 0$；除以负数变号\par
+Watch for:\par
+答 $p > 4.5$（不变号）\par
+用 $\geq$：“different” 不能等于（\Lref{disccond}）}
+\end{frame}
+
+\begin{frame}{When $k$ is in more than one place}
+\relax
+$kx^{2} + 4x + (k - 3) = 0$ has equal roots. Find $k$.
+\wline{a = k,\quad b = 4,\quad c = \underline{\hspace{14mm}}}
+\wline{4^{2} - 4(k)(k - 3) = 0}
+\wline{k^{2} - 3k - 4 = 0}
+\ask{What are the two values of $k$?}
+\hp{h3:disc}
+\note{%
+Gap $k - 3$\par
+Q $k = 4$ or $k = -1$\par
+Short solution:\par
+Q $16 - 4k^{2} + 12k = 0$，除以 $-4$：$k^{2} - 3k - 4 = (k - 4)(k + 1)$ (r)\par
+Watch for:\par
+$c$ 不加括号：$4k \times k - 3$（\Lref{discbracket}）\par
+这是 Lesson 1 的展开 + 今天的分解}
+\end{frame}
+
+\begin{frame}{Spot the error (3)}
+\relax
+$x^{2} - 5x + k = 0$ has no real roots. Find the values of $k$.\par
+\textbf{Sam's answer has 2 errors.} Find each one, fix it, and say why it loses marks.
+\begin{samcard}
+\flawed{b\hsp{2} \hminus 4ac = \hminus5\hsp{2} \hminus 4(1)(k) = \hminus25 \hminus 4k\par
+no real roots, so \hminus25 \hminus 4k > 0,\ \ so k < \hminus6.25}
+\end{samcard}
+\hp{h3:lose}
+\note{%
+1. $(-5)^{2} = 25$, not $-25$: bracket the negative $b$ (\Lref{discbracket})\par
+2. no real roots needs $b^{2} - 4ac < 0$, not $> 0$ (\Lref{disccond})\par
+Short solution:\par
+$25 - 4k < 0$，$-4k < -25$，$k > 6.25$\par
+Watch for:\par
+检查 $k = 7$：$\Delta = 25 - 28 < 0$，没有实根}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Find the discriminant of $4x^{2} + 12x + 9 = 0$. What does it tell you?
+\qline{Q2} $x^{2} - 6x + k = 0$ has no real roots. Find the values of $k$.
+\qline{Q3} $mx^{2} + 2mx + 3 = 0$ has equal roots, and $m \neq 0$. Find $m$.
+\hp{h3:disc}
+\note{%
+Q1 0: one repeated root, $x = -\dfrac{3}{2}$\par
+Q2 $k > 9$\par
+Q3 $m = 3$\par
+Short solution:\par
+Q1 $144 - 144 = 0$；$(2x + 3)^{2} = 0$ (u)\par
+Q2 $36 - 4k < 0$ (r)\par
+Q3 $4m^{2} - 12m = 0$，$4m(m - 3) = 0$，$m \neq 0$ (r)\par
+Watch for:\par
+Q3 给出 $m = 0$：题目说 $m \neq 0$，而且 $m = 0$ 时不是二次方程}
+\end{frame}
+
+% ================================================================ block 4: proof
+\begin{frame}{Proving a fact about the roots}
+\relax
+Show that one solution of $x^{2} - 5kx + 4k^{2} = 0$ ($k \neq 0$) is four times the other.
+\wline{(x - k)(x - \underline{\hspace{9mm}}) = 0}
+\wline{x = k \quad\text{or}\quad x = 4k}
+\ask{What sentence must you write at the end?}
+\hp{h3:prove}
+\note{%
+Gap $4k$\par
+Q “so one solution is four times the other”\par
+Short solution:\par
+Q 两个数乘积 $4k^{2}$、和 $-5k$：$-k$ 和 $-4k$\par
+也可以用公式：$\Delta = 9k^{2}$，$x = \dfrac{5k \pm 3k}{2}$\par
+Watch for:\par
+只写 $x = k$ 或 $4k$ 没有结论：评分表要 correct conclusion\par
+Ask:\par
+为什么题目说 $k \neq 0$？（$k = 0$ 时两个解都是 0）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{Q1} Show that one solution of $2x^{2} - 7kx + 3k^{2} = 0$ ($k \neq 0$) is six times the other.
+\qline{Q2} Show that $x^{2} + (k + 2)x + 2k = 0$ has real roots for every value of $k$.
+\hp{h3:prove}
+\note{%
+Q1 $x = \dfrac{k}{2}$ or $x = 3k$, and $3k = 6 \times \dfrac{k}{2}$\par
+Q2 $\Delta = (k - 2)^{2} \geq 0$ for every $k$\par
+Short solution:\par
+Q1 $(2x - k)(x - 3k) = 0$ (r)\par
+Q2 $(k + 2)^{2} - 8k = k^{2} - 4k + 4 = (k - 2)^{2}$；平方不会是负数 (t)\par
+Watch for:\par
+Q2 只代几个 $k$ 试：不是 every value（L24 下节课会讲）}
+\end{frame}
+
+\begin{frame}{Classwork}
+\relax
+Classwork 3 \textperiodcentered{} about 20 minutes
+\begin{itemize}
+\item \textbf{Part A}: solving, the discriminant, roots to an equation
+\item \textbf{Part B}: finding $k$ and $p$; a parabola from three facts
+\item \textbf{Part C}: real roots for every $k$, explained
+\item \textbf{Extension}, if you finish
+\end{itemize}
+\note{%
+Teaching line, not a question slide.\par
+答案在 classwork3\_answers.pdf（同版面，红色答案）。\par
+A1 $\dfrac{1}{2}$、$-4$；A2 7、$-4$；A3 $0.869$、$-1.535$；A4 $-12$，没有实根；A5 $3x^{2} + x - 2 = 0$\par
+B1 $k = \pm 12$；B2 $p < 16$；B3 $y = 2x^{2} + 2x - 12$\par
+C：$\Delta = (k - 3)^{2} \geq 0$；$k = 3$ 时相等\par
+Extension：$x = \pm 1$ 或 $\pm 2$}
+\end{frame}
+
+% ================================================================ exam run
+\begin{frame}{Practice}
+\relax
+\qline{(b)} A quadratic equation has solutions of $x = -\dfrac{2}{3}$ and $x = 4$.\par\smallskip
+Find the original equation, giving your answer in the form of $ax^{2} + bx + c = 0$, where $a$, $b$, and $c$ are whole numbers.
+\fref{Practice set p.1}
+\note{%
+(b) $3x^{2} - 10x - 8 = 0$\par
+Short solution:\par
+(b) $(3x + 2)(x - 4) = 0$\par
+评分：系数不是整数、或因式形式错但展开一致，只算 u；正确方程是 r\par
+Watch for:\par
+$-\dfrac{2}{3}$ 给 $(3x + 2)$（\Lref{rootsign}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(c)} Consider a quadratic equation in the form $x^{2} - 3kx + 2k^{2} = 0$, where $k$ is a non-zero constant.\par\smallskip
+Show that one solution is twice the other solution.
+\fref{Practice set p.2}
+\note{%
+(c) $(x - k)(x - 2k) = 0$, so the solutions are $k$ and $2k$: one is twice the other\par
+Short solution:\par
+(c) 或者：$\Delta = 9k^{2} - 8k^{2} = k^{2}$，$x = \dfrac{3k \pm k}{2}$\par
+评分：分解出方程或算出判别式是 u；有效过程加结论是 r\par
+Watch for:\par
+最后一句结论不能省}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(a)} A quadratic equation, $ax^{2} + bx + c = 0$, has solutions of $\dfrac{1}{3}$ and $\dfrac{-2}{7}$.\par\smallskip
+Find the values of the integers $a$, $b$, and $c$.
+\fref{Practice set p.3}
+\note{%
+(a) $a = 21$, $b = -1$, $c = -2$\par
+Short solution:\par
+(a) $(3x - 1)(7x + 2) = 21x^{2} - x - 2$；评分：correct values of $a$, $b$, $c$ (u)\par
+Watch for:\par
+$a = -21$, $b = 1$, $c = 2$ 也对（两边乘 $-1$）\par
+$\dfrac{-2}{7}$ 给 $(7x + 2)$（\Lref{rootsign}）}
+\end{frame}
+
+\begin{frame}{Practice}
+\relax
+\qline{(b)} (i)\quad What is the discriminant of the equation $2x^{2} - 12x + 7 = 0$?
+\subline{(ii)} Suppose $y = 2x^{2} - 12x + k$, where $k$ is a constant.\par
+For what value of $k$ will the equation $y = 0$ have exactly one solution?
+\fref{Practice set p.3}
+\note{%
+(i) 88\par
+(ii) $k = 18$\par
+Short solution:\par
+(i) $(-12)^{2} - 4(2)(7) = 144 - 56$ (u)\par
+(ii) $(-12)^{2} - 4(2)(k) = 0$，$8k = 144$：代入是 u，正确的 $k$ 是 r\par
+Watch for:\par
+exactly one solution 是 $= 0$（\Lref{disccond}）}
+\end{frame}
+
+% ================================================================ close
+\begin{frame}{Ways to lose marks}
+\relax
+\begin{itemize}
+\item \textbf{\Lref{rootsign}} Root $\frac{2}{3}$ gives $(3x - 2)$; root $-4$ gives $(x + 4)$
+\item \textbf{\Lref{whole}} Whole-number coefficients when the question asks
+\item \textbf{\Lref{notzero}} Rearrange to $= 0$ before setting brackets to zero
+\item \textbf{\Lref{disccond}} Two different: $> 0$; equal: $= 0$; none: $< 0$
+\item \textbf{\Lref{discbracket}} $(-5)^{2} = 25$: brackets round $b$ and $k$
+\end{itemize}
+\hp{h3:lose}
+\note{%
+Teaching line, not a question slide.\par
+讲义上有 L17–L21 的完整说明\par
+让学生对照 Classwork 和 Practice set 的错，说出是哪一个 L}
+\end{frame}
+
+\begin{frame}{Summary}
+\relax
+\begin{itemize}
+\item Get $= 0$ first; then factorise, or use the formula with brackets.
+\item Roots to equation: root $\frac{p}{q}$ gives the factor $(qx - p)$.
+\item $b^{2} - 4ac$: $>0$ two, $=0$ one, $<0$ none.
+\item Proofs end with the sentence the question asks for.
+\end{itemize}
+\hp{h3:solve}
+\note{%
+Teaching line, not a question slide.\par
+让学生说出三种判别式情况对应的图}
+\end{frame}
+
+\begin{frame}{Homework}
+\relax
+Homework 3 \textperiodcentered{} about 60 minutes
+\begin{itemize}
+\item \textbf{Quick review}: four short items
+\item \textbf{Question One}: solving quadratics
+\item \textbf{Question Two}: equations from roots and graphs
+\item \textbf{Question Three}: the discriminant
+\end{itemize}
+Each question is marked like the real paper: N0 to E8.
+\note{%
+Teaching line, not a question slide.\par
+答案在 hw3\_answers.pdf；每题的 (e) 是 Excellence 题\par
+下节课开头 5 分钟对答案}
+\end{frame}
+
+\end{document}
