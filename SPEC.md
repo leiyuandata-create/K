@@ -1,12 +1,14 @@
-# Teaching Materials Specification v24
+# Teaching Materials Specification v25
 
 The single current version; replaces all earlier ones. Each rule is written once, where it applies: global §3, handouts §4, slides §5, homework, classwork and answer files §6, paired output §7.
 
-## Changes in v24 (from v23)
+## Changes in v25 (from v24)
 
-- The teacher PDF keeps the pronunciations: on every slide whose notes have Say it:, the right half shows the red answers on the left and a **blue Say it column** on the right (§5.9).
-- In the PPTX notes, Say it: lines are blue (same blue, RGB 0,70,190) (§9.2).
-- Check 7t also confirms the blue column appears on exactly the slides whose notes have Say it: (§10.2).
+- **The answers are written on the tutor's page itself.** On the teacher PDF the red answers no longer sit under the Chinese slide: they are typed into it, in the gaps and under each question (`\rd`, `\gapa`, `\ra`), and figure labels show the answer beside the letter (`\Lb`). Under the slide there is now one short Chinese **hint** (`\hint{}`): the time, how to run the slide, what she gets wrong. The blue Say it column is unchanged (§5.9).
+- **The Chinese deck is therefore the tutor's page, not a second screen.** It is set at smaller sizes to make room for the answers (`\sz` in slidestyle.sty) and is never shown to the student (§5.9).
+- **A PDF-only delivery is a parameter** (§2): English screen PDF, teacher PDF, tutor's pages alone; no PPTX, and the notes carry only the answer lines and Say it:.
+- **Check 7t is rewritten and check 14r is new** (§10.2): a hint on every tutor's page; a red answer on every page whose slide asks something; no answer macro in slides.tex; and a colour scan that finds no red on the blank sheets or on the projected deck.
+- **New traps recorded** (§9.1): a `cd` at the start of a compound command may not take effect in the container; redirecting a compile's output to `name.out` overwrites Beamer's outline file; `50 %` inside `\defL` comments out the rest of the line.
 - Nothing else changed. Existing check numbers are unchanged.
 
 ## 1. Ask before building
@@ -30,7 +32,8 @@ Triggers: Handout / Notes → §4; slides / PPT → §5; homework / answers → 
 | Student activity | handwriting on printed sheets / following the screen / self-study after class | handout printing, pace |
 | Language | English (Cambridge) / English screen + Chinese notes / bilingual / mainly Chinese | everything, notes included |
 | Depth | first contact / consolidation / exam sprint | depth, how much derivation to keep |
-| Tutor's subject background | specialist / non-specialist | non-specialist adds a Chinese-screen deck (§5.9) |
+| Tutor's subject background | specialist / non-specialist | non-specialist adds the tutor's pages in Chinese (§5.9) |
+| Delivery | PDF + PPTX / PDF only | PDF only: no PPTX export, notes hold answer lines and Say it: only (§5.9) |
 
 Defaults (say when used): far / printed handout / English / consolidation. Materials are always handed out in the lesson and collected at the end. Anything the student writes goes on a printed sheet.
 
@@ -525,18 +528,26 @@ Content the student met earlier (last term, or a test he has already sat) is rev
 - **Pace:** 60–90 seconds each. If the lesson runs long, the last Quick reviews move to the start of the next lesson. They are never cut from the homework, which carries a short quick-review section on the same topics with new items.
 - **No repeats:** homework quick-review items ask the same facts in a new form (a patient's symptom rather than a part's job), never the slide's wording.
 
-### 5.9 Chinese-screen deck (non-specialist tutor)
+### 5.9 Tutor's pages in Chinese (non-specialist tutor)
 
-When the tutor is not a specialist in the subject, the English deck comes with slides_zh.pptx (and slides_zh.pdf): the same deck with the screen in Chinese. It is for the tutor to prepare from and may be shown to the student; the exam stays English, so the English deck remains the teaching default.
+When the tutor is not a specialist in the subject, every slide gets a tutor's page: the same slide in Chinese with the answers written on it in red. The pages are joined to the English deck as slides_teacher.pdf. The exam stays English, so only the English deck is projected.
 
-- **Page for page.** Same frames in the same order, same figures, same gaps, same layout rules (§5.4 sizes, no answers on screen, split slides).
-- **Wording.** Sentences in Chinese. Every science term stays in English with the Chinese in brackets, e.g. stigma（柱头）, at least the first time it appears on each slide where it matters; in tables, the English term and the Chinese side by side. Sam's work in Spot the error stays in English, because the student marks English answers.
-- **Figure labels** switch to Chinese through `\zhdecktrue` and the `\zhen{中文}{English}` macro in shared.sty; lettered labels (A–H) stay letters.
-- **One source for the notes.** The Chinese screens live in slides_zh_frames.tex, one block per frame (`%%% FRAME n {title}`). tools/build_zh_deck.py joins each block with that frame's `\note{}` from slides.tex to write slides_zh.tex, so the notes are typed once and are identical in both decks (check 7z).
+- **Page for page.** Same frames in the same order and the same figures as slides.tex. The Chinese frames live in slides_zh_frames.tex, one block per frame (`%%% FRAME n {title}`).
+- **Wording.** Sentences in Chinese. Every science term stays in English with the Chinese in brackets, e.g. oviduct（输卵管）, at least the first time it appears on each page; in tables, the English term and the Chinese side by side. Sam's work in Spot the error stays in English, because the student marks English answers. A Workbook slide that quotes the booklet word for word is translated on the tutor's page; the hint says that the screen shows the original English.
+- **Answers on the page, in red** (RGB 200,16,46, bold), in the English the student should give, with brief Chinese where it helps:
+  - `\gapa{...}` fills a gap in place of `\gap`;
+  - `\ra{...}` puts the answer on its own indented line under a question;
+  - `\rd{...}` colours an answer inside a line or a table cell (it starts with `\leavevmode`: a colour whatsit at the start of a `p{}` cell otherwise opens an empty line, §3.3);
+  - figure labels use `\Lb{A}{ovary}{卵巢}`, which prints the letter on the projected deck and letter, red answer and Chinese on the tutor's page. A crop whose labels cannot carry text (number discs) lists its answers beside the figure.
+  - Card-ordering slides give the order in one red line.
+- **Smaller type.** The tutor's page is read on a laptop, not from the back of a room, and has to hold the answers as well. slidestyle.sty sets every size through `\sz{far}{leading}{tutor}{leading}` (body 15 pt projected, 11 pt on the tutor's page); the frames never set a size. Figures are given their own width in the Chinese frame, because their labels are longer.
+- **Hint.** Each block ends with `\hint{...}`: the time on the clock, how to run the slide, what she gets wrong (with the L-number), and anything the booklet leaves open. `\hint` typesets nothing on a slide. Two lines at most on a page without hard words.
+- **One source for the notes.** tools/build_zh_deck.py joins each block with that frame's `\note{}` from slides.tex to write slides_zh.tex, so the notes are typed once (check 7z). With a PDF-only delivery the notes hold just the answer lines and Say it:.
+- **Teacher PDF (slides_teacher.pdf).** tools/build_teacher.py writes teacher_pages.tex, one page per slide. Layout A (no hard words): page k of slides_zh_screen.pdf at 0.82 of the page width, framed and centred, the hint under it in a fixed-height `\vbox` (a hint that does not fit reports Overfull \vbox). Layout B (hard words): the slide at 0.74 of the width on the left with the hint under it, and on the right a full-height blue column headed "Say it 读音", 34 mm wide, one word per entry: the word in bold, its pronunciation unbroken (`\mbox`) on the next line. A pronunciation too wide for the column reports Overfull \hbox. The two columns are `\vtop`s top-aligned at height 0; the divider rule hangs below the baseline (`height0pt depth88mm`), or it adds its height to the page. build_teacher.sh joins slides_screen.pdf (left) and teacher_pages.pdf (right) into slides_teacher.pdf, presented like slides.pdf (§9.2): the left half goes to the projector. teacher_pages.pdf is also delivered on its own, for a tutor who reads it on a second device.
+- **Say it.** The Say it: lines are read from the slide's own `\note{}` in slides.tex, never retyped. A word said in a red answer or in a hint counts as said on that slide (check 13 runs on the Chinese deck too), so its Say it: line belongs to that slide's note.
+- **Nothing red reaches the student.** The answer macros exist only in slides_zh_frames.tex; check 7t refuses them in slides.tex, and check 14r scans the projected deck for red.
 - **No separate prep book.** A book laid out differently from the deck is harder to follow than the deck itself; do not add one unless asked.
-- **Teacher PDF (slides_teacher.pdf).** Each frame block in slides_zh_frames.tex carries `\answers{...}`: short answers to every gap and question on that slide, in the English the student should give, with brief Chinese where it helps; on slides with no question, one line on what to do. `\answers` typesets nothing on a slide. tools/build_teacher.py writes teacher_pages.tex, one page per slide: page k of slides_zh_screen.pdf at 0.63 of the width, framed, and the answers below in bold red in a fixed-height `\vbox` (an answer that does not fit reports Overfull \vbox). build_teacher.sh joins slides_screen.pdf (left) and teacher_pages.pdf (right) into slides_teacher.pdf, presented like slides.pdf (§9.2): the left half goes to the projector.
-- **Say it on the teacher page.** The Say it: lines are read from the slide's own `\note{}` in slides.tex, never retyped. A slide with hard words uses layout B: Chinese slide at 0.60 of the width with the red answers below it on the left, and on the right a full-height blue column headed "Say it 读音", one word per entry: the word in bold, its pronunciation unbroken (`\mbox`) on the next line. A pronunciation too wide for the column reports Overfull \hbox. A slide without hard words keeps layout A (slide 0.63 wide, answers full width). The two columns are `\vtop`s top-aligned at height 0; the divider rule hangs below the baseline (`height0pt depth86mm`), or it adds its height to the page.
-- Check 10s exempts this deck from "no Chinese on screen"; every other slide check runs on it.
+- Check 10s exempts the Chinese deck from "no Chinese on screen"; check 3 does not apply to it; every other slide check runs on it.
 
 ## 6. Homework, classwork and answer files
 
@@ -699,6 +710,9 @@ Fonts live in fonts/, loaded by fontspec with Path=, even when installed system-
   - Never reuse EOF for nested heredocs.
 - Shell scripts copied from a previous unit lose their executable bit. `chmod +x *.sh` before the first build.
 - Long jobs need a background run. OCR over a few hundred pages, or the mutation suite, exceeds a single command's time limit; start them with `nohup … &` and poll.
+- **A `cd` at the start of a compound command may silently not take effect**, and the rest then runs in the home directory (a stray texput.log there is the sign). Enter the unit with `pushd` and stop unless `pwd` is the unit folder; the build scripts `cd "$(dirname "$0")"` themselves.
+- **Never redirect a compile's output to `<jobname>.out`.** That is Beamer's outline file; the next compile reads the captured text and stops with "Missing { inserted".
+- **A bare `%` inside `\defL{}{}{}` text comments out the rest of the line** and the file ends inside the macro ("File ended while scanning use of \defL"). Write `50\,\%`.
 - Names that clash or mislead:
   - `\marks` is an e-TeX primitive, and `\tag` is amsmath's (loaded by Beamer). Use `\mk`, `\smk`, `\qtag`.
   - `\mk{` is not a substring of `\smk{`. Any tool that searches the source for a mark allocation must look for both spellings; one that looks only for the short one silently matches nothing.
@@ -860,9 +874,10 @@ All items must be zero before delivery. Items 1–6 and 12–14 cover LaTeX, PDF
 | 11 | Notes maths truly typeset | Native branch only: m:f type not lin/skw; the joined m:t text per oMath has no /, ^ or Unicode sub/superscripts. Note prose has no ^, no Unicode sub/superscripts, no unspaced a/b. Each source $...$ has one native equation plus fallback. Units, codes and file names are whitelisted; spaced prose slashes are allowed. | 0 |
 | 12 | Spot the error integrity | Every Spot the error frame states "has N errors" on screen and holds `\flawed{}`; its note numbers exactly 1. … N., each line with an L-reference. `\flawed{}` appears in no other frame. In sheets, every `\flawed{}` is followed by a bold "N errors" and an answer block numbered 1 … N with at least N `\Lref{}`. | 0 |
 | 13 | Say it: once, where first said | Across the deck, each word is pronounced in at most one Say it: block, and no earlier slide uses the word on screen or in its notes. Match on the word stem, not the whole word, or a plural slips through. | 0 |
-| 7t | Teacher PDF | Every frame block in slides_zh_frames.tex has `\answers{}`; teacher pages = joined pages = frames; joined pages are double width; teacher pages pass 1c; the blue Say it column appears on exactly the slides whose notes have Say it:. | 0 |
+| 7t | Teacher PDF | Every frame block in slides_zh_frames.tex has `\hint{}`. Every block whose English frame asks something (a `\gap`, a question mark, `\flawed`, or a question title) shows a red answer: `\rd`, `\ra`, `\gapa`, or a labelled figure. No frame of slides.tex uses an answer macro. Teacher pages = joined pages = frames; joined pages are double width; teacher pages pass 1c; the blue Say it column appears on exactly the slides whose notes have Say it:. | 0 |
 | 7z | Chinese deck paired | slides_zh.tex has the same number of frames as slides.tex, and each frame's `\note{}` is identical. | 0 |
 | 14 | Blank and answer layouts match | For each sheet pair: equal page counts, and every word at the left margin present on the same page of the answer version at the same height (≤ 0.5 pt). The answer version holds extra left-margin words (the answers), so the two lists cannot be zipped — each blank word is looked up in the answer page. Dot leaders are excluded: every rule prints the same run of dots, so comparing them by position pairs unrelated rules. The practice set's mark-scheme pages are identified and dropped first (§6.3). | 0 |
+| 14r | No red where the student looks | Render every page of the blank sheets and of slides_screen.pdf and count pixels of the answer red. The scan is by colour, so a drawn answer is caught as well as a typed one; the booklet crops are greyscale. Tested by pointing it at an answer version. | 0 |
 
 ### 10.3 Seven disciplines from practice
 

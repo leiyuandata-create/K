@@ -1,0 +1,122 @@
+% slidestyle.sty -- Human reproduction review slides. Far viewing distance (one-to-one
+% lesson shown on a TV): sizes follow the spec 5.4 "far" column. All text
+% goes through the size macros below; slides.tex never sets a size.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{slidestyle}[2026/10/07 Human reproduction slides]
+
+\RequirePackage{type1cm}
+\RequirePackage{fix-cm}
+\RequirePackage{amssymb}
+\RequirePackage{mathspec}
+\setsansfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmainfont[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]{texgyreheros}
+\setmathsfont(Digits,Latin)[Path=fonts/, Extension=.otf,
+  UprightFont=*-regular, ItalicFont=*-italic]{texgyreheros}
+\setmathrm[Path=fonts/, Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic]{texgyreheros}
+% Chinese: in \note{} (tutor notes) and on the screen of slides_zh.tex
+\RequirePackage{xeCJK}
+\setCJKmainfont[Path=fonts/, AutoFakeBold=2]{wqy-microhei.ttc}
+\setCJKsansfont[Path=fonts/, AutoFakeBold=2]{wqy-microhei.ttc}
+\usefonttheme{professionalfonts}
+
+\geometry{paperwidth=170mm,paperheight=95.625mm}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\RequirePackage{shared}
+\RequirePackage{xr}
+\RequirePackage{array,booktabs}
+
+% ------------------------------------------------------------- sizes
+% \sz{far size}{leading}{tutor-page size}{leading}: the English deck is
+% projected (spec 5.4, far column). The Chinese deck (\zhdecktrue) is the
+% tutor's page, read on a laptop and carrying the answers in red, so it
+% is set smaller to make room for them (spec 5.9).
+\newcommand\sz[4]{\ifzhdeck\fontsize{#3}{#4}\selectfont\else\fontsize{#1}{#2}\selectfont\fi}
+\newcommand\sTitle{\sz{21}{25}{15}{18}}
+\newcommand\sEmph{\sz{19}{23}{13}{16}}
+\newcommand\sQ{\sz{15}{18.6}{11}{14}}
+\newcommand\sSub{\sz{14}{17.4}{10.5}{13.2}}
+\newcommand\sSum{\sz{15}{19.5}{11}{14.4}}
+\newcommand\sFoot{\fontsize{8}{9.6}\selectfont}
+\newcommand\sNote{\fontsize{6.9}{8.6}\selectfont}
+\renewcommand\sSam{\sz{17}{20.4}{12}{14.8}}   % handwriting: 2 pt above body
+\renewcommand\figfont{\sQ}
+\renewcommand\discfont{\sz{14}{14}{10}{10}\bfseries}
+
+\setbeamerfont{normal text}{size=\sQ}
+\setbeamerfont{itemize/enumerate body}{size=\sQ}
+\setbeamerfont{itemize/enumerate subbody}{size=\sQ}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\sQ}
+\setbeamerfont{frametitle}{size=\sTitle, series=\bfseries}
+\setbeamerfont{title}{size=\sTitle, series=\bfseries}
+\setbeamerfont{subtitle}{size=\sQ}
+\AtBeginDocument{\sQ}
+
+% ------------------------------------------------------------ colours
+\setbeamercolor{normal text}{fg=black, bg=white}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{frametitle}{fg=accent, bg=}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\raisebox{1pt}{\rule{4pt}{4pt}}}
+\setbeamertemplate{enumerate items}[default]
+
+% ---------------------------------- title: bold text over a thin rule
+\setbeamertemplate{frametitle}{%
+  \vspace*{2mm}\vbox{\hsize\textwidth\hbox{\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\strut\insertframetitle}
+  \kern0.8mm{\color{rule}\hrule height 0.8pt}}\vspace{1mm}}
+
+% ------------------------------------ footer: cross-reference + signature
+\gdef\thefref{}
+\newcommand\fref[1]{\gdef\thefref{#1}}
+\setbeamertemplate{footline}{%
+  \hbox to\paperwidth{\hspace{5mm}\sFoot\color{sig}\thefref\hfill
+    Dr. Ryan Lei \textperiodcentered{} Auckland\hspace{4mm}\insertframenumber\hspace{5mm}}%
+  \vspace{2.2mm}\gdef\thefref{}}
+
+% ------------------------------------------------------- formula box
+% fixed-width \hbox with \hfil: an overlong formula reports Overfull \hbox
+\newcommand\fbx[1]{\par\smallskip\hbox to\textwidth{\hfil\sEmph$\displaystyle #1$\hfil}\par\smallskip}
+% emphasis line
+\newcommand\emphline[1]{\par{\sEmph\bfseries #1}\par}
+% two columns with fixed split
+\newcommand\twocol[4]{\par\noindent\begin{minipage}[t]{#1\textwidth}\vspace{0pt}\raggedright#2\end{minipage}\hfill
+  \begin{minipage}[t]{#3\textwidth}\vspace{0pt}\raggedright#4\end{minipage}\par}
+% flush-right level tag on a question line, e.g. \slv{M} (spec 9.1 recipe)
+\newcommand\slv[1]{{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill
+  \bfseries[#1]\parfillskip=0pt\par}}
+% short gap the student answers aloud
+\newcommand\gap[1][14mm]{\underline{\hspace{#1}}}
+% numbered question line
+% label box of fixed width with \hfil: a label wider than the box reports
+% Overfull \hbox instead of silently running into the text (spec 10.4)
+\newcommand\qline[2][7mm]{\par\smallskip\noindent\hangindent=#1\hangafter=1\hbox to #1{\bfseries #2\hfil}}
+
+% ------------------------------------------- tutor's page (Chinese deck)
+% Used only in slides_zh_frames.tex; check 7t confirms none of them is
+% in slides.tex, so no answer can reach the projected deck.
+% \rd{...}: an answer in red, in the line (\leavevmode first: a colour
+% whatsit at the start of a table cell would open an empty line, spec 3.3)
+\newcommand\rd[1]{\leavevmode{\color{ansred}\bfseries #1}}
+% \gapa{...}: a gap filled in with its answer
+\newcommand\gapa[1]{\underline{\rd{\,#1\,}}}
+% \ra{...}: the answer to the question above, on its own indented line(s)
+\newcommand\ra[2][7mm]{\par{\leftskip=#1\noindent\rd{#2}\par}}
+% \hint{...}: how to run the slide and what she gets wrong; printed under
+% the slide on the teacher page by tools/build_teacher.py, never on a slide
+\newcommand\hint[1]{}
+% divider slide for each lesson
+\newcommand\lessondivider[2]{\vspace*{10mm}{\sTitle\bfseries\color{accent}#1\par}\vspace{1mm}
+  {\color{rule}\rule{\textwidth}{0.8pt}}\par\vspace{5mm}#2\par}
+% note page: two columns, so the read-aloud Script fits on one page
+\RequirePackage{multicol}
+\setlength\columnsep{5mm}
+\setbeamertemplate{note page}{%
+  \vspace*{1.5mm}\noindent\begin{minipage}[t]{\textwidth}\sNote\raggedright
+  \setlength\parskip{1.2pt}\begin{multicols}{2}\raggedright\insertnote\end{multicols}\end{minipage}}
+
+
+\endinput

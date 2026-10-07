@@ -1,0 +1,417 @@
+% shared.sty -- Year 9 Human Reproduction review.
+% Colours, lost-mark list, Sam's handwriting, booklet-crop overlays and
+% TikZ figures. Used by the slides, the in-class sheet and the homework,
+% so every document draws a figure from one source (spec 7.1). Label
+% anchors of the two booklet crops come from fig/anchors.tex
+% (tools/anchors.py, pixel scan).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{shared}[2026/10/07 Human reproduction shared macros]
+
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,positioning,decorations.pathmorphing}
+\input{fig/anchors.tex}
+
+% ------------------------------------------------------------ colours
+\definecolor{ansred}{RGB}{200,16,46}
+\definecolor{accent}{RGB}{0,84,110}
+\definecolor{rule}{gray}{0.45}
+\definecolor{boxfill}{gray}{0.95}      % boxes: at most about 10 % grey
+\definecolor{sig}{gray}{0.55}
+\definecolor{pencil}{gray}{0.30}       % Sam's writing
+\colorlet{tissue}{black!16}
+\colorlet{tissueD}{black!34}
+\colorlet{fluid}{black!6}
+
+% ------------------------------------------------- Sam's handwriting
+% Patrick Hand (OFL). Defined after fontspec is in place (spec 9).
+\AtBeginDocument{\newfontfamily\samfont[Path=fonts/]{PatrickHand-Regular.ttf}}
+\providecommand\sSam{\large}
+\newcommand\flawed[1]{{\samfont\sSam\color{pencil}\hyphenpenalty=10000\exhyphenpenalty=10000 #1}}
+% Sam's card: outline, light fill, title "Sam's answer"
+\newcommand\samcard[2]{% width, content
+  \begin{tikzpicture}
+    \node[draw=black!55, fill=boxfill, rounded corners=1.5mm, line width=0.6pt,
+      text width=#1, inner xsep=2.5mm, inner ysep=2mm, align=left] (sc) {#2};
+    \node[anchor=south west, inner sep=1pt, font=\bfseries] at ([xshift=1.5mm]sc.north west) {Sam's answer};
+  \end{tikzpicture}}
+
+% ---------------------------------------------------- lost-mark list
+% Numbered once here (spec 7.2). Source: the booklet plus teaching
+% observation -- no examiner report.
+\newcommand\defL[3]{%
+  \expandafter\def\csname L@n@#1\endcsname{#2}%
+  \expandafter\def\csname L@t@#1\endcsname{#3}}
+\newcommand\Lref[1]{L\csname L@n@#1\endcsname}
+\newcommand\Ltext[1]{\csname L@t@#1\endcsname}
+
+\defL{chromo}{1}{Gametes have 23 chromosomes (one set); body cells and the zygote have 46 (23 pairs).}
+\defL{fert}{2}{Fertilisation is the sperm nucleus fusing with the egg nucleus. It happens in the oviduct, not in the uterus or the ovary.}
+\defL{adapt}{3}{An adaptation answer names the feature AND says how it helps.}
+\defL{parts}{4}{Name the exact part: ovary makes eggs, uterus holds the foetus, cervix is the ring of muscle at the base of the uterus; testes make sperm, the epididymis stores them, the urethra carries semen out.}
+\defL{ovul}{5}{Ovulation is the release of an egg from an ovary (about day 14). Menstruation is the loss of the uterus lining (from day 1).}
+\defL{horm}{6}{Each hormone has one job and one source: FSH and LH come from the pituitary gland, oestrogen and progesterone from the ovaries.}
+\defL{sex}{7}{The sperm decides the sex of the baby: every egg carries X, a sperm carries X or Y. The chance of a boy is 50\,\% every time.}
+\defL{stages}{8}{Zygote, then embryo, then foetus. Implantation is the embryo sinking into the uterus lining; it is not fertilisation.}
+\defL{nomix}{9}{The mother's blood and the foetus's blood never mix. Substances cross the placenta by diffusion: name the substance and the direction.}
+\defL{diff}{10}{Diffusion is from a high concentration to a low concentration; the villi give a large surface area.}
+\defL{twins}{11}{Identical twins: one egg, one sperm, the zygote splits. Non-identical twins: two eggs, two sperm.}
+\defL{graph}{12}{Describe = the trend with numbers and units read from the graph. Suggest or explain = a reason. Do not give a reason when asked to describe.}
+\defL{fluid}{13}{Amniotic fluid cushions and protects the foetus; food and oxygen come through the placenta and the umbilical cord.}
+\defL{ivf}{14}{In IVF the egg is fertilised outside the body, in a dish; the embryo is then put into the uterus to grow.}
+
+% ------------------------------------------------- deck language
+% slides_zh.tex sets \zhdecktrue: figure labels switch to Chinese and
+% show the answers in red (the Chinese deck is the tutor's page).
+\newif\ifzhdeck \zhdeckfalse
+\newcommand\zhen[2]{\ifzhdeck#1\else#2\fi}
+% \Lb{letter}{English name}{Chinese}: a letter for the student; on the
+% tutor's page the letter, the answer in red and the Chinese
+\newcommand\Lb[3]{\ifzhdeck\textbf{#1}\,{\color{ansred}\bfseries #2}\,#3\else\textbf{#1}\fi}
+
+% ------------------------------------------------------------ figures
+\providecommand\figfont{\small}
+\newlength\fu \setlength\fu{5mm}
+
+\tikzset{
+  fig/.style={line width=0.8pt, >={Stealth[length=2.4mm,width=1.8mm]},
+    every node/.style={font=\figfont, inner sep=1.5pt}},
+  lead/.style={line width=0.6pt},
+  letter/.style={font=\figfont\bfseries, inner sep=1.5pt},
+  tube/.style={draw=black, line width=0.7pt, double=white, double distance=2.4pt, line cap=round},
+  box/.style={draw=black!55, fill=boxfill, rounded corners=1.5mm, align=center, inner sep=1.6mm},
+}
+
+% --------------------------------------------- booklet crops + labels
+% \CropFig{name}{width}{labels}: the crop, south-west corner at (0,0),
+% one unit = the crop width. Labels use anchors from fig/anchors.tex.
+\newcommand\ancpt[2]{\csname anc@#1@#2\endcsname}
+\newcommand\CropFig[3]{%
+  \begin{tikzpicture}[fig, x=#2, y=#2, baseline=(current bounding box.north)]
+    \def\cropname{#1}%
+    \node[anchor=south west, inner sep=0] at (0,0) {\includegraphics[width=#2]{fig/#1}};
+    #3
+  \end{tikzpicture}}
+% label at the tail of a printed leader arrow, to its right; #3 = anchor
+\newcommand\TailLab[3][west]{\edef\tmp{\noexpand\node[letter, anchor=#1] at (\ancpt{\cropname}{#2}) }\tmp{#3};}
+% large number disc over a printed one (the printed discs are too small
+% to read from a distance, spec 3.4)
+\newcommand\Disc[2]{\edef\tmp{\noexpand\node[circle, draw=black, fill=white, line width=0.7pt,
+  inner sep=0pt, minimum size=\discsize, font=\noexpand\discfont] at (\ancpt{\cropname}{#1}) }\tmp{#2};}
+\newlength\discsize \setlength\discsize{5mm}
+\providecommand\discfont{\bfseries}
+
+% ---- male reproductive system, front view (booklet p.10): A-H at the
+% tails of the eight printed arrows. Arrows B, C, D are about 35 px apart
+% and G, H 12 px, so B sits above its arrow; G is moved 6.5 mm to the right and sits above its arrow, H below.
+\newcommand\FigMaleFront[1][60mm]{\CropFig{mfront}{#1}{%
+  \TailLab{bladder}{\Lb{A}{bladder}{膀胱}}%
+  \TailLab[south west]{seminal}{\Lb{B}{seminal vesicle}{精囊}}%
+  \TailLab{prostate}{\Lb{C}{prostate gland}{前列腺}}%
+  \TailLab{spermduct}{\Lb{D}{sperm duct}{输精管}}%
+  \TailLab{urethra}{\Lb{E}{urethra}{尿道}}%
+  \TailLab{epididymis}{\Lb{F}{epididymis}{附睾}}%
+  \edef\tmp{\noexpand\draw[lead] (\ancpt{mfront}{testis}) -- ++(6.5mm,0) node[letter, anchor=south west]}\tmp{\Lb{G}{testis}{睾丸}};%
+  \TailLab[north west]{scrotum}{\Lb{H}{scrotum}{阴囊}}}}
+
+% ---- female reproductive system, side view (booklet p.8): the ten
+% printed numbers, re-set larger on their own positions
+\newcommand\FigFemaleSide[1][72mm]{\CropFig{fside}{#1}{%
+  \foreach \k in {1,...,10} {\Disc{n\k}{\k}}}}
+
+% ---- female reproductive system, front view (own drawing).
+% Units: 1 = \fu. Uterus: outer wall, cavity, lining; cervix; vagina;
+% oviducts and ovaries mirrored about x = 0.
+% Points used by the leaders (computed from the curves):
+%   oviduct mid-point: Bezier (2.2,5.45)(3.2,6.3)(4.6,6.5)(5.2,5.6) at t = 0.5 -> (3.85,6.18)
+%   lining: Bezier (1.45,5.25)(0.9,4.2)(0.22,3.2)(0.2,2.2) at t = 0.4 -> (0.78,4.01)
+%   uterus wall: (-1.8,4.6) lies between the cavity (|x| = 1.1) and the outside (|x| = 2.45)
+%   cervix wall: x from 0.2 to 0.85 at y = 1.8 -> (0.52,1.8)
+\newcommand\FemaleFrontBody{%
+  % outer wall of uterus, cervix and vagina
+  \path[fill=tissue] (0,6.1) .. controls (1.3,6.1) and (2.5,5.9) .. (2.5,5.0)
+    .. controls (2.5,3.8) and (0.9,3.3) .. (0.85,2.1) -- (0.85,1.5)
+    .. controls (0.85,1.2) and (1.05,1.2) .. (1.05,0.9) -- (1.05,-1.2) -- (-1.05,-1.2) -- (-1.05,0.9)
+    .. controls (-1.05,1.2) and (-0.85,1.2) .. (-0.85,1.5) -- (-0.85,2.1)
+    .. controls (-0.9,3.3) and (-2.5,3.8) .. (-2.5,5.0) .. controls (-2.5,5.9) and (-1.3,6.1) .. (0,6.1) -- cycle;
+  \draw (1.05,-1.2) -- (1.05,0.9) .. controls (1.05,1.2) and (0.85,1.2) .. (0.85,1.5) -- (0.85,2.1)
+    .. controls (0.9,3.3) and (2.5,3.8) .. (2.5,5.0) .. controls (2.5,5.9) and (1.3,6.1) .. (0,6.1)
+    .. controls (-1.3,6.1) and (-2.5,5.9) .. (-2.5,5.0) .. controls (-2.5,3.8) and (-0.9,3.3) .. (-0.85,2.1)
+    -- (-0.85,1.5) .. controls (-0.85,1.2) and (-1.05,1.2) .. (-1.05,0.9) -- (-1.05,-1.2);
+  % cavity
+  \path[fill=white] (-1.45,5.25) -- (1.45,5.25) .. controls (0.9,4.2) and (0.22,3.2) .. (0.2,2.2) -- (0.2,1.45)
+    .. controls (0.2,1.2) and (0.5,1.15) .. (0.5,0.9) -- (0.5,-1.2) -- (-0.5,-1.2) -- (-0.5,0.9)
+    .. controls (-0.5,1.15) and (-0.2,1.2) .. (-0.2,1.45) -- (-0.2,2.2)
+    .. controls (-0.22,3.2) and (-0.9,4.2) .. (-1.45,5.25) -- cycle;
+  \draw[line width=0.6pt] (0.5,-1.2) -- (0.5,0.9) .. controls (0.5,1.15) and (0.2,1.2) .. (0.2,1.45) -- (0.2,2.2);
+  \draw[line width=0.6pt] (-0.5,-1.2) -- (-0.5,0.9) .. controls (-0.5,1.15) and (-0.2,1.2) .. (-0.2,1.45) -- (-0.2,2.2);
+  % lining of the uterus (endometrium): a thick grey band on the cavity edge
+  \draw[line width=2.6pt, black!48, line join=round] (0.2,2.2) .. controls (0.22,3.2) and (0.9,4.2) .. (1.45,5.25)
+    -- (-1.45,5.25) .. controls (-0.9,4.2) and (-0.22,3.2) .. (-0.2,2.2);
+  \foreach \s in {1,-1} {
+    \begin{scope}[xscale=\s]
+      % ovary and its ligament
+      \draw[line width=0.6pt] (3.6,4.3) -- (2.38,4.6);
+      \draw[fill=tissueD, rotate around={15:(4.3,4.25)}] (4.3,4.25) ellipse (0.75 and 0.48);
+      % oviduct, opening into the top corner of the cavity
+      \draw[tube] (1.5,5.3) -- (2.2,5.45) .. controls (3.2,6.3) and (4.6,6.5) .. (5.2,5.6)
+        .. controls (5.45,5.2) and (5.4,4.9) .. (5.25,4.65);
+      % funnel (fimbriae) at the end of the oviduct
+      \foreach \a/\b in {4.85/4.05, 5.2/3.95, 5.55/4.1}
+        \draw[line width=0.7pt, line cap=round] (5.25,4.65) .. controls (5.25,4.4) and (\a,4.3) .. (\a,\b);
+    \end{scope}}}
+\newcommand\FigFemaleFront[1][5mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \FemaleFrontBody
+  \draw[lead] (-4.3,3.77) -- (-4.3,2.9) node[letter, anchor=north] {\Lb{A}{ovary}{卵巢}};
+  \draw[lead] (3.85,6.18) -- (3.85,7.0) node[letter, anchor=south] {\Lb{B}{oviduct}{输卵管}};
+  \fill (-1.8,4.6) circle (1.6pt);
+  \draw[lead] (-1.8,4.6) -- (-2.6,1.0) node[letter, anchor=north east] {\Lb{C}{uterus}{子宫}};
+  \draw[lead] (0.78,4.01) -- (3.3,3.0) node[letter, anchor=west] {\Lb{D}{lining}{子宫内膜}};
+  \fill (0.52,1.8) circle (1.6pt);
+  \draw[lead] (0.52,1.8) -- (3.3,1.7) node[letter, anchor=west] {\Lb{E}{cervix}{子宫颈}};
+  \fill (0,-0.2) circle (1.6pt);
+  \draw[lead] (0,-0.2) -- (3.3,0.2) node[letter, anchor=west] {\Lb{F}{vagina}{阴道}};
+\end{tikzpicture}}
+
+% ---- sperm cell: head with nucleus and tip (acrosome), midpiece, tail
+% tail: y = 0.28 sin(200 (x - 2.3)); at x = 3.65 the argument is 270 deg,
+% so the tail is at its trough y = -0.28
+\newcommand\FigSperm[1][5mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \draw[line width=1pt] plot[domain=2.3:6.6, samples=70, smooth] (\x,{0.28*sin(200*(\x-2.3))});
+  \draw[fill=white] (0,0) ellipse (1.0 and 0.62);
+  \begin{scope}\clip (-1.1,-0.7) rectangle (-0.45,0.7); \fill[tissueD] (0,0) ellipse (1.0 and 0.62);\end{scope}
+  \draw (0,0) ellipse (1.0 and 0.62);
+  \draw[fill=tissue] (0.2,0) ellipse (0.5 and 0.38);
+  \draw[fill=white, rounded corners=1.2pt] (0.99,-0.24) rectangle (2.3,0.24);
+  \foreach \x in {1.22,1.5,1.78,2.06} \draw[fill=tissueD, line width=0.4pt] (\x,0) ellipse (0.09 and 0.17);
+  \draw[lead] (-0.75,0.2) -- (-0.95,1.35) node[letter, anchor=south east, xshift=1.5mm] {\Lb{A}{tip of head}{头部尖端}};
+  \draw[lead] (0.2,0.15) -- (0.35,2.3) node[letter, anchor=south] {\Lb{B}{nucleus}{细胞核}};
+  \draw[lead] (1.64,0.24) -- (1.75,1.35) node[letter, anchor=south west, xshift=-1.5mm] {\Lb{C}{middle piece}{中段}};
+  \draw[lead] (3.65,-0.28) -- (3.65,-1.3) node[letter, anchor=north] {\Lb{D}{tail}{尾}};
+\end{tikzpicture}}
+% ---- egg cell: jelly layer, cell membrane, cytoplasm, nucleus
+% leader points: membrane at 150 deg on r = 1.95; jelly at 35 deg on r = 2.15
+\newcommand\FigEgg[1][5mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \draw[fill=tissue, line width=0.5pt, dashed] (0,0) circle (2.35);
+  \draw[fill=fluid, line width=1pt] (0,0) circle (1.95);
+  \draw[fill=tissueD] (0.35,0.25) circle (0.5);
+  \draw[lead] (0.35,0.25) -- (3.0,0.25) node[letter, anchor=west] {\Lb{P}{nucleus}{细胞核}};
+  \fill (-0.7,-0.9) circle (1.6pt);
+  \draw[lead] (-0.7,-0.9) -- (3.0,-1.3) node[letter, anchor=west] {\Lb{Q}{cytoplasm}{细胞质}};
+  \draw[lead] ({1.95*cos(40)},{1.95*sin(40)}) -- (3.0,1.9) node[letter, anchor=west] {\Lb{R}{cell membrane}{细胞膜}};
+  \fill ({2.15*cos(-60)},{2.15*sin(-60)}) circle (1.4pt);
+  \draw[lead] ({2.15*cos(-60)},{2.15*sin(-60)}) -- (3.0,-2.3) node[letter, anchor=west] {\Lb{S}{jelly layer}{胶质层}};
+\end{tikzpicture}}
+
+% ---- the menstrual cycle on one line: thickness of the uterus lining
+% against the day of the cycle, and the four stages (booklet p.14-15).
+% x: 1 unit = 1 day; y: 1 unit = \fu.
+\newcommand\FigCycleBar[1][4.6mm]{%
+\begin{tikzpicture}[fig, x=#1, y=6mm, baseline=(current bounding box.north)]
+  \path[fill=black!22] (0,0) -- (0,1.7) -- (1,1.5) -- (3,0.9) -- (5,0.45) -- (7,0.6) -- (10,1.1)
+    -- (14,1.6) -- (18,1.85) -- (24,1.9) -- (27,1.85) -- (28,1.7) -- (28,0) -- cycle;
+  \draw[line width=1pt] (0,1.7) -- (1,1.5) -- (3,0.9) -- (5,0.45) -- (7,0.6) -- (10,1.1)
+    -- (14,1.6) -- (18,1.85) -- (24,1.9) -- (27,1.85) -- (28,1.7);
+  \draw (0,0) -- (28,0);
+  \foreach \d in {1,5,10,14,20,25,28} {\draw (\d,0) -- (\d,-0.25); \node[anchor=north] at (\d,-0.3) {\d};}
+  \node[anchor=north] at (14,-1.05) {\zhen{周期的第几天}{day of the cycle}};
+  \node[anchor=east, align=right] at (-0.6,0.95) {\zhen{子宫\\内膜}{uterus\\lining}};
+  % stage brackets: 1 = days 0-5, 2 = 5-13, 3 = 13-15, 4 = 15-28
+  \foreach \a/\b/\k in {0/5/1, 5/13/2, 13/15/3, 15/28/4} {
+    \draw[line width=0.9pt] (\a+0.15,2.75) -- (\a+0.15,3.05) -- (\b-0.15,3.05) -- (\b-0.15,2.75);
+    \node[letter, anchor=south] at ({(\a+\b)/2},3.1) {\k};}
+  % the egg leaves the ovary on about day 14
+  \draw[fill=white, line width=0.9pt] (14,2.35) circle (0.42 and 0.3);
+\end{tikzpicture}}
+
+% ---- hormone levels through the cycle (shapes after booklet p.14).
+% #2 = ov: oestrogen and progesterone (from the ovaries);
+% #2 = pit: LH and FSH (from the pituitary gland).
+% Curves are sums of Gaussians; d is the day.
+\newcommand\FigHormones[2][4.2mm]{%
+\begin{tikzpicture}[fig, x=#1, y=5mm, baseline=(current bounding box.north),
+    declare function={g(\d,\m,\s)=exp(-((\d-\m)/\s)^2);}]
+  \draw[->] (0,0) -- (29.5,0); \draw[->] (0,0) -- (0,6.3);
+  \foreach \d in {1,5,10,14,20,25,28} {\draw (\d,0) -- (\d,-0.25); \node[anchor=north] at (\d,-0.3) {\d};}
+  \node[anchor=north] at (14,-1.35) {\zhen{周期的第几天}{day of the cycle}};
+  \node[rotate=90, anchor=south] at (-0.5,3) {\zhen{激素水平}{hormone level}};
+  \draw[dashed, line width=0.6pt] (14,0) -- (14,6.2);
+  \def\tmp{#2}\def\ov{ov}%
+  \ifx\tmp\ov
+    \draw[line width=1.3pt] plot[domain=0:28, samples=85, smooth] (\x,{5*(0.14+0.86*g(\x,12.6,2.5)+0.46*g(\x,21.5,3.6))});
+    \draw[line width=1.3pt, dashed] plot[domain=0:28, samples=85, smooth] (\x,{5*(0.05+0.92*g(\x,21.5,4.1))});
+    \node[anchor=south west] at (0.8,5.15) {\zhen{oestrogen 雌激素}{oestrogen}};
+    \node[anchor=south] at (22.0,4.95) {\zhen{progesterone 孕激素}{progesterone}};
+  \else
+    \draw[line width=1.3pt] plot[domain=0:28, samples=140, smooth] (\x,{5*(0.12+1.02*g(\x,14,1.05))});
+    \draw[line width=1.3pt, dashed] plot[domain=0:28, samples=140, smooth] (\x,{5*(0.24+0.34*g(\x,14,1.2)+0.16*g(\x,3,3))});
+    \node[anchor=west] at (15.6,5.0) {LH};
+    \node[anchor=south west] at (16.2,1.45) {FSH};
+  \fi
+\end{tikzpicture}}
+
+% ---- chromosome numbers: sperm + egg -> zygote -> body cell. The four
+% numbers are arguments, so the student's slide shows gaps.
+\newcommand\FigChromo[4]{%
+\begin{tikzpicture}[fig, baseline=(current bounding box.north),
+    cell/.style={box, text width=27mm, minimum height=15mm}]
+  \node[cell] (s) at (0,10mm) {\zhen{sperm 精子}{sperm}\\#1};
+  \node[cell] (e) at (0,-10mm) {\zhen{egg 卵}{egg}\\#2};
+  \node[cell] (z) at (60mm,0) {\zhen{zygote 受精卵}{zygote}\\#3};
+  \node[cell] (b) at (122mm,0) {\zhen{每个体细胞}{every body cell}\\#4};
+  \draw[->, line width=1.2pt] (s.east) -- (z.west);
+  \draw[->, line width=1.2pt] (e.east) -- (z.west);
+  \draw[->, line width=1.2pt] (z) -- (b);
+  \node[anchor=south] at (91mm,1.5mm) {\zhen{细胞分裂}{cell division}};
+\end{tikzpicture}}
+
+% ---- sex determination square: eggs across (X, X), sperm down (X, Y);
+% the four cells are arguments
+\newcommand\FigSexSquare[4]{%
+\begin{tikzpicture}[fig, x=19mm, y=13mm, baseline=(current bounding box.north)]
+  \draw (0,0) rectangle (2,-2); \draw (1,0) -- (1,-2); \draw (0,-1) -- (2,-1);
+  \node[font=\figfont\bfseries] at (0.5,0.4) {X}; \node[font=\figfont\bfseries] at (1.5,0.4) {X};
+  \node[font=\figfont\bfseries] at (-0.35,-0.5) {X}; \node[font=\figfont\bfseries] at (-0.35,-1.5) {Y};
+  \node[anchor=south] at (1,0.75) {\zhen{母亲的 eggs}{mother's eggs}};
+  \node[rotate=90, anchor=south] at (-0.7,-1) {\zhen{父亲的 sperm}{father's sperm}};
+  \node at (0.5,-0.5) {#1}; \node at (1.5,-0.5) {#2};
+  \node at (0.5,-1.5) {#3}; \node at (1.5,-1.5) {#4};
+\end{tikzpicture}}
+
+% ---- two ways of making twins. Row X: one egg, one sperm, the zygote
+% splits. Row Y: two eggs, two sperm. Each row ends with its two embryos.
+\newcommand\SpermMark[2]{% head at (#1,#2), tail to the upper left
+  \draw[line width=0.7pt] (#1,#2) .. controls (#1-0.25,#2+0.35) and (#1-0.55,#2+0.15) .. (#1-0.8,#2+0.5);
+  \fill (#1,#2) circle (0.11);}
+\newcommand\FigTwins[1][5mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  % row X (y = 0)
+  \node[letter] at (-2.2,0) {X};
+  \draw[fill=tissue] (0,0) circle (0.75); \SpermMark{-0.75}{0.3}
+  \draw[->, line width=1.2pt] (1.3,0) -- (2.9,0);
+  \draw[fill=tissue] (4.0,0) circle (0.75); \draw (4.0,-0.75) -- (4.0,0.75);
+  \draw[->, line width=1.2pt] (5.3,0) -- (6.9,0);
+  \draw[fill=tissue] (8.0,0.85) circle (0.6); \draw[fill=tissue] (8.0,-0.85) circle (0.6);
+  % row Y (y = -4.6)
+  \node[letter] at (-2.2,-4.6) {Y};
+  \draw[fill=tissue] (0,-3.75) circle (0.6); \SpermMark{-0.6}{-3.5}
+  \draw[fill=tissueD] (0,-5.45) circle (0.6); \SpermMark{-0.6}{-5.2}
+  \draw[->, line width=1.2pt] (1.3,-4.6) -- (2.9,-4.6);
+  \draw[fill=tissue] (4.0,-3.75) circle (0.6); \draw[fill=tissueD] (4.0,-5.45) circle (0.6);
+  \draw[->, line width=1.2pt] (5.3,-4.6) -- (6.9,-4.6);
+  \draw[fill=tissue] (8.0,-3.75) circle (0.6); \draw[fill=tissueD] (8.0,-5.45) circle (0.6);
+\end{tikzpicture}}
+
+% ---- foetus in the uterus (own drawing, simplified from booklet p.21
+% and p.25). Units: \fu. Uterus: outer ellipse 4.4 x 5.0, inner 3.7 x 4.3,
+% both centred at (0,0); cervix below. Placenta: a band on the inside of
+% the wall between 110 and 165 degrees. Leader points:
+%   placenta (band middle, 137 deg, r between 3.1 and 3.9)
+%   uterus wall at 20 deg, between the two ellipses
+%   amniotic sac: the thin line 0.3 inside the inner ellipse, at -25 deg
+\newcommand\FigWomb[1][5mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  % wall and cervix
+  \path[fill=tissue] (0,0) ellipse (4.4 and 5.0);
+  \path[fill=tissue] (-1.0,-4.6) rectangle (1.0,-6.3);
+  \draw (-1.0,-6.3) -- (-1.0,-4.87); \draw (1.0,-6.3) -- (1.0,-4.87);
+  \draw (-1.0,-4.87) arc (-103.1:-436.9:4.4 and 5.0);
+  \path[fill=fluid] (0,0) ellipse (3.7 and 4.3);
+  \draw[line width=0.6pt] (0,0) ellipse (3.7 and 4.3);
+  % cervical canal, closed by a plug
+  \path[fill=white] (-0.18,-6.3) rectangle (0.18,-4.9);
+  \draw[line width=0.6pt] (-0.18,-6.3) -- (-0.18,-4.9) (0.18,-6.3) -- (0.18,-4.9);
+  \fill[black!45] (-0.18,-4.9) rectangle (0.18,-4.35);
+  % placenta
+  \path[fill=black!42] plot[domain=110:165, samples=24] ({3.7*cos(\x)},{4.3*sin(\x)})
+    -- plot[domain=165:110, samples=24] ({2.95*cos(\x)},{3.5*sin(\x)}) -- cycle;
+  \draw[line width=0.6pt] plot[domain=110:165, samples=24] ({2.95*cos(\x)},{3.5*sin(\x)});
+  % amniotic sac
+  \draw[line width=0.6pt, dashed] (0,0) ellipse (3.35 and 3.95);
+  % foetus: curled body, head down, arm and leg
+  \draw[fill=white, line width=0.9pt, rotate around={-20:(0.35,0.75)}] (0.35,0.75) ellipse (1.15 and 1.6);
+  \draw[fill=white, line width=0.9pt] (0.15,-1.55) circle (1.05);
+  \draw[fill=white, line width=0.9pt] (1.05,1.75) .. controls (2.0,1.5) and (2.1,0.4) .. (1.45,0.05)
+    .. controls (1.2,-0.1) and (0.95,0.15) .. (1.15,0.4) .. controls (1.5,0.8) and (1.2,1.3) .. (0.7,1.35);
+  \draw[line width=0.9pt] (-0.35,0.2) .. controls (0.2,-0.2) and (0.7,-0.1) .. (0.95,-0.55);
+  \fill (0.6,-1.65) circle (0.09);
+  % umbilical cord from the belly (-0.45,0.9) to the placenta
+  \draw[tube] (-0.45,0.9) .. controls (-1.6,0.6) and (-1.2,2.2) .. (-2.2,2.45);
+  % labels
+  \draw[lead] ({3.35*cos(137)},{3.9*sin(137)}) -- (-5.4,4.2) node[letter, anchor=east] {\Lb{A}{placenta}{胎盘}};
+  \draw[lead] (-1.45,1.45) -- (-5.4,1.4) node[letter, anchor=east] {\Lb{B}{umbilical cord}{脐带}};
+  \fill (-2.0,-1.6) circle (1.6pt);
+  \draw[lead] (-2.0,-1.6) -- (-5.4,-1.6) node[letter, anchor=east] {\Lb{C}{amniotic fluid}{羊水}};
+  \draw[lead] ({3.35*cos(-25)},{3.95*sin(-25)}) -- (5.4,-1.7) node[letter, anchor=west] {\Lb{D}{amniotic sac}{羊膜囊}};
+  \fill ({4.05*cos(20)},{4.65*sin(20)}) circle (1.6pt);
+  \draw[lead] ({4.05*cos(20)},{4.65*sin(20)}) -- (5.4,1.6) node[letter, anchor=west] {\Lb{E}{uterus wall}{子宫壁}};
+  \fill (0.6,-5.6) circle (1.6pt);
+  \draw[lead] (0.6,-5.6) -- (5.4,-5.4) node[letter, anchor=west] {\Lb{F}{cervix}{子宫颈}};
+\end{tikzpicture}}
+
+% ---- exchange across the placenta: mother's blood above, the foetus's
+% blood below, a thin wall between them. #1-#3 go down, #4-#5 go up.
+\newcommand\FigExchange[5]{%
+\begin{tikzpicture}[fig, x=1mm, y=1mm, baseline=(current bounding box.north)]
+  \draw[fill=boxfill] (0,22) rectangle (120,36);
+  \draw[fill=boxfill] (0,0) rectangle (120,14);
+  \path[pattern=north east lines, pattern color=black!45] (0,14) rectangle (120,22);
+  \draw (0,14) rectangle (120,22);
+  \node[anchor=west] at (2,32) {\zhen{母亲的血}{mother's blood}};
+  \node[anchor=west] at (2,4) {\zhen{胎儿的血（在 villi 里）}{foetus's blood (in the villi)}};
+  \foreach \x/\t in {42/#1, 62/#2, 82/#3} {
+    \draw[->, line width=1.4pt] (\x,26.5) -- (\x,7);
+    \node[fill=white, inner sep=1.2pt] at (\x,18) {\t};}
+  \foreach \x/\t in {17/#4, 105/#5} {
+    \draw[->, line width=1.4pt] (\x,7) -- (\x,29.5);
+    \node[fill=white, inner sep=1.2pt] at (\x,18) {\t};}
+\end{tikzpicture}}
+
+% ---- multiple births in England and Wales (re-drawn from booklet p.35;
+% the values are read from the printed graph). x: 1 unit = 1 year from
+% 1960; y: 1 unit = 1 %.
+\def\mbYoung{0/9.2,5/9.0,10/9.0,15/8.2,20/8.2,25/8.8,30/9.3,35/10.0,40/9.5,45/9.8,50/10.0}
+\def\mbOld{0/13.8,2/13.5,5/12.2,7/12.8,9/11.5,12/12.8,15/14.5,17/12.5,18/11.5,20/12.2,22/11.5,24/14.5,26/12.8,28/14.2,30/12.5,32/15.0,34/15.8,36/17.0,38/19.5,40/18.2,42/19.0,44/20.0,46/22.5,48/23.0,50/25.5}
+\newcommand\FigMultiBirths[1][1.45mm]{%
+\begin{tikzpicture}[fig, x=#1, y=#1, baseline=(current bounding box.north)]
+  \foreach \i in {0,5,...,60} \draw[black!22, line width=0.3pt] (\i,0) -- (\i,30);
+  \foreach \j in {0,5,...,30} \draw[black!22, line width=0.3pt] (0,\j) -- (60,\j);
+  \draw (0,0) rectangle (60,30);
+  \foreach \i/\y in {0/1960,20/1980,40/2000,60/2020} \node[anchor=north] at (\i,-0.8) {\y};
+  \foreach \i in {0,10,...,60} \draw (\i,0) -- (\i,-0.7);
+  \foreach \j in {10,20,30} \node[anchor=east] at (-0.8,\j) {\j};
+  \node[anchor=south east, inner sep=0.5pt] at (-0.8,0) {0};
+  \node[anchor=north] at (30,-6.2) {\zhen{年份}{Year}};
+  \node[anchor=south west, align=left, inner sep=0pt] at (-4,31.5) {\zhen{多胎妊娠的百分比}{Percentage of pregnancies\\that were multiple births}};
+  \draw[line width=1.2pt] plot coordinates {(0,9.2) (5,9.0) (10,9.0) (15,8.2) (20,8.2) (25,8.8) (30,9.3) (35,10.0) (40,9.5) (45,9.8) (50,10.0)};
+  \draw[line width=1.2pt, dashed] plot coordinates {(0,13.8) (2,13.5) (5,12.2) (7,12.8) (9,11.5) (12,12.8) (15,14.5) (17,12.5) (18,11.5) (20,12.2) (22,11.5) (24,14.5) (26,12.8) (28,14.2) (30,12.5) (32,15.0) (34,15.8) (36,17.0) (38,19.5) (40,18.2) (42,19.0) (44,20.0) (46,22.5) (48,23.0) (50,25.5)};
+  \draw[line width=1.2pt] (2,26.2) -- (9,26.2); \node[anchor=west, fill=white, inner sep=1pt] at (9.5,26.2) {\zhen{20--24 岁的女性}{women aged 20--24}};
+  \draw[line width=1.2pt, dashed] (2,20.6) -- (9,20.6); \node[anchor=west, fill=white, inner sep=1pt] at (9.5,20.6) {\zhen{40--44 岁的女性}{women aged 40--44}};
+\end{tikzpicture}}
+
+% ---- the one idea: from two cells to a baby. Things in boxes (pitch
+% 33.5 mm), the process that links them under each arrow.
+\newcommand\FigJourney{%
+\begin{tikzpicture}[fig, baseline=(current bounding box.north),
+    jstep/.style={box, text width=22mm, minimum height=17mm, inner sep=1mm, font=\figfont\bfseries}]
+  \node[jstep] (a) at (0,0) {\zhen{sperm\\+ egg}{sperm\\+ egg}};
+  \node[jstep] (b) at (33.5mm,0) {zygote};
+  \node[jstep] (c) at (67mm,0) {embryo};
+  \node[jstep] (d) at (100.5mm,0) {\zhen{foetus}{foetus}};
+  \node[jstep] (e) at (134mm,0) {\zhen{baby}{baby}};
+  \foreach \u/\v in {a/b,b/c,c/d,d/e} \draw[->, line width=1.2pt] (\u) -- (\v);
+  \foreach \x/\t in {16.75/\zhen{受精 fertilisation}{fertilisation}, 50.25/\zhen{细胞分裂}{cell division},
+      83.75/\zhen{着床 implantation}{implantation}, 117.25/\zhen{出生 birth}{birth}} {
+    \draw[lead] (\x mm,-1.2mm) -- (\x mm,-12.5mm);
+    \node[anchor=north] at (\x mm,-13mm) {\t};}
+\end{tikzpicture}}
+
+% ---- mass of a foetus during pregnancy (made-up practice data, used on
+% the sheets). x: 1 unit = 1 week; y: 1 unit = 100 g.
+\def\foetusdata{8/0,12/0.2,16/1.2,20/3.2,24/6.4,28/10.6,32/17.6,36/26.2,40/34.0}
+
+\endinput

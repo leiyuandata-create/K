@@ -1,0 +1,585 @@
+% slides_zh_frames.tex -- the tutor's page of every slide, frame for frame
+% with slides.tex: the slide in Chinese (terms stay English) with the
+% answers written on it in red (\rd, \gapa, \ra) and a \hint{} that
+% tools/build_teacher.py prints under the slide. tools/build_zh_deck.py
+% joins each block with the matching \note{} from slides.tex.
+%%% FRAME 1 {}
+\vspace*{2mm}
+{\usebeamerfont{title}\usebeamercolor[fg]{frametitle}Human Reproduction 人类生殖}\par
+\vspace{1mm}{\color{rule}\rule{\textwidth}{0.8pt}}\par\vspace{2mm}
+Year 9 科学 \textperiodcentered{} 考前冲刺 \textperiodcentered{} 2 小时，中间不休息\par\vspace{3mm}
+\begin{tabular}{@{}l@{\hspace{5mm}}l@{\hspace{8mm}}l@{}}
+0:00 & 开场：Do Now 和核心思想 & 第 1--3 页\\
+0:04 & Loop 1 \textperiodcentered{} 性细胞和男女生殖系统 & 第 4--14 页\\
+0:26 & Loop 2 \textperiodcentered{} 激素和月经周期 & 第 15--24 页\\
+0:49 & Loop 3 \textperiodcentered{} 受精、染色体、双胞胎 & 第 25--35 页\\
+1:12 & Loop 4 \textperiodcentered{} 怀孕、出生、不孕 & 第 36--49 页\\
+1:42 & 失分点和总结 & 第 50--51 页\\
+1:44 & Mini mock（In-class work 的 Part E） & 第 52 页\\
+1:59 & Homework & 第 53 页\\
+\end{tabular}
+\hint{开课前发 In-class work（Part A--E，一份纸）；Homework 下课时发。每个 loop 讲完马上做对应的 Part，约 6 分钟。页面上的红字是答案，右边蓝字是读音，大写的音节读重音。}
+\fref{老师页}
+%%% FRAME 2 {Do Now 课前小测}
+\qline{1} 说出男性和女性的 sex cell（性细胞）。
+\ra{male: sperm（精子）；female: egg / ovum（卵）}
+\qline{2} 哪个器官产生女性的性细胞？
+\ra{the ovaries（卵巢）}
+\qline{3} 两个性细胞结合，叫什么？
+\ra{fertilisation（受精）}
+\qline{4} 人的一个体细胞里有多少条 chromosomes（染色体）？
+\ra{46（23 pairs，23 对）}
+\qline{5} 哪个器官把氧气从母亲传给 foetus（胎儿）？
+\ra{the placenta（胎盘）}
+\hint{0:00--0:02。让她口答，先不讲解。第 1--3 题错：Loop 1 放慢；第 4 题错：Loop 3 的染色体页多停；第 5 题错：Loop 4 的 placenta 页多停。}
+\fref{Booklet p.2--3}
+%%% FRAME 3 {The one idea 核心思想：从两个细胞到一个婴儿}
+\vspace{2mm}
+\FigJourney\par\vspace{4mm}
+每道题都在问这条线上的某一步。\par\vspace{1mm}
+每一步要知道三样：是哪个细胞、在哪里、叫什么过程。\par\vspace{3mm}
+哪一步发生在 oviduct（输卵管）里？
+\ra[0mm]{fertilisation happens in the oviduct；zygote 一边分裂一边向 uterus（子宫）移动}
+\hint{0:02--0:04。指着图从左到右把英文词念一遍。强调：fertilisation 在 oviduct；implantation（着床）才在 uterus。这是全单元最常见的失分点。}
+\fref{Booklet p.3}
+%%% FRAME 4 {Quick review 快速回忆：性细胞}
+\twocol{0.62}{\vspace{1mm}\FigSperm[6.4mm]\par\vspace{1mm}\hspace*{22mm}\FigEgg[3.6mm]}{0.36}{%
+\qline{1} 说出 A--D 和 P--S 的名称。
+\ra{见图上红字}
+\qline{2} 每个 nucleus 里有多少条 chromosomes？
+\ra{23 in each}
+\qline{3} 哪个细胞更大？哪个会动？
+\ra{the egg is much larger; only the sperm can move: it swims with its tail}}
+\hint{0:04--0:06。A（头部尖端）里有 enzymes（酶）；C（中段）里有 mitochondria（线粒体，供能）。图不按比例：egg 实际比 sperm 大得多。}
+\fref{Booklet p.4--5 \textperiodcentered{} 不按比例}
+%%% FRAME 5 {Adaptations 适应：特征 + 有什么用}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{细胞} & \textbf{Feature 特征} & \textbf{How it helps 有什么用}\\
+\midrule
+sperm & long tail 长尾 & \gapa{it swims to the egg}\\
+sperm & 很多 mitochondria & \gapa{they release energy for swimming}\\
+sperm & 头部有 enzymes & \gapa{they break through the jelly layer and membrane}\\
+egg & cytoplasm 很大 & \gapa{a food store for the first cell divisions}\\
+egg & membrane 会变化 & \gapa{it stops any other sperm getting in}\\
+\bottomrule
+\end{tabular}\par\vspace{3mm}
+为什么男性产生几百万个 sperm，而女性每月只排一个 egg？
+\ra[0mm]{very few sperm survive the journey to the oviduct, so millions give a better chance that one meets the egg}
+\hint{0:06--0:08。Adaptation 题的写法：feature + how it helps。她 booklet p.5 的表只写了特征（large、swims with tail），没写“so that ...”，这样只能拿 A（\Lref{adapt}）。}
+\fref{Booklet p.5}
+%%% FRAME 6 {Quick review 快速回忆：女性生殖系统，正面图}
+\twocol{0.62}{\vspace{1mm}\FigFemaleFront[5.5mm]}{0.36}{%
+\qline{1} 说出 A--F 的名称。
+\ra{见图上红字。B = fallopian tube；D = endometrium}
+\qline{2} 卵在哪里产生？
+\ra{in the ovaries}
+\qline{3} 胎儿在哪里发育？
+\ra{in the uterus}
+\qline{4} 哪一部分是一圈肌肉？
+\ra{the cervix}}
+\hint{0:08--0:09。她在 booklet p.8 的正面图上把 uterus 和 cervix 标反了：cervix 是 uterus 底部最窄的那一段。让她指着屏幕再说一遍。}
+\fref{Booklet p.8--9}
+%%% FRAME 7 {女性生殖系统：每部分的作用}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{@{}l l@{}}
+\toprule
+\textbf{Part 部位} & \textbf{Job 作用}\\
+\midrule
+ovary 卵巢 & 产生 \gapa{eggs} 和两种 hormones（oestrogen、progesterone）\\
+oviduct 输卵管 & 运送 egg；\gapa{fertilisation} 在这里发生\\
+uterus 子宫 & \gapa{foetus} 在这里发育\\
+lining 子宫内膜 & 变厚，让 \gapa{embryo} 可以 implant（着床）\\
+cervix 子宫颈 & uterus 底部的一圈 \gapa{muscle}\\
+vagina 阴道 & 接收 \gapa{sperm}（semen）；婴儿从这里出生\\
+\bottomrule
+\end{tabular}
+\hint{0:09--0:10。让她一行一行说出空格里的词。“fertilisation 在 oviduct”让她说两遍。}
+\fref{Booklet p.9}
+%%% FRAME 8 {Quick review 快速回忆：女性生殖系统，侧面图}
+\twocol{0.44}{\vspace{1mm}\FigFemaleSide[62mm]}{0.54}{%
+anus \textperiodcentered{} bladder \textperiodcentered{} cervix \textperiodcentered{} fallopian tube \textperiodcentered{} ovary \textperiodcentered{} rectum \textperiodcentered{} urethra \textperiodcentered{} uterus \textperiodcentered{} vagina \textperiodcentered{} vulva
+\qline{1} 把这些词和 1--10 对上。
+\ra{\begin{tabular}{@{}l@{\hspace{5mm}}l@{}}1 ovary 卵巢 & 6 rectum 直肠\\2 fallopian tube 输卵管 & 7 vulva 外阴\\3 bladder 膀胱 & 8 urethra 尿道\\4 vagina 阴道 & 9 anus 肛门\\5 uterus 子宫 & 10 cervix 子宫颈\end{tabular}}
+\qline{2} 哪四个不是生殖器官？
+\ra{bladder, urethra（urine 尿）；rectum, anus（消化系统）}}
+\hint{0:10--0:12。booklet p.8 这张图没有印答案，以上是按解剖位置判读的：3 在最前面，是 bladder；6 在最后面，是 rectum；10 在 uterus 和 vagina 之间，是 cervix。}
+\fref{Booklet p.8}
+%%% FRAME 9 {Quick review 快速回忆：男性生殖系统}
+\twocol{0.66}{\vspace{1mm}\FigMaleFront[58mm]}{0.32}{%
+\qline{1} 说出 A--H 的名称。
+\ra{见图上红字。D = vas deferens}
+\qline{2} sperm 在哪里产生？
+\ra{in the testes}
+\qline{3} 哪条管道既走 urine 又走 semen？
+\ra{the urethra}}
+\hint{0:12--0:13。G、H 两个箭头挨得很近：上面指 testis，下面指 scrotum（booklet 没印答案，按位置判读）。A bladder 不是生殖器官。}
+\fref{Booklet p.10}
+%%% FRAME 10 {一个 sperm cell 走的路}
+把卡片排好顺序。\par\vspace{1mm}
+\qline{A} urethra 把 semen 经 penis 送出体外。
+\qline{B} sperm 在 testis 里产生。
+\qline{C} sperm 沿着 sperm duct 走。
+\qline{D} sperm 储存在 epididymis 里。
+\qline{E} glands（腺体）加入液体：sperm + fluid = \gapa{semen}。
+\ra[0mm]{顺序：B $\rightarrow$ D $\rightarrow$ C $\rightarrow$ E $\rightarrow$ A}
+\par\vspace{2mm}
+为什么 testes 要放在体外？
+\ra[0mm]{sperm are made best a little below body temperature; in the scrotum the testes stay cooler}
+\hint{0:13--0:15。先让她排序，再问 sperm 和 semen 的区别：semen = sperm + 腺体加的液体。}
+\fref{Booklet p.11}
+%%% FRAME 11 {男性生殖系统：每部分的作用}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{@{}l l@{}}
+\toprule
+\textbf{Part 部位} & \textbf{Job 作用}\\
+\midrule
+scrotum 阴囊 & 把 testes 放在体外，让它们保持 \gapa{cooler}\\
+testes 睾丸 & 产生 \gapa{sperm} 和激素 \gapa{testosterone}\\
+epididymis 附睾 & \gapa{stores} sperm\\
+sperm duct 输精管 & 把 sperm 运到 \gapa{urethra}\\
+glands 腺体 & 加入 \gapa{fluid}，给 sperm 提供养分\\
+penis 阴茎 & 把 semen 送进 \gapa{vagina}\\
+\bottomrule
+\end{tabular}
+\hint{0:15--0:16。glands 指 seminal vesicles 和 prostate gland。她 booklet p.11 的这张表写得不错，这一页快速过。}
+\fref{Booklet p.11}
+%%% FRAME 12 {Spot the error 找错 (1)}
+题目：说出性细胞在哪里产生，胎儿在哪里发育。\par\vspace{1mm}
+\samcard{146mm}{\flawed{Eggs are made in the uterus and travel down the oviduct. The cervix is the place where the foetus develops. In a man, sperm are made in the testes and stored in the scrotum.}}\par\vspace{1mm}
+\textbf{Sam 的答案有 3 处错。}找出来，改正，并说出为什么丢分。
+\ra[0mm]{1. eggs are made in the ovaries, not in the uterus（\Lref{parts}）\par
+2. the foetus develops in the uterus; the cervix is the ring of muscle at its base（\Lref{parts}）\par
+3. sperm are stored in the epididymis; the scrotum is the bag of skin that holds the testes（\Lref{parts}）}
+\hint{0:16--0:17。“travel down the oviduct”和“sperm are made in the testes”是对的。让她一句一句判断，不要看到 Sam 就整段改。}
+\fref{Booklet p.8--11}
+%%% FRAME 13 {Practice 练习}
+\qline{Q1} 说出 sperm cell 和 egg cell 的两个不同点。\slv{A}
+\ra{any two: a sperm is much smaller; a sperm has a tail and swims, an egg cannot move; an egg has a large food store; millions of sperm, one egg a month}
+\qline{Q2} 解释为什么 testes 在体外的 scrotum 里。\slv{M}
+\ra{sperm are made best a little below body temperature; outside the body the testes stay cooler}
+\qline{Q3} 一位女性两侧的 oviducts 都堵了，但每月仍然排卵。解释她为什么不能自然怀孕。\slv{E}
+\ra{fertilisation happens in the oviduct; the sperm cannot reach the egg and the egg cannot reach the uterus, so no zygote forms and nothing can implant}
+\hint{0:17--0:20。让她先口答，再对红字。Q3 要说到“fertilisation 在 oviduct”才算 E。}
+\fref{Booklet p.4--5, p.9--11}
+%%% FRAME 14 {Classwork 课堂练习}
+\vspace{4mm}
+\emphline{In-class work \textperiodcentered{} Part A（约 6 分钟）}\par\vspace{4mm}
+\qline{1} 给女性生殖系统的图标注。
+\qline{2} 补全关于男性生殖系统的句子。
+\qline{3} 解释 sperm cell 的一个 adaptation。
+\par\vspace{4mm}
+要求：写完整的句子，用科学词。
+\ra[0mm]{答案在 inclass\_answers.pdf 的 Part A}
+\hint{0:20--0:26。她写的时候不提示。时间到就停，对着答案版给每题 A / M / E。}
+%%% FRAME 15 {Puberty 青春期：由 hormones 启动}
+Hormones（激素）是化学 \gapa{messengers}，随 \gapa{blood} 运到全身。\par\vspace{1mm}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+ & \textbf{男孩} & \textbf{女孩}\\
+\midrule
+hormone 激素 & \gapa{testosterone} & \gapa{oestrogen}\\
+产生于 & testes & ovaries\\
+变化 & 声音变低 & \gapa{periods} 开始\\
+另外 & 开始产生 sperm & 乳房发育\\
+\bottomrule
+\end{tabular}\par\vspace{3mm}
+判断对错：女孩通常比男孩先进入 puberty。\quad\rd{True}
+\hint{0:26--0:28。男女都有的变化：长高，长阴毛和腋毛。booklet p.6 的 17 道判断题她做过了，这里不展开。}
+\fref{Booklet p.6--7, p.13}
+%%% FRAME 16 {Menstrual cycle 月经周期：第 1、2 阶段}
+\FigCycleBar[4.4mm]\par\vspace{1mm}
+\qline{1} 第 1--5 天：内膜 \gapa{breaks down}，经 vagina 流出。这就是 \gapa{period (menstruation)}。
+\qline{2} 第 5--13 天：内膜重新 \gapa{builds up}；一个 egg 在 \gapa{ovary} 里成熟。
+\ra[0mm]{阶段名称：1 menstrual　2 follicular}
+\hint{0:28--0:30。图上方的 1--4 是四个阶段，灰色表示内膜的厚度，小圆圈是第 14 天排出的 egg。先让她说每一段内膜是变厚还是变薄。第 2 阶段 ovary 里的 follicle（卵泡）长大，FSH 让里面的 egg 成熟。}
+\fref{Booklet p.14--15}
+%%% FRAME 17 {Menstrual cycle 月经周期：第 3、4 阶段}
+\FigCycleBar[4.4mm]\par\vspace{1mm}
+\qline{3} 大约第 14 天：一个 egg 从 ovary \gapa{released}。这叫 \gapa{ovulation}（排卵）。
+\qline{4} 第 15--28 天：内膜保持 \gapa{thick}，等待受精卵。
+\ra[0mm]{阶段名称：3 ovulation　4 luteal。没有受精卵：内膜 breaks down，周期重新开始}
+\par\vspace{1mm}
+她什么时候最容易怀孕？
+\ra[0mm]{around day 14: the day of ovulation and the two days before and after it}
+\hint{0:30--0:32。易错（\Lref{ovul}）：ovulation 是排卵，约第 14 天；menstruation 是内膜脱落，从第 1 天开始。两个词不要混。}
+\fref{Booklet p.14--16}
+%%% FRAME 18 {四种 hormones，四个作用}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Hormone} & \textbf{产生于} & \textbf{作用}\\
+\midrule
+FSH & pituitary gland（垂体） & 让一个 egg 在 ovary 里 \gapa{mature}\\
+LH & \gapa{pituitary gland} & 在第 14 天触发 \gapa{ovulation}\\
+oestrogen & ovary & \gapa{builds up} 子宫内膜\\
+progesterone & \gapa{ovary} & 让内膜保持 \gapa{thick}\\
+\bottomrule
+\end{tabular}\par\vspace{3mm}
+FSH = follicle stimulating hormone。LH = luteinising hormone。\par\vspace{1mm}
+哪两种激素在 ovulation 时达到峰值？\quad\rd{FSH and LH}
+\hint{0:32--0:34。记法：垂体的两个（FSH、LH）管 egg；卵巢的两个（oestrogen、progesterone）管内膜（\Lref{horm}）。她 booklet p.16 第 5 题写了两个激素，标准说法是 progesterone 下降，内膜脱落。}
+\fref{Booklet p.13--14}
+%%% FRAME 19 {读图：ovaries 产生的激素}
+\twocol{0.50}{\vspace{1mm}\FigHormones[2.5mm]{ov}}{0.48}{%
+\qline{1} 哪种激素在第 14 天之前达到峰值？
+\ra{oestrogen}
+\qline{2} 第 21 天左右哪种激素最高？
+\ra{progesterone}
+\qline{3} 到第 28 天两种都下降了。内膜会怎样？
+\ra{the lining breaks down and is lost: a period starts}}
+\hint{0:34--0:36。读图题让她先说“哪条线、第几天、高还是低”，再说原因。实线是 oestrogen，虚线是 progesterone。}
+\fref{Booklet p.14}
+%%% FRAME 20 {读图：pituitary gland 产生的激素}
+\twocol{0.50}{\vspace{1mm}\FigHormones[2.5mm]{pit}}{0.48}{%
+\qline{1} LH 和 FSH 在第几天达到峰值？
+\ra{day 14}
+\qline{2} LH 的峰值引起什么？
+\ra{ovulation: an egg is released from an ovary}
+\qline{3} 描述第 1--12 天 LH 的水平。
+\ra{it stays low and almost constant}}
+\hint{0:36--0:37。第 3 题的指令词是 describe：只说趋势，不要解释原因（\Lref{graph}）。实线是 LH，虚线是 FSH。}
+\fref{Booklet p.14}
+%%% FRAME 21 {卵没有受精：按这个顺序写}
+\qline{1} 卵没有受精，所以没有 embryo \gapa{implants} 到内膜里。
+\qline{2} \gapa{progesterone} 的水平下降。
+\qline{3} 子宫内膜 \gapa{breaks down}。
+\qline{4} 血和内膜经 \gapa{vagina} 排出：这就是 period。
+\par\vspace{2mm}
+{\bfseries A}：第 3--4 行 \quad {\bfseries M}：把激素和内膜连起来 \quad {\bfseries E}：整条链\par\vspace{2mm}
+如果卵受精了，有什么不同？
+\ra[0mm]{the embryo implants, progesterone stays high and the lining stays thick, so there is no period}
+\hint{0:37--0:39。Explain 题按 1 到 4 的顺序写。只写“a period starts”是 A；写出 progesterone falls，lining breaks down 才到 M。}
+\fref{Booklet p.9, p.15}
+%%% FRAME 22 {Spot the error 找错 (2)}
+题目：描述 ovulation，并说出一种改变子宫内膜的激素。\par\vspace{1mm}
+\samcard{146mm}{\flawed{Ovulation is when the lining of the uterus is lost. An egg is released on about day 28 of the cycle. Oestrogen is made in the pituitary gland and makes the lining thicker.}}\par\vspace{1mm}
+\textbf{Sam 的答案有 3 处错。}找出来，改正，并说出为什么丢分。
+\ra[0mm]{1. ovulation is the release of an egg from an ovary; losing the lining is menstruation（\Lref{ovul}）\par
+2. the egg is released on about day 14, not day 28（\Lref{ovul}）\par
+3. oestrogen is made in the ovaries, not in the pituitary gland（\Lref{horm}）}
+\hint{0:39--0:40。最后半句“makes the lining thicker”是对的。}
+\fref{Booklet p.13--16}
+%%% FRAME 23 {Practice 练习}
+\qline{Q1} 一位女性的周期是 28 天。她在哪几天最容易怀孕？\slv{A}
+\ra{about days 12 to 16: ovulation is on about day 14, and she is fertile for two days before and after it}
+\qline{Q2} 描述第 5 天到第 14 天子宫内膜的变化，并说出引起变化的激素。\slv{M}
+\ra{the lining builds up and becomes thicker, with more blood vessels; oestrogen}
+\qline{Q3} 孕妇的 progesterone 水平一直很高。解释为什么这很重要。\slv{E}
+\ra{progesterone keeps the lining thick, so it is not lost; the embryo stays implanted and the placenta can form, so there are no periods during pregnancy}
+\hint{0:40--0:43。Q3 是 E：要写到“so the embryo stays implanted”。}
+\fref{Booklet p.13--16}
+%%% FRAME 24 {Classwork 课堂练习}
+\vspace{4mm}
+\emphline{In-class work \textperiodcentered{} Part B（约 6 分钟）}\par\vspace{4mm}
+\qline{1} 说出周期的四个阶段。
+\qline{2} 把每种激素和它的作用连起来。
+\qline{3} 读一张激素水平的数据表并解释。
+\par\vspace{4mm}
+数据题：先描述趋势，带上数字。
+\ra[0mm]{答案在 inclass\_answers.pdf 的 Part B}
+\hint{0:43--0:49。}
+%%% FRAME 25 {从 intercourse 到 fertilisation}
+把卡片排好顺序。\par\vspace{1mm}
+\qline{A} sperm 游过 cervix 和 uterus，进入 oviducts。
+\qline{B} penis 充血，变硬（erect）。
+\qline{C} 一个 sperm 进入 egg，两个 nuclei（细胞核）融合。
+\qline{D} semen 被射入 vagina。这叫 ejaculation（射精）。
+\qline{E} penis 放入 vagina。
+\ra[0mm]{顺序：B $\rightarrow$ E $\rightarrow$ D $\rightarrow$ A $\rightarrow$ C}
+\par\vspace{2mm}
+哪张卡片是 fertilisation？它在哪里发生？
+\ra[0mm]{card C; it happens in the oviduct}
+\hint{0:49--0:51。这是学习目标第 12 条。当成一道普通的排序题来做，按生物过程平铺直叙就行。nuclei 是 nucleus 的复数，读 NYOO-klee-eye。}
+\fref{Booklet p.17}
+%%% FRAME 26 {Zygote、embryo、foetus}
+\qline{1} sperm 的 nucleus 和 egg 的 nucleus 融合。这个新细胞叫 \gapa{zygote}（受精卵）。
+\qline{2} 它沿着 oviduct 移动，同时不断分裂。这团细胞叫 \gapa{embryo}（胚胎）。
+\qline{3} 这团细胞陷进子宫内膜。这叫 \gapa{implantation}（着床）。
+\qline{4} 大约 8 周后，器官都有了。这时叫 \gapa{foetus}（胎儿）。
+\par\vspace{2mm}
+什么阻止第二个 sperm 进入 egg？
+\ra[0mm]{the membrane of the egg changes as soon as one sperm has entered}
+\hint{0:51--0:53。易错（\Lref{stages}）：顺序是 zygote，embryo，foetus；implantation 不是 fertilisation。她 booklet p.17 的 fertilisation 定义还空着，让她写：the nucleus of a sperm fuses with the nucleus of an egg。}
+\fref{Booklet p.17, p.21}
+%%% FRAME 27 {Chromosomes 染色体：数一数}
+\vspace{2mm}
+\FigChromo{\rd{23}}{\rd{23}}{\rd{46}}{\rd{46（23 pairs）}}\par\vspace{4mm}
+Chromosomes 带着 genes（基因），在每个细胞的 \gapa{nucleus} 里。\par\vspace{2mm}
+为什么 sex cell 只能有一半的数目？
+\ra[0mm]{so that the zygote has the full 46 and not 92 when the two sex cells join; half comes from each parent}
+\hint{0:53--0:55。易错（\Lref{chromo}）：sperm 和 egg 各 23 条，不是 46 条。}
+\fref{Booklet p.18}
+%%% FRAME 28 {生男还是生女？}
+\twocol{0.40}{\vspace{2mm}\FigSexSquare{\rd{XX}}{\rd{XX}}{\rd{XY}}{\rd{XY}}}{0.58}{%
+女性的细胞是 XX，男性的细胞是 XY。\par\vspace{1mm}
+每个 egg 都带 \gapa{X}。sperm 带 \gapa{X} 或 \gapa{Y}。
+\qline{1} 把方格填完。
+\ra{见左图红字}
+\qline{2} 生男孩的概率是多少？
+\ra{50\,\%（2 of the 4 boxes）}
+\qline{3} 哪一方的性细胞决定性别？
+\ra{the father's: a sperm with X gives a girl, a sperm with Y gives a boy}}
+\hint{0:55--0:57。易错（\Lref{sex}）：决定性别的是 sperm，不是 egg。}
+\fref{Booklet p.20}
+%%% FRAME 29 {Twins 双胞胎}
+\twocol{0.34}{\vspace{2mm}\FigTwins[4.4mm]}{0.64}{%
+每一行最后都是两个 embryos。
+\qline{1} 哪一行是 identical twins（同卵双胞胎）？
+\ra{row X}
+\qline{2} X 行：\gapa{one} 个 egg，\gapa{one} 个 sperm。zygote \gapa{splits into two}。
+\qline{3} Y 行：\gapa{two} 个 eggs，\gapa{two} 个 sperm。
+\qline{4} 哪种双胞胎可以是一男一女？
+\ra{row Y, the non-identical (fraternal) twins: they have different genes. Identical twins have the same genes, so they are always the same sex.}}
+\hint{0:57--0:59。图里同一种灰色表示基因相同。Y 行的两个 egg 颜色不同，表示基因不同（\Lref{twins}）。}
+\fref{Booklet p.19}
+%%% FRAME 30 {Workbook 练习册：对还是错？}
+\qline{a} 同卵双胞胎：一个受精卵分裂成两个，而且两个细胞分开了。\quad\rd{True}
+\qline{b} 同卵双胞胎一定是不同性别。\quad\rd{False: always the same sex}
+\qline{c} 异卵双胞胎：两个卵细胞都受精了。\quad\rd{True}
+\qline{d} 异卵双胞胎可以是同性别，也可以是不同性别。\quad\rd{True}
+\qline{e} 同卵双胞胎：两个卵细胞受精。\quad\rd{False: that gives non-identical twins}
+\qline{f} 异卵双胞胎：卵细胞自己变成胚胎。\quad\rd{False: each egg must be fertilised by a sperm}
+\hint{0:59--1:00。这是 booklet p.19 她空着的原题，屏幕上是英文原文。让她直接把 true / false 写到 booklet 上。上面两张图：一个 zygote 的那组是 identical，两个 zygote 的那组是 fraternal。}
+\fref{Booklet p.19}
+%%% FRAME 31 {Workbook 练习册：fertilisation}
+\qline{Q1} fertilisation 在哪里发生？
+\ra{in the oviduct (fallopian tube)}
+\qline{Q2} 只有一个 sperm cell 和 egg cell 结合。你认为其他的 sperm 怎样了？
+\ra{they die and are broken down}
+\qline{Q3} 人类在进化中上了陆地，变成 internal fertilisation（体内受精）。为什么这在陆地上是优势？
+\ra{on land the sex cells would dry out; inside the body the sperm can swim in fluid, the sex cells are protected, and a sperm is much more likely to meet the egg}
+\hint{1:00--1:02。booklet p.18 她空着的三道题，屏幕上是英文原文，让她把答案写到 booklet 上。Q3 是 E：要说出“不会干掉”和“更容易相遇”两点。}
+\fref{Booklet p.18}
+%%% FRAME 32 {下一个是男孩吗？按这个顺序写}
+一对夫妇有三个女儿。第四个孩子是男孩的概率是多少？\par\vspace{1mm}
+\qline{1} 每个 egg 都带一条 \gapa{X} 染色体。
+\qline{2} 一半的 sperm 带 X，一半带 \gapa{Y}。
+\qline{3} 所以每一次受精，生男孩的概率都是 \gapa{50\,\%}。
+\qline{4} 以前生的孩子不会改变这个 \gapa{chance}。
+\par\vspace{2mm}
+{\bfseries A}：说出数字 \quad {\bfseries M}：第 1--2 行 \quad {\bfseries E}：再加上第 4 行
+\hint{1:02--1:03。booklet p.20 的原话：头两个都是男孩，下一个是男孩的概率仍然是 50\,\%。每次受精都是一个新的 sperm。}
+\fref{Booklet p.20}
+%%% FRAME 33 {Spot the error 找错 (3)}
+题目：解释婴儿的染色体从哪里来，以及双胞胎怎样会是 identical 的。\par\vspace{1mm}
+\samcard{146mm}{\flawed{A sperm has 46 chromosomes and an egg has 46, so the baby gets all of them. The mother's egg decides if the baby is a boy or a girl. Identical twins form when two eggs are fertilised by two sperm.}}\par\vspace{1mm}
+\textbf{Sam 的答案有 3 处错。}找出来，改正，并说出为什么丢分。
+\ra[0mm]{1. a sperm and an egg have 23 chromosomes each, so the zygote has 46（\Lref{chromo}）\par
+2. the sperm decides the sex: it carries X or Y, and every egg carries X（\Lref{sex}）\par
+3. identical twins come from one fertilised egg that splits; two eggs give non-identical twins（\Lref{twins}）}
+\hint{1:03--1:04。三句话每句一个错，让她逐句改成正确的英文句子。}
+\fref{Booklet p.18--20}
+%%% FRAME 34 {Practice 练习}
+\qline{Q1} 说出 fertilisation 在哪里发生，以及形成的细胞叫什么。\slv{A}
+\ra{in the oviduct; a zygote}
+\qline{Q2} 一对双胞胎是一男一女。他们是 identical twins 吗？解释。\slv{M}
+\ra{no: identical twins come from one zygote, so they have the same chromosomes and are the same sex; a boy and a girl must come from two eggs and two sperm}
+\qline{Q3} 解释为什么孩子有父母双方的特征，但和任何一方都不完全一样。\slv{E}
+\ra{23 chromosomes come from the mother's egg and 23 from the father's sperm, so the child's genes are a mixture of both; the mixture is a new combination, different from each parent}
+\hint{1:04--1:06。Q3 要出现数字 23 和“mixture / new combination”才算 E。}
+\fref{Booklet p.3, p.18--20}
+%%% FRAME 35 {Classwork 课堂练习}
+\vspace{4mm}
+\emphline{In-class work \textperiodcentered{} Part C（约 6 分钟）}\par\vspace{4mm}
+\qline{1} 把从性细胞到 foetus 的各阶段排序。
+\qline{2} 根据染色体判断婴儿的性别。
+\qline{3} 解释两种双胞胎是怎样形成的。
+\par\vspace{4mm}
+每次提到一种细胞，都写出它的染色体数目。
+\ra[0mm]{答案在 inclass\_answers.pdf 的 Part C}
+\hint{1:06--1:12。}
+%%% FRAME 36 {Quick review 快速回忆：子宫里的 foetus}
+\twocol{0.75}{\vspace{1mm}\FigWomb[3.5mm]}{0.24}{%
+\qline{1} 说出 A--F 的名称。
+\ra{见图上红字}
+\qline{2} 哪一部分给胎儿缓冲？
+\ra{the amniotic fluid}
+\qline{3} 哪一部分把胎儿和 placenta 连起来？
+\ra{the umbilical cord}}
+\hint{1:12--1:14。她 booklet p.25 的连线和功能表都做对了，这一页快速过。}
+\fref{Booklet p.21, p.25}
+%%% FRAME 37 {Placenta 胎盘：什么能通过？}
+\vspace{1mm}
+\hbox to\textwidth{\hfil\FigExchange{\rd{oxygen}}{\rd{glucose}}{\rd{antibodies}}{\rd{carbon dioxide}}{\rd{urea}}\hfil}\par\vspace{3mm}
+向下的箭头：胎儿需要的三样东西。向上的箭头：两种废物。\par\vspace{1mm}
+两边的血永远不 \gapa{mix}。物质靠 \gapa{diffusion}（扩散）通过。
+\ra[0mm]{glucose 也可以答 food / nutrients；antibodies 是抗体；urea 是尿素}
+\hint{1:14--1:16。易错（\Lref{nomix}）：母亲的血不会流进胎儿，中间隔着一层薄壁。答题要写“什么物质 + 往哪个方向”。}
+\fref{Booklet p.22--24}
+%%% FRAME 38 {Workbook 练习册：placenta 的作用}
+Placenta 由胎儿的组织发育而来，让母亲和胎儿之间进行物质的 \gapa{exchange (diffusion)}。它有大量互不接触的血管，保证母亲的血和胎儿的血不会 \gapa{mixing}。
+\qline{a} 说出母血和胎血不能混合的三个原因。
+\ra{they can be different blood types; the mother's blood pressure is higher and would damage the foetus's small blood vessels; it stops many bacteria and harmful substances reaching the foetus}
+\qline{b} 解释为什么 embryo 需要 oxygen 和 glucose。
+\ra{for respiration, which releases the energy its cells need to divide and grow}
+\qline{c} 哪些物质从胎儿的血扩散到母亲的血？为什么必须把它们除去？
+\ra{carbon dioxide and urea; they are waste products and would poison the foetus if they built up}
+\hint{1:16--1:19。booklet p.26 她整页空着，是最该补的一页，屏幕上是英文原文，让她把答案写到 booklet 上。maternal 是“母亲的”，foetal 是“胎儿的”。}
+\fref{Booklet p.26}
+%%% FRAME 39 {Oxygen 怎样到胎儿：按这个顺序写}
+\qline{1} 母亲的血里 oxygen 的 concentration（浓度）比胎儿的血 \gapa{higher}。
+\qline{2} oxygen 从高浓度向低浓度 \gapa{diffuses}，穿过薄壁。
+\qline{3} villi（绒毛）提供很大的 \gapa{surface area}，所以扩散得快。
+\qline{4} 胎儿的血经 umbilical \gapa{vein} 把 oxygen 带走。
+\par\vspace{1mm}
+{\bfseries A}：第 2 行 \quad {\bfseries M}：第 1--2 行 \quad {\bfseries E}：再加上第 3--4 行\par\vspace{1mm}
+现在用同样的方式讲 carbon dioxide。
+\ra[0mm]{the foetus's blood, arriving in the umbilical artery, has a higher concentration of carbon dioxide than the mother's blood, so carbon dioxide diffuses across the villi into the mother's blood, which carries it away}
+\hint{1:19--1:21。她 booklet p.24 第 4 题写得很好，已经到 E。这里让她不看书把 oxygen 口头讲一遍，再自己讲 carbon dioxide（\Lref{diff}）。}
+\fref{Booklet p.22--24}
+%%% FRAME 40 {危害：还有什么能通过 placenta？}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{@{}l l@{}}
+\toprule
+\textbf{来自母亲} & \textbf{对胎儿的影响}\\
+\midrule
+cigarette smoke 香烟烟雾 & 到达胎儿的 \gapa{oxygen} 变少；婴儿偏小\\
+alcohol 酒精 & 损伤发育中的 \gapa{brain}\\
+drugs 毒品 & 婴儿出生时可能已经 addicted（成瘾）\\
+rubella virus 风疹病毒 & 耳聋；心脏和眼睛的缺陷\\
+\bottomrule
+\end{tabular}\par\vspace{3mm}
+为什么很少的量也会造成很大的伤害？
+\ra[0mm]{the foetus is very small and is growing very quickly}
+\hint{1:21--1:23。香烟：carbon monoxide 占了母亲血里 oxygen 的位置，nicotine 也能通过 placenta。booklet p.29 的 Research Task 是做海报，考试记住这四行就够。}
+\fref{Booklet p.29}
+%%% FRAME 41 {怀孕里的几个数字}
+\qline{1} 怀孕（gestation）大约 \gapa{40} 周，从最后一次月经的第一天算起。
+\qline{2} 大约从第 \gapa{8} 周起，embryo 改叫 foetus。
+\qline{3} \gapa{20} 周之前失去胎儿，叫 miscarriage（流产）。
+\qline{4} \gapa{38} 周之前出生，叫 premature（早产）。
+\par\vspace{2mm}
+一个婴儿在 35 周出生。用哪个词描述？
+\ra[0mm]{premature}
+\hint{1:23--1:24。第 2 行：glossary 写 after 8 weeks，p.28 写 nine weeks，答 8 或 9 都对。20 周以后失去胎儿叫 stillbirth。}
+\fref{Booklet p.27--28, p.37}
+%%% FRAME 42 {Birth 出生：三个阶段}
+把卡片排好顺序，再说出每个阶段的名称。\par\vspace{1mm}
+\qline{A} placenta 被排出。
+\qline{B} uterus 的肌肉收缩；cervix 张开（dilates）；羊水破了。
+\qline{C} 婴儿经 vagina 被推出；脐带结扎后剪断。
+\ra[0mm]{顺序：B $\rightarrow$ C $\rightarrow$ A}
+\par\vspace{2mm}
+Stage 1 \gapa{labour} \quad Stage 2 \gapa{delivery} \quad Stage 3 \gapa{afterbirth}\par\vspace{2mm}
+“the waters” 是什么？
+\ra[0mm]{the amniotic fluid}
+\hint{1:24--1:26。labour 是阵痛和宫颈张开，delivery 是婴儿娩出，afterbirth 是排出胎盘。}
+\fref{Booklet p.30--31}
+%%% FRAME 43 {Workbook 练习册：不孕的问题和解决办法}
+\renewcommand\arraystretch{1.2}
+\begin{tabular}{@{}p{58mm} p{96mm}@{}}
+\toprule
+\textbf{Problems 问题} & \textbf{Solutions 解决办法}\\
+\midrule
+Low sperm count 精子数量少 & Injecting sperm cell into egg cell, then IVF（书上已给）\\
+Oviducts 太窄或受损 & \rd{doctors try to widen the oviducts; or IVF}\\
+Sperm ducts 堵塞 & \rd{doctors try to widen the sperm ducts}\\
+内膜阻止 implantation & \rd{IVF}\\
+排出的成熟卵太少 & \rd{IVF}\\
+Sperm 游不好 & \rd{inject a sperm cell into an egg cell with a fine needle}\\
+\bottomrule
+\end{tabular}
+\hint{1:26--1:28。booklet p.32 的空表，答案都在 p.31 的两段文字里。让她一边在 p.31 划线，一边填表。第 3 行答“IVF”是书上的原话。}
+\fref{Booklet p.31--32}
+%%% FRAME 44 {IVF：在培养皿里受精}
+把卡片排好顺序。\par\vspace{1mm}
+\qline{A} 从女性的 ovaries 里取出 eggs。
+\qline{B} 把一个 embryo 放进 uterus，它可能在那里 implant。
+\qline{C} 给女性用 hormones，让多个 eggs 成熟。
+\qline{D} eggs 和 sperm 在培养皿里混合，其中一些受精。
+\qline{E} embryos 培养大约两天。
+\ra[0mm]{顺序：C $\rightarrow$ A $\rightarrow$ D $\rightarrow$ E $\rightarrow$ B}
+\par\vspace{2mm}
+为什么 IVF 之后双胞胎更常见？
+\ra[0mm]{often more than one embryo is put into the uterus, and each one can implant}
+\hint{1:28--1:30。in vitro 的意思是“在玻璃里”，指受精发生在体外。易错（\Lref{ivf}）：婴儿不是在试管里长大的，embryo 要放回 uterus。}
+\fref{Booklet p.33--34}
+%%% FRAME 45 {Workbook 练习册：第 3 题，describe}
+\twocol{0.46}{\vspace{0mm}\FigMultiBirths[1.02mm]}{0.52}{%
+\qline[9mm]{(a)} 描述 40--44 岁女性多胎妊娠数量的变化。
+\ra[9mm]{from 1960 to about 1990 it stayed between about 11\,\% and 15\,\%; after 1990 it rose steadily to about 25\,\% in 2010}
+\qline[9mm]{(c)} 描述 20--24 岁女性多胎妊娠数量的变化。
+\ra[9mm]{it stayed almost the same, at about 9\,\% to 10\,\%, from 1960 to 2010}}
+\hint{1:30--1:32。Describe 要写趋势，加上从图上读出的数字和年份，不要写原因（\Lref{graph}）。虚线是 40--44 岁，实线是 20--24 岁。}
+\fref{Booklet p.35--36 \textperiodcentered{} 图是重画的}
+%%% FRAME 46 {Workbook 练习册：suggest 和 predict}
+新闻标题：“生育治疗会增加多胎的机会” \textperiodcentered{} “年龄大的女性更容易有怀孕困难” \textperiodcentered{} “生育治疗越来越普遍”
+\qline{Q3} (b) 提出一个假设（hypothesis），解释为什么会出现这种变化。
+\ra{fertility treatment has become more common; older women are more likely to need it; fertility treatment increases the chance of a multiple birth}
+\qline{Q3} (d) 提出一个假设，解释为什么 20--24 岁的规律和 40--44 岁不一样。
+\ra{women aged 20 to 24 rarely have problems becoming pregnant, so few of them have fertility treatment}
+\qline{Q4} (a) 预测去年 40--44 岁女性多胎妊娠的百分比。
+\ra{about 30\,\% or a little more: any value above 25\,\% that continues the rising line。(b) I extended the trend line from 1990 to 2010 forward to last year}
+\hint{1:32--1:35。Suggest 要用上三条新闻标题里的信息。booklet p.35 第 1 题：a multiple birth is two or more babies from one pregnancy。第 2 题：the hormones make the ovaries release more eggs, so there is more chance that one is fertilised。}
+\fref{Booklet p.35--36}
+%%% FRAME 47 {Spot the error 找错 (4)}
+题目：描述胎儿怎样得到 oxygen，以及它在 uterus 里怎样受到保护。\par\vspace{1mm}
+\samcard{146mm}{\flawed{The mother's blood flows through the umbilical cord into the foetus. Oxygen moves by diffusion from a low concentration to a high concentration. The amniotic fluid gives the foetus its food and protects it from bumps.}}\par\vspace{1mm}
+\textbf{Sam 的答案有 3 处错。}找出来，改正，并说出为什么丢分。
+\ra[0mm]{1. the two bloods never mix: only the foetus's blood flows in the umbilical cord（\Lref{nomix}）\par
+2. diffusion is from a high concentration to a low concentration（\Lref{diff}）\par
+3. the amniotic fluid does not feed the foetus: food comes from the mother's blood through the placenta（\Lref{fluid}）}
+\hint{1:35--1:36。“protects it from bumps”是对的。}
+\fref{Booklet p.21--25}
+%%% FRAME 48 {Practice 练习}
+\qline{Q1} 说出两种从胎儿的血进入母亲的血的物质。\slv{A}
+\ra{carbon dioxide and urea}
+\qline{Q2} 解释为什么吸烟的孕妇更可能生下偏小的婴儿。\slv{M}
+\ra{carbon monoxide from the smoke is carried in the mother's blood, so less oxygen crosses the placenta; the foetus's cells respire less and release less energy, so it grows more slowly}
+\qline{Q3} 现在做 IVF 通常只放一个 embryo 进 uterus，而不是三个。说出可能的原因，并解释这怎样改变双胞胎和三胞胎的数量。\slv{E}
+\ra{a multiple birth is riskier for the mother and the babies, who are often premature and small; with one embryo only one can implant, so there are fewer twins and triplets}
+\hint{时间紧就只做 Q1 和 Q2，Q3 口头说。Q2 的链条：less oxygen，less respiration，less energy，slower growth。}
+\fref{Booklet p.22--24, p.29, p.34}
+%%% FRAME 49 {Classwork 课堂练习}
+\vspace{4mm}
+\emphline{In-class work \textperiodcentered{} Part D（约 6 分钟）}\par\vspace{4mm}
+\qline{1} 给子宫里的 foetus 图标注。
+\qline{2} 解释一种废物怎样离开胎儿。
+\qline{3} 描述并解释一张关于 foetus 的数据表。
+\par\vspace{4mm}
+要写出：什么物质、往哪个方向、什么过程。
+\ra[0mm]{答案在 inclass\_answers.pdf 的 Part D}
+\hint{1:36--1:42。}
+%%% FRAME 50 {Ways to lose marks 失分点}
+说出每一句的正确版本。\par\vspace{1mm}
+\qline{1} “A sperm cell has 46 chromosomes.”
+\ra{23: every sex cell has one set; the zygote and body cells have 46（\Lref{chromo}）}
+\qline{2} “Fertilisation happens in the uterus.”
+\ra{in the oviduct; the embryo implants in the uterus later（\Lref{fert}）}
+\qline{3} “Ovulation is when the lining is lost.”
+\ra{ovulation is the release of an egg; losing the lining is menstruation（\Lref{ovul}）}
+\qline{4} “The mother's blood flows into the foetus.”
+\ra{the bloods never mix; oxygen and food diffuse across the placenta（\Lref{nomix}）}
+\qline{5} “A sperm has a tail.”（题目要求解释 adaptation）
+\ra{add how it helps: so that it can swim to the egg（\Lref{adapt}）}
+\qline{6} “It went up because of IVF.”（题目要求 describe 图表）
+\ra{describe needs the trend and numbers; the reason is for suggest or explain（\Lref{graph}）}
+\hint{1:42--1:43。每句让她直接说出正确版本，不展开。}
+%%% FRAME 51 {Summary 总结}
+\vspace{2mm}
+{\sSum
+\qline{1} Sex cells 有 23 条染色体；在 oviduct 里 fertilisation 之后是 46 条。
+\qline{2} 周期：period，内膜 builds up，第 14 天 ovulation，内膜保持 thick。
+\qline{3} Placenta：diffusion，从高浓度到低浓度；两边的血永远不混合。
+\qline{4} Explain = fact + because。Describe a graph = trend + numbers。\par}
+\hint{1:43--1:44。让她合上 booklet，把四条各说一遍，每条举一个例题。}
+%%% FRAME 52 {Mini mock 小模考}
+\vspace{4mm}
+\emphline{In-class work \textperiodcentered{} Part E}\par\vspace{4mm}
+写 12 分钟，不看笔记，不看 booklet。\par\vspace{2mm}
+然后一起批改：每道题给 A、M 或 E。\par\vspace{4mm}
+先看指令词：state、describe、explain、suggest。
+\ra[0mm]{答案在 inclass\_answers.pdf 的 Part E}
+\hint{1:44--1:56 写，1:56--1:59 对答案。state 只写事实；describe 写现象或趋势；explain 要有 because；suggest 是有依据的推测。}
+%%% FRAME 53 {Homework 作业}
+\vspace{2mm}
+\emphline{Homework：两部分，每部分约 40 分钟}\par\vspace{3mm}
+\qline{1} Part 1：性细胞、男女生殖系统、月经周期。
+\qline{2} Part 2：受精、染色体、怀孕、不孕。
+\par\vspace{3mm}
+两部分分两天做。
+\ra[0mm]{答案在 homework\_answers.pdf}
+\hint{1:59--2:00。发 Homework。In-class work 收回，下次课前看她哪几个 Part 的 E 没拿到。}
